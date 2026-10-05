@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "五十音マインスイーパー",
+    "slug": "gojuon-minesweeper",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "gojuonminesweeper",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.naki0227.gojuonminesweeper"
+    },
+    "android": {
+      "package": "com.naki0227.gojuonminesweeper"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-splash-screen"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
