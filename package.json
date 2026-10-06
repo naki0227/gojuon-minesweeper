@@ -10,6 +10,9 @@
     "web": "expo start --web",
     "build:web": "expo export -p web && node scripts/write-ads-txt.mjs",
     "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check 'app/**/*.{ts,tsx}' 'src/**/*.{ts,tsx}' 'scripts/**/*.mjs' 'tests/**/*.{ts,tsx}' eslint.config.js package.json",
+    "lint": "eslint app src scripts tests eslint.config.js --max-warnings 0",
+    "test": "vitest run",
     "validate:questions": "node scripts/validate-questions.mjs"
   },
   "dependencies": {
@@ -32,6 +35,10 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "^57.0.2",
+    "prettier": "^3.9.9",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.11"
   }
 }

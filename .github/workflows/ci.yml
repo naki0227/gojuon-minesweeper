@@ -20,13 +20,22 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Validate question bank
         run: npm run validate:questions
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
 
       - name: Export web
         run: npm run build:web
