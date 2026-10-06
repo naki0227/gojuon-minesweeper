@@ -26,6 +26,6 @@ export type Question = {
 
 export type QuestionFilters = {
   language: QuestionLanguage | "any";
-  category: string | "any";
+  categories: readonly string[];
   length: number | "any";
 };

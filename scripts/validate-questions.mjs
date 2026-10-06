@@ -12,9 +12,18 @@ const files = fs
   .map((name) => path.join(bankDir, name));
 
 const smallKana = new Map([
-  ["ぁ", "あ"], ["ぃ", "い"], ["ぅ", "う"], ["ぇ", "え"], ["ぉ", "お"],
-  ["っ", "つ"], ["ゃ", "や"], ["ゅ", "ゆ"], ["ょ", "よ"],
-  ["ゎ", "わ"], ["ゕ", "か"], ["ゖ", "け"],
+  ["ぁ", "あ"],
+  ["ぃ", "い"],
+  ["ぅ", "う"],
+  ["ぇ", "え"],
+  ["ぉ", "お"],
+  ["っ", "つ"],
+  ["ゃ", "や"],
+  ["ゅ", "ゆ"],
+  ["ょ", "よ"],
+  ["ゎ", "わ"],
+  ["ゕ", "か"],
+  ["ゖ", "け"],
 ]);
 
 const gojuon = new Set(
@@ -22,18 +31,21 @@ const gojuon = new Set(
 );
 
 function katakanaToHiragana(value) {
-  return Array.from(value).map((char) => {
-    const code = char.codePointAt(0);
-    if (code >= 0x30a1 && code <= 0x30f6) {
-      return String.fromCodePoint(code - 0x60);
-    }
-    return char;
-  }).join("");
+  return Array.from(value)
+    .map((char) => {
+      const code = char.codePointAt(0);
+      if (code >= 0x30a1 && code <= 0x30f6) {
+        return String.fromCodePoint(code - 0x60);
+      }
+      return char;
+    })
+    .join("");
 }
 
 function normalizeJa(value) {
   const hiragana = katakanaToHiragana(value.normalize("NFKC"));
-  const plain = hiragana.normalize("NFD")
+  const plain = hiragana
+    .normalize("NFD")
     .replace(/[\u3099\u309A]/g, "")
     .normalize("NFC");
 
@@ -44,7 +56,8 @@ function normalizeJa(value) {
 }
 
 function normalizeEn(value) {
-  return value.normalize("NFKD")
+  return value
+    .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .toUpperCase()
     .replace(/[^A-Z]/g, "");
@@ -76,14 +89,21 @@ for (const entry of entries) {
   }
   ids.add(entry.id);
 
-  const rawKey = [entry.language, entry.category, entry.display, entry.value].join("::");
+  const rawKey = [
+    entry.language,
+    entry.category,
+    entry.display,
+    entry.value,
+  ].join("::");
   if (rawKeys.has(rawKey)) {
     errors.push(`duplicate entry: ${rawKey}`);
   }
   rawKeys.add(rawKey);
 
   const normalized =
-    entry.language === "ja" ? normalizeJa(entry.value) : normalizeEn(entry.value);
+    entry.language === "ja"
+      ? normalizeJa(entry.value)
+      : normalizeEn(entry.value);
 
   if (!normalized) {
     errors.push(`normalizes to empty: ${entry.id} ${entry.display}`);

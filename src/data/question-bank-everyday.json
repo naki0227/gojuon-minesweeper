@@ -1,0 +1,1514 @@
+[
+  {
+    "id": "daily-ja-01-01",
+    "language": "ja",
+    "category": "文房具",
+    "display": "鉛筆",
+    "value": "えんぴつ"
+  },
+  {
+    "id": "daily-ja-01-02",
+    "language": "ja",
+    "category": "文房具",
+    "display": "消しゴム",
+    "value": "けしごむ"
+  },
+  {
+    "id": "daily-ja-01-03",
+    "language": "ja",
+    "category": "文房具",
+    "display": "定規",
+    "value": "じょうぎ"
+  },
+  {
+    "id": "daily-ja-01-04",
+    "language": "ja",
+    "category": "文房具",
+    "display": "ノート",
+    "value": "のーと"
+  },
+  {
+    "id": "daily-ja-01-05",
+    "language": "ja",
+    "category": "文房具",
+    "display": "付箋",
+    "value": "ふせん"
+  },
+  {
+    "id": "daily-ja-01-06",
+    "language": "ja",
+    "category": "文房具",
+    "display": "はさみ",
+    "value": "はさみ"
+  },
+  {
+    "id": "daily-ja-01-07",
+    "language": "ja",
+    "category": "文房具",
+    "display": "のり",
+    "value": "のり"
+  },
+  {
+    "id": "daily-ja-01-08",
+    "language": "ja",
+    "category": "文房具",
+    "display": "色鉛筆",
+    "value": "いろえんぴつ"
+  },
+  {
+    "id": "daily-ja-01-09",
+    "language": "ja",
+    "category": "文房具",
+    "display": "筆箱",
+    "value": "ふでばこ"
+  },
+  {
+    "id": "daily-ja-01-10",
+    "language": "ja",
+    "category": "文房具",
+    "display": "万年筆",
+    "value": "まんねんひつ"
+  },
+  {
+    "id": "daily-ja-01-11",
+    "language": "ja",
+    "category": "文房具",
+    "display": "蛍光ペン",
+    "value": "けいこうぺん"
+  },
+  {
+    "id": "daily-ja-01-12",
+    "language": "ja",
+    "category": "文房具",
+    "display": "修正液",
+    "value": "しゅうせいえき"
+  },
+  {
+    "id": "daily-ja-01-13",
+    "language": "ja",
+    "category": "文房具",
+    "display": "画用紙",
+    "value": "がようし"
+  },
+  {
+    "id": "daily-ja-01-14",
+    "language": "ja",
+    "category": "文房具",
+    "display": "原稿用紙",
+    "value": "げんこうようし"
+  },
+  {
+    "id": "daily-ja-01-15",
+    "language": "ja",
+    "category": "文房具",
+    "display": "クリップ",
+    "value": "くりっぷ"
+  },
+  {
+    "id": "daily-ja-01-16",
+    "language": "ja",
+    "category": "文房具",
+    "display": "ホチキス",
+    "value": "ほちきす"
+  },
+  {
+    "id": "daily-ja-01-17",
+    "language": "ja",
+    "category": "文房具",
+    "display": "シャープペン",
+    "value": "しゃーぷぺん"
+  },
+  {
+    "id": "daily-ja-01-18",
+    "language": "ja",
+    "category": "文房具",
+    "display": "しおり",
+    "value": "しおり"
+  },
+  {
+    "id": "daily-ja-02-01",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "タオル",
+    "value": "たおる"
+  },
+  {
+    "id": "daily-ja-02-02",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "石けん",
+    "value": "せっけん"
+  },
+  {
+    "id": "daily-ja-02-03",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "歯ブラシ",
+    "value": "はぶらし"
+  },
+  {
+    "id": "daily-ja-02-04",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "鏡",
+    "value": "かがみ"
+  },
+  {
+    "id": "daily-ja-02-05",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "時計",
+    "value": "とけい"
+  },
+  {
+    "id": "daily-ja-02-06",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "傘",
+    "value": "かさ"
+  },
+  {
+    "id": "daily-ja-02-07",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "かばん",
+    "value": "かばん"
+  },
+  {
+    "id": "daily-ja-02-08",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "ハンカチ",
+    "value": "はんかち"
+  },
+  {
+    "id": "daily-ja-02-09",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "洗剤",
+    "value": "せんざい"
+  },
+  {
+    "id": "daily-ja-02-10",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "ほうき",
+    "value": "ほうき"
+  },
+  {
+    "id": "daily-ja-02-11",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "ちりとり",
+    "value": "ちりとり"
+  },
+  {
+    "id": "daily-ja-02-12",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "雑巾",
+    "value": "ぞうきん"
+  },
+  {
+    "id": "daily-ja-02-13",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "体温計",
+    "value": "たいおんけい"
+  },
+  {
+    "id": "daily-ja-02-14",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "懐中電灯",
+    "value": "かいちゅうでんとう"
+  },
+  {
+    "id": "daily-ja-02-15",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "まくら",
+    "value": "まくら"
+  },
+  {
+    "id": "daily-ja-02-16",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "布団",
+    "value": "ふとん"
+  },
+  {
+    "id": "daily-ja-02-17",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "カーテン",
+    "value": "かーてん"
+  },
+  {
+    "id": "daily-ja-02-18",
+    "language": "ja",
+    "category": "生活用品",
+    "display": "花瓶",
+    "value": "かびん"
+  },
+  {
+    "id": "daily-ja-03-01",
+    "language": "ja",
+    "category": "衣服",
+    "display": "帽子",
+    "value": "ぼうし"
+  },
+  {
+    "id": "daily-ja-03-02",
+    "language": "ja",
+    "category": "衣服",
+    "display": "靴下",
+    "value": "くつした"
+  },
+  {
+    "id": "daily-ja-03-03",
+    "language": "ja",
+    "category": "衣服",
+    "display": "手袋",
+    "value": "てぶくろ"
+  },
+  {
+    "id": "daily-ja-03-04",
+    "language": "ja",
+    "category": "衣服",
+    "display": "上着",
+    "value": "うわぎ"
+  },
+  {
+    "id": "daily-ja-03-05",
+    "language": "ja",
+    "category": "衣服",
+    "display": "下着",
+    "value": "したぎ"
+  },
+  {
+    "id": "daily-ja-03-06",
+    "language": "ja",
+    "category": "衣服",
+    "display": "シャツ",
+    "value": "しゃつ"
+  },
+  {
+    "id": "daily-ja-03-07",
+    "language": "ja",
+    "category": "衣服",
+    "display": "ズボン",
+    "value": "ずぼん"
+  },
+  {
+    "id": "daily-ja-03-08",
+    "language": "ja",
+    "category": "衣服",
+    "display": "スカート",
+    "value": "すかーと"
+  },
+  {
+    "id": "daily-ja-03-09",
+    "language": "ja",
+    "category": "衣服",
+    "display": "セーター",
+    "value": "せーたー"
+  },
+  {
+    "id": "daily-ja-03-10",
+    "language": "ja",
+    "category": "衣服",
+    "display": "コート",
+    "value": "こーと"
+  },
+  {
+    "id": "daily-ja-03-11",
+    "language": "ja",
+    "category": "衣服",
+    "display": "浴衣",
+    "value": "ゆかた"
+  },
+  {
+    "id": "daily-ja-03-12",
+    "language": "ja",
+    "category": "衣服",
+    "display": "着物",
+    "value": "きもの"
+  },
+  {
+    "id": "daily-ja-03-13",
+    "language": "ja",
+    "category": "衣服",
+    "display": "制服",
+    "value": "せいふく"
+  },
+  {
+    "id": "daily-ja-03-14",
+    "language": "ja",
+    "category": "衣服",
+    "display": "マフラー",
+    "value": "まふらー"
+  },
+  {
+    "id": "daily-ja-03-15",
+    "language": "ja",
+    "category": "衣服",
+    "display": "ネクタイ",
+    "value": "ねくたい"
+  },
+  {
+    "id": "daily-ja-03-16",
+    "language": "ja",
+    "category": "衣服",
+    "display": "スニーカー",
+    "value": "すにーかー"
+  },
+  {
+    "id": "daily-ja-03-17",
+    "language": "ja",
+    "category": "衣服",
+    "display": "サンダル",
+    "value": "さんだる"
+  },
+  {
+    "id": "daily-ja-03-18",
+    "language": "ja",
+    "category": "衣服",
+    "display": "長靴",
+    "value": "ながぐつ"
+  },
+  {
+    "id": "daily-ja-04-01",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "電車",
+    "value": "でんしゃ"
+  },
+  {
+    "id": "daily-ja-04-02",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "自転車",
+    "value": "じてんしゃ"
+  },
+  {
+    "id": "daily-ja-04-03",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "飛行機",
+    "value": "ひこうき"
+  },
+  {
+    "id": "daily-ja-04-04",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "船",
+    "value": "ふね"
+  },
+  {
+    "id": "daily-ja-04-05",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "バス",
+    "value": "ばす"
+  },
+  {
+    "id": "daily-ja-04-06",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "タクシー",
+    "value": "たくしー"
+  },
+  {
+    "id": "daily-ja-04-07",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "新幹線",
+    "value": "しんかんせん"
+  },
+  {
+    "id": "daily-ja-04-08",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "地下鉄",
+    "value": "ちかてつ"
+  },
+  {
+    "id": "daily-ja-04-09",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "路面電車",
+    "value": "ろめんでんしゃ"
+  },
+  {
+    "id": "daily-ja-04-10",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "救急車",
+    "value": "きゅうきゅうしゃ"
+  },
+  {
+    "id": "daily-ja-04-11",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "消防車",
+    "value": "しょうぼうしゃ"
+  },
+  {
+    "id": "daily-ja-04-12",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "パトカー",
+    "value": "ぱとかー"
+  },
+  {
+    "id": "daily-ja-04-13",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "トラック",
+    "value": "とらっく"
+  },
+  {
+    "id": "daily-ja-04-14",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "フェリー",
+    "value": "ふぇりー"
+  },
+  {
+    "id": "daily-ja-04-15",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "ヘリコプター",
+    "value": "へりこぷたー"
+  },
+  {
+    "id": "daily-ja-04-16",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "バイク",
+    "value": "ばいく"
+  },
+  {
+    "id": "daily-ja-04-17",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "モノレール",
+    "value": "ものれーる"
+  },
+  {
+    "id": "daily-ja-04-18",
+    "language": "ja",
+    "category": "乗り物",
+    "display": "気球",
+    "value": "ききゅう"
+  },
+  {
+    "id": "daily-ja-05-01",
+    "language": "ja",
+    "category": "天気",
+    "display": "晴れ",
+    "value": "はれ"
+  },
+  {
+    "id": "daily-ja-05-02",
+    "language": "ja",
+    "category": "天気",
+    "display": "曇り",
+    "value": "くもり"
+  },
+  {
+    "id": "daily-ja-05-03",
+    "language": "ja",
+    "category": "天気",
+    "display": "雨",
+    "value": "あめ"
+  },
+  {
+    "id": "daily-ja-05-04",
+    "language": "ja",
+    "category": "天気",
+    "display": "雪",
+    "value": "ゆき"
+  },
+  {
+    "id": "daily-ja-05-05",
+    "language": "ja",
+    "category": "天気",
+    "display": "雷",
+    "value": "かみなり"
+  },
+  {
+    "id": "daily-ja-05-06",
+    "language": "ja",
+    "category": "天気",
+    "display": "台風",
+    "value": "たいふう"
+  },
+  {
+    "id": "daily-ja-05-07",
+    "language": "ja",
+    "category": "天気",
+    "display": "霧",
+    "value": "きり"
+  },
+  {
+    "id": "daily-ja-05-08",
+    "language": "ja",
+    "category": "天気",
+    "display": "霜",
+    "value": "しも"
+  },
+  {
+    "id": "daily-ja-05-09",
+    "language": "ja",
+    "category": "天気",
+    "display": "虹",
+    "value": "にじ"
+  },
+  {
+    "id": "daily-ja-05-10",
+    "language": "ja",
+    "category": "天気",
+    "display": "猛暑",
+    "value": "もうしょ"
+  },
+  {
+    "id": "daily-ja-05-11",
+    "language": "ja",
+    "category": "天気",
+    "display": "大雨",
+    "value": "おおあめ"
+  },
+  {
+    "id": "daily-ja-05-12",
+    "language": "ja",
+    "category": "天気",
+    "display": "小雨",
+    "value": "こさめ"
+  },
+  {
+    "id": "daily-ja-05-13",
+    "language": "ja",
+    "category": "天気",
+    "display": "吹雪",
+    "value": "ふぶき"
+  },
+  {
+    "id": "daily-ja-05-14",
+    "language": "ja",
+    "category": "天気",
+    "display": "雹",
+    "value": "ひょう"
+  },
+  {
+    "id": "daily-ja-05-15",
+    "language": "ja",
+    "category": "天気",
+    "display": "夕立",
+    "value": "ゆうだち"
+  },
+  {
+    "id": "daily-ja-05-16",
+    "language": "ja",
+    "category": "天気",
+    "display": "突風",
+    "value": "とっぷう"
+  },
+  {
+    "id": "daily-ja-05-17",
+    "language": "ja",
+    "category": "天気",
+    "display": "湿度",
+    "value": "しつど"
+  },
+  {
+    "id": "daily-ja-05-18",
+    "language": "ja",
+    "category": "天気",
+    "display": "気温",
+    "value": "きおん"
+  },
+  {
+    "id": "daily-ja-06-01",
+    "language": "ja",
+    "category": "植物",
+    "display": "桜",
+    "value": "さくら"
+  },
+  {
+    "id": "daily-ja-06-02",
+    "language": "ja",
+    "category": "植物",
+    "display": "梅",
+    "value": "うめ"
+  },
+  {
+    "id": "daily-ja-06-03",
+    "language": "ja",
+    "category": "植物",
+    "display": "ひまわり",
+    "value": "ひまわり"
+  },
+  {
+    "id": "daily-ja-06-04",
+    "language": "ja",
+    "category": "植物",
+    "display": "朝顔",
+    "value": "あさがお"
+  },
+  {
+    "id": "daily-ja-06-05",
+    "language": "ja",
+    "category": "植物",
+    "display": "たんぽぽ",
+    "value": "たんぽぽ"
+  },
+  {
+    "id": "daily-ja-06-06",
+    "language": "ja",
+    "category": "植物",
+    "display": "チューリップ",
+    "value": "ちゅーりっぷ"
+  },
+  {
+    "id": "daily-ja-06-07",
+    "language": "ja",
+    "category": "植物",
+    "display": "バラ",
+    "value": "ばら"
+  },
+  {
+    "id": "daily-ja-06-08",
+    "language": "ja",
+    "category": "植物",
+    "display": "菊",
+    "value": "きく"
+  },
+  {
+    "id": "daily-ja-06-09",
+    "language": "ja",
+    "category": "植物",
+    "display": "松",
+    "value": "まつ"
+  },
+  {
+    "id": "daily-ja-06-10",
+    "language": "ja",
+    "category": "植物",
+    "display": "竹",
+    "value": "たけ"
+  },
+  {
+    "id": "daily-ja-06-11",
+    "language": "ja",
+    "category": "植物",
+    "display": "もみじ",
+    "value": "もみじ"
+  },
+  {
+    "id": "daily-ja-06-12",
+    "language": "ja",
+    "category": "植物",
+    "display": "いちょう",
+    "value": "いちょう"
+  },
+  {
+    "id": "daily-ja-06-13",
+    "language": "ja",
+    "category": "植物",
+    "display": "クローバー",
+    "value": "くろーばー"
+  },
+  {
+    "id": "daily-ja-06-14",
+    "language": "ja",
+    "category": "植物",
+    "display": "すみれ",
+    "value": "すみれ"
+  },
+  {
+    "id": "daily-ja-06-15",
+    "language": "ja",
+    "category": "植物",
+    "display": "あじさい",
+    "value": "あじさい"
+  },
+  {
+    "id": "daily-ja-06-16",
+    "language": "ja",
+    "category": "植物",
+    "display": "すいせん",
+    "value": "すいせん"
+  },
+  {
+    "id": "daily-ja-06-17",
+    "language": "ja",
+    "category": "植物",
+    "display": "コスモス",
+    "value": "こすもす"
+  },
+  {
+    "id": "daily-ja-06-18",
+    "language": "ja",
+    "category": "植物",
+    "display": "ツバキ",
+    "value": "つばき"
+  },
+  {
+    "id": "daily-ja-07-01",
+    "language": "ja",
+    "category": "楽器",
+    "display": "ピアノ",
+    "value": "ぴあの"
+  },
+  {
+    "id": "daily-ja-07-02",
+    "language": "ja",
+    "category": "楽器",
+    "display": "ギター",
+    "value": "ぎたー"
+  },
+  {
+    "id": "daily-ja-07-03",
+    "language": "ja",
+    "category": "楽器",
+    "display": "バイオリン",
+    "value": "ばいおりん"
+  },
+  {
+    "id": "daily-ja-07-04",
+    "language": "ja",
+    "category": "楽器",
+    "display": "チェロ",
+    "value": "ちぇろ"
+  },
+  {
+    "id": "daily-ja-07-05",
+    "language": "ja",
+    "category": "楽器",
+    "display": "フルート",
+    "value": "ふるーと"
+  },
+  {
+    "id": "daily-ja-07-06",
+    "language": "ja",
+    "category": "楽器",
+    "display": "トランペット",
+    "value": "とらんぺっと"
+  },
+  {
+    "id": "daily-ja-07-07",
+    "language": "ja",
+    "category": "楽器",
+    "display": "トロンボーン",
+    "value": "とろんぼーん"
+  },
+  {
+    "id": "daily-ja-07-08",
+    "language": "ja",
+    "category": "楽器",
+    "display": "サックス",
+    "value": "さっくす"
+  },
+  {
+    "id": "daily-ja-07-09",
+    "language": "ja",
+    "category": "楽器",
+    "display": "クラリネット",
+    "value": "くらりねっと"
+  },
+  {
+    "id": "daily-ja-07-10",
+    "language": "ja",
+    "category": "楽器",
+    "display": "太鼓",
+    "value": "たいこ"
+  },
+  {
+    "id": "daily-ja-07-11",
+    "language": "ja",
+    "category": "楽器",
+    "display": "琴",
+    "value": "こと"
+  },
+  {
+    "id": "daily-ja-07-12",
+    "language": "ja",
+    "category": "楽器",
+    "display": "三味線",
+    "value": "しゃみせん"
+  },
+  {
+    "id": "daily-ja-07-13",
+    "language": "ja",
+    "category": "楽器",
+    "display": "ハーモニカ",
+    "value": "はーもにか"
+  },
+  {
+    "id": "daily-ja-07-14",
+    "language": "ja",
+    "category": "楽器",
+    "display": "ドラム",
+    "value": "どらむ"
+  },
+  {
+    "id": "daily-ja-07-15",
+    "language": "ja",
+    "category": "楽器",
+    "display": "オルガン",
+    "value": "おるがん"
+  },
+  {
+    "id": "daily-ja-07-16",
+    "language": "ja",
+    "category": "楽器",
+    "display": "カスタネット",
+    "value": "かすたねっと"
+  },
+  {
+    "id": "daily-ja-07-17",
+    "language": "ja",
+    "category": "楽器",
+    "display": "タンバリン",
+    "value": "たんばりん"
+  },
+  {
+    "id": "daily-ja-07-18",
+    "language": "ja",
+    "category": "楽器",
+    "display": "鉄琴",
+    "value": "てっきん"
+  },
+  {
+    "id": "daily-ja-08-01",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "正月",
+    "value": "しょうがつ"
+  },
+  {
+    "id": "daily-ja-08-02",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "節分",
+    "value": "せつぶん"
+  },
+  {
+    "id": "daily-ja-08-03",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "ひな祭り",
+    "value": "ひなまつり"
+  },
+  {
+    "id": "daily-ja-08-04",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "花見",
+    "value": "はなみ"
+  },
+  {
+    "id": "daily-ja-08-05",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "七夕",
+    "value": "たなばた"
+  },
+  {
+    "id": "daily-ja-08-06",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "夏祭り",
+    "value": "なつまつり"
+  },
+  {
+    "id": "daily-ja-08-07",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "お盆",
+    "value": "おぼん"
+  },
+  {
+    "id": "daily-ja-08-08",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "お月見",
+    "value": "おつきみ"
+  },
+  {
+    "id": "daily-ja-08-09",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "運動会",
+    "value": "うんどうかい"
+  },
+  {
+    "id": "daily-ja-08-10",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "文化祭",
+    "value": "ぶんかさい"
+  },
+  {
+    "id": "daily-ja-08-11",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "ハロウィン",
+    "value": "はろうぃん"
+  },
+  {
+    "id": "daily-ja-08-12",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "クリスマス",
+    "value": "くりすます"
+  },
+  {
+    "id": "daily-ja-08-13",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "大晦日",
+    "value": "おおみそか"
+  },
+  {
+    "id": "daily-ja-08-14",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "入学式",
+    "value": "にゅうがくしき"
+  },
+  {
+    "id": "daily-ja-08-15",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "卒業式",
+    "value": "そつぎょうしき"
+  },
+  {
+    "id": "daily-ja-08-16",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "誕生日",
+    "value": "たんじょうび"
+  },
+  {
+    "id": "daily-ja-08-17",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "成人式",
+    "value": "せいじんしき"
+  },
+  {
+    "id": "daily-ja-08-18",
+    "language": "ja",
+    "category": "季節・行事",
+    "display": "母の日",
+    "value": "ははのひ"
+  },
+  {
+    "id": "daily-en-01-01",
+    "language": "en",
+    "category": "Stationery",
+    "display": "pencil",
+    "value": "pencil"
+  },
+  {
+    "id": "daily-en-01-02",
+    "language": "en",
+    "category": "Stationery",
+    "display": "eraser",
+    "value": "eraser"
+  },
+  {
+    "id": "daily-en-01-03",
+    "language": "en",
+    "category": "Stationery",
+    "display": "ruler",
+    "value": "ruler"
+  },
+  {
+    "id": "daily-en-01-04",
+    "language": "en",
+    "category": "Stationery",
+    "display": "notebook",
+    "value": "notebook"
+  },
+  {
+    "id": "daily-en-01-05",
+    "language": "en",
+    "category": "Stationery",
+    "display": "stapler",
+    "value": "stapler"
+  },
+  {
+    "id": "daily-en-01-06",
+    "language": "en",
+    "category": "Stationery",
+    "display": "scissors",
+    "value": "scissors"
+  },
+  {
+    "id": "daily-en-01-07",
+    "language": "en",
+    "category": "Stationery",
+    "display": "marker",
+    "value": "marker"
+  },
+  {
+    "id": "daily-en-01-08",
+    "language": "en",
+    "category": "Stationery",
+    "display": "crayon",
+    "value": "crayon"
+  },
+  {
+    "id": "daily-en-01-09",
+    "language": "en",
+    "category": "Stationery",
+    "display": "paperclip",
+    "value": "paperclip"
+  },
+  {
+    "id": "daily-en-01-10",
+    "language": "en",
+    "category": "Stationery",
+    "display": "folder",
+    "value": "folder"
+  },
+  {
+    "id": "daily-en-01-11",
+    "language": "en",
+    "category": "Stationery",
+    "display": "envelope",
+    "value": "envelope"
+  },
+  {
+    "id": "daily-en-01-12",
+    "language": "en",
+    "category": "Stationery",
+    "display": "pen",
+    "value": "pen"
+  },
+  {
+    "id": "daily-en-01-13",
+    "language": "en",
+    "category": "Stationery",
+    "display": "highlighter",
+    "value": "highlighter"
+  },
+  {
+    "id": "daily-en-01-14",
+    "language": "en",
+    "category": "Stationery",
+    "display": "ink",
+    "value": "ink"
+  },
+  {
+    "id": "daily-en-01-15",
+    "language": "en",
+    "category": "Stationery",
+    "display": "binder",
+    "value": "binder"
+  },
+  {
+    "id": "daily-en-01-16",
+    "language": "en",
+    "category": "Stationery",
+    "display": "paper",
+    "value": "paper"
+  },
+  {
+    "id": "daily-en-01-17",
+    "language": "en",
+    "category": "Stationery",
+    "display": "chalk",
+    "value": "chalk"
+  },
+  {
+    "id": "daily-en-01-18",
+    "language": "en",
+    "category": "Stationery",
+    "display": "sharpener",
+    "value": "sharpener"
+  },
+  {
+    "id": "daily-en-02-01",
+    "language": "en",
+    "category": "Clothing",
+    "display": "shirt",
+    "value": "shirt"
+  },
+  {
+    "id": "daily-en-02-02",
+    "language": "en",
+    "category": "Clothing",
+    "display": "trousers",
+    "value": "trousers"
+  },
+  {
+    "id": "daily-en-02-03",
+    "language": "en",
+    "category": "Clothing",
+    "display": "skirt",
+    "value": "skirt"
+  },
+  {
+    "id": "daily-en-02-04",
+    "language": "en",
+    "category": "Clothing",
+    "display": "sweater",
+    "value": "sweater"
+  },
+  {
+    "id": "daily-en-02-05",
+    "language": "en",
+    "category": "Clothing",
+    "display": "coat",
+    "value": "coat"
+  },
+  {
+    "id": "daily-en-02-06",
+    "language": "en",
+    "category": "Clothing",
+    "display": "jacket",
+    "value": "jacket"
+  },
+  {
+    "id": "daily-en-02-07",
+    "language": "en",
+    "category": "Clothing",
+    "display": "socks",
+    "value": "socks"
+  },
+  {
+    "id": "daily-en-02-08",
+    "language": "en",
+    "category": "Clothing",
+    "display": "gloves",
+    "value": "gloves"
+  },
+  {
+    "id": "daily-en-02-09",
+    "language": "en",
+    "category": "Clothing",
+    "display": "scarf",
+    "value": "scarf"
+  },
+  {
+    "id": "daily-en-02-10",
+    "language": "en",
+    "category": "Clothing",
+    "display": "hat",
+    "value": "hat"
+  },
+  {
+    "id": "daily-en-02-11",
+    "language": "en",
+    "category": "Clothing",
+    "display": "sneakers",
+    "value": "sneakers"
+  },
+  {
+    "id": "daily-en-02-12",
+    "language": "en",
+    "category": "Clothing",
+    "display": "sandals",
+    "value": "sandals"
+  },
+  {
+    "id": "daily-en-02-13",
+    "language": "en",
+    "category": "Clothing",
+    "display": "boots",
+    "value": "boots"
+  },
+  {
+    "id": "daily-en-02-14",
+    "language": "en",
+    "category": "Clothing",
+    "display": "uniform",
+    "value": "uniform"
+  },
+  {
+    "id": "daily-en-02-15",
+    "language": "en",
+    "category": "Clothing",
+    "display": "cardigan",
+    "value": "cardigan"
+  },
+  {
+    "id": "daily-en-02-16",
+    "language": "en",
+    "category": "Clothing",
+    "display": "pajamas",
+    "value": "pajamas"
+  },
+  {
+    "id": "daily-en-02-17",
+    "language": "en",
+    "category": "Clothing",
+    "display": "belt",
+    "value": "belt"
+  },
+  {
+    "id": "daily-en-02-18",
+    "language": "en",
+    "category": "Clothing",
+    "display": "hoodie",
+    "value": "hoodie"
+  },
+  {
+    "id": "daily-en-03-01",
+    "language": "en",
+    "category": "Instruments",
+    "display": "piano",
+    "value": "piano"
+  },
+  {
+    "id": "daily-en-03-02",
+    "language": "en",
+    "category": "Instruments",
+    "display": "guitar",
+    "value": "guitar"
+  },
+  {
+    "id": "daily-en-03-03",
+    "language": "en",
+    "category": "Instruments",
+    "display": "violin",
+    "value": "violin"
+  },
+  {
+    "id": "daily-en-03-04",
+    "language": "en",
+    "category": "Instruments",
+    "display": "cello",
+    "value": "cello"
+  },
+  {
+    "id": "daily-en-03-05",
+    "language": "en",
+    "category": "Instruments",
+    "display": "flute",
+    "value": "flute"
+  },
+  {
+    "id": "daily-en-03-06",
+    "language": "en",
+    "category": "Instruments",
+    "display": "trumpet",
+    "value": "trumpet"
+  },
+  {
+    "id": "daily-en-03-07",
+    "language": "en",
+    "category": "Instruments",
+    "display": "trombone",
+    "value": "trombone"
+  },
+  {
+    "id": "daily-en-03-08",
+    "language": "en",
+    "category": "Instruments",
+    "display": "saxophone",
+    "value": "saxophone"
+  },
+  {
+    "id": "daily-en-03-09",
+    "language": "en",
+    "category": "Instruments",
+    "display": "clarinet",
+    "value": "clarinet"
+  },
+  {
+    "id": "daily-en-03-10",
+    "language": "en",
+    "category": "Instruments",
+    "display": "drum",
+    "value": "drum"
+  },
+  {
+    "id": "daily-en-03-11",
+    "language": "en",
+    "category": "Instruments",
+    "display": "harmonica",
+    "value": "harmonica"
+  },
+  {
+    "id": "daily-en-03-12",
+    "language": "en",
+    "category": "Instruments",
+    "display": "organ",
+    "value": "organ"
+  },
+  {
+    "id": "daily-en-03-13",
+    "language": "en",
+    "category": "Instruments",
+    "display": "harp",
+    "value": "harp"
+  },
+  {
+    "id": "daily-en-03-14",
+    "language": "en",
+    "category": "Instruments",
+    "display": "banjo",
+    "value": "banjo"
+  },
+  {
+    "id": "daily-en-03-15",
+    "language": "en",
+    "category": "Instruments",
+    "display": "ukulele",
+    "value": "ukulele"
+  },
+  {
+    "id": "daily-en-03-16",
+    "language": "en",
+    "category": "Instruments",
+    "display": "cymbals",
+    "value": "cymbals"
+  },
+  {
+    "id": "daily-en-03-17",
+    "language": "en",
+    "category": "Instruments",
+    "display": "tambourine",
+    "value": "tambourine"
+  },
+  {
+    "id": "daily-en-03-18",
+    "language": "en",
+    "category": "Instruments",
+    "display": "accordion",
+    "value": "accordion"
+  },
+  {
+    "id": "daily-en-04-01",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "birthday",
+    "value": "birthday"
+  },
+  {
+    "id": "daily-en-04-02",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "wedding",
+    "value": "wedding"
+  },
+  {
+    "id": "daily-en-04-03",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "festival",
+    "value": "festival"
+  },
+  {
+    "id": "daily-en-04-04",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "parade",
+    "value": "parade"
+  },
+  {
+    "id": "daily-en-04-05",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "carnival",
+    "value": "carnival"
+  },
+  {
+    "id": "daily-en-04-06",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "graduation",
+    "value": "graduation"
+  },
+  {
+    "id": "daily-en-04-07",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "anniversary",
+    "value": "anniversary"
+  },
+  {
+    "id": "daily-en-04-08",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "holiday",
+    "value": "holiday"
+  },
+  {
+    "id": "daily-en-04-09",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "fireworks",
+    "value": "fireworks"
+  },
+  {
+    "id": "daily-en-04-10",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "ceremony",
+    "value": "ceremony"
+  },
+  {
+    "id": "daily-en-04-11",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "party",
+    "value": "party"
+  },
+  {
+    "id": "daily-en-04-12",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "reunion",
+    "value": "reunion"
+  },
+  {
+    "id": "daily-en-04-13",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "invitation",
+    "value": "invitation"
+  },
+  {
+    "id": "daily-en-04-14",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "confetti",
+    "value": "confetti"
+  },
+  {
+    "id": "daily-en-04-15",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "banquet",
+    "value": "banquet"
+  },
+  {
+    "id": "daily-en-04-16",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "costume",
+    "value": "costume"
+  },
+  {
+    "id": "daily-en-04-17",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "gift",
+    "value": "gift"
+  },
+  {
+    "id": "daily-en-04-18",
+    "language": "en",
+    "category": "Celebrations",
+    "display": "candle",
+    "value": "candle"
+  }
+]

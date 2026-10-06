@@ -3,18 +3,18 @@ import { ALPHABET_SET } from "./alphabet";
 import { GOJUON_SET } from "./gojuon";
 
 const SMALL_KANA_MAP: Readonly<Record<string, string>> = {
-  "ぁ": "あ",
-  "ぃ": "い",
-  "ぅ": "う",
-  "ぇ": "え",
-  "ぉ": "お",
-  "っ": "つ",
-  "ゃ": "や",
-  "ゅ": "ゆ",
-  "ょ": "よ",
-  "ゎ": "わ",
-  "ゕ": "か",
-  "ゖ": "け",
+  ぁ: "あ",
+  ぃ: "い",
+  ぅ: "う",
+  ぇ: "え",
+  ぉ: "お",
+  っ: "つ",
+  ゃ: "や",
+  ゅ: "ゆ",
+  ょ: "よ",
+  ゎ: "わ",
+  ゕ: "か",
+  ゖ: "け",
 };
 
 function katakanaToHiragana(value: string): string {
