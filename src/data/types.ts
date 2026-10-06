@@ -24,8 +24,13 @@ export type Question = {
   answers: readonly AnswerOption[];
 };
 
+// A word length range in characters; max null means "and longer".
+export type LengthRange = { min: number; max: number | null };
+
+export type LengthFilter = number | "any" | LengthRange;
+
 export type QuestionFilters = {
   language: QuestionLanguage | "any";
   categories: readonly string[];
-  length: number | "any";
+  length: LengthFilter;
 };
