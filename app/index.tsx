@@ -119,7 +119,7 @@ export default function HomeScreen() {
           <Text style={styles.eyebrow}>五十音マインスイーパー</Text>
           <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
           <Text style={styles.rule}>
-            回答してから1文字開く。地雷を開いたら、次の自分のターンは回答できません。
+            回答してから1文字開く。セーフなら周囲8マスの地雷数が出て、0なら周辺も自動で開きます。地雷を開いたら次の自分のターンは回答できません。
           </Text>
         </View>
 
@@ -198,6 +198,7 @@ export default function HomeScreen() {
             </View>
 
             <GojuonBoard
+              question={game.question}
               canOpen={canOpen}
               mineChars={mineChars}
               onOpen={handleOpen}
