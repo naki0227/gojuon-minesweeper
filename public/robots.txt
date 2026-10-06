@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minesweeper.enludus.com/sitemap.xml
