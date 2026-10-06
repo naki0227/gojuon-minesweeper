@@ -1,0 +1,3026 @@
+[
+  {
+    "id": "ent5-0001",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "adjugate",
+    "value": "adjugate"
+  },
+  {
+    "id": "ent5-0002",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "basis",
+    "value": "basis"
+  },
+  {
+    "id": "ent5-0003",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "column",
+    "value": "column"
+  },
+  {
+    "id": "ent5-0004",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "combination",
+    "value": "combination"
+  },
+  {
+    "id": "ent5-0005",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "congruence",
+    "value": "congruence"
+  },
+  {
+    "id": "ent5-0006",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "consimilarity",
+    "value": "consimilarity"
+  },
+  {
+    "id": "ent5-0007",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "determinant",
+    "value": "determinant"
+  },
+  {
+    "id": "ent5-0008",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "dimension",
+    "value": "dimension"
+  },
+  {
+    "id": "ent5-0009",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "flag",
+    "value": "flag"
+  },
+  {
+    "id": "ent5-0010",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "form",
+    "value": "form"
+  },
+  {
+    "id": "ent5-0011",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "function",
+    "value": "function"
+  },
+  {
+    "id": "ent5-0012",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "identity",
+    "value": "identity"
+  },
+  {
+    "id": "ent5-0013",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "image",
+    "value": "image"
+  },
+  {
+    "id": "ent5-0014",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "independence",
+    "value": "independence"
+  },
+  {
+    "id": "ent5-0015",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "inverse",
+    "value": "inverse"
+  },
+  {
+    "id": "ent5-0016",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "kernel",
+    "value": "kernel"
+  },
+  {
+    "id": "ent5-0017",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "map",
+    "value": "map"
+  },
+  {
+    "id": "ent5-0018",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "matrix",
+    "value": "matrix"
+  },
+  {
+    "id": "ent5-0019",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "norm",
+    "value": "norm"
+  },
+  {
+    "id": "ent5-0020",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "projection",
+    "value": "projection"
+  },
+  {
+    "id": "ent5-0021",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "row",
+    "value": "row"
+  },
+  {
+    "id": "ent5-0022",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "similarity",
+    "value": "similarity"
+  },
+  {
+    "id": "ent5-0023",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "space",
+    "value": "space"
+  },
+  {
+    "id": "ent5-0024",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "span",
+    "value": "span"
+  },
+  {
+    "id": "ent5-0025",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "subspace",
+    "value": "subspace"
+  },
+  {
+    "id": "ent5-0026",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "tensor",
+    "value": "tensor"
+  },
+  {
+    "id": "ent5-0027",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "transpose",
+    "value": "transpose"
+  },
+  {
+    "id": "ent5-0028",
+    "language": "en",
+    "category": "Linear Algebra",
+    "display": "vector",
+    "value": "vector"
+  },
+  {
+    "id": "ent5-0029",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "accuracy",
+    "value": "accuracy"
+  },
+  {
+    "id": "ent5-0030",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "bagging",
+    "value": "bagging"
+  },
+  {
+    "id": "ent5-0031",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "batch",
+    "value": "batch"
+  },
+  {
+    "id": "ent5-0032",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "bayes",
+    "value": "bayes"
+  },
+  {
+    "id": "ent5-0033",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "bias",
+    "value": "bias"
+  },
+  {
+    "id": "ent5-0034",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "boosting",
+    "value": "boosting"
+  },
+  {
+    "id": "ent5-0035",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "boundary",
+    "value": "boundary"
+  },
+  {
+    "id": "ent5-0036",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "centroid",
+    "value": "centroid"
+  },
+  {
+    "id": "ent5-0037",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "class",
+    "value": "class"
+  },
+  {
+    "id": "ent5-0038",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "classifier",
+    "value": "classifier"
+  },
+  {
+    "id": "ent5-0039",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "cluster",
+    "value": "cluster"
+  },
+  {
+    "id": "ent5-0040",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "confusion",
+    "value": "confusion"
+  },
+  {
+    "id": "ent5-0041",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "convergence",
+    "value": "convergence"
+  },
+  {
+    "id": "ent5-0042",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "convolution",
+    "value": "convolution"
+  },
+  {
+    "id": "ent5-0043",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "correlation",
+    "value": "correlation"
+  },
+  {
+    "id": "ent5-0044",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "covariance",
+    "value": "covariance"
+  },
+  {
+    "id": "ent5-0045",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "database",
+    "value": "database"
+  },
+  {
+    "id": "ent5-0046",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "dataframe",
+    "value": "dataframe"
+  },
+  {
+    "id": "ent5-0047",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "dataset",
+    "value": "dataset"
+  },
+  {
+    "id": "ent5-0048",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "decision",
+    "value": "decision"
+  },
+  {
+    "id": "ent5-0049",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "dimension",
+    "value": "dimension"
+  },
+  {
+    "id": "ent5-0050",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "discriminator",
+    "value": "discriminator"
+  },
+  {
+    "id": "ent5-0051",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "embedding",
+    "value": "embedding"
+  },
+  {
+    "id": "ent5-0052",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "ensemble",
+    "value": "ensemble"
+  },
+  {
+    "id": "ent5-0053",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "entropy",
+    "value": "entropy"
+  },
+  {
+    "id": "ent5-0054",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "epoch",
+    "value": "epoch"
+  },
+  {
+    "id": "ent5-0055",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "estimator",
+    "value": "estimator"
+  },
+  {
+    "id": "ent5-0056",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "factor",
+    "value": "factor"
+  },
+  {
+    "id": "ent5-0057",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "feature",
+    "value": "feature"
+  },
+  {
+    "id": "ent5-0058",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "function",
+    "value": "function"
+  },
+  {
+    "id": "ent5-0059",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "generator",
+    "value": "generator"
+  },
+  {
+    "id": "ent5-0060",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "gradient",
+    "value": "gradient"
+  },
+  {
+    "id": "ent5-0061",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "histogram",
+    "value": "histogram"
+  },
+  {
+    "id": "ent5-0062",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "hyperparameter",
+    "value": "hyperparameter"
+  },
+  {
+    "id": "ent5-0063",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "hypothesis",
+    "value": "hypothesis"
+  },
+  {
+    "id": "ent5-0064",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "inference",
+    "value": "inference"
+  },
+  {
+    "id": "ent5-0065",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "instance",
+    "value": "instance"
+  },
+  {
+    "id": "ent5-0066",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "loss",
+    "value": "loss"
+  },
+  {
+    "id": "ent5-0067",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "network",
+    "value": "network"
+  },
+  {
+    "id": "ent5-0068",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "neuron",
+    "value": "neuron"
+  },
+  {
+    "id": "ent5-0069",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "objective",
+    "value": "objective"
+  },
+  {
+    "id": "ent5-0070",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "outlier",
+    "value": "outlier"
+  },
+  {
+    "id": "ent5-0071",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "parameter",
+    "value": "parameter"
+  },
+  {
+    "id": "ent5-0072",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "precision",
+    "value": "precision"
+  },
+  {
+    "id": "ent5-0073",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "prior",
+    "value": "prior"
+  },
+  {
+    "id": "ent5-0074",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "recall",
+    "value": "recall"
+  },
+  {
+    "id": "ent5-0075",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "regression",
+    "value": "regression"
+  },
+  {
+    "id": "ent5-0076",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "residual",
+    "value": "residual"
+  },
+  {
+    "id": "ent5-0077",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "transfer",
+    "value": "transfer"
+  },
+  {
+    "id": "ent5-0078",
+    "language": "en",
+    "category": "Machine Learning",
+    "display": "variance",
+    "value": "variance"
+  },
+  {
+    "id": "ent5-0079",
+    "language": "en",
+    "category": "Meat",
+    "display": "alligator",
+    "value": "alligator"
+  },
+  {
+    "id": "ent5-0080",
+    "language": "en",
+    "category": "Meat",
+    "display": "beef",
+    "value": "beef"
+  },
+  {
+    "id": "ent5-0081",
+    "language": "en",
+    "category": "Meat",
+    "display": "bison",
+    "value": "bison"
+  },
+  {
+    "id": "ent5-0082",
+    "language": "en",
+    "category": "Meat",
+    "display": "buffalo",
+    "value": "buffalo"
+  },
+  {
+    "id": "ent5-0083",
+    "language": "en",
+    "category": "Meat",
+    "display": "caribou",
+    "value": "caribou"
+  },
+  {
+    "id": "ent5-0084",
+    "language": "en",
+    "category": "Meat",
+    "display": "chicken",
+    "value": "chicken"
+  },
+  {
+    "id": "ent5-0085",
+    "language": "en",
+    "category": "Meat",
+    "display": "duck",
+    "value": "duck"
+  },
+  {
+    "id": "ent5-0086",
+    "language": "en",
+    "category": "Meat",
+    "display": "elk",
+    "value": "elk"
+  },
+  {
+    "id": "ent5-0087",
+    "language": "en",
+    "category": "Meat",
+    "display": "goat",
+    "value": "goat"
+  },
+  {
+    "id": "ent5-0088",
+    "language": "en",
+    "category": "Meat",
+    "display": "lamb",
+    "value": "lamb"
+  },
+  {
+    "id": "ent5-0089",
+    "language": "en",
+    "category": "Meat",
+    "display": "pheasant",
+    "value": "pheasant"
+  },
+  {
+    "id": "ent5-0090",
+    "language": "en",
+    "category": "Meat",
+    "display": "pork",
+    "value": "pork"
+  },
+  {
+    "id": "ent5-0091",
+    "language": "en",
+    "category": "Meat",
+    "display": "quail",
+    "value": "quail"
+  },
+  {
+    "id": "ent5-0092",
+    "language": "en",
+    "category": "Meat",
+    "display": "rabbit",
+    "value": "rabbit"
+  },
+  {
+    "id": "ent5-0093",
+    "language": "en",
+    "category": "Meat",
+    "display": "turkey",
+    "value": "turkey"
+  },
+  {
+    "id": "ent5-0094",
+    "language": "en",
+    "category": "Meat",
+    "display": "veal",
+    "value": "veal"
+  },
+  {
+    "id": "ent5-0095",
+    "language": "en",
+    "category": "Meat",
+    "display": "venison",
+    "value": "venison"
+  },
+  {
+    "id": "ent5-0096",
+    "language": "en",
+    "category": "Meat",
+    "display": "yak",
+    "value": "yak"
+  },
+  {
+    "id": "ent5-0097",
+    "language": "en",
+    "category": "Metals",
+    "display": "alloy",
+    "value": "alloy"
+  },
+  {
+    "id": "ent5-0098",
+    "language": "en",
+    "category": "Metals",
+    "display": "aluminum",
+    "value": "aluminum"
+  },
+  {
+    "id": "ent5-0099",
+    "language": "en",
+    "category": "Metals",
+    "display": "brass",
+    "value": "brass"
+  },
+  {
+    "id": "ent5-0100",
+    "language": "en",
+    "category": "Metals",
+    "display": "bronze",
+    "value": "bronze"
+  },
+  {
+    "id": "ent5-0101",
+    "language": "en",
+    "category": "Metals",
+    "display": "chrome",
+    "value": "chrome"
+  },
+  {
+    "id": "ent5-0102",
+    "language": "en",
+    "category": "Metals",
+    "display": "copper",
+    "value": "copper"
+  },
+  {
+    "id": "ent5-0103",
+    "language": "en",
+    "category": "Metals",
+    "display": "gold",
+    "value": "gold"
+  },
+  {
+    "id": "ent5-0104",
+    "language": "en",
+    "category": "Metals",
+    "display": "iron",
+    "value": "iron"
+  },
+  {
+    "id": "ent5-0105",
+    "language": "en",
+    "category": "Metals",
+    "display": "lead",
+    "value": "lead"
+  },
+  {
+    "id": "ent5-0106",
+    "language": "en",
+    "category": "Metals",
+    "display": "mercury",
+    "value": "mercury"
+  },
+  {
+    "id": "ent5-0107",
+    "language": "en",
+    "category": "Metals",
+    "display": "nickel",
+    "value": "nickel"
+  },
+  {
+    "id": "ent5-0108",
+    "language": "en",
+    "category": "Metals",
+    "display": "platinum",
+    "value": "platinum"
+  },
+  {
+    "id": "ent5-0109",
+    "language": "en",
+    "category": "Metals",
+    "display": "silver",
+    "value": "silver"
+  },
+  {
+    "id": "ent5-0110",
+    "language": "en",
+    "category": "Metals",
+    "display": "steel",
+    "value": "steel"
+  },
+  {
+    "id": "ent5-0111",
+    "language": "en",
+    "category": "Metals",
+    "display": "tin",
+    "value": "tin"
+  },
+  {
+    "id": "ent5-0112",
+    "language": "en",
+    "category": "Metals",
+    "display": "titanium",
+    "value": "titanium"
+  },
+  {
+    "id": "ent5-0113",
+    "language": "en",
+    "category": "Metals",
+    "display": "tungsten",
+    "value": "tungsten"
+  },
+  {
+    "id": "ent5-0114",
+    "language": "en",
+    "category": "Metals",
+    "display": "zinc",
+    "value": "zinc"
+  },
+  {
+    "id": "ent5-0115",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "bag",
+    "value": "bag"
+  },
+  {
+    "id": "ent5-0116",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "ball",
+    "value": "ball"
+  },
+  {
+    "id": "ent5-0117",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "basement",
+    "value": "basement"
+  },
+  {
+    "id": "ent5-0118",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "bingo",
+    "value": "bingo"
+  },
+  {
+    "id": "ent5-0119",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "bird",
+    "value": "bird"
+  },
+  {
+    "id": "ent5-0120",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "blower",
+    "value": "blower"
+  },
+  {
+    "id": "ent5-0121",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "boat",
+    "value": "boat"
+  },
+  {
+    "id": "ent5-0122",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "bogey",
+    "value": "bogey"
+  },
+  {
+    "id": "ent5-0123",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "bounce",
+    "value": "bounce"
+  },
+  {
+    "id": "ent5-0124",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "cadet",
+    "value": "cadet"
+  },
+  {
+    "id": "ent5-0125",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "charlie",
+    "value": "charlie"
+  },
+  {
+    "id": "ent5-0126",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "commander",
+    "value": "commander"
+  },
+  {
+    "id": "ent5-0127",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "commission",
+    "value": "commission"
+  },
+  {
+    "id": "ent5-0128",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "contract",
+    "value": "contract"
+  },
+  {
+    "id": "ent5-0129",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "delta",
+    "value": "delta"
+  },
+  {
+    "id": "ent5-0130",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "dot",
+    "value": "dot"
+  },
+  {
+    "id": "ent5-0131",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "driver",
+    "value": "driver"
+  },
+  {
+    "id": "ent5-0132",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "envelope",
+    "value": "envelope"
+  },
+  {
+    "id": "ent5-0133",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "father",
+    "value": "father"
+  },
+  {
+    "id": "ent5-0134",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "gizmo",
+    "value": "gizmo"
+  },
+  {
+    "id": "ent5-0135",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "glove",
+    "value": "glove"
+  },
+  {
+    "id": "ent5-0136",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "goo",
+    "value": "goo"
+  },
+  {
+    "id": "ent5-0137",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "heater",
+    "value": "heater"
+  },
+  {
+    "id": "ent5-0138",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "helo",
+    "value": "helo"
+  },
+  {
+    "id": "ent5-0139",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "hop",
+    "value": "hop"
+  },
+  {
+    "id": "ent5-0140",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "installation",
+    "value": "installation"
+  },
+  {
+    "id": "ent5-0141",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "judy",
+    "value": "judy"
+  },
+  {
+    "id": "ent5-0142",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "music",
+    "value": "music"
+  },
+  {
+    "id": "ent5-0143",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "nugget",
+    "value": "nugget"
+  },
+  {
+    "id": "ent5-0144",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "pit",
+    "value": "pit"
+  },
+  {
+    "id": "ent5-0145",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "pole",
+    "value": "pole"
+  },
+  {
+    "id": "ent5-0146",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "section",
+    "value": "section"
+  },
+  {
+    "id": "ent5-0147",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "shooter",
+    "value": "shooter"
+  },
+  {
+    "id": "ent5-0148",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "sniffer",
+    "value": "sniffer"
+  },
+  {
+    "id": "ent5-0149",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "sortie",
+    "value": "sortie"
+  },
+  {
+    "id": "ent5-0150",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "state",
+    "value": "state"
+  },
+  {
+    "id": "ent5-0151",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "tap",
+    "value": "tap"
+  },
+  {
+    "id": "ent5-0152",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "trap",
+    "value": "trap"
+  },
+  {
+    "id": "ent5-0153",
+    "language": "en",
+    "category": "Military Air Force",
+    "display": "wingman",
+    "value": "wingman"
+  },
+  {
+    "id": "ent5-0154",
+    "language": "en",
+    "category": "Military Army",
+    "display": "alignment",
+    "value": "alignment"
+  },
+  {
+    "id": "ent5-0155",
+    "language": "en",
+    "category": "Military Army",
+    "display": "ambush",
+    "value": "ambush"
+  },
+  {
+    "id": "ent5-0156",
+    "language": "en",
+    "category": "Military Army",
+    "display": "artillery",
+    "value": "artillery"
+  },
+  {
+    "id": "ent5-0157",
+    "language": "en",
+    "category": "Military Army",
+    "display": "axe",
+    "value": "axe"
+  },
+  {
+    "id": "ent5-0158",
+    "language": "en",
+    "category": "Military Army",
+    "display": "barrage",
+    "value": "barrage"
+  },
+  {
+    "id": "ent5-0159",
+    "language": "en",
+    "category": "Military Army",
+    "display": "base",
+    "value": "base"
+  },
+  {
+    "id": "ent5-0160",
+    "language": "en",
+    "category": "Military Army",
+    "display": "bastion",
+    "value": "bastion"
+  },
+  {
+    "id": "ent5-0161",
+    "language": "en",
+    "category": "Military Army",
+    "display": "battery",
+    "value": "battery"
+  },
+  {
+    "id": "ent5-0162",
+    "language": "en",
+    "category": "Military Army",
+    "display": "bayonet",
+    "value": "bayonet"
+  },
+  {
+    "id": "ent5-0163",
+    "language": "en",
+    "category": "Military Army",
+    "display": "blockade",
+    "value": "blockade"
+  },
+  {
+    "id": "ent5-0164",
+    "language": "en",
+    "category": "Military Army",
+    "display": "bow",
+    "value": "bow"
+  },
+  {
+    "id": "ent5-0165",
+    "language": "en",
+    "category": "Military Army",
+    "display": "breach",
+    "value": "breach"
+  },
+  {
+    "id": "ent5-0166",
+    "language": "en",
+    "category": "Military Army",
+    "display": "breakout",
+    "value": "breakout"
+  },
+  {
+    "id": "ent5-0167",
+    "language": "en",
+    "category": "Military Army",
+    "display": "bulwark",
+    "value": "bulwark"
+  },
+  {
+    "id": "ent5-0168",
+    "language": "en",
+    "category": "Military Army",
+    "display": "bunker",
+    "value": "bunker"
+  },
+  {
+    "id": "ent5-0169",
+    "language": "en",
+    "category": "Military Army",
+    "display": "cadence",
+    "value": "cadence"
+  },
+  {
+    "id": "ent5-0170",
+    "language": "en",
+    "category": "Military Army",
+    "display": "cannon",
+    "value": "cannon"
+  },
+  {
+    "id": "ent5-0171",
+    "language": "en",
+    "category": "Military Army",
+    "display": "charge",
+    "value": "charge"
+  },
+  {
+    "id": "ent5-0172",
+    "language": "en",
+    "category": "Military Army",
+    "display": "column",
+    "value": "column"
+  },
+  {
+    "id": "ent5-0173",
+    "language": "en",
+    "category": "Military Army",
+    "display": "commander",
+    "value": "commander"
+  },
+  {
+    "id": "ent5-0174",
+    "language": "en",
+    "category": "Military Army",
+    "display": "cordon",
+    "value": "cordon"
+  },
+  {
+    "id": "ent5-0175",
+    "language": "en",
+    "category": "Military Army",
+    "display": "cover",
+    "value": "cover"
+  },
+  {
+    "id": "ent5-0176",
+    "language": "en",
+    "category": "Military Army",
+    "display": "defilade",
+    "value": "defilade"
+  },
+  {
+    "id": "ent5-0177",
+    "language": "en",
+    "category": "Military Army",
+    "display": "directive",
+    "value": "directive"
+  },
+  {
+    "id": "ent5-0178",
+    "language": "en",
+    "category": "Military Army",
+    "display": "distance",
+    "value": "distance"
+  },
+  {
+    "id": "ent5-0179",
+    "language": "en",
+    "category": "Military Army",
+    "display": "drill",
+    "value": "drill"
+  },
+  {
+    "id": "ent5-0180",
+    "language": "en",
+    "category": "Military Army",
+    "display": "drone",
+    "value": "drone"
+  },
+  {
+    "id": "ent5-0181",
+    "language": "en",
+    "category": "Military Army",
+    "display": "echelon",
+    "value": "echelon"
+  },
+  {
+    "id": "ent5-0182",
+    "language": "en",
+    "category": "Military Army",
+    "display": "element",
+    "value": "element"
+  },
+  {
+    "id": "ent5-0183",
+    "language": "en",
+    "category": "Military Army",
+    "display": "enfilade",
+    "value": "enfilade"
+  },
+  {
+    "id": "ent5-0184",
+    "language": "en",
+    "category": "Military Army",
+    "display": "envelope",
+    "value": "envelope"
+  },
+  {
+    "id": "ent5-0185",
+    "language": "en",
+    "category": "Military Army",
+    "display": "extraction",
+    "value": "extraction"
+  },
+  {
+    "id": "ent5-0186",
+    "language": "en",
+    "category": "Military Army",
+    "display": "file",
+    "value": "file"
+  },
+  {
+    "id": "ent5-0187",
+    "language": "en",
+    "category": "Military Army",
+    "display": "flank",
+    "value": "flank"
+  },
+  {
+    "id": "ent5-0188",
+    "language": "en",
+    "category": "Military Army",
+    "display": "formation",
+    "value": "formation"
+  },
+  {
+    "id": "ent5-0189",
+    "language": "en",
+    "category": "Military Army",
+    "display": "fort",
+    "value": "fort"
+  },
+  {
+    "id": "ent5-0190",
+    "language": "en",
+    "category": "Military Army",
+    "display": "fortress",
+    "value": "fortress"
+  },
+  {
+    "id": "ent5-0191",
+    "language": "en",
+    "category": "Military Army",
+    "display": "front",
+    "value": "front"
+  },
+  {
+    "id": "ent5-0192",
+    "language": "en",
+    "category": "Military Army",
+    "display": "grenade",
+    "value": "grenade"
+  },
+  {
+    "id": "ent5-0193",
+    "language": "en",
+    "category": "Military Army",
+    "display": "guide",
+    "value": "guide"
+  },
+  {
+    "id": "ent5-0194",
+    "language": "en",
+    "category": "Military Army",
+    "display": "gun",
+    "value": "gun"
+  },
+  {
+    "id": "ent5-0195",
+    "language": "en",
+    "category": "Military Army",
+    "display": "halbert",
+    "value": "halbert"
+  },
+  {
+    "id": "ent5-0196",
+    "language": "en",
+    "category": "Military Army",
+    "display": "head",
+    "value": "head"
+  },
+  {
+    "id": "ent5-0197",
+    "language": "en",
+    "category": "Military Army",
+    "display": "infantry",
+    "value": "infantry"
+  },
+  {
+    "id": "ent5-0198",
+    "language": "en",
+    "category": "Military Army",
+    "display": "interval",
+    "value": "interval"
+  },
+  {
+    "id": "ent5-0199",
+    "language": "en",
+    "category": "Military Army",
+    "display": "knife",
+    "value": "knife"
+  },
+  {
+    "id": "ent5-0200",
+    "language": "en",
+    "category": "Military Army",
+    "display": "melee",
+    "value": "melee"
+  },
+  {
+    "id": "ent5-0201",
+    "language": "en",
+    "category": "Military Army",
+    "display": "mine",
+    "value": "mine"
+  },
+  {
+    "id": "ent5-0202",
+    "language": "en",
+    "category": "Military Army",
+    "display": "mortar",
+    "value": "mortar"
+  },
+  {
+    "id": "ent5-0203",
+    "language": "en",
+    "category": "Military Army",
+    "display": "napalm",
+    "value": "napalm"
+  },
+  {
+    "id": "ent5-0204",
+    "language": "en",
+    "category": "Military Army",
+    "display": "ordnance",
+    "value": "ordnance"
+  },
+  {
+    "id": "ent5-0205",
+    "language": "en",
+    "category": "Military Army",
+    "display": "outwork",
+    "value": "outwork"
+  },
+  {
+    "id": "ent5-0206",
+    "language": "en",
+    "category": "Military Army",
+    "display": "phalanx",
+    "value": "phalanx"
+  },
+  {
+    "id": "ent5-0207",
+    "language": "en",
+    "category": "Military Army",
+    "display": "pike",
+    "value": "pike"
+  },
+  {
+    "id": "ent5-0208",
+    "language": "en",
+    "category": "Military Army",
+    "display": "pistol",
+    "value": "pistol"
+  },
+  {
+    "id": "ent5-0209",
+    "language": "en",
+    "category": "Military Army",
+    "display": "pocket",
+    "value": "pocket"
+  },
+  {
+    "id": "ent5-0210",
+    "language": "en",
+    "category": "Military Army",
+    "display": "post",
+    "value": "post"
+  },
+  {
+    "id": "ent5-0211",
+    "language": "en",
+    "category": "Military Army",
+    "display": "raid",
+    "value": "raid"
+  },
+  {
+    "id": "ent5-0212",
+    "language": "en",
+    "category": "Military Army",
+    "display": "rank",
+    "value": "rank"
+  },
+  {
+    "id": "ent5-0213",
+    "language": "en",
+    "category": "Military Army",
+    "display": "recon",
+    "value": "recon"
+  },
+  {
+    "id": "ent5-0214",
+    "language": "en",
+    "category": "Military Army",
+    "display": "retreat",
+    "value": "retreat"
+  },
+  {
+    "id": "ent5-0215",
+    "language": "en",
+    "category": "Military Army",
+    "display": "revolver",
+    "value": "revolver"
+  },
+  {
+    "id": "ent5-0216",
+    "language": "en",
+    "category": "Military Army",
+    "display": "rifle",
+    "value": "rifle"
+  },
+  {
+    "id": "ent5-0217",
+    "language": "en",
+    "category": "Military Army",
+    "display": "rout",
+    "value": "rout"
+  },
+  {
+    "id": "ent5-0218",
+    "language": "en",
+    "category": "Military Army",
+    "display": "shell",
+    "value": "shell"
+  },
+  {
+    "id": "ent5-0219",
+    "language": "en",
+    "category": "Military Army",
+    "display": "shoot",
+    "value": "shoot"
+  },
+  {
+    "id": "ent5-0220",
+    "language": "en",
+    "category": "Military Army",
+    "display": "shotgun",
+    "value": "shotgun"
+  },
+  {
+    "id": "ent5-0221",
+    "language": "en",
+    "category": "Military Army",
+    "display": "siege",
+    "value": "siege"
+  },
+  {
+    "id": "ent5-0222",
+    "language": "en",
+    "category": "Military Army",
+    "display": "skirmish",
+    "value": "skirmish"
+  },
+  {
+    "id": "ent5-0223",
+    "language": "en",
+    "category": "Military Army",
+    "display": "sortie",
+    "value": "sortie"
+  },
+  {
+    "id": "ent5-0224",
+    "language": "en",
+    "category": "Military Army",
+    "display": "spear",
+    "value": "spear"
+  },
+  {
+    "id": "ent5-0225",
+    "language": "en",
+    "category": "Military Army",
+    "display": "step",
+    "value": "step"
+  },
+  {
+    "id": "ent5-0226",
+    "language": "en",
+    "category": "Military Army",
+    "display": "surrender",
+    "value": "surrender"
+  },
+  {
+    "id": "ent5-0227",
+    "language": "en",
+    "category": "Military Army",
+    "display": "sword",
+    "value": "sword"
+  },
+  {
+    "id": "ent5-0228",
+    "language": "en",
+    "category": "Military Army",
+    "display": "tank",
+    "value": "tank"
+  },
+  {
+    "id": "ent5-0229",
+    "language": "en",
+    "category": "Military Army",
+    "display": "torpedo",
+    "value": "torpedo"
+  },
+  {
+    "id": "ent5-0230",
+    "language": "en",
+    "category": "Military Army",
+    "display": "trench",
+    "value": "trench"
+  },
+  {
+    "id": "ent5-0231",
+    "language": "en",
+    "category": "Military Army",
+    "display": "withdrawal",
+    "value": "withdrawal"
+  },
+  {
+    "id": "ent5-0232",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "anchor",
+    "value": "anchor"
+  },
+  {
+    "id": "ent5-0233",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "armament",
+    "value": "armament"
+  },
+  {
+    "id": "ent5-0234",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "azimuth",
+    "value": "azimuth"
+  },
+  {
+    "id": "ent5-0235",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bandit",
+    "value": "bandit"
+  },
+  {
+    "id": "ent5-0236",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "barnacles",
+    "value": "barnacles"
+  },
+  {
+    "id": "ent5-0237",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bearing",
+    "value": "bearing"
+  },
+  {
+    "id": "ent5-0238",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bilge",
+    "value": "bilge"
+  },
+  {
+    "id": "ent5-0239",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "billet",
+    "value": "billet"
+  },
+  {
+    "id": "ent5-0240",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "block",
+    "value": "block"
+  },
+  {
+    "id": "ent5-0241",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "boat",
+    "value": "boat"
+  },
+  {
+    "id": "ent5-0242",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bogey",
+    "value": "bogey"
+  },
+  {
+    "id": "ent5-0243",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bollard",
+    "value": "bollard"
+  },
+  {
+    "id": "ent5-0244",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "boom",
+    "value": "boom"
+  },
+  {
+    "id": "ent5-0245",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "boot",
+    "value": "boot"
+  },
+  {
+    "id": "ent5-0246",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bosun",
+    "value": "bosun"
+  },
+  {
+    "id": "ent5-0247",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bow",
+    "value": "bow"
+  },
+  {
+    "id": "ent5-0248",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bracket",
+    "value": "bracket"
+  },
+  {
+    "id": "ent5-0249",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "brass",
+    "value": "brass"
+  },
+  {
+    "id": "ent5-0250",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bridge",
+    "value": "bridge"
+  },
+  {
+    "id": "ent5-0251",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "brig",
+    "value": "brig"
+  },
+  {
+    "id": "ent5-0252",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "buck",
+    "value": "buck"
+  },
+  {
+    "id": "ent5-0253",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bulkhead",
+    "value": "bulkhead"
+  },
+  {
+    "id": "ent5-0254",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bulwark",
+    "value": "bulwark"
+  },
+  {
+    "id": "ent5-0255",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "bunk",
+    "value": "bunk"
+  },
+  {
+    "id": "ent5-0256",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "buoy",
+    "value": "buoy"
+  },
+  {
+    "id": "ent5-0257",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "cabin",
+    "value": "cabin"
+  },
+  {
+    "id": "ent5-0258",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "can",
+    "value": "can"
+  },
+  {
+    "id": "ent5-0259",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "capstan",
+    "value": "capstan"
+  },
+  {
+    "id": "ent5-0260",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "captain",
+    "value": "captain"
+  },
+  {
+    "id": "ent5-0261",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "chart",
+    "value": "chart"
+  },
+  {
+    "id": "ent5-0262",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "chief",
+    "value": "chief"
+  },
+  {
+    "id": "ent5-0263",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "chit",
+    "value": "chit"
+  },
+  {
+    "id": "ent5-0264",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "chock",
+    "value": "chock"
+  },
+  {
+    "id": "ent5-0265",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "chow",
+    "value": "chow"
+  },
+  {
+    "id": "ent5-0266",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "cleat",
+    "value": "cleat"
+  },
+  {
+    "id": "ent5-0267",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "coastie",
+    "value": "coastie"
+  },
+  {
+    "id": "ent5-0268",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "commander",
+    "value": "commander"
+  },
+  {
+    "id": "ent5-0269",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "commission",
+    "value": "commission"
+  },
+  {
+    "id": "ent5-0270",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "compartment",
+    "value": "compartment"
+  },
+  {
+    "id": "ent5-0271",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "cover",
+    "value": "cover"
+  },
+  {
+    "id": "ent5-0272",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "davit",
+    "value": "davit"
+  },
+  {
+    "id": "ent5-0273",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "deadhead",
+    "value": "deadhead"
+  },
+  {
+    "id": "ent5-0274",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "deck",
+    "value": "deck"
+  },
+  {
+    "id": "ent5-0275",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "director",
+    "value": "director"
+  },
+  {
+    "id": "ent5-0276",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "division",
+    "value": "division"
+  },
+  {
+    "id": "ent5-0277",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "dog",
+    "value": "dog"
+  },
+  {
+    "id": "ent5-0278",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "draft",
+    "value": "draft"
+  },
+  {
+    "id": "ent5-0279",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "duffel",
+    "value": "duffel"
+  },
+  {
+    "id": "ent5-0280",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "engineer",
+    "value": "engineer"
+  },
+  {
+    "id": "ent5-0281",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "engine",
+    "value": "engine"
+  },
+  {
+    "id": "ent5-0282",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "ensign",
+    "value": "ensign"
+  },
+  {
+    "id": "ent5-0283",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "exec",
+    "value": "exec"
+  },
+  {
+    "id": "ent5-0284",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "fantail",
+    "value": "fantail"
+  },
+  {
+    "id": "ent5-0285",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "fathom",
+    "value": "fathom"
+  },
+  {
+    "id": "ent5-0286",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "fender",
+    "value": "fender"
+  },
+  {
+    "id": "ent5-0287",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "fleet",
+    "value": "fleet"
+  },
+  {
+    "id": "ent5-0288",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "fluke",
+    "value": "fluke"
+  },
+  {
+    "id": "ent5-0289",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "foremast",
+    "value": "foremast"
+  },
+  {
+    "id": "ent5-0290",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "formation",
+    "value": "formation"
+  },
+  {
+    "id": "ent5-0291",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "frame",
+    "value": "frame"
+  },
+  {
+    "id": "ent5-0292",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "freighter",
+    "value": "freighter"
+  },
+  {
+    "id": "ent5-0293",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "frogman",
+    "value": "frogman"
+  },
+  {
+    "id": "ent5-0294",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "funnel",
+    "value": "funnel"
+  },
+  {
+    "id": "ent5-0295",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "galley",
+    "value": "galley"
+  },
+  {
+    "id": "ent5-0296",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "gang",
+    "value": "gang"
+  },
+  {
+    "id": "ent5-0297",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "gator",
+    "value": "gator"
+  },
+  {
+    "id": "ent5-0298",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "gear",
+    "value": "gear"
+  },
+  {
+    "id": "ent5-0299",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "gig",
+    "value": "gig"
+  },
+  {
+    "id": "ent5-0300",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "glass",
+    "value": "glass"
+  },
+  {
+    "id": "ent5-0301",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "grapnel",
+    "value": "grapnel"
+  },
+  {
+    "id": "ent5-0302",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "grunt",
+    "value": "grunt"
+  },
+  {
+    "id": "ent5-0303",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "gunwale",
+    "value": "gunwale"
+  },
+  {
+    "id": "ent5-0304",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "hand",
+    "value": "hand"
+  },
+  {
+    "id": "ent5-0305",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "helm",
+    "value": "helm"
+  },
+  {
+    "id": "ent5-0306",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "helo",
+    "value": "helo"
+  },
+  {
+    "id": "ent5-0307",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "highline",
+    "value": "highline"
+  },
+  {
+    "id": "ent5-0308",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "hook",
+    "value": "hook"
+  },
+  {
+    "id": "ent5-0309",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "hull",
+    "value": "hull"
+  },
+  {
+    "id": "ent5-0310",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "island",
+    "value": "island"
+  },
+  {
+    "id": "ent5-0311",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "jack",
+    "value": "jack"
+  },
+  {
+    "id": "ent5-0312",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "jarhead",
+    "value": "jarhead"
+  },
+  {
+    "id": "ent5-0313",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "jetsam",
+    "value": "jetsam"
+  },
+  {
+    "id": "ent5-0314",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "kapok",
+    "value": "kapok"
+  },
+  {
+    "id": "ent5-0315",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "keel",
+    "value": "keel"
+  },
+  {
+    "id": "ent5-0316",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "knot",
+    "value": "knot"
+  },
+  {
+    "id": "ent5-0317",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "ladder",
+    "value": "ladder"
+  },
+  {
+    "id": "ent5-0318",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "landfall",
+    "value": "landfall"
+  },
+  {
+    "id": "ent5-0319",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "landlubber",
+    "value": "landlubber"
+  },
+  {
+    "id": "ent5-0320",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "lanyard",
+    "value": "lanyard"
+  },
+  {
+    "id": "ent5-0321",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "latitude",
+    "value": "latitude"
+  },
+  {
+    "id": "ent5-0322",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "leadsman",
+    "value": "leadsman"
+  },
+  {
+    "id": "ent5-0323",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "leave",
+    "value": "leave"
+  },
+  {
+    "id": "ent5-0324",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "level",
+    "value": "level"
+  },
+  {
+    "id": "ent5-0325",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "liberty",
+    "value": "liberty"
+  },
+  {
+    "id": "ent5-0326",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "lifer",
+    "value": "lifer"
+  },
+  {
+    "id": "ent5-0327",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "lightship",
+    "value": "lightship"
+  },
+  {
+    "id": "ent5-0328",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "line",
+    "value": "line"
+  },
+  {
+    "id": "ent5-0329",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "log",
+    "value": "log"
+  },
+  {
+    "id": "ent5-0330",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "longitude",
+    "value": "longitude"
+  },
+  {
+    "id": "ent5-0331",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "longshoreman",
+    "value": "longshoreman"
+  },
+  {
+    "id": "ent5-0332",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "magazine",
+    "value": "magazine"
+  },
+  {
+    "id": "ent5-0333",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "mainmast",
+    "value": "mainmast"
+  },
+  {
+    "id": "ent5-0334",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "mast",
+    "value": "mast"
+  },
+  {
+    "id": "ent5-0335",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "mate",
+    "value": "mate"
+  },
+  {
+    "id": "ent5-0336",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "mud",
+    "value": "mud"
+  },
+  {
+    "id": "ent5-0337",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "nest",
+    "value": "nest"
+  },
+  {
+    "id": "ent5-0338",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "party",
+    "value": "party"
+  },
+  {
+    "id": "ent5-0339",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "pier",
+    "value": "pier"
+  },
+  {
+    "id": "ent5-0340",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "pile",
+    "value": "pile"
+  },
+  {
+    "id": "ent5-0341",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "pilot",
+    "value": "pilot"
+  },
+  {
+    "id": "ent5-0342",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "quarter",
+    "value": "quarter"
+  },
+  {
+    "id": "ent5-0343",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "quay",
+    "value": "quay"
+  },
+  {
+    "id": "ent5-0344",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "rack",
+    "value": "rack"
+  },
+  {
+    "id": "ent5-0345",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "radar",
+    "value": "radar"
+  },
+  {
+    "id": "ent5-0346",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "range",
+    "value": "range"
+  },
+  {
+    "id": "ent5-0347",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "rank",
+    "value": "rank"
+  },
+  {
+    "id": "ent5-0348",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "rate",
+    "value": "rate"
+  },
+  {
+    "id": "ent5-0349",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "reef",
+    "value": "reef"
+  },
+  {
+    "id": "ent5-0350",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "sandcrab",
+    "value": "sandcrab"
+  },
+  {
+    "id": "ent5-0351",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "screw",
+    "value": "screw"
+  },
+  {
+    "id": "ent5-0352",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "semaphore",
+    "value": "semaphore"
+  },
+  {
+    "id": "ent5-0353",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "shackle",
+    "value": "shackle"
+  },
+  {
+    "id": "ent5-0354",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "sheave",
+    "value": "sheave"
+  },
+  {
+    "id": "ent5-0355",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "ship",
+    "value": "ship"
+  },
+  {
+    "id": "ent5-0356",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "shot",
+    "value": "shot"
+  },
+  {
+    "id": "ent5-0357",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "sickbay",
+    "value": "sickbay"
+  },
+  {
+    "id": "ent5-0358",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "sitrep",
+    "value": "sitrep"
+  },
+  {
+    "id": "ent5-0359",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "skipper",
+    "value": "skipper"
+  },
+  {
+    "id": "ent5-0360",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "skunk",
+    "value": "skunk"
+  },
+  {
+    "id": "ent5-0361",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "snipe",
+    "value": "snipe"
+  },
+  {
+    "id": "ent5-0362",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "sonar",
+    "value": "sonar"
+  },
+  {
+    "id": "ent5-0363",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "stack",
+    "value": "stack"
+  },
+  {
+    "id": "ent5-0364",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "station",
+    "value": "station"
+  },
+  {
+    "id": "ent5-0365",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "stem",
+    "value": "stem"
+  },
+  {
+    "id": "ent5-0366",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "stern",
+    "value": "stern"
+  },
+  {
+    "id": "ent5-0367",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "swab",
+    "value": "swab"
+  },
+  {
+    "id": "ent5-0368",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "swell",
+    "value": "swell"
+  },
+  {
+    "id": "ent5-0369",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "tanker",
+    "value": "tanker"
+  },
+  {
+    "id": "ent5-0370",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "tincan",
+    "value": "tincan"
+  },
+  {
+    "id": "ent5-0371",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "track",
+    "value": "track"
+  },
+  {
+    "id": "ent5-0372",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "trim",
+    "value": "trim"
+  },
+  {
+    "id": "ent5-0373",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "truck",
+    "value": "truck"
+  },
+  {
+    "id": "ent5-0374",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "turbine",
+    "value": "turbine"
+  },
+  {
+    "id": "ent5-0375",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "void",
+    "value": "void"
+  },
+  {
+    "id": "ent5-0376",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "wake",
+    "value": "wake"
+  },
+  {
+    "id": "ent5-0377",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "watch",
+    "value": "watch"
+  },
+  {
+    "id": "ent5-0378",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "wharf",
+    "value": "wharf"
+  },
+  {
+    "id": "ent5-0379",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "winch",
+    "value": "winch"
+  },
+  {
+    "id": "ent5-0380",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "wire",
+    "value": "wire"
+  },
+  {
+    "id": "ent5-0381",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "yard",
+    "value": "yard"
+  },
+  {
+    "id": "ent5-0382",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "yaw",
+    "value": "yaw"
+  },
+  {
+    "id": "ent5-0383",
+    "language": "en",
+    "category": "Military Navy",
+    "display": "yeoman",
+    "value": "yeoman"
+  },
+  {
+    "id": "ent5-0384",
+    "language": "en",
+    "category": "Minerals",
+    "display": "agate",
+    "value": "agate"
+  },
+  {
+    "id": "ent5-0385",
+    "language": "en",
+    "category": "Minerals",
+    "display": "bismuth",
+    "value": "bismuth"
+  },
+  {
+    "id": "ent5-0386",
+    "language": "en",
+    "category": "Minerals",
+    "display": "emerald",
+    "value": "emerald"
+  },
+  {
+    "id": "ent5-0387",
+    "language": "en",
+    "category": "Minerals",
+    "display": "graphite",
+    "value": "graphite"
+  },
+  {
+    "id": "ent5-0388",
+    "language": "en",
+    "category": "Minerals",
+    "display": "halite",
+    "value": "halite"
+  },
+  {
+    "id": "ent5-0389",
+    "language": "en",
+    "category": "Minerals",
+    "display": "quartz",
+    "value": "quartz"
+  },
+  {
+    "id": "ent5-0390",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "aotus",
+    "value": "aotus"
+  },
+  {
+    "id": "ent5-0391",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "capuchin",
+    "value": "capuchin"
+  },
+  {
+    "id": "ent5-0392",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "gelada",
+    "value": "gelada"
+  },
+  {
+    "id": "ent5-0393",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "gibbon",
+    "value": "gibbon"
+  },
+  {
+    "id": "ent5-0394",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "howler",
+    "value": "howler"
+  },
+  {
+    "id": "ent5-0395",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "indri",
+    "value": "indri"
+  },
+  {
+    "id": "ent5-0396",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "langur",
+    "value": "langur"
+  },
+  {
+    "id": "ent5-0397",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "lemur",
+    "value": "lemur"
+  },
+  {
+    "id": "ent5-0398",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "loris",
+    "value": "loris"
+  },
+  {
+    "id": "ent5-0399",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "macaque",
+    "value": "macaque"
+  },
+  {
+    "id": "ent5-0400",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "marmoset",
+    "value": "marmoset"
+  },
+  {
+    "id": "ent5-0401",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "tamarin",
+    "value": "tamarin"
+  },
+  {
+    "id": "ent5-0402",
+    "language": "en",
+    "category": "Monkeys",
+    "display": "tarsier",
+    "value": "tarsier"
+  },
+  {
+    "id": "ent5-0403",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "bassoon",
+    "value": "bassoon"
+  },
+  {
+    "id": "ent5-0404",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "bell",
+    "value": "bell"
+  },
+  {
+    "id": "ent5-0405",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "bongo",
+    "value": "bongo"
+  },
+  {
+    "id": "ent5-0406",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "bugle",
+    "value": "bugle"
+  },
+  {
+    "id": "ent5-0407",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "celesta",
+    "value": "celesta"
+  },
+  {
+    "id": "ent5-0408",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "cello",
+    "value": "cello"
+  },
+  {
+    "id": "ent5-0409",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "clarinet",
+    "value": "clarinet"
+  },
+  {
+    "id": "ent5-0410",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "cymbal",
+    "value": "cymbal"
+  },
+  {
+    "id": "ent5-0411",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "flute",
+    "value": "flute"
+  },
+  {
+    "id": "ent5-0412",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "gong",
+    "value": "gong"
+  },
+  {
+    "id": "ent5-0413",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "guitar",
+    "value": "guitar"
+  },
+  {
+    "id": "ent5-0414",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "harp",
+    "value": "harp"
+  },
+  {
+    "id": "ent5-0415",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "horn",
+    "value": "horn"
+  },
+  {
+    "id": "ent5-0416",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "marimba",
+    "value": "marimba"
+  },
+  {
+    "id": "ent5-0417",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "oboe",
+    "value": "oboe"
+  },
+  {
+    "id": "ent5-0418",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "piano",
+    "value": "piano"
+  },
+  {
+    "id": "ent5-0419",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "piccolo",
+    "value": "piccolo"
+  },
+  {
+    "id": "ent5-0420",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "sax",
+    "value": "sax"
+  },
+  {
+    "id": "ent5-0421",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "snare",
+    "value": "snare"
+  },
+  {
+    "id": "ent5-0422",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "string",
+    "value": "string"
+  },
+  {
+    "id": "ent5-0423",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "tambourine",
+    "value": "tambourine"
+  },
+  {
+    "id": "ent5-0424",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "timpani",
+    "value": "timpani"
+  },
+  {
+    "id": "ent5-0425",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "triangle",
+    "value": "triangle"
+  },
+  {
+    "id": "ent5-0426",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "trombone",
+    "value": "trombone"
+  },
+  {
+    "id": "ent5-0427",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "trumpet",
+    "value": "trumpet"
+  },
+  {
+    "id": "ent5-0428",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "tuba",
+    "value": "tuba"
+  },
+  {
+    "id": "ent5-0429",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "vibes",
+    "value": "vibes"
+  },
+  {
+    "id": "ent5-0430",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "viola",
+    "value": "viola"
+  },
+  {
+    "id": "ent5-0431",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "violin",
+    "value": "violin"
+  },
+  {
+    "id": "ent5-0432",
+    "language": "en",
+    "category": "Music Instruments",
+    "display": "xylophone",
+    "value": "xylophone"
+  }
+]
