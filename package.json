@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "expo": "~57.0.10",
+    "expo-build-properties": "~57.0.22",
     "expo-constants": "~57.0.9",
     "expo-iap": "~5.8.2",
     "expo-linking": "~57.0.5",
