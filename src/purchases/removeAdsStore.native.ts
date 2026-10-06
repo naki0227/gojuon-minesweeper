@@ -1,6 +1,7 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
 import { Platform } from "react-native";
 
+import { supportsInAppOfferCodes } from "./offerCodes";
 import { REMOVE_ADS_PRODUCT_ID } from "./products";
 import type {
   RemoveAdsProduct,
@@ -78,7 +79,8 @@ export const removeAdsStore: RemoveAdsStore = {
   isSupported: iap !== null,
   // TODO(android): Play Console promo codes are not set up yet. Keep the
   // "use a code" entry iOS-only until they are; do not build a custom code DB.
-  canRedeemCode: iap !== null && Platform.OS === "ios",
+  canRedeemCode:
+    iap !== null && supportsInAppOfferCodes(Platform.OS, Platform.Version),
 
   async connect() {
     if (!iap) {
@@ -154,7 +156,7 @@ export const removeAdsStore: RemoveAdsStore = {
   },
 
   async redeemCode() {
-    if (!iap || Platform.OS !== "ios") {
+    if (!iap || !supportsInAppOfferCodes(Platform.OS, Platform.Version)) {
       return;
     }
 
