@@ -12,6 +12,7 @@ import englishTopicEntries6 from "./question-bank-en-topics-6.json";
 import type {
   AnswerOption,
   Question,
+  LengthFilter,
   QuestionFilters,
   QuestionLanguage,
   RawQuestionEntry,
@@ -107,6 +108,16 @@ export function questionPrompt(question: Question): string {
   return `${question.length}文字の${question.category}`;
 }
 
+export function matchesLength(length: number, filter: LengthFilter): boolean {
+  if (filter === "any") {
+    return true;
+  }
+  if (typeof filter === "number") {
+    return length === filter;
+  }
+  return length >= filter.min && (filter.max === null || length <= filter.max);
+}
+
 export function filterQuestions(filters: QuestionFilters): readonly Question[] {
   return QUESTIONS.filter((question) => {
     if (filters.language !== "any" && question.language !== filters.language) {
@@ -120,7 +131,7 @@ export function filterQuestions(filters: QuestionFilters): readonly Question[] {
       return false;
     }
 
-    if (filters.length !== "any" && question.length !== filters.length) {
+    if (!matchesLength(question.length, filters.length)) {
       return false;
     }
 
