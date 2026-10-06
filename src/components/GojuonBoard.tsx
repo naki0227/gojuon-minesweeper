@@ -7,7 +7,7 @@ import {
   type ViewStyle,
 } from "react-native";
 
-import type { Question } from "../data/questions";
+import type { Question } from "../data/types";
 import { adjacentMineCount } from "../game/engine";
 import { GOJUON_GRID } from "../game/gojuon";
 
