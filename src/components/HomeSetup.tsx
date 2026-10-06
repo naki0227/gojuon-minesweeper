@@ -327,6 +327,9 @@ export function HomeSetup({
           >
             <Text style={styles.startText}>対戦をはじめる</Text>
           </Pressable>
+          <Text style={styles.countText}>
+            現在の条件：候補 {candidateCount} 問
+          </Text>
           <View style={styles.startMeta}>
             <Pressable
               onPress={() =>
@@ -340,7 +343,6 @@ export function HomeSetup({
             >
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
-            <Text style={styles.countText}>候補 {candidateCount} 問</Text>
           </View>
         </View>
 
@@ -665,11 +667,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   startMeta: {
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
   },
   countText: {
+    textAlign: "center",
     color: MUTED,
     fontSize: 13,
     fontVariant: ["tabular-nums"],
