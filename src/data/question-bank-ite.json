@@ -4893,335 +4893,6 @@
     "value": "Bike"
   },
   {
-    "id": "ite-00920",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Storage Key",
-    "value": "Storage Key"
-  },
-  {
-    "id": "ite-00921",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Basement Key",
-    "value": "Basement Key"
-  },
-  {
-    "id": "ite-00922",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Xtransceiver",
-    "value": "Xtransceiver"
-  },
-  {
-    "id": "ite-00923",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Xtransceiver",
-    "value": "Xtransceiver"
-  },
-  {
-    "id": "ite-00924",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "DNA Splicers",
-    "value": "DNA Splicers"
-  },
-  {
-    "id": "ite-00925",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "DNA Splicers",
-    "value": "DNA Splicers"
-  },
-  {
-    "id": "ite-00926",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Dropped Item",
-    "value": "Dropped Item"
-  },
-  {
-    "id": "ite-00927",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Dropped Item",
-    "value": "Dropped Item"
-  },
-  {
-    "id": "ite-00928",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Holo Caster",
-    "value": "Holo Caster"
-  },
-  {
-    "id": "ite-00929",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Bike",
-    "value": "Bike"
-  },
-  {
-    "id": "ite-00930",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Holo Caster",
-    "value": "Holo Caster"
-  },
-  {
-    "id": "ite-00931",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Basement Key",
-    "value": "Basement Key"
-  },
-  {
-    "id": "ite-00932",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Storage Key",
-    "value": "Storage Key"
-  },
-  {
-    "id": "ite-00933",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "S.S. Ticket",
-    "value": "S.S. Ticket"
-  },
-  {
-    "id": "ite-00934",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Contest Costume",
-    "value": "Contest Costume"
-  },
-  {
-    "id": "ite-00935",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Meteorite",
-    "value": "Meteorite"
-  },
-  {
-    "id": "ite-00936",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Meteorite",
-    "value": "Meteorite"
-  },
-  {
-    "id": "ite-00937",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Meteorite",
-    "value": "Meteorite"
-  },
-  {
-    "id": "ite-00938",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Normalium Z",
-    "value": "Normalium Z"
-  },
-  {
-    "id": "ite-00939",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Firium Z",
-    "value": "Firium Z"
-  },
-  {
-    "id": "ite-00940",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Waterium Z",
-    "value": "Waterium Z"
-  },
-  {
-    "id": "ite-00941",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Electrium Z",
-    "value": "Electrium Z"
-  },
-  {
-    "id": "ite-00942",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Grassium Z",
-    "value": "Grassium Z"
-  },
-  {
-    "id": "ite-00943",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Icium Z",
-    "value": "Icium Z"
-  },
-  {
-    "id": "ite-00944",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Fightinium Z",
-    "value": "Fightinium Z"
-  },
-  {
-    "id": "ite-00945",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Poisonium Z",
-    "value": "Poisonium Z"
-  },
-  {
-    "id": "ite-00946",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Groundium Z",
-    "value": "Groundium Z"
-  },
-  {
-    "id": "ite-00947",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Flyinium Z",
-    "value": "Flyinium Z"
-  },
-  {
-    "id": "ite-00948",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Psychium Z",
-    "value": "Psychium Z"
-  },
-  {
-    "id": "ite-00949",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Buginium Z",
-    "value": "Buginium Z"
-  },
-  {
-    "id": "ite-00950",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Rockium Z",
-    "value": "Rockium Z"
-  },
-  {
-    "id": "ite-00951",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Ghostium Z",
-    "value": "Ghostium Z"
-  },
-  {
-    "id": "ite-00952",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Dragonium Z",
-    "value": "Dragonium Z"
-  },
-  {
-    "id": "ite-00953",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Darkinium Z",
-    "value": "Darkinium Z"
-  },
-  {
-    "id": "ite-00954",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Steelium Z",
-    "value": "Steelium Z"
-  },
-  {
-    "id": "ite-00955",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Fairium Z",
-    "value": "Fairium Z"
-  },
-  {
-    "id": "ite-00956",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Pikanium Z",
-    "value": "Pikanium Z"
-  },
-  {
-    "id": "ite-00957",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Decidium Z",
-    "value": "Decidium Z"
-  },
-  {
-    "id": "ite-00958",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Incinium Z",
-    "value": "Incinium Z"
-  },
-  {
-    "id": "ite-00959",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Primarium Z",
-    "value": "Primarium Z"
-  },
-  {
-    "id": "ite-00960",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Tapunium Z",
-    "value": "Tapunium Z"
-  },
-  {
-    "id": "ite-00961",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Marshadium Z",
-    "value": "Marshadium Z"
-  },
-  {
-    "id": "ite-00962",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Aloraichium Z",
-    "value": "Aloraichium Z"
-  },
-  {
-    "id": "ite-00963",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Snorlium Z",
-    "value": "Snorlium Z"
-  },
-  {
-    "id": "ite-00964",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Eevium Z",
-    "value": "Eevium Z"
-  },
-  {
-    "id": "ite-00965",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Mewnium Z",
-    "value": "Mewnium Z"
-  },
-  {
-    "id": "ite-00966",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Pikashunium Z",
-    "value": "Pikashunium Z"
-  },
-  {
     "id": "ite-00967",
     "language": "en",
     "category": "Pokémon Items",
@@ -5258,48 +4929,6 @@
   },
   {
     "id": "ite-00972",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Kommonium Z",
-    "value": "Kommonium Z"
-  },
-  {
-    "id": "ite-00973",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Solganium Z",
-    "value": "Solganium Z"
-  },
-  {
-    "id": "ite-00974",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Lunalium Z",
-    "value": "Lunalium Z"
-  },
-  {
-    "id": "ite-00975",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Ultranecrozium Z",
-    "value": "Ultranecrozium Z"
-  },
-  {
-    "id": "ite-00976",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Mimikium Z",
-    "value": "Mimikium Z"
-  },
-  {
-    "id": "ite-00977",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Lycanium Z",
-    "value": "Lycanium Z"
-  },
-  {
-    "id": "ite-00978",
     "language": "en",
     "category": "Pokémon Items",
     "display": "Kommonium Z",
@@ -5384,20 +5013,6 @@
   },
   {
     "id": "ite-00990",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "N-Lunarizer",
-    "value": "N-Lunarizer"
-  },
-  {
-    "id": "ite-00991",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "N-Solarizer",
-    "value": "N-Solarizer"
-  },
-  {
-    "id": "ite-00992",
     "language": "en",
     "category": "Pokémon Items",
     "display": "N-Lunarizer",
@@ -5593,34 +5208,6 @@
     "value": "Golden Pinap Berry"
   },
   {
-    "id": "ite-01020",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Secret Key",
-    "value": "Secret Key"
-  },
-  {
-    "id": "ite-01021",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "S.S. Ticket",
-    "value": "S.S. Ticket"
-  },
-  {
-    "id": "ite-01022",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Parcel",
-    "value": "Parcel"
-  },
-  {
-    "id": "ite-01023",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Card Key",
-    "value": "Card Key"
-  },
-  {
     "id": "ite-01024",
     "language": "en",
     "category": "Pokémon Items",
@@ -5685,13 +5272,6 @@
   },
   {
     "id": "ite-01033",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Leaf Letter",
-    "value": "Leaf Letter"
-  },
-  {
-    "id": "ite-01034",
     "language": "en",
     "category": "Pokémon Items",
     "display": "Leaf Letter",
@@ -6412,13 +5992,6 @@
     "value": "Endorsement"
   },
   {
-    "id": "ite-01139",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Pokémon Box Link",
-    "value": "Pokémon Box Link"
-  },
-  {
     "id": "ite-01140",
     "language": "en",
     "category": "Pokémon Items",
@@ -6431,13 +6004,6 @@
     "category": "Pokémon Items",
     "display": "Dynamax Band",
     "value": "Dynamax Band"
-  },
-  {
-    "id": "ite-01142",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Fishing Rod",
-    "value": "Fishing Rod"
   },
   {
     "id": "ite-01143",
@@ -7000,13 +6566,6 @@
     "value": "Wishing Chip"
   },
   {
-    "id": "ite-01324",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Rotom Bike",
-    "value": "Rotom Bike"
-  },
-  {
     "id": "ite-01325",
     "language": "en",
     "category": "Pokémon Items",
@@ -7084,20 +6643,6 @@
     "value": "Armor Pass"
   },
   {
-    "id": "ite-01636",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Rotom Bike",
-    "value": "Rotom Bike"
-  },
-  {
-    "id": "ite-01637",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Rotom Bike",
-    "value": "Rotom Bike"
-  },
-  {
     "id": "ite-01638",
     "language": "en",
     "category": "Pokémon Items",
@@ -7120,13 +6665,6 @@
   },
   {
     "id": "ite-01641",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Reins of Unity",
-    "value": "Reins of Unity"
-  },
-  {
-    "id": "ite-01642",
     "language": "en",
     "category": "Pokémon Items",
     "display": "Reins of Unity",
@@ -7208,13 +6746,6 @@
     "category": "Pokémon Items",
     "display": "Ability Patch",
     "value": "Ability Patch"
-  },
-  {
-    "id": "ite-01658",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Reins of Unity",
-    "value": "Reins of Unity"
   },
   {
     "id": "ite-01659",
@@ -10148,41 +9679,6 @@
     "category": "Pokémon Items",
     "display": "Linking Cord",
     "value": "Linking Cord"
-  },
-  {
-    "id": "ite-02219",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Strange Ball",
-    "value": "Strange Ball"
-  },
-  {
-    "id": "ite-02220",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Poké Ball",
-    "value": "Poké Ball"
-  },
-  {
-    "id": "ite-02221",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Great Ball",
-    "value": "Great Ball"
-  },
-  {
-    "id": "ite-02222",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Ultra Ball",
-    "value": "Ultra Ball"
-  },
-  {
-    "id": "ite-02223",
-    "language": "en",
-    "category": "Pokémon Items",
-    "display": "Heavy Ball",
-    "value": "Heavy Ball"
   },
   {
     "id": "ite-02224",
