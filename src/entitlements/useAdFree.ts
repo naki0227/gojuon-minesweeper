@@ -1,4 +1,7 @@
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
+import { Platform } from "react-native";
+
+import { isOwnershipResolved } from "./adAccess";
 
 export type AdFreeState = {
   // False while entitlement sources are still answering. Ads stay hidden
@@ -21,7 +24,7 @@ export function useAdFree(): AdFreeState {
   const { status, owned } = useRemoveAds();
 
   return {
-    resolved: status !== "checking",
+    resolved: isOwnershipResolved(status, Platform.OS),
     adFree: owned,
   };
 }

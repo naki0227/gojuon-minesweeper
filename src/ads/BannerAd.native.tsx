@@ -4,6 +4,8 @@ import { StyleSheet, View } from "react-native";
 
 import { useAdFree } from "../entitlements/useAdFree";
 import { getAdMobBannerUnitId, shouldUseTestAds } from "./config";
+import { canRequestAds } from "./consent";
+import { selectBannerUnitId } from "./selectBannerUnitId";
 import type { BannerAdProps } from "./types";
 
 type MobileAdsModule = typeof import("react-native-google-mobile-ads");
@@ -16,6 +18,8 @@ function loadMobileAds(): MobileAdsModule | null {
   }
 
   try {
+    // Expo Go has no native ads module, so this must be loaded at runtime.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require("react-native-google-mobile-ads") as MobileAdsModule;
   } catch {
     return null;
@@ -30,14 +34,8 @@ let initialization: Promise<boolean> | null = null;
 function initializeAds(sdk: MobileAdsModule): Promise<boolean> {
   if (!initialization) {
     initialization = (async () => {
-      try {
-        const consent = await sdk.AdsConsent.gatherConsent();
-        if (!consent.canRequestAds) {
-          return false;
-        }
-      } catch {
-        // Consent info could not be fetched (offline etc.). Ads may still be
-        // requested; the SDK applies its own defaults.
+      if (!(await canRequestAds(sdk.AdsConsent))) {
+        return false;
       }
 
       try {
@@ -53,13 +51,11 @@ function initializeAds(sdk: MobileAdsModule): Promise<boolean> {
 }
 
 function resolveUnitId(sdk: MobileAdsModule): string | null {
-  // Test unit IDs only in dev / preview builds. Production builds always
-  // have useTestIds=false, so they fall through to the real ID or nothing.
-  if (shouldUseTestAds()) {
-    return getAdMobBannerUnitId() ?? sdk.TestIds.ADAPTIVE_BANNER;
-  }
-
-  return getAdMobBannerUnitId();
+  return selectBannerUnitId(
+    shouldUseTestAds(),
+    getAdMobBannerUnitId(),
+    sdk.TestIds.ADAPTIVE_BANNER,
+  );
 }
 
 export function BannerAd({ placement }: BannerAdProps) {

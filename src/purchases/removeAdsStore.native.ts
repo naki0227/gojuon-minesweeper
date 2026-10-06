@@ -19,6 +19,8 @@ function loadExpoIap(): ExpoIap | null {
   }
 
   try {
+    // Expo Go has no native purchase module, so this must be loaded at runtime.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require("expo-iap") as ExpoIap;
   } catch {
     return null;

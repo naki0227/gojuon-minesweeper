@@ -41,16 +41,6 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  const refreshOwnership = useCallback(async () => {
-    try {
-      if (await removeAdsStore.ownsRemoveAds()) {
-        setOwned(true);
-      }
-    } catch {
-      // Keep the last known state; the next foreground re-checks.
-    }
-  }, []);
-
   useEffect(() => {
     if (!removeAdsStore.isSupported) {
       return;
@@ -71,9 +61,22 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    (async () => {
+    let checkInFlight = false;
+    let connected = false;
+    const checkStore = async () => {
+      if (checkInFlight) {
+        return;
+      }
+      checkInFlight = true;
+      // Only the first check (or a retry after a failure) hides ads while
+      // waiting. Foreground re-checks keep the current answer so the banner
+      // is not torn down and reloaded on every resume.
+      setStatus((previous) => (previous === "ready" ? previous : "checking"));
       try {
-        await removeAdsStore.connect();
+        if (!connected) {
+          await removeAdsStore.connect();
+          connected = true;
+        }
         const [ownsNow, fetched] = await Promise.all([
           removeAdsStore.ownsRemoveAds(),
           removeAdsStore.fetchProduct().catch(() => null),
@@ -81,21 +84,27 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
         if (!active) {
           return;
         }
-        setOwned(ownsNow);
-        setProduct(fetched);
+        setOwned((previous) => previous || ownsNow);
+        setProduct((previous) => fetched ?? previous);
         setStatus("ready");
       } catch {
         if (active) {
-          setStatus("unavailable");
+          setStatus((previous) =>
+            previous === "ready" ? previous : "unavailable",
+          );
         }
+      } finally {
+        checkInFlight = false;
       }
-    })();
+    };
+
+    void checkStore();
 
     // Offer codes redeemed in the App Store app (or via the sheet) are picked
     // up when the user comes back.
     const appState = AppState.addEventListener("change", (state) => {
       if (state === "active") {
-        void refreshOwnership();
+        void checkStore();
       }
     });
 
@@ -105,7 +114,7 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
       appState.remove();
       void removeAdsStore.disconnect().catch(() => {});
     };
-  }, [refreshOwnership]);
+  }, []);
 
   const purchase = useCallback(() => {
     setBusy(true);

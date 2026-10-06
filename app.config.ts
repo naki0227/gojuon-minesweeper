@@ -18,14 +18,17 @@ const GOOGLE_SAMPLE_PUBLISHER_PREFIX = "ca-app-pub-3940256099942544";
 const isProduction =
   process.env.APP_ENV === "production" ||
   process.env.EAS_BUILD_PROFILE === "production";
+const targetPlatform =
+  process.env.APP_TARGET_PLATFORM ?? process.env.EAS_BUILD_PLATFORM;
 
 function resolveAdMobAppId(
   envName: "ADMOB_IOS_APP_ID" | "ADMOB_ANDROID_APP_ID",
   sampleId: string,
+  platform: "ios" | "android",
 ): string {
   const value = process.env[envName]?.trim();
 
-  if (isProduction) {
+  if (isProduction && (!targetPlatform || targetPlatform === platform)) {
     if (!value || value.startsWith(GOOGLE_SAMPLE_PUBLISHER_PREFIX)) {
       throw new Error(
         `${envName} must be set to the real AdMob app ID for production builds.`,
@@ -41,10 +44,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const iosAppId = resolveAdMobAppId(
     "ADMOB_IOS_APP_ID",
     GOOGLE_SAMPLE_IOS_APP_ID,
+    "ios",
   );
   const androidAppId = resolveAdMobAppId(
     "ADMOB_ANDROID_APP_ID",
     GOOGLE_SAMPLE_ANDROID_APP_ID,
+    "android",
   );
 
   return {

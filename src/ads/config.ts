@@ -25,8 +25,7 @@ function clean(value: string | undefined): string | null {
 // production builds, so a production binary can never request test ads.
 export function shouldUseTestAds(): boolean {
   const extra = Constants.expoConfig?.extra as
-    | { ads?: { useTestIds?: boolean } }
-    | undefined;
+    { ads?: { useTestIds?: boolean } } | undefined;
 
   return extra?.ads?.useTestIds === true;
 }

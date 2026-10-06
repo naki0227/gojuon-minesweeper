@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useAdFree } from "../entitlements/useAdFree";
@@ -40,19 +40,27 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
     }
 
     ensureAdSenseScript(unit.clientId);
+    let active = true;
+    const markUnfilled = () => {
+      if (active) {
+        setUnfilled(true);
+      }
+    };
 
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
-      setUnfilled(true);
-      return;
+      queueMicrotask(markUnfilled);
+      return () => {
+        active = false;
+      };
     }
 
     // AdSense marks units it cannot fill with data-ad-status="unfilled".
     // Collapse them instead of leaving an empty box.
     const observer = new MutationObserver(() => {
       if (ins.getAttribute("data-ad-status") === "unfilled") {
-        setUnfilled(true);
+        markUnfilled();
       }
     });
     observer.observe(ins, {
@@ -60,7 +68,10 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
       attributeFilter: ["data-ad-status"],
     });
 
-    return () => observer.disconnect();
+    return () => {
+      active = false;
+      observer.disconnect();
+    };
   }, [unit.clientId, unit.slotId]);
 
   if (unfilled) {
@@ -88,11 +99,11 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
 export function BannerAd({ placement }: BannerAdProps) {
   const { resolved, adFree } = useAdFree();
   // Static export renders on the server first; ad markup is client-only.
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   const unit = getAdSenseUnit(placement);
 
