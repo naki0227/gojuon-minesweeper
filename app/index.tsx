@@ -10,12 +10,16 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { GojuonBoard } from "../src/components/GojuonBoard";
+import { trackEvent } from "../src/analytics/events";
+import { CharacterBoard } from "../src/components/CharacterBoard";
 import {
-  QUESTIONS,
-  primaryAnswer,
+  countQuestions,
+  getAvailableLengths,
+  getCategories,
+  pickRandomQuestion,
   questionPrompt,
 } from "../src/data/questions";
+import type { QuestionFilters, QuestionLanguage } from "../src/data/types";
 import {
   createInitialState,
   isMineCharacter,
@@ -23,24 +27,218 @@ import {
   passAnswer,
   questionMineCharacters,
   submitAnswer,
+  type GameState,
 } from "../src/game/engine";
-import { trackEvent } from "../src/analytics/events";
+
+const RANDOM_FILTERS: QuestionFilters = {
+  language: "any",
+  category: "any",
+  length: "any",
+};
+
+function FilterChip({
+  label,
+  selected,
+  onPress,
+}: {
+  label: string;
+  selected: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.chip,
+        selected ? styles.chipSelected : null,
+        pressed ? styles.pressedButton : null,
+      ]}
+    >
+      <Text style={[styles.chipText, selected ? styles.chipTextSelected : null]}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
 
 export default function HomeScreen() {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [game, setGame] = useState(() => createInitialState(QUESTIONS[0]!));
+  const [filters, setFilters] = useState<QuestionFilters>(RANDOM_FILTERS);
+  const [game, setGame] = useState<GameState | null>(null);
   const [answer, setAnswer] = useState("");
 
-  const mineChars = useMemo(
-    () => questionMineCharacters(game.question),
-    [game.question],
+  const categories = useMemo(
+    () => getCategories(filters.language),
+    [filters.language],
   );
+  const lengths = useMemo(
+    () =>
+      getAvailableLengths({
+        language: filters.language,
+        category: filters.category,
+      }),
+    [filters.category, filters.language],
+  );
+  const candidateCount = useMemo(() => countQuestions(filters), [filters]);
+
+  const mineChars = useMemo(
+    () => (game ? questionMineCharacters(game.question) : new Set<string>()),
+    [game],
+  );
+
+  function startGame(nextFilters: QuestionFilters, excludeId?: string) {
+    const question = pickRandomQuestion(nextFilters, excludeId);
+
+    if (!question) {
+      return;
+    }
+
+    setFilters(nextFilters);
+    setGame(createInitialState(question));
+    setAnswer("");
+
+    trackEvent("game_start", {
+      question_id: question.id,
+      language: question.language,
+      category: question.category,
+      answer_length: question.length,
+    });
+  }
+
+  function setLanguage(language: QuestionLanguage | "any") {
+    setFilters({
+      language,
+      category: "any",
+      length: "any",
+    });
+  }
+
+  function setCategory(category: string | "any") {
+    setFilters((current) => ({
+      ...current,
+      category,
+      length: "any",
+    }));
+  }
+
+  function setLength(length: number | "any") {
+    setFilters((current) => ({ ...current, length }));
+  }
+
+  if (!game) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.page}>
+          <View style={styles.header}>
+            <Text style={styles.eyebrow}>WORD × MINESWEEPER</Text>
+            <Text style={styles.title}>五十音マインスイーパー</Text>
+            <Text style={styles.rule}>
+              日本語の五十音でも英語のA〜Zでも遊べます。ジャンルや文字数を絞るか、全部から完全ランダムで出題できます。
+            </Text>
+          </View>
+
+          <Pressable
+            onPress={() => startGame(RANDOM_FILTERS)}
+            style={({ pressed }) => [
+              styles.randomButton,
+              pressed ? styles.pressedButton : null,
+            ]}
+          >
+            <Text style={styles.randomButtonTitle}>完全ランダムで遊ぶ</Text>
+            <Text style={styles.randomButtonNote}>
+              日本語・英語・全ジャンル・全文字数から出題
+            </Text>
+          </Pressable>
+
+          <View style={styles.setupSection}>
+            <Text style={styles.sectionTitle}>言語</Text>
+            <View style={styles.chipWrap}>
+              <FilterChip
+                label="おまかせ"
+                selected={filters.language === "any"}
+                onPress={() => setLanguage("any")}
+              />
+              <FilterChip
+                label="日本語"
+                selected={filters.language === "ja"}
+                onPress={() => setLanguage("ja")}
+              />
+              <FilterChip
+                label="English"
+                selected={filters.language === "en"}
+                onPress={() => setLanguage("en")}
+              />
+            </View>
+          </View>
+
+          <View style={styles.setupSection}>
+            <Text style={styles.sectionTitle}>ジャンル</Text>
+            <View style={styles.chipWrap}>
+              <FilterChip
+                label="おまかせ"
+                selected={filters.category === "any"}
+                onPress={() => setCategory("any")}
+              />
+              {categories.map((category) => (
+                <FilterChip
+                  key={category}
+                  label={category}
+                  selected={filters.category === category}
+                  onPress={() => setCategory(category)}
+                />
+              ))}
+            </View>
+          </View>
+
+          <View style={styles.setupSection}>
+            <Text style={styles.sectionTitle}>文字数</Text>
+            <View style={styles.chipWrap}>
+              <FilterChip
+                label="おまかせ"
+                selected={filters.length === "any"}
+                onPress={() => setLength("any")}
+              />
+              {lengths.map((length) => (
+                <FilterChip
+                  key={length}
+                  label={`${length}文字`}
+                  selected={filters.length === length}
+                  onPress={() => setLength(length)}
+                />
+              ))}
+            </View>
+            <Text style={styles.helperText}>
+              日本語は小文字・濁音・半濁音を同じ文字として扱い、長音「ー」は1文字。英語はスペースや記号を数えません。
+            </Text>
+          </View>
+
+          <View style={styles.startPanel}>
+            <Text style={styles.poolCount}>候補 {candidateCount} 問</Text>
+            <Pressable
+              disabled={candidateCount === 0}
+              onPress={() => startGame(filters)}
+              style={({ pressed }) => [
+                styles.primaryButton,
+                candidateCount === 0 ? styles.disabledButton : null,
+                pressed ? styles.pressedButton : null,
+              ]}
+            >
+              <Text style={styles.primaryButtonText}>この条件で遊ぶ</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
 
   const currentPlayerLabel = `Player ${game.currentPlayer + 1}`;
   const canAnswer = game.phase === "answer";
   const canOpen = game.phase === "open";
 
   function handleSubmitAnswer() {
+    if (!game) {
+      return;
+    }
+
     const next = submitAnswer(game, answer);
     const correct = next.winner !== null;
 
@@ -65,11 +263,19 @@ export default function HomeScreen() {
   }
 
   function handlePassAnswer() {
-    setGame((current) => passAnswer(current));
+    if (!game) {
+      return;
+    }
+
+    setGame(passAnswer(game));
     setAnswer("");
   }
 
   function handleOpen(char: string) {
+    if (!game) {
+      return;
+    }
+
     const mine = isMineCharacter(game.question, char);
 
     trackEvent("cell_open", {
@@ -86,28 +292,13 @@ export default function HomeScreen() {
       });
     }
 
-    setGame((current) => openCharacter(current, char));
+    setGame(openCharacter(game, char));
   }
 
-  function handleNewGame() {
-    const nextIndex =
-      QUESTIONS.length <= 1
-        ? 0
-        : (questionIndex +
-            1 +
-            Math.floor(Math.random() * (QUESTIONS.length - 1))) %
-          QUESTIONS.length;
-
-    const nextQuestion = QUESTIONS[nextIndex]!;
-
-    setQuestionIndex(nextIndex);
-    setGame(createInitialState(nextQuestion));
-    setAnswer("");
-
-    trackEvent(game.winner === null ? "game_start" : "rematch", {
-      question_id: nextQuestion.id,
-    });
-  }
+  const answerPlaceholder =
+    game.question.language === "ja"
+      ? "漢字・ひらがな・カタカナで回答"
+      : "英単語を入力";
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -115,11 +306,21 @@ export default function HomeScreen() {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={styles.page}
       >
+        <View style={styles.gameTopBar}>
+          <Text style={styles.eyebrow}>
+            {game.question.language === "ja"
+              ? "五十音マインスイーパー"
+              : "ALPHABET MINESWEEPER"}
+          </Text>
+          <Pressable onPress={() => setGame(null)} style={styles.changeButton}>
+            <Text style={styles.changeButtonText}>条件を変える</Text>
+          </Pressable>
+        </View>
+
         <View style={styles.header}>
-          <Text style={styles.eyebrow}>五十音マインスイーパー</Text>
           <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
           <Text style={styles.rule}>
-            回答してから1文字開く。セーフなら周囲8マスの地雷数が出て、0なら周辺も自動で開きます。地雷を開いたら次の自分のターンは回答できません。
+            回答してから1文字開く。セーフなら周囲8マスの地雷数を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。
           </Text>
         </View>
 
@@ -149,11 +350,27 @@ export default function HomeScreen() {
               Player {game.winner! + 1} の勝ち！
             </Text>
             <Text style={styles.resultAnswer}>
-              答え：{game.question.answers.join(" / ")}
+              答え：{game.question.answers.map((item) => item.display).join(" / ")}
             </Text>
-            <Pressable style={styles.primaryButton} onPress={handleNewGame}>
-              <Text style={styles.primaryButtonText}>もう一戦</Text>
-            </Pressable>
+            {game.question.answers.length > 1 ? (
+              <Text style={styles.helperText}>
+                同じ文字構成のため、どれも正解として扱います。
+              </Text>
+            ) : null}
+            <View style={styles.answerActions}>
+              <Pressable
+                style={styles.primaryButton}
+                onPress={() => startGame(filters, game.question.id)}
+              >
+                <Text style={styles.primaryButtonText}>同じ条件でもう一戦</Text>
+              </Pressable>
+              <Pressable
+                style={styles.secondaryButton}
+                onPress={() => setGame(null)}
+              >
+                <Text style={styles.secondaryButtonText}>条件を変える</Text>
+              </Pressable>
+            </View>
           </View>
         ) : (
           <>
@@ -165,8 +382,12 @@ export default function HomeScreen() {
                 editable={canAnswer}
                 enterKeyHint="done"
                 onChangeText={setAnswer}
-                onSubmitEditing={canAnswer && answer.trim() ? handleSubmitAnswer : undefined}
-                placeholder={canAnswer ? "ひらがな・カタカナで回答" : "このターンは回答できません"}
+                onSubmitEditing={
+                  canAnswer && answer.trim() ? handleSubmitAnswer : undefined
+                }
+                placeholder={
+                  canAnswer ? answerPlaceholder : "このターンは回答できません"
+                }
                 returnKeyType="done"
                 style={[styles.input, !canAnswer ? styles.inputDisabled : null]}
                 value={answer}
@@ -177,7 +398,9 @@ export default function HomeScreen() {
                   onPress={handleSubmitAnswer}
                   style={({ pressed }) => [
                     styles.primaryButton,
-                    (!canAnswer || !answer.trim()) ? styles.disabledButton : null,
+                    !canAnswer || !answer.trim()
+                      ? styles.disabledButton
+                      : null,
                     pressed ? styles.pressedButton : null,
                   ]}
                 >
@@ -197,7 +420,7 @@ export default function HomeScreen() {
               </View>
             </View>
 
-            <GojuonBoard
+            <CharacterBoard
               question={game.question}
               canOpen={canOpen}
               mineChars={mineChars}
@@ -210,18 +433,20 @@ export default function HomeScreen() {
         <View style={styles.legend}>
           <View style={styles.legendItem}>
             <View style={[styles.legendSwatch, styles.safeSwatch]} />
-            <Text style={styles.legendText}>セーフ</Text>
+            <Text style={styles.legendText}>セーフ + 周囲の地雷数</Text>
           </View>
           <View style={styles.legendItem}>
             <View style={[styles.legendSwatch, styles.mineSwatch]} />
             <Text style={styles.legendText}>地雷</Text>
           </View>
-          <Text style={styles.legendNote}>「ー」は「ん」の下</Text>
+          {game.question.language === "ja" ? (
+            <Text style={styles.legendNote}>「ー」は「ん」の下</Text>
+          ) : null}
         </View>
 
         {Platform.OS === "web" ? (
           <Text style={styles.webNote}>
-            Web版も同じコードで動作します。オンライン対戦では答えをクライアントに配らない構成へ変更予定です。
+            Web版も同じコードで動作します。オンライン対戦では正解をクライアントへ配らない構成に変更予定です。
           </Text>
         ) : null}
       </ScrollView>
@@ -246,6 +471,12 @@ const styles = StyleSheet.create({
   header: {
     gap: 6,
   },
+  title: {
+    color: "#102433",
+    fontSize: 32,
+    fontWeight: "900",
+    lineHeight: 40,
+  },
   eyebrow: {
     color: "#4285a8",
     fontSize: 13,
@@ -262,6 +493,91 @@ const styles = StyleSheet.create({
     color: "#627481",
     fontSize: 14,
     lineHeight: 21,
+  },
+  randomButton: {
+    backgroundColor: "#173f55",
+    borderRadius: 14,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    gap: 4,
+  },
+  randomButtonTitle: {
+    color: "#ffffff",
+    fontSize: 19,
+    fontWeight: "900",
+  },
+  randomButtonNote: {
+    color: "#d7e7ef",
+    fontSize: 12,
+  },
+  setupSection: {
+    gap: 9,
+  },
+  sectionTitle: {
+    color: "#263c49",
+    fontSize: 16,
+    fontWeight: "900",
+  },
+  chipWrap: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 7,
+  },
+  chip: {
+    minHeight: 38,
+    justifyContent: "center",
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#bdcbd5",
+    backgroundColor: "#ffffff",
+    paddingHorizontal: 13,
+    paddingVertical: 7,
+  },
+  chipSelected: {
+    borderColor: "#3388b0",
+    backgroundColor: "#eaf6fb",
+  },
+  chipText: {
+    color: "#536875",
+    fontSize: 13,
+    fontWeight: "700",
+  },
+  chipTextSelected: {
+    color: "#1f617f",
+  },
+  helperText: {
+    color: "#7b8992",
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  startPanel: {
+    gap: 8,
+    marginTop: 4,
+  },
+  poolCount: {
+    color: "#526975",
+    fontSize: 13,
+    fontWeight: "800",
+  },
+  gameTopBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
+  },
+  changeButton: {
+    minHeight: 38,
+    justifyContent: "center",
+    paddingHorizontal: 12,
+    borderWidth: 1,
+    borderColor: "#c4d1d9",
+    borderRadius: 9,
+    backgroundColor: "#ffffff",
+  },
+  changeButtonText: {
+    color: "#526975",
+    fontSize: 12,
+    fontWeight: "800",
   },
   turnPanel: {
     backgroundColor: "#eaf6fb",
@@ -327,6 +643,7 @@ const styles = StyleSheet.create({
   },
   answerActions: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
   },
   primaryButton: {
@@ -346,6 +663,7 @@ const styles = StyleSheet.create({
   secondaryButton: {
     minHeight: 46,
     borderColor: "#b9c9d3",
+    backgroundColor: "#ffffff",
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 16,
