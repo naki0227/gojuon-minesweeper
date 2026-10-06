@@ -1,5 +1,6 @@
 import type { Question } from "../data/questions";
 import { primaryAnswer } from "../data/questions";
+import { adjacentCharacters } from "./gojuon";
 import { normalizeKana } from "./normalize";
 import { createSignatureKey, mineCharacters } from "./signature";
 
@@ -40,6 +41,13 @@ export function isMineCharacter(question: Question, char: string): boolean {
   return questionMineCharacters(question).has(char);
 }
 
+export function adjacentMineCount(question: Question, char: string): number {
+  const mines = questionMineCharacters(question);
+
+  return adjacentCharacters(char).filter((neighbor) => mines.has(neighbor))
+    .length;
+}
+
 export function isAcceptedAnswer(question: Question, input: string): boolean {
   const normalizedInput = normalizeKana(input);
 
@@ -61,6 +69,40 @@ export function validateQuestionCollision(question: Question): boolean {
   return question.answers.every(
     (answer) => createSignatureKey(answer) === expected,
   );
+}
+
+function expandZeroArea(
+  question: Question,
+  startChar: string,
+  alreadyOpened: ReadonlySet<string>,
+): string[] {
+  const mines = questionMineCharacters(question);
+  const opened = new Set(alreadyOpened);
+  const newlyOpened = new Set<string>();
+  const queue = [startChar];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+
+    if (!current || opened.has(current) || mines.has(current)) {
+      continue;
+    }
+
+    opened.add(current);
+    newlyOpened.add(current);
+
+    if (adjacentMineCount(question, current) !== 0) {
+      continue;
+    }
+
+    for (const neighbor of adjacentCharacters(current)) {
+      if (!opened.has(neighbor) && !mines.has(neighbor)) {
+        queue.push(neighbor);
+      }
+    }
+  }
+
+  return [...newlyOpened];
 }
 
 export function submitAnswer(state: GameState, input: string): GameState {
@@ -118,6 +160,12 @@ export function openCharacter(state: GameState, char: string): GameState {
     blocked[state.currentPlayer] = true;
   }
 
+  const alreadyOpened = new Set(state.openedChars);
+  const newlyOpened = hitMine
+    ? [char]
+    : expandZeroArea(state.question, char, alreadyOpened);
+  const openedChars = [...state.openedChars, ...newlyOpened];
+
   const nextPlayer: PlayerIndex = state.currentPlayer === 0 ? 1 : 0;
   const nextPlayerBlocked = blocked[nextPlayer];
 
@@ -125,11 +173,19 @@ export function openCharacter(state: GameState, char: string): GameState {
     blocked[nextPlayer] = false;
   }
 
-  const openedChars = [...state.openedChars, char];
+  let resultMessage: string;
 
-  const resultMessage = hitMine
-    ? `「${char}」は地雷！ ${playerName(state.currentPlayer)} は次回の回答権なし。`
-    : `「${char}」はセーフ。`;
+  if (hitMine) {
+    resultMessage = `「${char}」は地雷！ ${playerName(state.currentPlayer)} は次回の回答権なし。`;
+  } else {
+    const count = adjacentMineCount(state.question, char);
+    const chainCount = Math.max(0, newlyOpened.length - 1);
+
+    resultMessage =
+      count === 0 && chainCount > 0
+        ? `「${char}」の周囲は地雷0個。周辺${chainCount}マスも開きました。`
+        : `「${char}」はセーフ。周囲の地雷は${count}個。`;
+  }
 
   return {
     ...state,
