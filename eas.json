@@ -12,7 +12,16 @@
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "production"
+      },
+      "ios": {
+        "env": { "APP_TARGET_PLATFORM": "ios" }
+      },
+      "android": {
+        "env": { "APP_TARGET_PLATFORM": "android" }
+      }
     }
   },
   "submit": {

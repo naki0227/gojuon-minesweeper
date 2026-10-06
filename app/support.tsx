@@ -22,9 +22,20 @@ export default function SupportScreen() {
           </Text>
 
           <View style={styles.section}>
+            <Text style={styles.heading}>お問い合わせ</Text>
+            <Text style={styles.body}>
+              購入や広告、個人情報の取り扱いなど、公開の場に書きにくい内容はメールでご連絡ください。
+            </Text>
+            <Link href="mailto:contact@enludus.com" style={styles.link}>
+              contact@enludus.com
+            </Link>
+          </View>
+
+          <View style={styles.section}>
             <Text style={styles.heading}>報告するときにあると助かる情報</Text>
             <Text style={styles.body}>
-              利用環境（Web / iOS / Android）、発生した画面、再現手順、表示されていたジャンルや文字数を添えてください。
+              利用環境（Web / iOS /
+              Android）、発生した画面、再現手順、表示されていたジャンルや文字数を添えてください。
             </Text>
           </View>
 
@@ -34,8 +45,12 @@ export default function SupportScreen() {
           >
             GitHub Issuesを開く
           </Link>
-          <Link href="/privacy" style={styles.link}>プライバシーポリシー</Link>
-          <Link href="/" style={styles.link}>ゲームへ戻る</Link>
+          <Link href="/privacy" style={styles.link}>
+            プライバシーポリシー
+          </Link>
+          <Link href="/" style={styles.link}>
+            ゲームへ戻る
+          </Link>
         </ScrollView>
       </SafeAreaView>
     </>

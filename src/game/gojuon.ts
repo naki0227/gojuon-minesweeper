@@ -43,9 +43,7 @@ export function adjacentCharacters(char: string): string[] {
       }
 
       const neighbor =
-        GOJUON_GRID[position.row + rowOffset]?.[
-          position.column + columnOffset
-        ];
+        GOJUON_GRID[position.row + rowOffset]?.[position.column + columnOffset];
 
       if (neighbor) {
         result.push(neighbor);

@@ -8,7 +8,9 @@ export type AnalyticsEventName =
   | "game_finish"
   | "rematch";
 
-export type AnalyticsParams = Readonly<Record<string, string | number | boolean>>;
+export type AnalyticsParams = Readonly<
+  Record<string, string | number | boolean>
+>;
 
 /**
  * GA4 / Firebase Analytics 接続前の共通窓口。
