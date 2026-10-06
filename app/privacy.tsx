@@ -34,6 +34,38 @@ export default function PrivacyScreen() {
           </View>
 
           <View style={styles.section}>
+            <Text style={styles.heading}>広告</Text>
+            <Text style={styles.body}>
+              本サービスは広告配信サービスとしてGoogleを利用しています（iOS・Android版はGoogle AdMob、Web版はGoogle AdSense）。広告はゲーム設定画面と結果画面にのみ表示し、対局中には表示しません。
+            </Text>
+            <Text style={styles.body}>
+              広告の配信・効果測定・不正防止のため、Cookie、広告識別子、IPアドレス、端末やブラウザの種類、おおよその位置情報、広告の表示やタップの状況などの情報がGoogleにより処理される場合があります。地域によっては、広告に関する同意を確認する画面が表示されます。
+            </Text>
+            <Text style={styles.body}>
+              Googleによる情報の取り扱いは、Googleのポリシーをご確認ください。パーソナライズ広告はGoogleの広告設定から管理できます。
+            </Text>
+            <Link
+              href="https://policies.google.com/technologies/partner-sites?hl=ja"
+              style={styles.inlineLink}
+            >
+              Googleのパートナーサイトでのデータ利用について
+            </Link>
+            <Link
+              href="https://policies.google.com/technologies/ads?hl=ja"
+              style={styles.inlineLink}
+            >
+              Googleの広告に関するポリシー
+            </Link>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.heading}>広告の非表示（アプリ内課金）</Text>
+            <Text style={styles.body}>
+              アプリ版では、広告を非表示にするアプリ内課金を提供します。決済はApple（App Store）またはGoogle（Google Play）が行い、本サービスがクレジットカード番号などの決済情報を取得することはありません。購入状態は端末上で各ストアに照会して確認します。購入はWeb版には引き継がれません。
+            </Text>
+          </View>
+
+          <View style={styles.section}>
             <Text style={styles.heading}>オンライン対戦</Text>
             <Text style={styles.body}>
               オンライン対戦機能を提供する場合、対戦ルームの識別子、参加者を区別するための一時的な識別子、対戦状態などを処理することがあります。ゲーム進行に不要な個人情報は要求しません。
@@ -78,4 +110,5 @@ const styles = StyleSheet.create({
   heading: { color: "#263c49", fontSize: 17, fontWeight: "800" },
   body: { color: "#536875", fontSize: 14, lineHeight: 23 },
   link: { color: "#287da5", fontWeight: "700", marginTop: 4 },
+  inlineLink: { color: "#287da5", fontSize: 14, fontWeight: "700" },
 });

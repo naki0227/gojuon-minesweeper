@@ -35,6 +35,11 @@ jobs:
 
       - name: Export web
         run: npm run build:web
+        env:
+          # Set these as repository variables (Settings > Secrets and variables > Actions > Variables).
+          EXPO_PUBLIC_ADSENSE_CLIENT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_CLIENT_ID }}
+          EXPO_PUBLIC_ADSENSE_SETUP_SLOT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_SETUP_SLOT_ID }}
+          EXPO_PUBLIC_ADSENSE_RESULT_SLOT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_RESULT_SLOT_ID }}
 
       - name: Publish gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { BannerAd } from "../src/ads/BannerAd";
 import { trackEvent } from "../src/analytics/events";
 import { CharacterBoard } from "../src/components/CharacterBoard";
+import { RemoveAdsOptions } from "../src/components/RemoveAdsOptions";
 import {
   countQuestions,
   getAvailableLengths,
@@ -224,6 +226,11 @@ export default function HomeScreen() {
             >
               <Text style={styles.primaryButtonText}>この条件で遊ぶ</Text>
             </Pressable>
+          </View>
+
+          <View style={styles.adArea}>
+            <BannerAd placement="setup" />
+            <RemoveAdsOptions />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -449,6 +456,9 @@ export default function HomeScreen() {
             Web版も同じコードで動作します。オンライン対戦では正解をクライアントへ配らない構成に変更予定です。
           </Text>
         ) : null}
+
+        {/* Ads only once the game is decided; never during play. */}
+        {game.phase === "finished" ? <BannerAd placement="result" /> : null}
       </ScrollView>
     </SafeAreaView>
   );
@@ -553,6 +563,10 @@ const styles = StyleSheet.create({
   startPanel: {
     gap: 8,
     marginTop: 4,
+  },
+  adArea: {
+    gap: 10,
+    marginTop: 8,
   },
   poolCount: {
     color: "#526975",
