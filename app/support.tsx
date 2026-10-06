@@ -24,7 +24,8 @@ export default function SupportScreen() {
           <View style={styles.section}>
             <Text style={styles.heading}>報告するときにあると助かる情報</Text>
             <Text style={styles.body}>
-              利用環境（Web / iOS / Android）、発生した画面、再現手順、表示されていたジャンルや文字数を添えてください。
+              利用環境（Web / iOS /
+              Android）、発生した画面、再現手順、表示されていたジャンルや文字数を添えてください。
             </Text>
           </View>
 
@@ -34,8 +35,12 @@ export default function SupportScreen() {
           >
             GitHub Issuesを開く
           </Link>
-          <Link href="/privacy" style={styles.link}>プライバシーポリシー</Link>
-          <Link href="/" style={styles.link}>ゲームへ戻る</Link>
+          <Link href="/privacy" style={styles.link}>
+            プライバシーポリシー
+          </Link>
+          <Link href="/" style={styles.link}>
+            ゲームへ戻る
+          </Link>
         </ScrollView>
       </SafeAreaView>
     </>

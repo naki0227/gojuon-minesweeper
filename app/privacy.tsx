@@ -36,7 +36,9 @@ export default function PrivacyScreen() {
           <View style={styles.section}>
             <Text style={styles.heading}>広告</Text>
             <Text style={styles.body}>
-              本サービスは広告配信サービスとしてGoogleを利用しています（iOS・Android版はGoogle AdMob、Web版はGoogle AdSense）。広告はゲーム設定画面と結果画面にのみ表示し、対局中には表示しません。
+              本サービスは広告配信サービスとしてGoogleを利用しています（iOS・Android版はGoogle
+              AdMob、Web版はGoogle
+              AdSense）。広告はゲーム設定画面と結果画面にのみ表示し、対局中には表示しません。
             </Text>
             <Text style={styles.body}>
               広告の配信・効果測定・不正防止のため、Cookie、広告識別子、IPアドレス、端末やブラウザの種類、おおよその位置情報、広告の表示やタップの状況などの情報がGoogleにより処理される場合があります。地域によっては、広告に関する同意を確認する画面が表示されます。
@@ -61,7 +63,9 @@ export default function PrivacyScreen() {
           <View style={styles.section}>
             <Text style={styles.heading}>広告の非表示（アプリ内課金）</Text>
             <Text style={styles.body}>
-              アプリ版では、広告を非表示にするアプリ内課金を提供します。決済はApple（App Store）またはGoogle（Google Play）が行い、本サービスがクレジットカード番号などの決済情報を取得することはありません。購入状態は端末上で各ストアに照会して確認します。購入はWeb版には引き継がれません。
+              アプリ版では、広告を非表示にするアプリ内課金を提供します。決済はApple（App
+              Store）またはGoogle（Google
+              Play）が行い、本サービスがクレジットカード番号などの決済情報を取得することはありません。購入状態は端末上で各ストアに照会して確認します。購入はWeb版には引き継がれません。
             </Text>
           </View>
 
@@ -86,8 +90,12 @@ export default function PrivacyScreen() {
             </Text>
           </View>
 
-          <Link href="/support" style={styles.link}>サポート</Link>
-          <Link href="/" style={styles.link}>ゲームへ戻る</Link>
+          <Link href="/support" style={styles.link}>
+            サポート
+          </Link>
+          <Link href="/" style={styles.link}>
+            ゲームへ戻る
+          </Link>
         </ScrollView>
       </SafeAreaView>
     </>
