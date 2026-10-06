@@ -1,0 +1,1556 @@
+[
+  {
+    "id": "jax-0001",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "北海道",
+    "value": "ほっかいどう"
+  },
+  {
+    "id": "jax-0002",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "青森県",
+    "value": "あおもりけん"
+  },
+  {
+    "id": "jax-0003",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "岩手県",
+    "value": "いわてけん"
+  },
+  {
+    "id": "jax-0004",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "宮城県",
+    "value": "みやぎけん"
+  },
+  {
+    "id": "jax-0005",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "秋田県",
+    "value": "あきたけん"
+  },
+  {
+    "id": "jax-0006",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "山形県",
+    "value": "やまがたけん"
+  },
+  {
+    "id": "jax-0007",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "福島県",
+    "value": "ふくしまけん"
+  },
+  {
+    "id": "jax-0008",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "茨城県",
+    "value": "いばらきけん"
+  },
+  {
+    "id": "jax-0009",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "栃木県",
+    "value": "とちぎけん"
+  },
+  {
+    "id": "jax-0010",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "群馬県",
+    "value": "ぐんまけん"
+  },
+  {
+    "id": "jax-0011",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "埼玉県",
+    "value": "さいたまけん"
+  },
+  {
+    "id": "jax-0012",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "千葉県",
+    "value": "ちばけん"
+  },
+  {
+    "id": "jax-0013",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "東京都",
+    "value": "とうきょうと"
+  },
+  {
+    "id": "jax-0014",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "神奈川県",
+    "value": "かながわけん"
+  },
+  {
+    "id": "jax-0015",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "新潟県",
+    "value": "にいがたけん"
+  },
+  {
+    "id": "jax-0016",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "富山県",
+    "value": "とやまけん"
+  },
+  {
+    "id": "jax-0017",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "石川県",
+    "value": "いしかわけん"
+  },
+  {
+    "id": "jax-0018",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "福井県",
+    "value": "ふくいけん"
+  },
+  {
+    "id": "jax-0019",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "山梨県",
+    "value": "やまなしけん"
+  },
+  {
+    "id": "jax-0020",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "長野県",
+    "value": "ながのけん"
+  },
+  {
+    "id": "jax-0021",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "岐阜県",
+    "value": "ぎふけん"
+  },
+  {
+    "id": "jax-0022",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "静岡県",
+    "value": "しずおかけん"
+  },
+  {
+    "id": "jax-0023",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "愛知県",
+    "value": "あいちけん"
+  },
+  {
+    "id": "jax-0024",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "三重県",
+    "value": "みえけん"
+  },
+  {
+    "id": "jax-0025",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "滋賀県",
+    "value": "しがけん"
+  },
+  {
+    "id": "jax-0026",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "京都府",
+    "value": "きょうとふ"
+  },
+  {
+    "id": "jax-0027",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "大阪府",
+    "value": "おおさかふ"
+  },
+  {
+    "id": "jax-0028",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "兵庫県",
+    "value": "ひょうごけん"
+  },
+  {
+    "id": "jax-0029",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "奈良県",
+    "value": "ならけん"
+  },
+  {
+    "id": "jax-0030",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "和歌山県",
+    "value": "わかやまけん"
+  },
+  {
+    "id": "jax-0031",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "鳥取県",
+    "value": "とっとりけん"
+  },
+  {
+    "id": "jax-0032",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "島根県",
+    "value": "しまねけん"
+  },
+  {
+    "id": "jax-0033",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "岡山県",
+    "value": "おかやまけん"
+  },
+  {
+    "id": "jax-0034",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "広島県",
+    "value": "ひろしまけん"
+  },
+  {
+    "id": "jax-0035",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "山口県",
+    "value": "やまぐちけん"
+  },
+  {
+    "id": "jax-0036",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "徳島県",
+    "value": "とくしまけん"
+  },
+  {
+    "id": "jax-0037",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "香川県",
+    "value": "かがわけん"
+  },
+  {
+    "id": "jax-0038",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "愛媛県",
+    "value": "えひめけん"
+  },
+  {
+    "id": "jax-0039",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "高知県",
+    "value": "こうちけん"
+  },
+  {
+    "id": "jax-0040",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "福岡県",
+    "value": "ふくおかけん"
+  },
+  {
+    "id": "jax-0041",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "佐賀県",
+    "value": "さがけん"
+  },
+  {
+    "id": "jax-0042",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "長崎県",
+    "value": "ながさきけん"
+  },
+  {
+    "id": "jax-0043",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "熊本県",
+    "value": "くまもとけん"
+  },
+  {
+    "id": "jax-0044",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "大分県",
+    "value": "おおいたけん"
+  },
+  {
+    "id": "jax-0045",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "宮崎県",
+    "value": "みやざきけん"
+  },
+  {
+    "id": "jax-0046",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "鹿児島県",
+    "value": "かごしまけん"
+  },
+  {
+    "id": "jax-0047",
+    "language": "ja",
+    "category": "都道府県",
+    "display": "沖縄県",
+    "value": "おきなわけん"
+  },
+  {
+    "id": "jax-0048",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "アメリカ",
+    "value": "あめりか"
+  },
+  {
+    "id": "jax-0049",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "カナダ",
+    "value": "かなだ"
+  },
+  {
+    "id": "jax-0050",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "メキシコ",
+    "value": "めきしこ"
+  },
+  {
+    "id": "jax-0051",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ブラジル",
+    "value": "ぶらじる"
+  },
+  {
+    "id": "jax-0052",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "アルゼンチン",
+    "value": "あるぜんちん"
+  },
+  {
+    "id": "jax-0053",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "チリ",
+    "value": "ちり"
+  },
+  {
+    "id": "jax-0054",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ペルー",
+    "value": "ぺるー"
+  },
+  {
+    "id": "jax-0055",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "イギリス",
+    "value": "いぎりす"
+  },
+  {
+    "id": "jax-0056",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "フランス",
+    "value": "ふらんす"
+  },
+  {
+    "id": "jax-0057",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ドイツ",
+    "value": "どいつ"
+  },
+  {
+    "id": "jax-0058",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "イタリア",
+    "value": "いたりあ"
+  },
+  {
+    "id": "jax-0059",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "スペイン",
+    "value": "すぺいん"
+  },
+  {
+    "id": "jax-0060",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ポルトガル",
+    "value": "ぽるとがる"
+  },
+  {
+    "id": "jax-0061",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "オランダ",
+    "value": "おらんだ"
+  },
+  {
+    "id": "jax-0062",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ベルギー",
+    "value": "べるぎー"
+  },
+  {
+    "id": "jax-0063",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "スイス",
+    "value": "すいす"
+  },
+  {
+    "id": "jax-0064",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "オーストリア",
+    "value": "おーすとりあ"
+  },
+  {
+    "id": "jax-0065",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "スウェーデン",
+    "value": "すうぇーでん"
+  },
+  {
+    "id": "jax-0066",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ノルウェー",
+    "value": "のるうぇー"
+  },
+  {
+    "id": "jax-0067",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "フィンランド",
+    "value": "ふぃんらんど"
+  },
+  {
+    "id": "jax-0068",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "デンマーク",
+    "value": "でんまーく"
+  },
+  {
+    "id": "jax-0069",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ポーランド",
+    "value": "ぽーらんど"
+  },
+  {
+    "id": "jax-0070",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ギリシャ",
+    "value": "ぎりしゃ"
+  },
+  {
+    "id": "jax-0071",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "トルコ",
+    "value": "とるこ"
+  },
+  {
+    "id": "jax-0072",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ウクライナ",
+    "value": "うくらいな"
+  },
+  {
+    "id": "jax-0073",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "中国",
+    "value": "ちゅうごく"
+  },
+  {
+    "id": "jax-0074",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "韓国",
+    "value": "かんこく"
+  },
+  {
+    "id": "jax-0075",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "インド",
+    "value": "いんど"
+  },
+  {
+    "id": "jax-0076",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "インドネシア",
+    "value": "いんどねしあ"
+  },
+  {
+    "id": "jax-0077",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "タイ",
+    "value": "たい"
+  },
+  {
+    "id": "jax-0078",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ベトナム",
+    "value": "べとなむ"
+  },
+  {
+    "id": "jax-0079",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "フィリピン",
+    "value": "ふぃりぴん"
+  },
+  {
+    "id": "jax-0080",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "マレーシア",
+    "value": "まれーしあ"
+  },
+  {
+    "id": "jax-0081",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "シンガポール",
+    "value": "しんがぽーる"
+  },
+  {
+    "id": "jax-0082",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "モンゴル",
+    "value": "もんごる"
+  },
+  {
+    "id": "jax-0083",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ネパール",
+    "value": "ねぱーる"
+  },
+  {
+    "id": "jax-0084",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "スリランカ",
+    "value": "すりらんか"
+  },
+  {
+    "id": "jax-0085",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "オーストラリア",
+    "value": "おーすとらりあ"
+  },
+  {
+    "id": "jax-0086",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ニュージーランド",
+    "value": "にゅーじーらんど"
+  },
+  {
+    "id": "jax-0087",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "エジプト",
+    "value": "えじぷと"
+  },
+  {
+    "id": "jax-0088",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ケニア",
+    "value": "けにあ"
+  },
+  {
+    "id": "jax-0089",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "エチオピア",
+    "value": "えちおぴあ"
+  },
+  {
+    "id": "jax-0090",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "南アフリカ",
+    "value": "みなみあふりか"
+  },
+  {
+    "id": "jax-0091",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "モロッコ",
+    "value": "もろっこ"
+  },
+  {
+    "id": "jax-0092",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ナイジェリア",
+    "value": "ないじぇりあ"
+  },
+  {
+    "id": "jax-0093",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "ガーナ",
+    "value": "がーな"
+  },
+  {
+    "id": "jax-0094",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "サウジアラビア",
+    "value": "さうじあらびあ"
+  },
+  {
+    "id": "jax-0095",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "アラブ首長国連邦",
+    "value": "あらぶしゅちょうこくれんぽう"
+  },
+  {
+    "id": "jax-0096",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "イスラエル",
+    "value": "いすらえる"
+  },
+  {
+    "id": "jax-0097",
+    "language": "ja",
+    "category": "世界の国",
+    "display": "カタール",
+    "value": "かたーる"
+  },
+  {
+    "id": "jax-0098",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ドラえもん",
+    "value": "どらえもん"
+  },
+  {
+    "id": "jax-0099",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "サザエさん",
+    "value": "さざえさん"
+  },
+  {
+    "id": "jax-0100",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ちびまる子ちゃん",
+    "value": "ちびまるこちゃん"
+  },
+  {
+    "id": "jax-0101",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "名探偵コナン",
+    "value": "めいたんていこなん"
+  },
+  {
+    "id": "jax-0102",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ワンピース",
+    "value": "わんぴーす"
+  },
+  {
+    "id": "jax-0103",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ナルト",
+    "value": "なると"
+  },
+  {
+    "id": "jax-0104",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ブリーチ",
+    "value": "ぶりーち"
+  },
+  {
+    "id": "jax-0105",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "鬼滅の刃",
+    "value": "きめつのやいば"
+  },
+  {
+    "id": "jax-0106",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "呪術廻戦",
+    "value": "じゅじゅつかいせん"
+  },
+  {
+    "id": "jax-0107",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "進撃の巨人",
+    "value": "しんげきのきょじん"
+  },
+  {
+    "id": "jax-0108",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "僕のヒーローアカデミア",
+    "value": "ぼくのひーろーあかでみあ"
+  },
+  {
+    "id": "jax-0109",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "スパイファミリー",
+    "value": "すぱいふぁみりー"
+  },
+  {
+    "id": "jax-0110",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "チェンソーマン",
+    "value": "ちぇんそーまん"
+  },
+  {
+    "id": "jax-0111",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ハイキュー",
+    "value": "はいきゅー"
+  },
+  {
+    "id": "jax-0112",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "黒子のバスケ",
+    "value": "くろこのばすけ"
+  },
+  {
+    "id": "jax-0113",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "鋼の錬金術師",
+    "value": "はがねのれんきんじゅつし"
+  },
+  {
+    "id": "jax-0114",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "新世紀エヴァンゲリオン",
+    "value": "しんせいきえう゛ぁんげりおん"
+  },
+  {
+    "id": "jax-0115",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "機動戦士ガンダム",
+    "value": "きどうせんしがんだむ"
+  },
+  {
+    "id": "jax-0116",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ドラゴンボール",
+    "value": "どらごんぼーる"
+  },
+  {
+    "id": "jax-0117",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "ジョジョの奇妙な冒険",
+    "value": "じょじょのきみょうなぼうけん"
+  },
+  {
+    "id": "jax-0118",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "銀魂",
+    "value": "ぎんたま"
+  },
+  {
+    "id": "jax-0119",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "るろうに剣心",
+    "value": "るろうにけんしん"
+  },
+  {
+    "id": "jax-0120",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "幽遊白書",
+    "value": "ゆうゆうはくしょ"
+  },
+  {
+    "id": "jax-0121",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "セーラームーン",
+    "value": "せーらーむーん"
+  },
+  {
+    "id": "jax-0122",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "カードキャプターさくら",
+    "value": "かーどきゃぷたーさくら"
+  },
+  {
+    "id": "jax-0123",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "プリキュア",
+    "value": "ぷりきゅあ"
+  },
+  {
+    "id": "jax-0124",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "クレヨンしんちゃん",
+    "value": "くれよんしんちゃん"
+  },
+  {
+    "id": "jax-0125",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "葬送のフリーレン",
+    "value": "そうそうのふりーれん"
+  },
+  {
+    "id": "jax-0126",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "薬屋のひとりごと",
+    "value": "くすりやのひとりごと"
+  },
+  {
+    "id": "jax-0127",
+    "language": "ja",
+    "category": "アニメ・漫画",
+    "display": "推しの子",
+    "value": "おしのこ"
+  },
+  {
+    "id": "jax-0128",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "松田聖子",
+    "value": "まつだせいこ"
+  },
+  {
+    "id": "jax-0129",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "中森明菜",
+    "value": "なかもりあきな"
+  },
+  {
+    "id": "jax-0130",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "山口百恵",
+    "value": "やまぐちももえ"
+  },
+  {
+    "id": "jax-0131",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "小泉今日子",
+    "value": "こいずみきょうこ"
+  },
+  {
+    "id": "jax-0132",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "工藤静香",
+    "value": "くどうしずか"
+  },
+  {
+    "id": "jax-0133",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "松浦亜弥",
+    "value": "まつうらあや"
+  },
+  {
+    "id": "jax-0134",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "前田敦子",
+    "value": "まえだあつこ"
+  },
+  {
+    "id": "jax-0135",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "大島優子",
+    "value": "おおしまゆうこ"
+  },
+  {
+    "id": "jax-0136",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "指原莉乃",
+    "value": "さしはらりの"
+  },
+  {
+    "id": "jax-0137",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "柏木由紀",
+    "value": "かしわぎゆき"
+  },
+  {
+    "id": "jax-0138",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "渡辺麻友",
+    "value": "わたなべまゆ"
+  },
+  {
+    "id": "jax-0139",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "白石麻衣",
+    "value": "しらいしまい"
+  },
+  {
+    "id": "jax-0140",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "西野七瀬",
+    "value": "にしのななせ"
+  },
+  {
+    "id": "jax-0141",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "齋藤飛鳥",
+    "value": "さいとうあすか"
+  },
+  {
+    "id": "jax-0142",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "生田絵梨花",
+    "value": "いくたえりか"
+  },
+  {
+    "id": "jax-0143",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "山下美月",
+    "value": "やましたみづき"
+  },
+  {
+    "id": "jax-0144",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "平手友梨奈",
+    "value": "ひらてゆりな"
+  },
+  {
+    "id": "jax-0145",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "百田夏菜子",
+    "value": "ももたかなこ"
+  },
+  {
+    "id": "jax-0146",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "玉井詩織",
+    "value": "たまいしおり"
+  },
+  {
+    "id": "jax-0147",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "佐々木彩夏",
+    "value": "ささきあやか"
+  },
+  {
+    "id": "jax-0148",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "高城れに",
+    "value": "たかぎれに"
+  },
+  {
+    "id": "jax-0149",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "道重さゆみ",
+    "value": "みちしげさゆみ"
+  },
+  {
+    "id": "jax-0150",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "鈴木愛理",
+    "value": "すずきあいり"
+  },
+  {
+    "id": "jax-0151",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "嗣永桃子",
+    "value": "つぐながももこ"
+  },
+  {
+    "id": "jax-0152",
+    "language": "ja",
+    "category": "アイドル",
+    "display": "橋本奈々未",
+    "value": "はしもとななみ"
+  },
+  {
+    "id": "jax-0153",
+    "language": "ja",
+    "category": "声優",
+    "display": "花澤香菜",
+    "value": "はなざわかな"
+  },
+  {
+    "id": "jax-0154",
+    "language": "ja",
+    "category": "声優",
+    "display": "宮野真守",
+    "value": "みやのまもる"
+  },
+  {
+    "id": "jax-0155",
+    "language": "ja",
+    "category": "声優",
+    "display": "梶裕貴",
+    "value": "かじゆうき"
+  },
+  {
+    "id": "jax-0156",
+    "language": "ja",
+    "category": "声優",
+    "display": "下野紘",
+    "value": "しものひろ"
+  },
+  {
+    "id": "jax-0157",
+    "language": "ja",
+    "category": "声優",
+    "display": "鬼頭明里",
+    "value": "きとうあかり"
+  },
+  {
+    "id": "jax-0158",
+    "language": "ja",
+    "category": "声優",
+    "display": "早見沙織",
+    "value": "はやみさおり"
+  },
+  {
+    "id": "jax-0159",
+    "language": "ja",
+    "category": "声優",
+    "display": "水瀬いのり",
+    "value": "みなせいのり"
+  },
+  {
+    "id": "jax-0160",
+    "language": "ja",
+    "category": "声優",
+    "display": "佐倉綾音",
+    "value": "さくらあやね"
+  },
+  {
+    "id": "jax-0161",
+    "language": "ja",
+    "category": "声優",
+    "display": "悠木碧",
+    "value": "ゆうきあおい"
+  },
+  {
+    "id": "jax-0162",
+    "language": "ja",
+    "category": "声優",
+    "display": "松岡禎丞",
+    "value": "まつおかよしつぐ"
+  },
+  {
+    "id": "jax-0163",
+    "language": "ja",
+    "category": "声優",
+    "display": "内田真礼",
+    "value": "うちだまあや"
+  },
+  {
+    "id": "jax-0164",
+    "language": "ja",
+    "category": "声優",
+    "display": "内田雄馬",
+    "value": "うちだゆうま"
+  },
+  {
+    "id": "jax-0165",
+    "language": "ja",
+    "category": "声優",
+    "display": "神谷浩史",
+    "value": "かみやひろし"
+  },
+  {
+    "id": "jax-0166",
+    "language": "ja",
+    "category": "声優",
+    "display": "小野大輔",
+    "value": "おのだいすけ"
+  },
+  {
+    "id": "jax-0167",
+    "language": "ja",
+    "category": "声優",
+    "display": "杉田智和",
+    "value": "すぎたともかず"
+  },
+  {
+    "id": "jax-0168",
+    "language": "ja",
+    "category": "声優",
+    "display": "中村悠一",
+    "value": "なかむらゆういち"
+  },
+  {
+    "id": "jax-0169",
+    "language": "ja",
+    "category": "声優",
+    "display": "津田健次郎",
+    "value": "つだけんじろう"
+  },
+  {
+    "id": "jax-0170",
+    "language": "ja",
+    "category": "声優",
+    "display": "沢城みゆき",
+    "value": "さわしろみゆき"
+  },
+  {
+    "id": "jax-0171",
+    "language": "ja",
+    "category": "声優",
+    "display": "林原めぐみ",
+    "value": "はやしばらめぐみ"
+  },
+  {
+    "id": "jax-0172",
+    "language": "ja",
+    "category": "声優",
+    "display": "山寺宏一",
+    "value": "やまでらこういち"
+  },
+  {
+    "id": "jax-0173",
+    "language": "ja",
+    "category": "声優",
+    "display": "石田彰",
+    "value": "いしだあきら"
+  },
+  {
+    "id": "jax-0174",
+    "language": "ja",
+    "category": "声優",
+    "display": "釘宮理恵",
+    "value": "くぎみやりえ"
+  },
+  {
+    "id": "jax-0175",
+    "language": "ja",
+    "category": "声優",
+    "display": "戸松遥",
+    "value": "とまつはるか"
+  },
+  {
+    "id": "jax-0176",
+    "language": "ja",
+    "category": "声優",
+    "display": "高橋李依",
+    "value": "たかはしりえ"
+  },
+  {
+    "id": "jax-0177",
+    "language": "ja",
+    "category": "声優",
+    "display": "上坂すみれ",
+    "value": "うえさかすみれ"
+  },
+  {
+    "id": "jax-0178",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "米津玄師",
+    "value": "よねづけんし"
+  },
+  {
+    "id": "jax-0179",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "藤井風",
+    "value": "ふじいかぜ"
+  },
+  {
+    "id": "jax-0180",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "あいみょん",
+    "value": "あいみょん"
+  },
+  {
+    "id": "jax-0181",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "宇多田ヒカル",
+    "value": "うただひかる"
+  },
+  {
+    "id": "jax-0182",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "椎名林檎",
+    "value": "しいなりんご"
+  },
+  {
+    "id": "jax-0183",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "星野源",
+    "value": "ほしのげん"
+  },
+  {
+    "id": "jax-0184",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "福山雅治",
+    "value": "ふくやままさはる"
+  },
+  {
+    "id": "jax-0185",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "Official髭男dism",
+    "value": "おふぃしゃるひげだんでぃずむ"
+  },
+  {
+    "id": "jax-0186",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "Mrs. GREEN APPLE",
+    "value": "みせすぐりーんあっぷる"
+  },
+  {
+    "id": "jax-0187",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "YOASOBI",
+    "value": "よあそび"
+  },
+  {
+    "id": "jax-0188",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "back number",
+    "value": "ばっくなんばー"
+  },
+  {
+    "id": "jax-0189",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "BUMP OF CHICKEN",
+    "value": "ばんぷおぶちきん"
+  },
+  {
+    "id": "jax-0190",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "RADWIMPS",
+    "value": "らっどうぃんぷす"
+  },
+  {
+    "id": "jax-0191",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "ONE OK ROCK",
+    "value": "わんおくろっく"
+  },
+  {
+    "id": "jax-0192",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "King Gnu",
+    "value": "きんぐぬー"
+  },
+  {
+    "id": "jax-0193",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "SEKAI NO OWARI",
+    "value": "せかいのおわり"
+  },
+  {
+    "id": "jax-0194",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "サザンオールスターズ",
+    "value": "さざんおーるすたーず"
+  },
+  {
+    "id": "jax-0195",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "スピッツ",
+    "value": "すぴっつ"
+  },
+  {
+    "id": "jax-0196",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "Mr.Children",
+    "value": "みすたーちるどれん"
+  },
+  {
+    "id": "jax-0197",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "L'Arc-en-Ciel",
+    "value": "らるくあんしえる"
+  },
+  {
+    "id": "jax-0198",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "GLAY",
+    "value": "ぐれい"
+  },
+  {
+    "id": "jax-0199",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "Perfume",
+    "value": "ぱふゅーむ"
+  },
+  {
+    "id": "jax-0200",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "いきものがかり",
+    "value": "いきものがかり"
+  },
+  {
+    "id": "jax-0201",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "ゆず",
+    "value": "ゆず"
+  },
+  {
+    "id": "jax-0202",
+    "language": "ja",
+    "category": "音楽アーティスト",
+    "display": "DREAMS COME TRUE",
+    "value": "どりーむずかむとぅるー"
+  },
+  {
+    "id": "jax-0203",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "明石家さんま",
+    "value": "あかしやさんま"
+  },
+  {
+    "id": "jax-0204",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "ダウンタウン",
+    "value": "だうんたうん"
+  },
+  {
+    "id": "jax-0205",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "ナインティナイン",
+    "value": "ないんてぃないん"
+  },
+  {
+    "id": "jax-0206",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "千鳥",
+    "value": "ちどり"
+  },
+  {
+    "id": "jax-0207",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "かまいたち",
+    "value": "かまいたち"
+  },
+  {
+    "id": "jax-0208",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "霜降り明星",
+    "value": "しもふりみょうじょう"
+  },
+  {
+    "id": "jax-0209",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "サンドウィッチマン",
+    "value": "さんどうぃっちまん"
+  },
+  {
+    "id": "jax-0210",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "バナナマン",
+    "value": "ばななまん"
+  },
+  {
+    "id": "jax-0211",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "オードリー",
+    "value": "おーどりー"
+  },
+  {
+    "id": "jax-0212",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "チョコレートプラネット",
+    "value": "ちょこれーとぷらねっと"
+  },
+  {
+    "id": "jax-0213",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "博多華丸大吉",
+    "value": "はかたはなまるだいきち"
+  },
+  {
+    "id": "jax-0214",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "くりぃむしちゅー",
+    "value": "くりぃむしちゅー"
+  },
+  {
+    "id": "jax-0215",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "有吉弘行",
+    "value": "ありよしひろいき"
+  },
+  {
+    "id": "jax-0216",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "バカリズム",
+    "value": "ばかりずむ"
+  },
+  {
+    "id": "jax-0217",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "陣内智則",
+    "value": "じんないとものり"
+  },
+  {
+    "id": "jax-0218",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "劇団ひとり",
+    "value": "げきだんひとり"
+  },
+  {
+    "id": "jax-0219",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "狩野英孝",
+    "value": "かのえいこう"
+  },
+  {
+    "id": "jax-0220",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "出川哲朗",
+    "value": "でがわてつろう"
+  },
+  {
+    "id": "jax-0221",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "タモリ",
+    "value": "たもり"
+  },
+  {
+    "id": "jax-0222",
+    "language": "ja",
+    "category": "お笑い",
+    "display": "所ジョージ",
+    "value": "ところじょーじ"
+  }
+]
