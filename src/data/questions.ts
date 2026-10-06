@@ -15,6 +15,7 @@ import englishTopicEntries2 from "./question-bank-en-topics-2.json";
 import englishTopicEntries3 from "./question-bank-en-topics-3.json";
 import englishTopicEntries4 from "./question-bank-en-topics-4.json";
 import englishTopicEntries5 from "./question-bank-en-topics-5.json";
+import englishTopicEntries6 from "./question-bank-en-topics-6.json";
 import type {
   AnswerOption,
   Question,
@@ -43,6 +44,7 @@ const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(englishTopicEntries3 as RawQuestionEntry[]),
   ...(englishTopicEntries4 as RawQuestionEntry[]),
   ...(englishTopicEntries5 as RawQuestionEntry[]),
+  ...(englishTopicEntries6 as RawQuestionEntry[]),
 ];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
