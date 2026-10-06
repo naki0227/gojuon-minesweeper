@@ -36,6 +36,7 @@
         "projectId": "d89969a4-9553-4f0e-9a7b-3d023e411f40"
       }
     },
-    "owner": "naki0227"
+    "owner": "naki0227",
+    "icon": "./assets/icon.png"
   }
 }
