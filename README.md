@@ -18,7 +18,7 @@
 - 同じ文字の重複を許可
 - 同ジャンル・同文字数・同signatureの別単語は複数正解として自動グルーピング
 - 漢字の表示名と読みを分離し、どちらでも回答可能
-- 問題バンク 1,086件
+- 問題バンク 10,925件（raw entries。signature衝突は出題時に自動統合）
 - GA4 / Firebase Analytics 用イベント窓口
 - 問題バンク検証 + TypeScript CI
 
@@ -40,6 +40,11 @@ English:
 - Technology / Programming / Jobs
 - Nature / Space / Weather
 - Countries / Transport / Home / Body / Colors / Music / Everyday
+- 3D Graphics / Algorithms / Architecture / Astronomy
+- Birds / Cats / Dogs / Fish / Fruit / Furniture
+- Chemistry / Construction / Data Structures / Machine Learning
+- Gaming / History / Geometry / Infrastructure / Insurance
+- Military / Minerals / Music Instruments など
 
 ## 文字ルール
 
@@ -83,6 +88,8 @@ npm run web
 
 問題は `src/data/question-bank-*.json` に追加します。
 
+現在は駅名・路線名などの単純な地名データで水増しせず、学習用語・芸能・ゲーム・一般語など、ジャンルとして遊べるデータを優先しています。
+
 ```json
 {
   "id": "example",
@@ -109,7 +116,7 @@ npm run validate:questions
 - [x] ローカル2人対戦
 - [x] 日本語 / 英語
 - [x] ジャンル / 文字数 / 完全ランダム
-- [x] 1000問超の初期問題バンク
+- [x] 10,000件超の問題バンク
 - [ ] GA4 / Firebase Analytics 実接続
 - [ ] Search Console / SEO
 - [ ] 問題データのDB同期
