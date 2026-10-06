@@ -1,3 +1,5 @@
+import type { QuestionLanguage } from "../data/types";
+import { ALPHABET_SET } from "./alphabet";
 import { GOJUON_SET } from "./gojuon";
 
 const SMALL_KANA_MAP: Readonly<Record<string, string>> = {
@@ -19,6 +21,7 @@ function katakanaToHiragana(value: string): string {
   return Array.from(value)
     .map((char) => {
       const code = char.codePointAt(0);
+
       if (code === undefined) {
         return char;
       }
@@ -46,6 +49,27 @@ export function normalizeKana(value: string): string {
     .join("");
 }
 
-export function normalizedLength(value: string): number {
-  return Array.from(normalizeKana(value)).length;
+export function normalizeEnglish(value: string): string {
+  return Array.from(
+    value
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toUpperCase(),
+  )
+    .filter((char) => ALPHABET_SET.has(char))
+    .join("");
+}
+
+export function normalizeValue(
+  value: string,
+  language: QuestionLanguage,
+): string {
+  return language === "ja" ? normalizeKana(value) : normalizeEnglish(value);
+}
+
+export function normalizedLength(
+  value: string,
+  language: QuestionLanguage = "ja",
+): number {
+  return Array.from(normalizeValue(value, language)).length;
 }
