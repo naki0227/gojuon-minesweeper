@@ -2,6 +2,19 @@ import japaneseEntries from "./question-bank-ja.json";
 import japaneseExtraEntries from "./question-bank-ja-extra.json";
 import englishEntries from "./question-bank-en.json";
 import englishExtraEntries from "./question-bank-en-extra.json";
+import pokemonJaEntries from "./question-bank-pkj.json";
+import pokemonEnEntries from "./question-bank-pke.json";
+import moveJaEntries from "./question-bank-mvj.json";
+import moveEnEntries from "./question-bank-mve.json";
+import itemJaEntries from "./question-bank-itj.json";
+import itemEnEntries from "./question-bank-ite.json";
+import abilityJaEntries from "./question-bank-abj.json";
+import abilityEnEntries from "./question-bank-abe.json";
+import englishTopicEntries1 from "./question-bank-en-topics-1.json";
+import englishTopicEntries2 from "./question-bank-en-topics-2.json";
+import englishTopicEntries3 from "./question-bank-en-topics-3.json";
+import englishTopicEntries4 from "./question-bank-en-topics-4.json";
+import englishTopicEntries5 from "./question-bank-en-topics-5.json";
 import type {
   AnswerOption,
   Question,
@@ -17,6 +30,19 @@ const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(japaneseExtraEntries as RawQuestionEntry[]),
   ...(englishEntries as RawQuestionEntry[]),
   ...(englishExtraEntries as RawQuestionEntry[]),
+  ...(pokemonJaEntries as RawQuestionEntry[]),
+  ...(pokemonEnEntries as RawQuestionEntry[]),
+  ...(moveJaEntries as RawQuestionEntry[]),
+  ...(moveEnEntries as RawQuestionEntry[]),
+  ...(itemJaEntries as RawQuestionEntry[]),
+  ...(itemEnEntries as RawQuestionEntry[]),
+  ...(abilityJaEntries as RawQuestionEntry[]),
+  ...(abilityEnEntries as RawQuestionEntry[]),
+  ...(englishTopicEntries1 as RawQuestionEntry[]),
+  ...(englishTopicEntries2 as RawQuestionEntry[]),
+  ...(englishTopicEntries3 as RawQuestionEntry[]),
+  ...(englishTopicEntries4 as RawQuestionEntry[]),
+  ...(englishTopicEntries5 as RawQuestionEntry[]),
 ];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
