@@ -18,7 +18,7 @@
 - 同じ文字の重複を許可
 - 同ジャンル・同文字数・同signatureの別単語は複数正解として自動グルーピング
 - 漢字の表示名と読みを分離し、どちらでも回答可能
-- 問題バンク 10,925件（raw entries。signature衝突は出題時に自動統合）
+- 問題バンク 11,284件（raw entries。signature衝突は出題時に自動統合）
 - GA4 / Firebase Analytics 用イベント窓口
 - 問題バンク検証 + TypeScript CI
 
