@@ -4333,21 +4333,7 @@
     "value": "ウルトラダッシュアタック"
   },
   {
-    "id": "mvj-00623",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ウルトラダッシュアタック",
-    "value": "ウルトラダッシュアタック"
-  },
-  {
     "id": "mvj-00624",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ぜんりょくむそうげきれつけん",
-    "value": "ぜんりょくむそうげきれつけん"
-  },
-  {
-    "id": "mvj-00625",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "ぜんりょくむそうげきれつけん",
@@ -4361,21 +4347,7 @@
     "value": "ファイナルダイブクラッシュ"
   },
   {
-    "id": "mvj-00627",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ファイナルダイブクラッシュ",
-    "value": "ファイナルダイブクラッシュ"
-  },
-  {
     "id": "mvj-00628",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "アシッドポイズンデリート",
-    "value": "アシッドポイズンデリート"
-  },
-  {
-    "id": "mvj-00629",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "アシッドポイズンデリート",
@@ -4389,21 +4361,7 @@
     "value": "ライジングランドオーバー"
   },
   {
-    "id": "mvj-00631",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ライジングランドオーバー",
-    "value": "ライジングランドオーバー"
-  },
-  {
     "id": "mvj-00632",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ワールズエンドフォール",
-    "value": "ワールズエンドフォール"
-  },
-  {
-    "id": "mvj-00633",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "ワールズエンドフォール",
@@ -4417,21 +4375,7 @@
     "value": "ぜったいほしょくかいてんざん"
   },
   {
-    "id": "mvj-00635",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ぜったいほしょくかいてんざん",
-    "value": "ぜったいほしょくかいてんざん"
-  },
-  {
     "id": "mvj-00636",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "むげんあんやへのいざない",
-    "value": "むげんあんやへのいざない"
-  },
-  {
-    "id": "mvj-00637",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "むげんあんやへのいざない",
@@ -4445,21 +4389,7 @@
     "value": "ちょうぜつらせんれんげき"
   },
   {
-    "id": "mvj-00639",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ちょうぜつらせんれんげき",
-    "value": "ちょうぜつらせんれんげき"
-  },
-  {
     "id": "mvj-00640",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ダイナミックフルフレイム",
-    "value": "ダイナミックフルフレイム"
-  },
-  {
-    "id": "mvj-00641",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "ダイナミックフルフレイム",
@@ -4473,21 +4403,7 @@
     "value": "スーパーアクアトルネード"
   },
   {
-    "id": "mvj-00643",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "スーパーアクアトルネード",
-    "value": "スーパーアクアトルネード"
-  },
-  {
     "id": "mvj-00644",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ブルームシャインエクストラ",
-    "value": "ブルームシャインエクストラ"
-  },
-  {
-    "id": "mvj-00645",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "ブルームシャインエクストラ",
@@ -4501,21 +4417,7 @@
     "value": "スパーキングギガボルト"
   },
   {
-    "id": "mvj-00647",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "スパーキングギガボルト",
-    "value": "スパーキングギガボルト"
-  },
-  {
     "id": "mvj-00648",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "マキシマムサイブレイカー",
-    "value": "マキシマムサイブレイカー"
-  },
-  {
-    "id": "mvj-00649",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "マキシマムサイブレイカー",
@@ -4529,21 +4431,7 @@
     "value": "レイジングジオフリーズ"
   },
   {
-    "id": "mvj-00651",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "レイジングジオフリーズ",
-    "value": "レイジングジオフリーズ"
-  },
-  {
     "id": "mvj-00652",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "アルティメットドラゴンバーン",
-    "value": "アルティメットドラゴンバーン"
-  },
-  {
-    "id": "mvj-00653",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "アルティメットドラゴンバーン",
@@ -4557,21 +4445,7 @@
     "value": "ブラックホールイクリプス"
   },
   {
-    "id": "mvj-00655",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ブラックホールイクリプス",
-    "value": "ブラックホールイクリプス"
-  },
-  {
     "id": "mvj-00656",
-    "language": "ja",
-    "category": "ポケモンの技",
-    "display": "ラブリースターインパクト",
-    "value": "ラブリースターインパクト"
-  },
-  {
-    "id": "mvj-00657",
     "language": "ja",
     "category": "ポケモンの技",
     "display": "ラブリースターインパクト",
