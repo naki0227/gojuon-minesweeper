@@ -1,29 +1,75 @@
+import rawEntries from "./question-bank.json";
+import type {
+  AnswerOption,
+  Question,
+  QuestionFilters,
+  QuestionLanguage,
+  RawQuestionEntry,
+} from "./types";
 import { normalizedLength } from "../game/normalize";
+import { createSignatureKey } from "../game/signature";
 
-export type Question = {
-  id: string;
-  category: string;
-  answers: readonly string[];
-};
+const RAW_QUESTION_ENTRIES = rawEntries as RawQuestionEntry[];
 
-export const QUESTIONS: readonly Question[] = [
-  { id: "sport-table-tennis", category: "スポーツ", answers: ["たっきゅう"] },
-  { id: "sport-soccer", category: "スポーツ", answers: ["さっかー"] },
-  { id: "sport-rugby", category: "スポーツ", answers: ["らぐびー"] },
-  { id: "sport-sumo", category: "スポーツ", answers: ["すもう"] },
-  { id: "food-onigiri", category: "食べ物", answers: ["おにぎり"] },
-  { id: "food-takoyaki", category: "食べ物", answers: ["たこやき"] },
-  { id: "food-karaage", category: "食べ物", answers: ["からあげ"] },
-  { id: "food-hamburg", category: "食べ物", answers: ["はんばーぐ"] },
-  { id: "food-curry", category: "食べ物", answers: ["かれー"] },
-  { id: "animal-giraffe", category: "動物", answers: ["きりん"] },
-  { id: "animal-penguin", category: "動物", answers: ["ぺんぎん"] },
-  { id: "animal-capybara", category: "動物", answers: ["かぴばら"] },
-  { id: "animal-lion", category: "動物", answers: ["らいおん"] },
-  { id: "animal-polar-bear", category: "動物", answers: ["しろくま"] }
-];
+function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
+  const seen = new Set<string>();
+  const answers: AnswerOption[] = [];
 
-export function primaryAnswer(question: Question): string {
+  for (const entry of entries) {
+    const key = `${entry.display}::${entry.value}`;
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    answers.push({
+      display: entry.display,
+      value: entry.value,
+      aliases: [...new Set([entry.display, entry.value, ...(entry.aliases ?? [])])],
+    });
+  }
+
+  return answers;
+}
+
+function buildQuestionBank(entries: readonly RawQuestionEntry[]): Question[] {
+  const groups = new Map<string, RawQuestionEntry[]>();
+
+  for (const entry of entries) {
+    const length = normalizedLength(entry.value, entry.language);
+    const signature = createSignatureKey(entry.value, entry.language);
+    const groupKey = [
+      entry.language,
+      entry.category,
+      length,
+      signature,
+    ].join("::");
+
+    const group = groups.get(groupKey) ?? [];
+    group.push(entry);
+    groups.set(groupKey, group);
+  }
+
+  return [...groups.values()].map((group) => {
+    const primary = group[0]!;
+
+    return {
+      id: primary.id,
+      language: primary.language,
+      category: primary.category,
+      length: normalizedLength(primary.value, primary.language),
+      signature: createSignatureKey(primary.value, primary.language),
+      answers: uniqueAnswers(group),
+    };
+  });
+}
+
+export const QUESTIONS: readonly Question[] = buildQuestionBank(
+  RAW_QUESTION_ENTRIES,
+);
+
+export function primaryAnswer(question: Question): AnswerOption {
   const answer = question.answers[0];
 
   if (!answer) {
@@ -34,5 +80,94 @@ export function primaryAnswer(question: Question): string {
 }
 
 export function questionPrompt(question: Question): string {
-  return `${normalizedLength(primaryAnswer(question))}文字の${question.category}`;
+  if (question.language === "en") {
+    return `${question.length}文字の英単語・${question.category}`;
+  }
+
+  return `${question.length}文字の${question.category}`;
+}
+
+export function filterQuestions(
+  filters: QuestionFilters,
+): readonly Question[] {
+  return QUESTIONS.filter((question) => {
+    if (
+      filters.language !== "any" &&
+      question.language !== filters.language
+    ) {
+      return false;
+    }
+
+    if (
+      filters.category !== "any" &&
+      question.category !== filters.category
+    ) {
+      return false;
+    }
+
+    if (filters.length !== "any" && question.length !== filters.length) {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+export function getCategories(
+  language: QuestionLanguage | "any",
+): readonly string[] {
+  return [
+    ...new Set(
+      QUESTIONS.filter(
+        (question) => language === "any" || question.language === language,
+      ).map((question) => question.category),
+    ),
+  ].sort((left, right) => left.localeCompare(right, "ja"));
+}
+
+export function getAvailableLengths(
+  filters: Pick<QuestionFilters, "language" | "category">,
+): readonly number[] {
+  return [
+    ...new Set(
+      QUESTIONS.filter((question) => {
+        if (
+          filters.language !== "any" &&
+          question.language !== filters.language
+        ) {
+          return false;
+        }
+
+        if (
+          filters.category !== "any" &&
+          question.category !== filters.category
+        ) {
+          return false;
+        }
+
+        return true;
+      }).map((question) => question.length),
+    ),
+  ].sort((left, right) => left - right);
+}
+
+export function countQuestions(filters: QuestionFilters): number {
+  return filterQuestions(filters).length;
+}
+
+export function pickRandomQuestion(
+  filters: QuestionFilters,
+  excludeId?: string,
+): Question | null {
+  const pool = filterQuestions(filters);
+  const candidates =
+    pool.length > 1 && excludeId
+      ? pool.filter((question) => question.id !== excludeId)
+      : pool;
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  return candidates[Math.floor(Math.random() * candidates.length)] ?? null;
 }
