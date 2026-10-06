@@ -29,14 +29,14 @@ import type {
 } from "../data/types";
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
 
-// Colors for the home screen. Kept together so the palette can be
-// changed in one place once it is decided.
-const INK = "#1e2421";
-const PAPER = "#f6f3ec";
-const ACCENT = "#2b6cb0";
-const MUTED = "#5f655f";
-const LINE = "#e3ddcf";
-const MINE_FILL = "#f2c9a3";
+// Colors for the home screen, taken from the game screen (app/index.tsx)
+// so both screens read as one app.
+const INK = "#102433";
+const PAPER = "#f7fafc";
+const ACCENT = "#3388b0";
+const MUTED = "#536875";
+const LINE = "#cfdce4";
+const MINE_FILL = "#fff0df";
 const MINE_BORDER = "#e98a2f";
 
 const LANGUAGE_TABS: readonly {
@@ -503,7 +503,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 22,
     borderBottomWidth: 1,
-    borderBottomColor: "#d8d2c4",
+    borderBottomColor: LINE,
   },
   tab: {
     minHeight: 44,
@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
     borderBottomColor: LINE,
   },
   groupRowSelected: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#eaf6fb",
     borderLeftWidth: 4,
     borderLeftColor: ACCENT,
     paddingLeft: 8,
@@ -628,7 +628,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   segmentNoteOn: {
-    color: "#d6d0c2",
+    color: "#d7e7ef",
   },
   textLink: {
     color: INK,
@@ -751,12 +751,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: "#cfc8b8",
+    borderColor: "#bdcbd5",
     backgroundColor: "#ffffff",
   },
   chipSelected: {
-    borderColor: INK,
-    backgroundColor: INK,
+    borderColor: ACCENT,
+    backgroundColor: "#eaf6fb",
   },
   chipText: {
     color: INK,
@@ -764,7 +764,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   chipTextSelected: {
-    color: PAPER,
+    color: "#1f617f",
   },
   helperText: {
     color: MUTED,
