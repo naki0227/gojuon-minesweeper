@@ -6,7 +6,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
 const files = [
   path.join(root, "src/data/question-bank-ja.json"),
+  path.join(root, "src/data/question-bank-ja-extra.json"),
   path.join(root, "src/data/question-bank-en.json"),
+  path.join(root, "src/data/question-bank-en-extra.json"),
 ];
 
 const smallKana = new Map([
