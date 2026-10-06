@@ -1,5 +1,7 @@
 import japaneseEntries from "./question-bank-ja.json";
+import japaneseExtraEntries from "./question-bank-ja-extra.json";
 import englishEntries from "./question-bank-en.json";
+import englishExtraEntries from "./question-bank-en-extra.json";
 import type {
   AnswerOption,
   Question,
@@ -12,7 +14,9 @@ import { createSignatureKey } from "../game/signature";
 
 const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(japaneseEntries as RawQuestionEntry[]),
+  ...(japaneseExtraEntries as RawQuestionEntry[]),
   ...(englishEntries as RawQuestionEntry[]),
+  ...(englishExtraEntries as RawQuestionEntry[]),
 ];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
