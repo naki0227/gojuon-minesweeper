@@ -10,7 +10,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.naki0227.gojuonminesweeper",
-      "buildNumber": "1"
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.naki0227.gojuonminesweeper",
@@ -26,6 +29,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d89969a4-9553-4f0e-9a7b-3d023e411f40"
+      }
+    },
+    "owner": "naki0227"
   }
 }
