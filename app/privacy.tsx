@@ -103,8 +103,11 @@ export default function PrivacyScreen() {
               本サービス自体は、サーバーに個人情報や利用状況データを保存していません。ゲームの状態は端末内だけで扱い、アプリを削除すると消えます。購入履歴はAppleまたはGoogleが管理します。Googleが広告のために処理する情報の保存期間と削除方法は、上記のGoogleのポリシーに従います。
             </Text>
             <Text style={styles.body}>
-              情報の取り扱いに関するお問い合わせや削除のご相談は、サポートページの窓口からご連絡ください。
+              情報の取り扱いに関するお問い合わせや削除のご相談は、下記のメールアドレスまでご連絡ください。
             </Text>
+            <Link href="mailto:contact@enludus.com" style={styles.inlineLink}>
+              contact@enludus.com
+            </Link>
           </View>
 
           <View style={styles.section}>

@@ -22,6 +22,16 @@ export default function SupportScreen() {
           </Text>
 
           <View style={styles.section}>
+            <Text style={styles.heading}>お問い合わせ</Text>
+            <Text style={styles.body}>
+              購入や広告、個人情報の取り扱いなど、公開の場に書きにくい内容はメールでご連絡ください。
+            </Text>
+            <Link href="mailto:contact@enludus.com" style={styles.link}>
+              contact@enludus.com
+            </Link>
+          </View>
+
+          <View style={styles.section}>
             <Text style={styles.heading}>報告するときにあると助かる情報</Text>
             <Text style={styles.body}>
               利用環境（Web / iOS /
