@@ -1,0 +1,2914 @@
+[
+  {
+    "id": "ja-0001",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "卓球",
+    "value": "たっきゅう"
+  },
+  {
+    "id": "ja-0002",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "サッカー",
+    "value": "さっかー"
+  },
+  {
+    "id": "ja-0003",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "ラグビー",
+    "value": "らぐびー"
+  },
+  {
+    "id": "ja-0004",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "相撲",
+    "value": "すもう"
+  },
+  {
+    "id": "ja-0005",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "野球",
+    "value": "やきゅう"
+  },
+  {
+    "id": "ja-0006",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "テニス",
+    "value": "てにす"
+  },
+  {
+    "id": "ja-0007",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "バスケットボール",
+    "value": "ばすけっとぼーる"
+  },
+  {
+    "id": "ja-0008",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "バレーボール",
+    "value": "ばれーぼーる"
+  },
+  {
+    "id": "ja-0009",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "バドミントン",
+    "value": "ばどみんとん"
+  },
+  {
+    "id": "ja-0010",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "柔道",
+    "value": "じゅうどう"
+  },
+  {
+    "id": "ja-0011",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "剣道",
+    "value": "けんどう"
+  },
+  {
+    "id": "ja-0012",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "空手",
+    "value": "からて"
+  },
+  {
+    "id": "ja-0013",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "水泳",
+    "value": "すいえい"
+  },
+  {
+    "id": "ja-0014",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "陸上",
+    "value": "りくじょう"
+  },
+  {
+    "id": "ja-0015",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "体操",
+    "value": "たいそう"
+  },
+  {
+    "id": "ja-0016",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "ゴルフ",
+    "value": "ごるふ"
+  },
+  {
+    "id": "ja-0017",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "ボクシング",
+    "value": "ぼくしんぐ"
+  },
+  {
+    "id": "ja-0018",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "レスリング",
+    "value": "れすりんぐ"
+  },
+  {
+    "id": "ja-0019",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "スケート",
+    "value": "すけーと"
+  },
+  {
+    "id": "ja-0020",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "スキー",
+    "value": "すきー"
+  },
+  {
+    "id": "ja-0021",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "アーチェリー",
+    "value": "あーちぇりー"
+  },
+  {
+    "id": "ja-0022",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "フェンシング",
+    "value": "ふぇんしんぐ"
+  },
+  {
+    "id": "ja-0023",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "ハンドボール",
+    "value": "はんどぼーる"
+  },
+  {
+    "id": "ja-0024",
+    "language": "ja",
+    "category": "スポーツ",
+    "display": "フットサル",
+    "value": "ふっとさる"
+  },
+  {
+    "id": "ja-0025",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "おにぎり",
+    "value": "おにぎり"
+  },
+  {
+    "id": "ja-0026",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "たこ焼き",
+    "value": "たこやき"
+  },
+  {
+    "id": "ja-0027",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "唐揚げ",
+    "value": "からあげ"
+  },
+  {
+    "id": "ja-0028",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "ハンバーグ",
+    "value": "はんばーぐ"
+  },
+  {
+    "id": "ja-0029",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "カレー",
+    "value": "かれー"
+  },
+  {
+    "id": "ja-0030",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "寿司",
+    "value": "すし"
+  },
+  {
+    "id": "ja-0031",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "天ぷら",
+    "value": "てんぷら"
+  },
+  {
+    "id": "ja-0032",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "うどん",
+    "value": "うどん"
+  },
+  {
+    "id": "ja-0033",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "そば",
+    "value": "そば"
+  },
+  {
+    "id": "ja-0034",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "ラーメン",
+    "value": "らーめん"
+  },
+  {
+    "id": "ja-0035",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "オムライス",
+    "value": "おむらいす"
+  },
+  {
+    "id": "ja-0036",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "餃子",
+    "value": "ぎょうざ"
+  },
+  {
+    "id": "ja-0037",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "焼きそば",
+    "value": "やきそば"
+  },
+  {
+    "id": "ja-0038",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "お好み焼き",
+    "value": "おこのみやき"
+  },
+  {
+    "id": "ja-0039",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "親子丼",
+    "value": "おやこどん"
+  },
+  {
+    "id": "ja-0040",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "牛丼",
+    "value": "ぎゅうどん"
+  },
+  {
+    "id": "ja-0041",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "カツ丼",
+    "value": "かつどん"
+  },
+  {
+    "id": "ja-0042",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "茶碗蒸し",
+    "value": "ちゃわんむし"
+  },
+  {
+    "id": "ja-0043",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "味噌汁",
+    "value": "みそしる"
+  },
+  {
+    "id": "ja-0044",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "肉じゃが",
+    "value": "にくじゃが"
+  },
+  {
+    "id": "ja-0045",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "コロッケ",
+    "value": "ころっけ"
+  },
+  {
+    "id": "ja-0046",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "とんかつ",
+    "value": "とんかつ"
+  },
+  {
+    "id": "ja-0047",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "ナポリタン",
+    "value": "なぽりたん"
+  },
+  {
+    "id": "ja-0048",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "グラタン",
+    "value": "ぐらたん"
+  },
+  {
+    "id": "ja-0049",
+    "language": "ja",
+    "category": "食べ物",
+    "display": "シチュー",
+    "value": "しちゅー"
+  },
+  {
+    "id": "ja-0050",
+    "language": "ja",
+    "category": "動物",
+    "display": "キリン",
+    "value": "きりん"
+  },
+  {
+    "id": "ja-0051",
+    "language": "ja",
+    "category": "動物",
+    "display": "ペンギン",
+    "value": "ぺんぎん"
+  },
+  {
+    "id": "ja-0052",
+    "language": "ja",
+    "category": "動物",
+    "display": "カピバラ",
+    "value": "かぴばら"
+  },
+  {
+    "id": "ja-0053",
+    "language": "ja",
+    "category": "動物",
+    "display": "ライオン",
+    "value": "らいおん"
+  },
+  {
+    "id": "ja-0054",
+    "language": "ja",
+    "category": "動物",
+    "display": "シロクマ",
+    "value": "しろくま"
+  },
+  {
+    "id": "ja-0055",
+    "language": "ja",
+    "category": "動物",
+    "display": "ゾウ",
+    "value": "ぞう"
+  },
+  {
+    "id": "ja-0056",
+    "language": "ja",
+    "category": "動物",
+    "display": "ゴリラ",
+    "value": "ごりら"
+  },
+  {
+    "id": "ja-0057",
+    "language": "ja",
+    "category": "動物",
+    "display": "チンパンジー",
+    "value": "ちんぱんじー"
+  },
+  {
+    "id": "ja-0058",
+    "language": "ja",
+    "category": "動物",
+    "display": "コアラ",
+    "value": "こあら"
+  },
+  {
+    "id": "ja-0059",
+    "language": "ja",
+    "category": "動物",
+    "display": "パンダ",
+    "value": "ぱんだ"
+  },
+  {
+    "id": "ja-0060",
+    "language": "ja",
+    "category": "動物",
+    "display": "カンガルー",
+    "value": "かんがるー"
+  },
+  {
+    "id": "ja-0061",
+    "language": "ja",
+    "category": "動物",
+    "display": "アルパカ",
+    "value": "あるぱか"
+  },
+  {
+    "id": "ja-0062",
+    "language": "ja",
+    "category": "動物",
+    "display": "ハムスター",
+    "value": "はむすたー"
+  },
+  {
+    "id": "ja-0063",
+    "language": "ja",
+    "category": "動物",
+    "display": "モルモット",
+    "value": "もるもっと"
+  },
+  {
+    "id": "ja-0064",
+    "language": "ja",
+    "category": "動物",
+    "display": "イルカ",
+    "value": "いるか"
+  },
+  {
+    "id": "ja-0065",
+    "language": "ja",
+    "category": "動物",
+    "display": "クジラ",
+    "value": "くじら"
+  },
+  {
+    "id": "ja-0066",
+    "language": "ja",
+    "category": "動物",
+    "display": "シャチ",
+    "value": "しゃち"
+  },
+  {
+    "id": "ja-0067",
+    "language": "ja",
+    "category": "動物",
+    "display": "ラッコ",
+    "value": "らっこ"
+  },
+  {
+    "id": "ja-0068",
+    "language": "ja",
+    "category": "動物",
+    "display": "アザラシ",
+    "value": "あざらし"
+  },
+  {
+    "id": "ja-0069",
+    "language": "ja",
+    "category": "動物",
+    "display": "カワウソ",
+    "value": "かわうそ"
+  },
+  {
+    "id": "ja-0070",
+    "language": "ja",
+    "category": "動物",
+    "display": "フクロウ",
+    "value": "ふくろう"
+  },
+  {
+    "id": "ja-0071",
+    "language": "ja",
+    "category": "動物",
+    "display": "ワシ",
+    "value": "わし"
+  },
+  {
+    "id": "ja-0072",
+    "language": "ja",
+    "category": "動物",
+    "display": "タカ",
+    "value": "たか"
+  },
+  {
+    "id": "ja-0073",
+    "language": "ja",
+    "category": "動物",
+    "display": "オオカミ",
+    "value": "おおかみ"
+  },
+  {
+    "id": "ja-0074",
+    "language": "ja",
+    "category": "動物",
+    "display": "チーター",
+    "value": "ちーたー"
+  },
+  {
+    "id": "ja-0075",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "光合成",
+    "value": "こうごうせい"
+  },
+  {
+    "id": "ja-0076",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "蒸散",
+    "value": "じょうさん"
+  },
+  {
+    "id": "ja-0077",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "葉緑体",
+    "value": "ようりょくたい"
+  },
+  {
+    "id": "ja-0078",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "ミトコンドリア",
+    "value": "みとこんどりあ"
+  },
+  {
+    "id": "ja-0079",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "染色体",
+    "value": "せんしょくたい"
+  },
+  {
+    "id": "ja-0080",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "遺伝子",
+    "value": "いでんし"
+  },
+  {
+    "id": "ja-0081",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "細胞膜",
+    "value": "さいぼうまく"
+  },
+  {
+    "id": "ja-0082",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "細胞壁",
+    "value": "さいぼうへき"
+  },
+  {
+    "id": "ja-0083",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "核",
+    "value": "かく"
+  },
+  {
+    "id": "ja-0084",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "呼吸",
+    "value": "こきゅう"
+  },
+  {
+    "id": "ja-0085",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "消化",
+    "value": "しょうか"
+  },
+  {
+    "id": "ja-0086",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "酵素",
+    "value": "こうそ"
+  },
+  {
+    "id": "ja-0087",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "血小板",
+    "value": "けっしょうばん"
+  },
+  {
+    "id": "ja-0088",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "赤血球",
+    "value": "せっけっきゅう"
+  },
+  {
+    "id": "ja-0089",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "白血球",
+    "value": "はっけっきゅう"
+  },
+  {
+    "id": "ja-0090",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "毛細血管",
+    "value": "もうさいけっかん"
+  },
+  {
+    "id": "ja-0091",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "動脈",
+    "value": "どうみゃく"
+  },
+  {
+    "id": "ja-0092",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "静脈",
+    "value": "じょうみゃく"
+  },
+  {
+    "id": "ja-0093",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "反射",
+    "value": "はんしゃ"
+  },
+  {
+    "id": "ja-0094",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "神経",
+    "value": "しんけい"
+  },
+  {
+    "id": "ja-0095",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "受精",
+    "value": "じゅせい"
+  },
+  {
+    "id": "ja-0096",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "減数分裂",
+    "value": "げんすうぶんれつ"
+  },
+  {
+    "id": "ja-0097",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "体細胞分裂",
+    "value": "たいさいぼうぶんれつ"
+  },
+  {
+    "id": "ja-0098",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "生態系",
+    "value": "せいたいけい"
+  },
+  {
+    "id": "ja-0099",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "食物連鎖",
+    "value": "しょくもつれんさ"
+  },
+  {
+    "id": "ja-0100",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "優性形質",
+    "value": "ゆうせいけいしつ"
+  },
+  {
+    "id": "ja-0101",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "劣性形質",
+    "value": "れっせいけいしつ"
+  },
+  {
+    "id": "ja-0102",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "恒常性",
+    "value": "こうじょうせい"
+  },
+  {
+    "id": "ja-0103",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "免疫",
+    "value": "めんえき"
+  },
+  {
+    "id": "ja-0104",
+    "language": "ja",
+    "category": "理科・生物",
+    "display": "抗体",
+    "value": "こうたい"
+  },
+  {
+    "id": "ja-0105",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "原子",
+    "value": "げんし"
+  },
+  {
+    "id": "ja-0106",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "分子",
+    "value": "ぶんし"
+  },
+  {
+    "id": "ja-0107",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "元素",
+    "value": "げんそ"
+  },
+  {
+    "id": "ja-0108",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "化合物",
+    "value": "かごうぶつ"
+  },
+  {
+    "id": "ja-0109",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "混合物",
+    "value": "こんごうぶつ"
+  },
+  {
+    "id": "ja-0110",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "酸化",
+    "value": "さんか"
+  },
+  {
+    "id": "ja-0111",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "還元",
+    "value": "かんげん"
+  },
+  {
+    "id": "ja-0112",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "中和",
+    "value": "ちゅうわ"
+  },
+  {
+    "id": "ja-0113",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "電解質",
+    "value": "でんかいしつ"
+  },
+  {
+    "id": "ja-0114",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "イオン",
+    "value": "いおん"
+  },
+  {
+    "id": "ja-0115",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "陽イオン",
+    "value": "よういおん"
+  },
+  {
+    "id": "ja-0116",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "陰イオン",
+    "value": "いんいおん"
+  },
+  {
+    "id": "ja-0117",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "共有結合",
+    "value": "きょうゆうけつごう"
+  },
+  {
+    "id": "ja-0118",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "イオン結合",
+    "value": "いおんけつごう"
+  },
+  {
+    "id": "ja-0119",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "化学反応式",
+    "value": "かがくはんのうしき"
+  },
+  {
+    "id": "ja-0120",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "モル",
+    "value": "もる"
+  },
+  {
+    "id": "ja-0121",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "触媒",
+    "value": "しょくばい"
+  },
+  {
+    "id": "ja-0122",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "溶質",
+    "value": "ようしつ"
+  },
+  {
+    "id": "ja-0123",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "溶媒",
+    "value": "ようばい"
+  },
+  {
+    "id": "ja-0124",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "溶液",
+    "value": "ようえき"
+  },
+  {
+    "id": "ja-0125",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "飽和",
+    "value": "ほうわ"
+  },
+  {
+    "id": "ja-0126",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "再結晶",
+    "value": "さいけっしょう"
+  },
+  {
+    "id": "ja-0127",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "蒸留",
+    "value": "じょうりゅう"
+  },
+  {
+    "id": "ja-0128",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "ろ過",
+    "value": "ろか"
+  },
+  {
+    "id": "ja-0129",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "水素",
+    "value": "すいそ"
+  },
+  {
+    "id": "ja-0130",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "酸素",
+    "value": "さんそ"
+  },
+  {
+    "id": "ja-0131",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "窒素",
+    "value": "ちっそ"
+  },
+  {
+    "id": "ja-0132",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "二酸化炭素",
+    "value": "にさんかたんそ"
+  },
+  {
+    "id": "ja-0133",
+    "language": "ja",
+    "category": "理科・化学",
+    "display": "塩化ナトリウム",
+    "value": "えんかなとりうむ"
+  },
+  {
+    "id": "ja-0134",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "力",
+    "value": "ちから"
+  },
+  {
+    "id": "ja-0135",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "重力",
+    "value": "じゅうりょく"
+  },
+  {
+    "id": "ja-0136",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "摩擦",
+    "value": "まさつ"
+  },
+  {
+    "id": "ja-0137",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "圧力",
+    "value": "あつりょく"
+  },
+  {
+    "id": "ja-0138",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "浮力",
+    "value": "ふりょく"
+  },
+  {
+    "id": "ja-0139",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "慣性",
+    "value": "かんせい"
+  },
+  {
+    "id": "ja-0140",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "加速度",
+    "value": "かそくど"
+  },
+  {
+    "id": "ja-0141",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "速度",
+    "value": "そくど"
+  },
+  {
+    "id": "ja-0142",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "仕事",
+    "value": "しごと"
+  },
+  {
+    "id": "ja-0143",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "エネルギー",
+    "value": "えねるぎー"
+  },
+  {
+    "id": "ja-0144",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "運動エネルギー",
+    "value": "うんどうえねるぎー"
+  },
+  {
+    "id": "ja-0145",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "位置エネルギー",
+    "value": "いちえねるぎー"
+  },
+  {
+    "id": "ja-0146",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "電流",
+    "value": "でんりゅう"
+  },
+  {
+    "id": "ja-0147",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "電圧",
+    "value": "でんあつ"
+  },
+  {
+    "id": "ja-0148",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "抵抗",
+    "value": "ていこう"
+  },
+  {
+    "id": "ja-0149",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "直列回路",
+    "value": "ちょくれつかいろ"
+  },
+  {
+    "id": "ja-0150",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "並列回路",
+    "value": "へいれつかいろ"
+  },
+  {
+    "id": "ja-0151",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "磁界",
+    "value": "じかい"
+  },
+  {
+    "id": "ja-0152",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "電磁誘導",
+    "value": "でんじゆうどう"
+  },
+  {
+    "id": "ja-0153",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "波長",
+    "value": "はちょう"
+  },
+  {
+    "id": "ja-0154",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "振動数",
+    "value": "しんどうすう"
+  },
+  {
+    "id": "ja-0155",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "屈折",
+    "value": "くっせつ"
+  },
+  {
+    "id": "ja-0156",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "反射",
+    "value": "はんしゃ"
+  },
+  {
+    "id": "ja-0157",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "焦点",
+    "value": "しょうてん"
+  },
+  {
+    "id": "ja-0158",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "凸レンズ",
+    "value": "とつれんず"
+  },
+  {
+    "id": "ja-0159",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "音速",
+    "value": "おんそく"
+  },
+  {
+    "id": "ja-0160",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "真空",
+    "value": "しんくう"
+  },
+  {
+    "id": "ja-0161",
+    "language": "ja",
+    "category": "理科・物理",
+    "display": "放射線",
+    "value": "ほうしゃせん"
+  },
+  {
+    "id": "ja-0162",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "地震",
+    "value": "じしん"
+  },
+  {
+    "id": "ja-0163",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "震源",
+    "value": "しんげん"
+  },
+  {
+    "id": "ja-0164",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "震央",
+    "value": "しんおう"
+  },
+  {
+    "id": "ja-0165",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "マグニチュード",
+    "value": "まぐにちゅーど"
+  },
+  {
+    "id": "ja-0166",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "プレート",
+    "value": "ぷれーと"
+  },
+  {
+    "id": "ja-0167",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "火山",
+    "value": "かざん"
+  },
+  {
+    "id": "ja-0168",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "マグマ",
+    "value": "まぐま"
+  },
+  {
+    "id": "ja-0169",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "火成岩",
+    "value": "かせいがん"
+  },
+  {
+    "id": "ja-0170",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "堆積岩",
+    "value": "たいせきがん"
+  },
+  {
+    "id": "ja-0171",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "変成岩",
+    "value": "へんせいがん"
+  },
+  {
+    "id": "ja-0172",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "断層",
+    "value": "だんそう"
+  },
+  {
+    "id": "ja-0173",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "風化",
+    "value": "ふうか"
+  },
+  {
+    "id": "ja-0174",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "侵食",
+    "value": "しんしょく"
+  },
+  {
+    "id": "ja-0175",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "堆積",
+    "value": "たいせき"
+  },
+  {
+    "id": "ja-0176",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "前線",
+    "value": "ぜんせん"
+  },
+  {
+    "id": "ja-0177",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "高気圧",
+    "value": "こうきあつ"
+  },
+  {
+    "id": "ja-0178",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "低気圧",
+    "value": "ていきあつ"
+  },
+  {
+    "id": "ja-0179",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "偏西風",
+    "value": "へんせいふう"
+  },
+  {
+    "id": "ja-0180",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "台風",
+    "value": "たいふう"
+  },
+  {
+    "id": "ja-0181",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "湿度",
+    "value": "しつど"
+  },
+  {
+    "id": "ja-0182",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "露点",
+    "value": "ろてん"
+  },
+  {
+    "id": "ja-0183",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "恒星",
+    "value": "こうせい"
+  },
+  {
+    "id": "ja-0184",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "惑星",
+    "value": "わくせい"
+  },
+  {
+    "id": "ja-0185",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "衛星",
+    "value": "えいせい"
+  },
+  {
+    "id": "ja-0186",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "銀河",
+    "value": "ぎんが"
+  },
+  {
+    "id": "ja-0187",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "太陽系",
+    "value": "たいようけい"
+  },
+  {
+    "id": "ja-0188",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "日食",
+    "value": "にっしょく"
+  },
+  {
+    "id": "ja-0189",
+    "language": "ja",
+    "category": "理科・地学",
+    "display": "月食",
+    "value": "げっしょく"
+  },
+  {
+    "id": "ja-0190",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "大化の改新",
+    "value": "たいかのかいしん"
+  },
+  {
+    "id": "ja-0191",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "墾田永年私財法",
+    "value": "こんでんえいねんしざいほう"
+  },
+  {
+    "id": "ja-0192",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "鎌倉幕府",
+    "value": "かまくらばくふ"
+  },
+  {
+    "id": "ja-0193",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "御成敗式目",
+    "value": "ごせいばいしきもく"
+  },
+  {
+    "id": "ja-0194",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "室町幕府",
+    "value": "むろまちばくふ"
+  },
+  {
+    "id": "ja-0195",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "応仁の乱",
+    "value": "おうにんのらん"
+  },
+  {
+    "id": "ja-0196",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "楽市楽座",
+    "value": "らくいちらくざ"
+  },
+  {
+    "id": "ja-0197",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "刀狩",
+    "value": "かたながり"
+  },
+  {
+    "id": "ja-0198",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "太閤検地",
+    "value": "たいこうけんち"
+  },
+  {
+    "id": "ja-0199",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "関ヶ原の戦い",
+    "value": "せきがはらのたたかい"
+  },
+  {
+    "id": "ja-0200",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "江戸幕府",
+    "value": "えどばくふ"
+  },
+  {
+    "id": "ja-0201",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "参勤交代",
+    "value": "さんきんこうたい"
+  },
+  {
+    "id": "ja-0202",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "鎖国",
+    "value": "さこく"
+  },
+  {
+    "id": "ja-0203",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "享保の改革",
+    "value": "きょうほうのかいかく"
+  },
+  {
+    "id": "ja-0204",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "寛政の改革",
+    "value": "かんせいのかいかく"
+  },
+  {
+    "id": "ja-0205",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "天保の改革",
+    "value": "てんぽうのかいかく"
+  },
+  {
+    "id": "ja-0206",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "大政奉還",
+    "value": "たいせいほうかん"
+  },
+  {
+    "id": "ja-0207",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "明治維新",
+    "value": "めいじいしん"
+  },
+  {
+    "id": "ja-0208",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "廃藩置県",
+    "value": "はいはんちけん"
+  },
+  {
+    "id": "ja-0209",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "地租改正",
+    "value": "ちそかいせい"
+  },
+  {
+    "id": "ja-0210",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "徴兵令",
+    "value": "ちょうへいれい"
+  },
+  {
+    "id": "ja-0211",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "自由民権運動",
+    "value": "じゆうみんけんうんどう"
+  },
+  {
+    "id": "ja-0212",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "大日本帝国憲法",
+    "value": "だいにっぽんていこくけんぽう"
+  },
+  {
+    "id": "ja-0213",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "日清戦争",
+    "value": "にっしんせんそう"
+  },
+  {
+    "id": "ja-0214",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "日露戦争",
+    "value": "にちろせんそう"
+  },
+  {
+    "id": "ja-0215",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "普通選挙法",
+    "value": "ふつうせんきょほう"
+  },
+  {
+    "id": "ja-0216",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "日本国憲法",
+    "value": "にほんこくけんぽう"
+  },
+  {
+    "id": "ja-0217",
+    "language": "ja",
+    "category": "社会・歴史",
+    "display": "高度経済成長",
+    "value": "こうどけいざいせいちょう"
+  },
+  {
+    "id": "ja-0218",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "三権分立",
+    "value": "さんけんぶんりつ"
+  },
+  {
+    "id": "ja-0219",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "国民主権",
+    "value": "こくみんしゅけん"
+  },
+  {
+    "id": "ja-0220",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "基本的人権",
+    "value": "きほんてきじんけん"
+  },
+  {
+    "id": "ja-0221",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "平和主義",
+    "value": "へいわしゅぎ"
+  },
+  {
+    "id": "ja-0222",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "国会",
+    "value": "こっかい"
+  },
+  {
+    "id": "ja-0223",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "内閣",
+    "value": "ないかく"
+  },
+  {
+    "id": "ja-0224",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "裁判所",
+    "value": "さいばんしょ"
+  },
+  {
+    "id": "ja-0225",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "衆議院",
+    "value": "しゅうぎいん"
+  },
+  {
+    "id": "ja-0226",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "参議院",
+    "value": "さんぎいん"
+  },
+  {
+    "id": "ja-0227",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "地方自治",
+    "value": "ちほうじち"
+  },
+  {
+    "id": "ja-0228",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "地方公共団体",
+    "value": "ちほうこうきょうだんたい"
+  },
+  {
+    "id": "ja-0229",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "条例",
+    "value": "じょうれい"
+  },
+  {
+    "id": "ja-0230",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "選挙権",
+    "value": "せんきょけん"
+  },
+  {
+    "id": "ja-0231",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "国民審査",
+    "value": "こくみんしんさ"
+  },
+  {
+    "id": "ja-0232",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "違憲審査制",
+    "value": "いけんしんさせい"
+  },
+  {
+    "id": "ja-0233",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "司法権",
+    "value": "しほうけん"
+  },
+  {
+    "id": "ja-0234",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "立法権",
+    "value": "りっぽうけん"
+  },
+  {
+    "id": "ja-0235",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "行政権",
+    "value": "ぎょうせいけん"
+  },
+  {
+    "id": "ja-0236",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "市場経済",
+    "value": "しじょうけいざい"
+  },
+  {
+    "id": "ja-0237",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "需要",
+    "value": "じゅよう"
+  },
+  {
+    "id": "ja-0238",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "供給",
+    "value": "きょうきゅう"
+  },
+  {
+    "id": "ja-0239",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "インフレーション",
+    "value": "いんふれーしょん"
+  },
+  {
+    "id": "ja-0240",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "デフレーション",
+    "value": "でふれーしょん"
+  },
+  {
+    "id": "ja-0241",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "円高",
+    "value": "えんだか"
+  },
+  {
+    "id": "ja-0242",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "円安",
+    "value": "えんやす"
+  },
+  {
+    "id": "ja-0243",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "社会保障",
+    "value": "しゃかいほしょう"
+  },
+  {
+    "id": "ja-0244",
+    "language": "ja",
+    "category": "社会・公民",
+    "display": "少子高齢化",
+    "value": "しょうしこうれいか"
+  },
+  {
+    "id": "ja-0245",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "北海道",
+    "value": "ほっかいどう"
+  },
+  {
+    "id": "ja-0246",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "本州",
+    "value": "ほんしゅう"
+  },
+  {
+    "id": "ja-0247",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "四国",
+    "value": "しこく"
+  },
+  {
+    "id": "ja-0248",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "九州",
+    "value": "きゅうしゅう"
+  },
+  {
+    "id": "ja-0249",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "沖縄",
+    "value": "おきなわ"
+  },
+  {
+    "id": "ja-0250",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "関東平野",
+    "value": "かんとうへいや"
+  },
+  {
+    "id": "ja-0251",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "濃尾平野",
+    "value": "のうびへいや"
+  },
+  {
+    "id": "ja-0252",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "大阪平野",
+    "value": "おおさかへいや"
+  },
+  {
+    "id": "ja-0253",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "石狩平野",
+    "value": "いしかりへいや"
+  },
+  {
+    "id": "ja-0254",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "リアス海岸",
+    "value": "りあすかいがん"
+  },
+  {
+    "id": "ja-0255",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "扇状地",
+    "value": "せんじょうち"
+  },
+  {
+    "id": "ja-0256",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "三角州",
+    "value": "さんかくす"
+  },
+  {
+    "id": "ja-0257",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "季節風",
+    "value": "きせつふう"
+  },
+  {
+    "id": "ja-0258",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "梅雨",
+    "value": "つゆ"
+  },
+  {
+    "id": "ja-0259",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "黒潮",
+    "value": "くろしお"
+  },
+  {
+    "id": "ja-0260",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "親潮",
+    "value": "おやしお"
+  },
+  {
+    "id": "ja-0261",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "瀬戸内海",
+    "value": "せとないかい"
+  },
+  {
+    "id": "ja-0262",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "日本海",
+    "value": "にほんかい"
+  },
+  {
+    "id": "ja-0263",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "太平洋",
+    "value": "たいへいよう"
+  },
+  {
+    "id": "ja-0264",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "ユーラシア大陸",
+    "value": "ゆーらしあたいりく"
+  },
+  {
+    "id": "ja-0265",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "アフリカ大陸",
+    "value": "あふりかたいりく"
+  },
+  {
+    "id": "ja-0266",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "北アメリカ大陸",
+    "value": "きたあめりかたいりく"
+  },
+  {
+    "id": "ja-0267",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "南アメリカ大陸",
+    "value": "みなみあめりかたいりく"
+  },
+  {
+    "id": "ja-0268",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "オーストラリア大陸",
+    "value": "おーすとらりあたいりく"
+  },
+  {
+    "id": "ja-0269",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "モンスーン",
+    "value": "もんすーん"
+  },
+  {
+    "id": "ja-0270",
+    "language": "ja",
+    "category": "社会・地理",
+    "display": "偏西風",
+    "value": "へんせいふう"
+  },
+  {
+    "id": "ja-0271",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "聖徳太子",
+    "value": "しょうとくたいし"
+  },
+  {
+    "id": "ja-0272",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "中大兄皇子",
+    "value": "なかのおおえのおうじ"
+  },
+  {
+    "id": "ja-0273",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "聖武天皇",
+    "value": "しょうむてんのう"
+  },
+  {
+    "id": "ja-0274",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "藤原道長",
+    "value": "ふじわらのみちなが"
+  },
+  {
+    "id": "ja-0275",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "平清盛",
+    "value": "たいらのきよもり"
+  },
+  {
+    "id": "ja-0276",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "源頼朝",
+    "value": "みなもとのよりとも"
+  },
+  {
+    "id": "ja-0277",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "北条政子",
+    "value": "ほうじょうまさこ"
+  },
+  {
+    "id": "ja-0278",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "足利尊氏",
+    "value": "あしかがたかうじ"
+  },
+  {
+    "id": "ja-0279",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "足利義満",
+    "value": "あしかがよしみつ"
+  },
+  {
+    "id": "ja-0280",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "織田信長",
+    "value": "おだのぶなが"
+  },
+  {
+    "id": "ja-0281",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "豊臣秀吉",
+    "value": "とよとみひでよし"
+  },
+  {
+    "id": "ja-0282",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "徳川家康",
+    "value": "とくがわいえやす"
+  },
+  {
+    "id": "ja-0283",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "徳川吉宗",
+    "value": "とくがわよしむね"
+  },
+  {
+    "id": "ja-0284",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "坂本龍馬",
+    "value": "さかもとりょうま"
+  },
+  {
+    "id": "ja-0285",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "西郷隆盛",
+    "value": "さいごうたかもり"
+  },
+  {
+    "id": "ja-0286",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "大久保利通",
+    "value": "おおくぼとしみち"
+  },
+  {
+    "id": "ja-0287",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "伊藤博文",
+    "value": "いとうひろぶみ"
+  },
+  {
+    "id": "ja-0288",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "福沢諭吉",
+    "value": "ふくざわゆきち"
+  },
+  {
+    "id": "ja-0289",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "板垣退助",
+    "value": "いたがきたいすけ"
+  },
+  {
+    "id": "ja-0290",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "大隈重信",
+    "value": "おおくましげのぶ"
+  },
+  {
+    "id": "ja-0291",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "野口英世",
+    "value": "のぐちひでよ"
+  },
+  {
+    "id": "ja-0292",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "北里柴三郎",
+    "value": "きたさとしばさぶろう"
+  },
+  {
+    "id": "ja-0293",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "津田梅子",
+    "value": "つだうめこ"
+  },
+  {
+    "id": "ja-0294",
+    "language": "ja",
+    "category": "歴史人物",
+    "display": "渋沢栄一",
+    "value": "しぶさわえいいち"
+  },
+  {
+    "id": "ja-0295",
+    "language": "ja",
+    "category": "俳優",
+    "display": "菅田将暉",
+    "value": "すだまさき"
+  },
+  {
+    "id": "ja-0296",
+    "language": "ja",
+    "category": "俳優",
+    "display": "佐藤健",
+    "value": "さとうたける"
+  },
+  {
+    "id": "ja-0297",
+    "language": "ja",
+    "category": "俳優",
+    "display": "神木隆之介",
+    "value": "かみきりゅうのすけ"
+  },
+  {
+    "id": "ja-0298",
+    "language": "ja",
+    "category": "俳優",
+    "display": "松坂桃李",
+    "value": "まつざかとうり"
+  },
+  {
+    "id": "ja-0299",
+    "language": "ja",
+    "category": "俳優",
+    "display": "横浜流星",
+    "value": "よこはまりゅうせい"
+  },
+  {
+    "id": "ja-0300",
+    "language": "ja",
+    "category": "俳優",
+    "display": "吉沢亮",
+    "value": "よしざわりょう"
+  },
+  {
+    "id": "ja-0301",
+    "language": "ja",
+    "category": "俳優",
+    "display": "山﨑賢人",
+    "value": "やまざきけんと"
+  },
+  {
+    "id": "ja-0302",
+    "language": "ja",
+    "category": "俳優",
+    "display": "鈴鹿央士",
+    "value": "すずかおうじ"
+  },
+  {
+    "id": "ja-0303",
+    "language": "ja",
+    "category": "俳優",
+    "display": "赤楚衛二",
+    "value": "あかそえいじ"
+  },
+  {
+    "id": "ja-0304",
+    "language": "ja",
+    "category": "俳優",
+    "display": "高橋文哉",
+    "value": "たかはしふみや"
+  },
+  {
+    "id": "ja-0305",
+    "language": "ja",
+    "category": "俳優",
+    "display": "目黒蓮",
+    "value": "めぐろれん"
+  },
+  {
+    "id": "ja-0306",
+    "language": "ja",
+    "category": "俳優",
+    "display": "松村北斗",
+    "value": "まつむらほくと"
+  },
+  {
+    "id": "ja-0307",
+    "language": "ja",
+    "category": "俳優",
+    "display": "阿部寛",
+    "value": "あべひろし"
+  },
+  {
+    "id": "ja-0308",
+    "language": "ja",
+    "category": "俳優",
+    "display": "堺雅人",
+    "value": "さかいまさと"
+  },
+  {
+    "id": "ja-0309",
+    "language": "ja",
+    "category": "俳優",
+    "display": "小栗旬",
+    "value": "おぐりしゅん"
+  },
+  {
+    "id": "ja-0310",
+    "language": "ja",
+    "category": "俳優",
+    "display": "藤原竜也",
+    "value": "ふじわらたつや"
+  },
+  {
+    "id": "ja-0311",
+    "language": "ja",
+    "category": "俳優",
+    "display": "山田裕貴",
+    "value": "やまだゆうき"
+  },
+  {
+    "id": "ja-0312",
+    "language": "ja",
+    "category": "俳優",
+    "display": "窪田正孝",
+    "value": "くぼたまさたか"
+  },
+  {
+    "id": "ja-0313",
+    "language": "ja",
+    "category": "俳優",
+    "display": "綾野剛",
+    "value": "あやのごう"
+  },
+  {
+    "id": "ja-0314",
+    "language": "ja",
+    "category": "俳優",
+    "display": "岡田将生",
+    "value": "おかだまさき"
+  },
+  {
+    "id": "ja-0315",
+    "language": "ja",
+    "category": "女優",
+    "display": "橋本環奈",
+    "value": "はしもとかんな"
+  },
+  {
+    "id": "ja-0316",
+    "language": "ja",
+    "category": "女優",
+    "display": "浜辺美波",
+    "value": "はまべみなみ"
+  },
+  {
+    "id": "ja-0317",
+    "language": "ja",
+    "category": "女優",
+    "display": "広瀬すず",
+    "value": "ひろせすず"
+  },
+  {
+    "id": "ja-0318",
+    "language": "ja",
+    "category": "女優",
+    "display": "有村架純",
+    "value": "ありむらかすみ"
+  },
+  {
+    "id": "ja-0319",
+    "language": "ja",
+    "category": "女優",
+    "display": "川口春奈",
+    "value": "かわぐちはるな"
+  },
+  {
+    "id": "ja-0320",
+    "language": "ja",
+    "category": "女優",
+    "display": "永野芽郁",
+    "value": "ながのめい"
+  },
+  {
+    "id": "ja-0321",
+    "language": "ja",
+    "category": "女優",
+    "display": "今田美桜",
+    "value": "いまだみお"
+  },
+  {
+    "id": "ja-0322",
+    "language": "ja",
+    "category": "女優",
+    "display": "上白石萌音",
+    "value": "かみしらいしもね"
+  },
+  {
+    "id": "ja-0323",
+    "language": "ja",
+    "category": "女優",
+    "display": "上白石萌歌",
+    "value": "かみしらいしもか"
+  },
+  {
+    "id": "ja-0324",
+    "language": "ja",
+    "category": "女優",
+    "display": "清原果耶",
+    "value": "きよはらかや"
+  },
+  {
+    "id": "ja-0325",
+    "language": "ja",
+    "category": "女優",
+    "display": "小芝風花",
+    "value": "こしばふうか"
+  },
+  {
+    "id": "ja-0326",
+    "language": "ja",
+    "category": "女優",
+    "display": "杉咲花",
+    "value": "すぎさきはな"
+  },
+  {
+    "id": "ja-0327",
+    "language": "ja",
+    "category": "女優",
+    "display": "福原遥",
+    "value": "ふくはらはるか"
+  },
+  {
+    "id": "ja-0328",
+    "language": "ja",
+    "category": "女優",
+    "display": "奈緒",
+    "value": "なお"
+  },
+  {
+    "id": "ja-0329",
+    "language": "ja",
+    "category": "女優",
+    "display": "芳根京子",
+    "value": "よしねきょうこ"
+  },
+  {
+    "id": "ja-0330",
+    "language": "ja",
+    "category": "女優",
+    "display": "松岡茉優",
+    "value": "まつおかまゆ"
+  },
+  {
+    "id": "ja-0331",
+    "language": "ja",
+    "category": "女優",
+    "display": "長澤まさみ",
+    "value": "ながさわまさみ"
+  },
+  {
+    "id": "ja-0332",
+    "language": "ja",
+    "category": "女優",
+    "display": "石原さとみ",
+    "value": "いしはらさとみ"
+  },
+  {
+    "id": "ja-0333",
+    "language": "ja",
+    "category": "女優",
+    "display": "新垣結衣",
+    "value": "あらがきゆい"
+  },
+  {
+    "id": "ja-0334",
+    "language": "ja",
+    "category": "女優",
+    "display": "戸田恵梨香",
+    "value": "とだえりか"
+  },
+  {
+    "id": "ja-0335",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "乃木坂46",
+    "value": "のぎざかふぉーてぃーしっくす"
+  },
+  {
+    "id": "ja-0336",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "櫻坂46",
+    "value": "さくらざかふぉーてぃーしっくす"
+  },
+  {
+    "id": "ja-0337",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "日向坂46",
+    "value": "ひなたざかふぉーてぃーしっくす"
+  },
+  {
+    "id": "ja-0338",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "AKB48",
+    "value": "えーけーびーふぉーてぃーえいと"
+  },
+  {
+    "id": "ja-0339",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "NiziU",
+    "value": "にじゅー"
+  },
+  {
+    "id": "ja-0340",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "ME:I",
+    "value": "みーあい"
+  },
+  {
+    "id": "ja-0341",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "FRUITS ZIPPER",
+    "value": "ふるーつじっぱー"
+  },
+  {
+    "id": "ja-0342",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "CUTIE STREET",
+    "value": "きゅーてぃーすとりーと"
+  },
+  {
+    "id": "ja-0343",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "超ときめき宣伝部",
+    "value": "ちょうときめきせんでんぶ"
+  },
+  {
+    "id": "ja-0344",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "ももいろクローバーZ",
+    "value": "ももいろくろーばーぜっと"
+  },
+  {
+    "id": "ja-0345",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "Snow Man",
+    "value": "すのーまん"
+  },
+  {
+    "id": "ja-0346",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "SixTONES",
+    "value": "すとーんず"
+  },
+  {
+    "id": "ja-0347",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "なにわ男子",
+    "value": "なにわだんし"
+  },
+  {
+    "id": "ja-0348",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "King & Prince",
+    "value": "きんぐあんどぷりんす"
+  },
+  {
+    "id": "ja-0349",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "Travis Japan",
+    "value": "とらびすじゃぱん"
+  },
+  {
+    "id": "ja-0350",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "WEST.",
+    "value": "うえすと"
+  },
+  {
+    "id": "ja-0351",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "Aぇ! group",
+    "value": "ええぐるーぷ"
+  },
+  {
+    "id": "ja-0352",
+    "language": "ja",
+    "category": "アイドル・グループ",
+    "display": "timelesz",
+    "value": "たいむれす"
+  },
+  {
+    "id": "ja-0353",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "アルゴリズム",
+    "value": "あるごりずむ"
+  },
+  {
+    "id": "ja-0354",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "データベース",
+    "value": "でーたべーす"
+  },
+  {
+    "id": "ja-0355",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "コンパイラ",
+    "value": "こんぱいら"
+  },
+  {
+    "id": "ja-0356",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "インタプリタ",
+    "value": "いんたぷりた"
+  },
+  {
+    "id": "ja-0357",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "プロトコル",
+    "value": "ぷろとこる"
+  },
+  {
+    "id": "ja-0358",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "キャッシュ",
+    "value": "きゃっしゅ"
+  },
+  {
+    "id": "ja-0359",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "セッション",
+    "value": "せっしょん"
+  },
+  {
+    "id": "ja-0360",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "クッキー",
+    "value": "くっきー"
+  },
+  {
+    "id": "ja-0361",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "コンテナ",
+    "value": "こんてな"
+  },
+  {
+    "id": "ja-0362",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "仮想化",
+    "value": "かそうか"
+  },
+  {
+    "id": "ja-0363",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "暗号化",
+    "value": "あんごうか"
+  },
+  {
+    "id": "ja-0364",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "認証",
+    "value": "にんしょう"
+  },
+  {
+    "id": "ja-0365",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "認可",
+    "value": "にんか"
+  },
+  {
+    "id": "ja-0366",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "ロードバランサ",
+    "value": "ろーどばらんさ"
+  },
+  {
+    "id": "ja-0367",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "ファイアウォール",
+    "value": "ふぁいあうぉーる"
+  },
+  {
+    "id": "ja-0368",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "デッドロック",
+    "value": "でっどろっく"
+  },
+  {
+    "id": "ja-0369",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "トランザクション",
+    "value": "とらんざくしょん"
+  },
+  {
+    "id": "ja-0370",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "インデックス",
+    "value": "いんでっくす"
+  },
+  {
+    "id": "ja-0371",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "マイグレーション",
+    "value": "まいぐれーしょん"
+  },
+  {
+    "id": "ja-0372",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "リファクタリング",
+    "value": "りふぁくたりんぐ"
+  },
+  {
+    "id": "ja-0373",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "デプロイ",
+    "value": "でぷろい"
+  },
+  {
+    "id": "ja-0374",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "スケーラビリティ",
+    "value": "すけーらびりてぃ"
+  },
+  {
+    "id": "ja-0375",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "可用性",
+    "value": "かようせい"
+  },
+  {
+    "id": "ja-0376",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "冗長化",
+    "value": "じょうちょうか"
+  },
+  {
+    "id": "ja-0377",
+    "language": "ja",
+    "category": "IT用語",
+    "display": "負荷分散",
+    "value": "ふかぶんさん"
+  },
+  {
+    "id": "ja-0378",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "マインクラフト",
+    "value": "まいんくらふと"
+  },
+  {
+    "id": "ja-0379",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "スプラトゥーン",
+    "value": "すぷらとぅーん"
+  },
+  {
+    "id": "ja-0380",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "ポケットモンスター",
+    "value": "ぽけっともんすたー"
+  },
+  {
+    "id": "ja-0381",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "マリオカート",
+    "value": "まりおかーと"
+  },
+  {
+    "id": "ja-0382",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "ゼルダの伝説",
+    "value": "ぜるだのでんせつ"
+  },
+  {
+    "id": "ja-0383",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "どうぶつの森",
+    "value": "どうぶつのもり"
+  },
+  {
+    "id": "ja-0384",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "モンスターハンター",
+    "value": "もんすたーはんたー"
+  },
+  {
+    "id": "ja-0385",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "ドラゴンクエスト",
+    "value": "どらごんくえすと"
+  },
+  {
+    "id": "ja-0386",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "ファイナルファンタジー",
+    "value": "ふぁいなるふぁんたじー"
+  },
+  {
+    "id": "ja-0387",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "フォートナイト",
+    "value": "ふぉーとないと"
+  },
+  {
+    "id": "ja-0388",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "エーペックス",
+    "value": "えーぺっくす"
+  },
+  {
+    "id": "ja-0389",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "バロラント",
+    "value": "ばろらんと"
+  },
+  {
+    "id": "ja-0390",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "原神",
+    "value": "げんしん"
+  },
+  {
+    "id": "ja-0391",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "パズルアンドドラゴンズ",
+    "value": "ぱずるあんどどらごんず"
+  },
+  {
+    "id": "ja-0392",
+    "language": "ja",
+    "category": "ゲーム",
+    "display": "プロジェクトセカイ",
+    "value": "ぷろじぇくとせかい"
+  },
+  {
+    "id": "ja-0393",
+    "language": "ja",
+    "category": "職業",
+    "display": "医師",
+    "value": "いし"
+  },
+  {
+    "id": "ja-0394",
+    "language": "ja",
+    "category": "職業",
+    "display": "看護師",
+    "value": "かんごし"
+  },
+  {
+    "id": "ja-0395",
+    "language": "ja",
+    "category": "職業",
+    "display": "薬剤師",
+    "value": "やくざいし"
+  },
+  {
+    "id": "ja-0396",
+    "language": "ja",
+    "category": "職業",
+    "display": "教師",
+    "value": "きょうし"
+  },
+  {
+    "id": "ja-0397",
+    "language": "ja",
+    "category": "職業",
+    "display": "保育士",
+    "value": "ほいくし"
+  },
+  {
+    "id": "ja-0398",
+    "language": "ja",
+    "category": "職業",
+    "display": "弁護士",
+    "value": "べんごし"
+  },
+  {
+    "id": "ja-0399",
+    "language": "ja",
+    "category": "職業",
+    "display": "税理士",
+    "value": "ぜいりし"
+  },
+  {
+    "id": "ja-0400",
+    "language": "ja",
+    "category": "職業",
+    "display": "会計士",
+    "value": "かいけいし"
+  },
+  {
+    "id": "ja-0401",
+    "language": "ja",
+    "category": "職業",
+    "display": "建築士",
+    "value": "けんちくし"
+  },
+  {
+    "id": "ja-0402",
+    "language": "ja",
+    "category": "職業",
+    "display": "美容師",
+    "value": "びようし"
+  },
+  {
+    "id": "ja-0403",
+    "language": "ja",
+    "category": "職業",
+    "display": "調理師",
+    "value": "ちょうりし"
+  },
+  {
+    "id": "ja-0404",
+    "language": "ja",
+    "category": "職業",
+    "display": "消防士",
+    "value": "しょうぼうし"
+  },
+  {
+    "id": "ja-0405",
+    "language": "ja",
+    "category": "職業",
+    "display": "警察官",
+    "value": "けいさつかん"
+  },
+  {
+    "id": "ja-0406",
+    "language": "ja",
+    "category": "職業",
+    "display": "自衛官",
+    "value": "じえいかん"
+  },
+  {
+    "id": "ja-0407",
+    "language": "ja",
+    "category": "職業",
+    "display": "研究者",
+    "value": "けんきゅうしゃ"
+  },
+  {
+    "id": "ja-0408",
+    "language": "ja",
+    "category": "職業",
+    "display": "エンジニア",
+    "value": "えんじにあ"
+  },
+  {
+    "id": "ja-0409",
+    "language": "ja",
+    "category": "職業",
+    "display": "デザイナー",
+    "value": "でざいなー"
+  },
+  {
+    "id": "ja-0410",
+    "language": "ja",
+    "category": "職業",
+    "display": "イラストレーター",
+    "value": "いらすとれーたー"
+  },
+  {
+    "id": "ja-0411",
+    "language": "ja",
+    "category": "職業",
+    "display": "編集者",
+    "value": "へんしゅうしゃ"
+  },
+  {
+    "id": "ja-0412",
+    "language": "ja",
+    "category": "職業",
+    "display": "記者",
+    "value": "きしゃ"
+  },
+  {
+    "id": "ja-0413",
+    "language": "ja",
+    "category": "職業",
+    "display": "俳優",
+    "value": "はいゆう"
+  },
+  {
+    "id": "ja-0414",
+    "language": "ja",
+    "category": "職業",
+    "display": "声優",
+    "value": "せいゆう"
+  },
+  {
+    "id": "ja-0415",
+    "language": "ja",
+    "category": "職業",
+    "display": "漫画家",
+    "value": "まんがか"
+  },
+  {
+    "id": "ja-0416",
+    "language": "ja",
+    "category": "職業",
+    "display": "小説家",
+    "value": "しょうせつか"
+  }
+]

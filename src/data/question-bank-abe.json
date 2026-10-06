@@ -1,0 +1,2613 @@
+[
+  {
+    "id": "abe-00001",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stench",
+    "value": "Stench"
+  },
+  {
+    "id": "abe-00002",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Drizzle",
+    "value": "Drizzle"
+  },
+  {
+    "id": "abe-00003",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Speed Boost",
+    "value": "Speed Boost"
+  },
+  {
+    "id": "abe-00004",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Battle Armor",
+    "value": "Battle Armor"
+  },
+  {
+    "id": "abe-00005",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sturdy",
+    "value": "Sturdy"
+  },
+  {
+    "id": "abe-00006",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Damp",
+    "value": "Damp"
+  },
+  {
+    "id": "abe-00007",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Limber",
+    "value": "Limber"
+  },
+  {
+    "id": "abe-00008",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sand Veil",
+    "value": "Sand Veil"
+  },
+  {
+    "id": "abe-00009",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Static",
+    "value": "Static"
+  },
+  {
+    "id": "abe-00010",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Volt Absorb",
+    "value": "Volt Absorb"
+  },
+  {
+    "id": "abe-00011",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Water Absorb",
+    "value": "Water Absorb"
+  },
+  {
+    "id": "abe-00012",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Oblivious",
+    "value": "Oblivious"
+  },
+  {
+    "id": "abe-00013",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cloud Nine",
+    "value": "Cloud Nine"
+  },
+  {
+    "id": "abe-00014",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Compound Eyes",
+    "value": "Compound Eyes"
+  },
+  {
+    "id": "abe-00015",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Insomnia",
+    "value": "Insomnia"
+  },
+  {
+    "id": "abe-00016",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Color Change",
+    "value": "Color Change"
+  },
+  {
+    "id": "abe-00017",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Immunity",
+    "value": "Immunity"
+  },
+  {
+    "id": "abe-00018",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flash Fire",
+    "value": "Flash Fire"
+  },
+  {
+    "id": "abe-00019",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shield Dust",
+    "value": "Shield Dust"
+  },
+  {
+    "id": "abe-00020",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Own Tempo",
+    "value": "Own Tempo"
+  },
+  {
+    "id": "abe-00021",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Suction Cups",
+    "value": "Suction Cups"
+  },
+  {
+    "id": "abe-00022",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Intimidate",
+    "value": "Intimidate"
+  },
+  {
+    "id": "abe-00023",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shadow Tag",
+    "value": "Shadow Tag"
+  },
+  {
+    "id": "abe-00024",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rough Skin",
+    "value": "Rough Skin"
+  },
+  {
+    "id": "abe-00025",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wonder Guard",
+    "value": "Wonder Guard"
+  },
+  {
+    "id": "abe-00026",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Levitate",
+    "value": "Levitate"
+  },
+  {
+    "id": "abe-00027",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Effect Spore",
+    "value": "Effect Spore"
+  },
+  {
+    "id": "abe-00028",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Synchronize",
+    "value": "Synchronize"
+  },
+  {
+    "id": "abe-00029",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Clear Body",
+    "value": "Clear Body"
+  },
+  {
+    "id": "abe-00030",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Natural Cure",
+    "value": "Natural Cure"
+  },
+  {
+    "id": "abe-00031",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Lightning Rod",
+    "value": "Lightning Rod"
+  },
+  {
+    "id": "abe-00032",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Serene Grace",
+    "value": "Serene Grace"
+  },
+  {
+    "id": "abe-00033",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Swift Swim",
+    "value": "Swift Swim"
+  },
+  {
+    "id": "abe-00034",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Chlorophyll",
+    "value": "Chlorophyll"
+  },
+  {
+    "id": "abe-00035",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Illuminate",
+    "value": "Illuminate"
+  },
+  {
+    "id": "abe-00036",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Trace",
+    "value": "Trace"
+  },
+  {
+    "id": "abe-00037",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Huge Power",
+    "value": "Huge Power"
+  },
+  {
+    "id": "abe-00038",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Poison Point",
+    "value": "Poison Point"
+  },
+  {
+    "id": "abe-00039",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Inner Focus",
+    "value": "Inner Focus"
+  },
+  {
+    "id": "abe-00040",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Magma Armor",
+    "value": "Magma Armor"
+  },
+  {
+    "id": "abe-00041",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Water Veil",
+    "value": "Water Veil"
+  },
+  {
+    "id": "abe-00042",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Magnet Pull",
+    "value": "Magnet Pull"
+  },
+  {
+    "id": "abe-00043",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Soundproof",
+    "value": "Soundproof"
+  },
+  {
+    "id": "abe-00044",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rain Dish",
+    "value": "Rain Dish"
+  },
+  {
+    "id": "abe-00045",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sand Stream",
+    "value": "Sand Stream"
+  },
+  {
+    "id": "abe-00046",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pressure",
+    "value": "Pressure"
+  },
+  {
+    "id": "abe-00047",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Thick Fat",
+    "value": "Thick Fat"
+  },
+  {
+    "id": "abe-00048",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Early Bird",
+    "value": "Early Bird"
+  },
+  {
+    "id": "abe-00049",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flame Body",
+    "value": "Flame Body"
+  },
+  {
+    "id": "abe-00050",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Run Away",
+    "value": "Run Away"
+  },
+  {
+    "id": "abe-00051",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Keen Eye",
+    "value": "Keen Eye"
+  },
+  {
+    "id": "abe-00052",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hyper Cutter",
+    "value": "Hyper Cutter"
+  },
+  {
+    "id": "abe-00053",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pickup",
+    "value": "Pickup"
+  },
+  {
+    "id": "abe-00054",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Truant",
+    "value": "Truant"
+  },
+  {
+    "id": "abe-00055",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hustle",
+    "value": "Hustle"
+  },
+  {
+    "id": "abe-00056",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cute Charm",
+    "value": "Cute Charm"
+  },
+  {
+    "id": "abe-00057",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Plus",
+    "value": "Plus"
+  },
+  {
+    "id": "abe-00058",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Minus",
+    "value": "Minus"
+  },
+  {
+    "id": "abe-00059",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Forecast",
+    "value": "Forecast"
+  },
+  {
+    "id": "abe-00060",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sticky Hold",
+    "value": "Sticky Hold"
+  },
+  {
+    "id": "abe-00061",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shed Skin",
+    "value": "Shed Skin"
+  },
+  {
+    "id": "abe-00062",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Guts",
+    "value": "Guts"
+  },
+  {
+    "id": "abe-00063",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Marvel Scale",
+    "value": "Marvel Scale"
+  },
+  {
+    "id": "abe-00064",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Liquid Ooze",
+    "value": "Liquid Ooze"
+  },
+  {
+    "id": "abe-00065",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Overgrow",
+    "value": "Overgrow"
+  },
+  {
+    "id": "abe-00066",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Blaze",
+    "value": "Blaze"
+  },
+  {
+    "id": "abe-00067",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Torrent",
+    "value": "Torrent"
+  },
+  {
+    "id": "abe-00068",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Swarm",
+    "value": "Swarm"
+  },
+  {
+    "id": "abe-00069",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rock Head",
+    "value": "Rock Head"
+  },
+  {
+    "id": "abe-00070",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Drought",
+    "value": "Drought"
+  },
+  {
+    "id": "abe-00071",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Arena Trap",
+    "value": "Arena Trap"
+  },
+  {
+    "id": "abe-00072",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Vital Spirit",
+    "value": "Vital Spirit"
+  },
+  {
+    "id": "abe-00073",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "White Smoke",
+    "value": "White Smoke"
+  },
+  {
+    "id": "abe-00074",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pure Power",
+    "value": "Pure Power"
+  },
+  {
+    "id": "abe-00075",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shell Armor",
+    "value": "Shell Armor"
+  },
+  {
+    "id": "abe-00076",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Air Lock",
+    "value": "Air Lock"
+  },
+  {
+    "id": "abe-00077",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tangled Feet",
+    "value": "Tangled Feet"
+  },
+  {
+    "id": "abe-00078",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Motor Drive",
+    "value": "Motor Drive"
+  },
+  {
+    "id": "abe-00079",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rivalry",
+    "value": "Rivalry"
+  },
+  {
+    "id": "abe-00080",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Steadfast",
+    "value": "Steadfast"
+  },
+  {
+    "id": "abe-00081",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Snow Cloak",
+    "value": "Snow Cloak"
+  },
+  {
+    "id": "abe-00082",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gluttony",
+    "value": "Gluttony"
+  },
+  {
+    "id": "abe-00083",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Anger Point",
+    "value": "Anger Point"
+  },
+  {
+    "id": "abe-00084",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Unburden",
+    "value": "Unburden"
+  },
+  {
+    "id": "abe-00085",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Heatproof",
+    "value": "Heatproof"
+  },
+  {
+    "id": "abe-00086",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Simple",
+    "value": "Simple"
+  },
+  {
+    "id": "abe-00087",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dry Skin",
+    "value": "Dry Skin"
+  },
+  {
+    "id": "abe-00088",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Download",
+    "value": "Download"
+  },
+  {
+    "id": "abe-00089",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Iron Fist",
+    "value": "Iron Fist"
+  },
+  {
+    "id": "abe-00090",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Poison Heal",
+    "value": "Poison Heal"
+  },
+  {
+    "id": "abe-00091",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Adaptability",
+    "value": "Adaptability"
+  },
+  {
+    "id": "abe-00092",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Skill Link",
+    "value": "Skill Link"
+  },
+  {
+    "id": "abe-00093",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hydration",
+    "value": "Hydration"
+  },
+  {
+    "id": "abe-00094",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Solar Power",
+    "value": "Solar Power"
+  },
+  {
+    "id": "abe-00095",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Quick Feet",
+    "value": "Quick Feet"
+  },
+  {
+    "id": "abe-00096",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Normalize",
+    "value": "Normalize"
+  },
+  {
+    "id": "abe-00097",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sniper",
+    "value": "Sniper"
+  },
+  {
+    "id": "abe-00098",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Magic Guard",
+    "value": "Magic Guard"
+  },
+  {
+    "id": "abe-00099",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "No Guard",
+    "value": "No Guard"
+  },
+  {
+    "id": "abe-00100",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stall",
+    "value": "Stall"
+  },
+  {
+    "id": "abe-00101",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Technician",
+    "value": "Technician"
+  },
+  {
+    "id": "abe-00102",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Leaf Guard",
+    "value": "Leaf Guard"
+  },
+  {
+    "id": "abe-00103",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Klutz",
+    "value": "Klutz"
+  },
+  {
+    "id": "abe-00104",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mold Breaker",
+    "value": "Mold Breaker"
+  },
+  {
+    "id": "abe-00105",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Super Luck",
+    "value": "Super Luck"
+  },
+  {
+    "id": "abe-00106",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aftermath",
+    "value": "Aftermath"
+  },
+  {
+    "id": "abe-00107",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Anticipation",
+    "value": "Anticipation"
+  },
+  {
+    "id": "abe-00108",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Forewarn",
+    "value": "Forewarn"
+  },
+  {
+    "id": "abe-00109",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Unaware",
+    "value": "Unaware"
+  },
+  {
+    "id": "abe-00110",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tinted Lens",
+    "value": "Tinted Lens"
+  },
+  {
+    "id": "abe-00111",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Filter",
+    "value": "Filter"
+  },
+  {
+    "id": "abe-00112",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Slow Start",
+    "value": "Slow Start"
+  },
+  {
+    "id": "abe-00113",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Scrappy",
+    "value": "Scrappy"
+  },
+  {
+    "id": "abe-00114",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Storm Drain",
+    "value": "Storm Drain"
+  },
+  {
+    "id": "abe-00115",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Ice Body",
+    "value": "Ice Body"
+  },
+  {
+    "id": "abe-00116",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Solid Rock",
+    "value": "Solid Rock"
+  },
+  {
+    "id": "abe-00117",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Snow Warning",
+    "value": "Snow Warning"
+  },
+  {
+    "id": "abe-00118",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Honey Gather",
+    "value": "Honey Gather"
+  },
+  {
+    "id": "abe-00119",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Frisk",
+    "value": "Frisk"
+  },
+  {
+    "id": "abe-00120",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Reckless",
+    "value": "Reckless"
+  },
+  {
+    "id": "abe-00121",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Multitype",
+    "value": "Multitype"
+  },
+  {
+    "id": "abe-00122",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flower Gift",
+    "value": "Flower Gift"
+  },
+  {
+    "id": "abe-00123",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Bad Dreams",
+    "value": "Bad Dreams"
+  },
+  {
+    "id": "abe-00124",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pickpocket",
+    "value": "Pickpocket"
+  },
+  {
+    "id": "abe-00125",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sheer Force",
+    "value": "Sheer Force"
+  },
+  {
+    "id": "abe-00126",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Contrary",
+    "value": "Contrary"
+  },
+  {
+    "id": "abe-00127",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Unnerve",
+    "value": "Unnerve"
+  },
+  {
+    "id": "abe-00128",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Defiant",
+    "value": "Defiant"
+  },
+  {
+    "id": "abe-00129",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Defeatist",
+    "value": "Defeatist"
+  },
+  {
+    "id": "abe-00130",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cursed Body",
+    "value": "Cursed Body"
+  },
+  {
+    "id": "abe-00131",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Healer",
+    "value": "Healer"
+  },
+  {
+    "id": "abe-00132",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Friend Guard",
+    "value": "Friend Guard"
+  },
+  {
+    "id": "abe-00133",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Weak Armor",
+    "value": "Weak Armor"
+  },
+  {
+    "id": "abe-00134",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Heavy Metal",
+    "value": "Heavy Metal"
+  },
+  {
+    "id": "abe-00135",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Light Metal",
+    "value": "Light Metal"
+  },
+  {
+    "id": "abe-00136",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Multiscale",
+    "value": "Multiscale"
+  },
+  {
+    "id": "abe-00137",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Toxic Boost",
+    "value": "Toxic Boost"
+  },
+  {
+    "id": "abe-00138",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flare Boost",
+    "value": "Flare Boost"
+  },
+  {
+    "id": "abe-00139",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Harvest",
+    "value": "Harvest"
+  },
+  {
+    "id": "abe-00140",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Telepathy",
+    "value": "Telepathy"
+  },
+  {
+    "id": "abe-00141",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Moody",
+    "value": "Moody"
+  },
+  {
+    "id": "abe-00142",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Overcoat",
+    "value": "Overcoat"
+  },
+  {
+    "id": "abe-00143",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Poison Touch",
+    "value": "Poison Touch"
+  },
+  {
+    "id": "abe-00144",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Regenerator",
+    "value": "Regenerator"
+  },
+  {
+    "id": "abe-00145",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Big Pecks",
+    "value": "Big Pecks"
+  },
+  {
+    "id": "abe-00146",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sand Rush",
+    "value": "Sand Rush"
+  },
+  {
+    "id": "abe-00147",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wonder Skin",
+    "value": "Wonder Skin"
+  },
+  {
+    "id": "abe-00148",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Analytic",
+    "value": "Analytic"
+  },
+  {
+    "id": "abe-00149",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Illusion",
+    "value": "Illusion"
+  },
+  {
+    "id": "abe-00150",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Imposter",
+    "value": "Imposter"
+  },
+  {
+    "id": "abe-00151",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Infiltrator",
+    "value": "Infiltrator"
+  },
+  {
+    "id": "abe-00152",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mummy",
+    "value": "Mummy"
+  },
+  {
+    "id": "abe-00153",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Moxie",
+    "value": "Moxie"
+  },
+  {
+    "id": "abe-00154",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Justified",
+    "value": "Justified"
+  },
+  {
+    "id": "abe-00155",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rattled",
+    "value": "Rattled"
+  },
+  {
+    "id": "abe-00156",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Magic Bounce",
+    "value": "Magic Bounce"
+  },
+  {
+    "id": "abe-00157",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sap Sipper",
+    "value": "Sap Sipper"
+  },
+  {
+    "id": "abe-00158",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Prankster",
+    "value": "Prankster"
+  },
+  {
+    "id": "abe-00159",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sand Force",
+    "value": "Sand Force"
+  },
+  {
+    "id": "abe-00160",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Iron Barbs",
+    "value": "Iron Barbs"
+  },
+  {
+    "id": "abe-00161",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Zen Mode",
+    "value": "Zen Mode"
+  },
+  {
+    "id": "abe-00162",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Victory Star",
+    "value": "Victory Star"
+  },
+  {
+    "id": "abe-00163",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Turboblaze",
+    "value": "Turboblaze"
+  },
+  {
+    "id": "abe-00164",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Teravolt",
+    "value": "Teravolt"
+  },
+  {
+    "id": "abe-00165",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aroma Veil",
+    "value": "Aroma Veil"
+  },
+  {
+    "id": "abe-00166",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flower Veil",
+    "value": "Flower Veil"
+  },
+  {
+    "id": "abe-00167",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cheek Pouch",
+    "value": "Cheek Pouch"
+  },
+  {
+    "id": "abe-00168",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Protean",
+    "value": "Protean"
+  },
+  {
+    "id": "abe-00169",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Fur Coat",
+    "value": "Fur Coat"
+  },
+  {
+    "id": "abe-00170",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Magician",
+    "value": "Magician"
+  },
+  {
+    "id": "abe-00171",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Bulletproof",
+    "value": "Bulletproof"
+  },
+  {
+    "id": "abe-00172",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Competitive",
+    "value": "Competitive"
+  },
+  {
+    "id": "abe-00173",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Strong Jaw",
+    "value": "Strong Jaw"
+  },
+  {
+    "id": "abe-00174",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Refrigerate",
+    "value": "Refrigerate"
+  },
+  {
+    "id": "abe-00175",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sweet Veil",
+    "value": "Sweet Veil"
+  },
+  {
+    "id": "abe-00176",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stance Change",
+    "value": "Stance Change"
+  },
+  {
+    "id": "abe-00177",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gale Wings",
+    "value": "Gale Wings"
+  },
+  {
+    "id": "abe-00178",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mega Launcher",
+    "value": "Mega Launcher"
+  },
+  {
+    "id": "abe-00179",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Grass Pelt",
+    "value": "Grass Pelt"
+  },
+  {
+    "id": "abe-00180",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Symbiosis",
+    "value": "Symbiosis"
+  },
+  {
+    "id": "abe-00181",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tough Claws",
+    "value": "Tough Claws"
+  },
+  {
+    "id": "abe-00182",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pixilate",
+    "value": "Pixilate"
+  },
+  {
+    "id": "abe-00183",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gooey",
+    "value": "Gooey"
+  },
+  {
+    "id": "abe-00184",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aerilate",
+    "value": "Aerilate"
+  },
+  {
+    "id": "abe-00185",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Parental Bond",
+    "value": "Parental Bond"
+  },
+  {
+    "id": "abe-00186",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dark Aura",
+    "value": "Dark Aura"
+  },
+  {
+    "id": "abe-00187",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Fairy Aura",
+    "value": "Fairy Aura"
+  },
+  {
+    "id": "abe-00188",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aura Break",
+    "value": "Aura Break"
+  },
+  {
+    "id": "abe-00189",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Primordial Sea",
+    "value": "Primordial Sea"
+  },
+  {
+    "id": "abe-00190",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Desolate Land",
+    "value": "Desolate Land"
+  },
+  {
+    "id": "abe-00191",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Delta Stream",
+    "value": "Delta Stream"
+  },
+  {
+    "id": "abe-00192",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stamina",
+    "value": "Stamina"
+  },
+  {
+    "id": "abe-00193",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wimp Out",
+    "value": "Wimp Out"
+  },
+  {
+    "id": "abe-00194",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Emergency Exit",
+    "value": "Emergency Exit"
+  },
+  {
+    "id": "abe-00195",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Water Compaction",
+    "value": "Water Compaction"
+  },
+  {
+    "id": "abe-00196",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Merciless",
+    "value": "Merciless"
+  },
+  {
+    "id": "abe-00197",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shields Down",
+    "value": "Shields Down"
+  },
+  {
+    "id": "abe-00198",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stakeout",
+    "value": "Stakeout"
+  },
+  {
+    "id": "abe-00199",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Water Bubble",
+    "value": "Water Bubble"
+  },
+  {
+    "id": "abe-00200",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Steelworker",
+    "value": "Steelworker"
+  },
+  {
+    "id": "abe-00201",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Berserk",
+    "value": "Berserk"
+  },
+  {
+    "id": "abe-00202",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Slush Rush",
+    "value": "Slush Rush"
+  },
+  {
+    "id": "abe-00203",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Long Reach",
+    "value": "Long Reach"
+  },
+  {
+    "id": "abe-00204",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Liquid Voice",
+    "value": "Liquid Voice"
+  },
+  {
+    "id": "abe-00205",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Triage",
+    "value": "Triage"
+  },
+  {
+    "id": "abe-00206",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Galvanize",
+    "value": "Galvanize"
+  },
+  {
+    "id": "abe-00207",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Surge Surfer",
+    "value": "Surge Surfer"
+  },
+  {
+    "id": "abe-00208",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Schooling",
+    "value": "Schooling"
+  },
+  {
+    "id": "abe-00209",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Disguise",
+    "value": "Disguise"
+  },
+  {
+    "id": "abe-00210",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Battle Bond",
+    "value": "Battle Bond"
+  },
+  {
+    "id": "abe-00211",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Power Construct",
+    "value": "Power Construct"
+  },
+  {
+    "id": "abe-00212",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Corrosion",
+    "value": "Corrosion"
+  },
+  {
+    "id": "abe-00213",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Comatose",
+    "value": "Comatose"
+  },
+  {
+    "id": "abe-00214",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Queenly Majesty",
+    "value": "Queenly Majesty"
+  },
+  {
+    "id": "abe-00215",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Innards Out",
+    "value": "Innards Out"
+  },
+  {
+    "id": "abe-00216",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dancer",
+    "value": "Dancer"
+  },
+  {
+    "id": "abe-00217",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Battery",
+    "value": "Battery"
+  },
+  {
+    "id": "abe-00218",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Fluffy",
+    "value": "Fluffy"
+  },
+  {
+    "id": "abe-00219",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dazzling",
+    "value": "Dazzling"
+  },
+  {
+    "id": "abe-00220",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Soul-Heart",
+    "value": "Soul-Heart"
+  },
+  {
+    "id": "abe-00221",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tangling Hair",
+    "value": "Tangling Hair"
+  },
+  {
+    "id": "abe-00222",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Receiver",
+    "value": "Receiver"
+  },
+  {
+    "id": "abe-00223",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Power of Alchemy",
+    "value": "Power of Alchemy"
+  },
+  {
+    "id": "abe-00224",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Beast Boost",
+    "value": "Beast Boost"
+  },
+  {
+    "id": "abe-00225",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "RKS System",
+    "value": "RKS System"
+  },
+  {
+    "id": "abe-00226",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Electric Surge",
+    "value": "Electric Surge"
+  },
+  {
+    "id": "abe-00227",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Psychic Surge",
+    "value": "Psychic Surge"
+  },
+  {
+    "id": "abe-00228",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Misty Surge",
+    "value": "Misty Surge"
+  },
+  {
+    "id": "abe-00229",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Grassy Surge",
+    "value": "Grassy Surge"
+  },
+  {
+    "id": "abe-00230",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Full Metal Body",
+    "value": "Full Metal Body"
+  },
+  {
+    "id": "abe-00231",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shadow Shield",
+    "value": "Shadow Shield"
+  },
+  {
+    "id": "abe-00232",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Prism Armor",
+    "value": "Prism Armor"
+  },
+  {
+    "id": "abe-00233",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Neuroforce",
+    "value": "Neuroforce"
+  },
+  {
+    "id": "abe-00234",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Intrepid Sword",
+    "value": "Intrepid Sword"
+  },
+  {
+    "id": "abe-00235",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dauntless Shield",
+    "value": "Dauntless Shield"
+  },
+  {
+    "id": "abe-00236",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Libero",
+    "value": "Libero"
+  },
+  {
+    "id": "abe-00237",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Ball Fetch",
+    "value": "Ball Fetch"
+  },
+  {
+    "id": "abe-00238",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cotton Down",
+    "value": "Cotton Down"
+  },
+  {
+    "id": "abe-00239",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Propeller Tail",
+    "value": "Propeller Tail"
+  },
+  {
+    "id": "abe-00240",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mirror Armor",
+    "value": "Mirror Armor"
+  },
+  {
+    "id": "abe-00241",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gulp Missile",
+    "value": "Gulp Missile"
+  },
+  {
+    "id": "abe-00242",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stalwart",
+    "value": "Stalwart"
+  },
+  {
+    "id": "abe-00243",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Steam Engine",
+    "value": "Steam Engine"
+  },
+  {
+    "id": "abe-00244",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Punk Rock",
+    "value": "Punk Rock"
+  },
+  {
+    "id": "abe-00245",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sand Spit",
+    "value": "Sand Spit"
+  },
+  {
+    "id": "abe-00246",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Ice Scales",
+    "value": "Ice Scales"
+  },
+  {
+    "id": "abe-00247",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Ripen",
+    "value": "Ripen"
+  },
+  {
+    "id": "abe-00248",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Ice Face",
+    "value": "Ice Face"
+  },
+  {
+    "id": "abe-00249",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Power Spot",
+    "value": "Power Spot"
+  },
+  {
+    "id": "abe-00250",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mimicry",
+    "value": "Mimicry"
+  },
+  {
+    "id": "abe-00251",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Screen Cleaner",
+    "value": "Screen Cleaner"
+  },
+  {
+    "id": "abe-00252",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Steely Spirit",
+    "value": "Steely Spirit"
+  },
+  {
+    "id": "abe-00253",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Perish Body",
+    "value": "Perish Body"
+  },
+  {
+    "id": "abe-00254",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wandering Spirit",
+    "value": "Wandering Spirit"
+  },
+  {
+    "id": "abe-00255",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gorilla Tactics",
+    "value": "Gorilla Tactics"
+  },
+  {
+    "id": "abe-00256",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Neutralizing Gas",
+    "value": "Neutralizing Gas"
+  },
+  {
+    "id": "abe-00257",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pastel Veil",
+    "value": "Pastel Veil"
+  },
+  {
+    "id": "abe-00258",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hunger Switch",
+    "value": "Hunger Switch"
+  },
+  {
+    "id": "abe-00259",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Quick Draw",
+    "value": "Quick Draw"
+  },
+  {
+    "id": "abe-00260",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Unseen Fist",
+    "value": "Unseen Fist"
+  },
+  {
+    "id": "abe-00261",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Curious Medicine",
+    "value": "Curious Medicine"
+  },
+  {
+    "id": "abe-00262",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Transistor",
+    "value": "Transistor"
+  },
+  {
+    "id": "abe-00263",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dragon’s Maw",
+    "value": "Dragon’s Maw"
+  },
+  {
+    "id": "abe-00264",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Chilling Neigh",
+    "value": "Chilling Neigh"
+  },
+  {
+    "id": "abe-00265",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Grim Neigh",
+    "value": "Grim Neigh"
+  },
+  {
+    "id": "abe-00266",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "As One",
+    "value": "As One"
+  },
+  {
+    "id": "abe-00268",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Lingering Aroma",
+    "value": "Lingering Aroma"
+  },
+  {
+    "id": "abe-00269",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Seed Sower",
+    "value": "Seed Sower"
+  },
+  {
+    "id": "abe-00270",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Thermal Exchange",
+    "value": "Thermal Exchange"
+  },
+  {
+    "id": "abe-00271",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Anger Shell",
+    "value": "Anger Shell"
+  },
+  {
+    "id": "abe-00272",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Purifying Salt",
+    "value": "Purifying Salt"
+  },
+  {
+    "id": "abe-00273",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Well-Baked Body",
+    "value": "Well-Baked Body"
+  },
+  {
+    "id": "abe-00274",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wind Rider",
+    "value": "Wind Rider"
+  },
+  {
+    "id": "abe-00275",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Guard Dog",
+    "value": "Guard Dog"
+  },
+  {
+    "id": "abe-00276",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Rocky Payload",
+    "value": "Rocky Payload"
+  },
+  {
+    "id": "abe-00277",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wind Power",
+    "value": "Wind Power"
+  },
+  {
+    "id": "abe-00278",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Zero to Hero",
+    "value": "Zero to Hero"
+  },
+  {
+    "id": "abe-00279",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Commander",
+    "value": "Commander"
+  },
+  {
+    "id": "abe-00280",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Electromorphosis",
+    "value": "Electromorphosis"
+  },
+  {
+    "id": "abe-00281",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Protosynthesis",
+    "value": "Protosynthesis"
+  },
+  {
+    "id": "abe-00282",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Quark Drive",
+    "value": "Quark Drive"
+  },
+  {
+    "id": "abe-00283",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Good as Gold",
+    "value": "Good as Gold"
+  },
+  {
+    "id": "abe-00284",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Vessel of Ruin",
+    "value": "Vessel of Ruin"
+  },
+  {
+    "id": "abe-00285",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sword of Ruin",
+    "value": "Sword of Ruin"
+  },
+  {
+    "id": "abe-00286",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tablets of Ruin",
+    "value": "Tablets of Ruin"
+  },
+  {
+    "id": "abe-00287",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Beads of Ruin",
+    "value": "Beads of Ruin"
+  },
+  {
+    "id": "abe-00288",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Orichalcum Pulse",
+    "value": "Orichalcum Pulse"
+  },
+  {
+    "id": "abe-00289",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hadron Engine",
+    "value": "Hadron Engine"
+  },
+  {
+    "id": "abe-00290",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Opportunist",
+    "value": "Opportunist"
+  },
+  {
+    "id": "abe-00291",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Cud Chew",
+    "value": "Cud Chew"
+  },
+  {
+    "id": "abe-00292",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sharpness",
+    "value": "Sharpness"
+  },
+  {
+    "id": "abe-00293",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Supreme Overlord",
+    "value": "Supreme Overlord"
+  },
+  {
+    "id": "abe-00294",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Costar",
+    "value": "Costar"
+  },
+  {
+    "id": "abe-00295",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Toxic Debris",
+    "value": "Toxic Debris"
+  },
+  {
+    "id": "abe-00296",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Armor Tail",
+    "value": "Armor Tail"
+  },
+  {
+    "id": "abe-00297",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Earth Eater",
+    "value": "Earth Eater"
+  },
+  {
+    "id": "abe-00298",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mycelium Might",
+    "value": "Mycelium Might"
+  },
+  {
+    "id": "abe-00299",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mind’s Eye",
+    "value": "Mind’s Eye"
+  },
+  {
+    "id": "abe-00300",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Supersweet Syrup",
+    "value": "Supersweet Syrup"
+  },
+  {
+    "id": "abe-00301",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hospitality",
+    "value": "Hospitality"
+  },
+  {
+    "id": "abe-00302",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Toxic Chain",
+    "value": "Toxic Chain"
+  },
+  {
+    "id": "abe-00303",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Embody Aspect",
+    "value": "Embody Aspect"
+  },
+  {
+    "id": "abe-00304",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tera Shift",
+    "value": "Tera Shift"
+  },
+  {
+    "id": "abe-00305",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tera Shell",
+    "value": "Tera Shell"
+  },
+  {
+    "id": "abe-00306",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Teraform Zero",
+    "value": "Teraform Zero"
+  },
+  {
+    "id": "abe-00307",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Poison Puppeteer",
+    "value": "Poison Puppeteer"
+  },
+  {
+    "id": "abe-00308",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Piercing Drill",
+    "value": "Piercing Drill"
+  },
+  {
+    "id": "abe-00309",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dragonize",
+    "value": "Dragonize"
+  },
+  {
+    "id": "abe-00310",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mega Sol",
+    "value": "Mega Sol"
+  },
+  {
+    "id": "abe-00311",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Spicy Spray",
+    "value": "Spicy Spray"
+  },
+  {
+    "id": "abe-00312",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Eelevate",
+    "value": "Eelevate"
+  },
+  {
+    "id": "abe-00313",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Fire Mane",
+    "value": "Fire Mane"
+  },
+  {
+    "id": "abe-00314",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aura Guard",
+    "value": "Aura Guard"
+  },
+  {
+    "id": "abe-10001",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mountaineer",
+    "value": "Mountaineer"
+  },
+  {
+    "id": "abe-10002",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Wave Rider",
+    "value": "Wave Rider"
+  },
+  {
+    "id": "abe-10003",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Skater",
+    "value": "Skater"
+  },
+  {
+    "id": "abe-10004",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Thrust",
+    "value": "Thrust"
+  },
+  {
+    "id": "abe-10005",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Perception",
+    "value": "Perception"
+  },
+  {
+    "id": "abe-10006",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Parry",
+    "value": "Parry"
+  },
+  {
+    "id": "abe-10007",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Instinct",
+    "value": "Instinct"
+  },
+  {
+    "id": "abe-10008",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Dodge",
+    "value": "Dodge"
+  },
+  {
+    "id": "abe-10009",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Jagged Edge",
+    "value": "Jagged Edge"
+  },
+  {
+    "id": "abe-10010",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Frostbite",
+    "value": "Frostbite"
+  },
+  {
+    "id": "abe-10011",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Tenacity",
+    "value": "Tenacity"
+  },
+  {
+    "id": "abe-10012",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Pride",
+    "value": "Pride"
+  },
+  {
+    "id": "abe-10013",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Deep Sleep",
+    "value": "Deep Sleep"
+  },
+  {
+    "id": "abe-10014",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Power Nap",
+    "value": "Power Nap"
+  },
+  {
+    "id": "abe-10015",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Spirit",
+    "value": "Spirit"
+  },
+  {
+    "id": "abe-10016",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Warm Blanket",
+    "value": "Warm Blanket"
+  },
+  {
+    "id": "abe-10017",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Gulp",
+    "value": "Gulp"
+  },
+  {
+    "id": "abe-10018",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Herbivore",
+    "value": "Herbivore"
+  },
+  {
+    "id": "abe-10019",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sandpit",
+    "value": "Sandpit"
+  },
+  {
+    "id": "abe-10020",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hot Blooded",
+    "value": "Hot Blooded"
+  },
+  {
+    "id": "abe-10021",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Medic",
+    "value": "Medic"
+  },
+  {
+    "id": "abe-10022",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Life Force",
+    "value": "Life Force"
+  },
+  {
+    "id": "abe-10023",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Lunchbox",
+    "value": "Lunchbox"
+  },
+  {
+    "id": "abe-10024",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Nurse",
+    "value": "Nurse"
+  },
+  {
+    "id": "abe-10025",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Melee",
+    "value": "Melee"
+  },
+  {
+    "id": "abe-10026",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sponge",
+    "value": "Sponge"
+  },
+  {
+    "id": "abe-10027",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Bodyguard",
+    "value": "Bodyguard"
+  },
+  {
+    "id": "abe-10028",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Hero",
+    "value": "Hero"
+  },
+  {
+    "id": "abe-10029",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Last Bastion",
+    "value": "Last Bastion"
+  },
+  {
+    "id": "abe-10030",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Stealth",
+    "value": "Stealth"
+  },
+  {
+    "id": "abe-10031",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Vanguard",
+    "value": "Vanguard"
+  },
+  {
+    "id": "abe-10032",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Nomad",
+    "value": "Nomad"
+  },
+  {
+    "id": "abe-10033",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sequence",
+    "value": "Sequence"
+  },
+  {
+    "id": "abe-10034",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Grass Cloak",
+    "value": "Grass Cloak"
+  },
+  {
+    "id": "abe-10035",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Celebrate",
+    "value": "Celebrate"
+  },
+  {
+    "id": "abe-10036",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Lullaby",
+    "value": "Lullaby"
+  },
+  {
+    "id": "abe-10037",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Calming",
+    "value": "Calming"
+  },
+  {
+    "id": "abe-10038",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Daze",
+    "value": "Daze"
+  },
+  {
+    "id": "abe-10039",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Frighten",
+    "value": "Frighten"
+  },
+  {
+    "id": "abe-10040",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Interference",
+    "value": "Interference"
+  },
+  {
+    "id": "abe-10041",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Mood Maker",
+    "value": "Mood Maker"
+  },
+  {
+    "id": "abe-10042",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Confidence",
+    "value": "Confidence"
+  },
+  {
+    "id": "abe-10043",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Fortune",
+    "value": "Fortune"
+  },
+  {
+    "id": "abe-10044",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Bonanza",
+    "value": "Bonanza"
+  },
+  {
+    "id": "abe-10045",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Explode",
+    "value": "Explode"
+  },
+  {
+    "id": "abe-10046",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Omnipotent",
+    "value": "Omnipotent"
+  },
+  {
+    "id": "abe-10047",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Share",
+    "value": "Share"
+  },
+  {
+    "id": "abe-10048",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Black Hole",
+    "value": "Black Hole"
+  },
+  {
+    "id": "abe-10049",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shadow Dash",
+    "value": "Shadow Dash"
+  },
+  {
+    "id": "abe-10050",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Sprint",
+    "value": "Sprint"
+  },
+  {
+    "id": "abe-10051",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Disgust",
+    "value": "Disgust"
+  },
+  {
+    "id": "abe-10052",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "High-rise",
+    "value": "High-rise"
+  },
+  {
+    "id": "abe-10053",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Climber",
+    "value": "Climber"
+  },
+  {
+    "id": "abe-10054",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Flame Boost",
+    "value": "Flame Boost"
+  },
+  {
+    "id": "abe-10055",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Aqua Boost",
+    "value": "Aqua Boost"
+  },
+  {
+    "id": "abe-10056",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Run Up",
+    "value": "Run Up"
+  },
+  {
+    "id": "abe-10057",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Conqueror",
+    "value": "Conqueror"
+  },
+  {
+    "id": "abe-10058",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shackle",
+    "value": "Shackle"
+  },
+  {
+    "id": "abe-10059",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Decoy",
+    "value": "Decoy"
+  },
+  {
+    "id": "abe-10060",
+    "language": "en",
+    "category": "Pokémon Abilities",
+    "display": "Shield",
+    "value": "Shield"
+  }
+]

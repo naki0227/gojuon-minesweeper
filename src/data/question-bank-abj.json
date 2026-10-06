@@ -1,0 +1,2165 @@
+[
+  {
+    "id": "abj-00001",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あくしゅう",
+    "value": "あくしゅう"
+  },
+  {
+    "id": "abj-00002",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あめふらし",
+    "value": "あめふらし"
+  },
+  {
+    "id": "abj-00003",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かそく",
+    "value": "かそく"
+  },
+  {
+    "id": "abj-00004",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "カブトアーマー",
+    "value": "カブトアーマー"
+  },
+  {
+    "id": "abj-00005",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "がんじょう",
+    "value": "がんじょう"
+  },
+  {
+    "id": "abj-00006",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しめりけ",
+    "value": "しめりけ"
+  },
+  {
+    "id": "abj-00007",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じゅうなん",
+    "value": "じゅうなん"
+  },
+  {
+    "id": "abj-00008",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すながくれ",
+    "value": "すながくれ"
+  },
+  {
+    "id": "abj-00009",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "せいでんき",
+    "value": "せいでんき"
+  },
+  {
+    "id": "abj-00010",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ちくでん",
+    "value": "ちくでん"
+  },
+  {
+    "id": "abj-00011",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ちょすい",
+    "value": "ちょすい"
+  },
+  {
+    "id": "abj-00012",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どんかん",
+    "value": "どんかん"
+  },
+  {
+    "id": "abj-00013",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ノーてんき",
+    "value": "ノーてんき"
+  },
+  {
+    "id": "abj-00014",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふくがん",
+    "value": "ふくがん"
+  },
+  {
+    "id": "abj-00015",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふみん",
+    "value": "ふみん"
+  },
+  {
+    "id": "abj-00016",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "へんしょく",
+    "value": "へんしょく"
+  },
+  {
+    "id": "abj-00017",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "めんえき",
+    "value": "めんえき"
+  },
+  {
+    "id": "abj-00018",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "もらいび",
+    "value": "もらいび"
+  },
+  {
+    "id": "abj-00019",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "りんぷん",
+    "value": "りんぷん"
+  },
+  {
+    "id": "abj-00020",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マイペース",
+    "value": "マイペース"
+  },
+  {
+    "id": "abj-00021",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きゅうばん",
+    "value": "きゅうばん"
+  },
+  {
+    "id": "abj-00022",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いかく",
+    "value": "いかく"
+  },
+  {
+    "id": "abj-00023",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かげふみ",
+    "value": "かげふみ"
+  },
+  {
+    "id": "abj-00024",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "さめはだ",
+    "value": "さめはだ"
+  },
+  {
+    "id": "abj-00025",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふしぎなまもり",
+    "value": "ふしぎなまもり"
+  },
+  {
+    "id": "abj-00026",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふゆう",
+    "value": "ふゆう"
+  },
+  {
+    "id": "abj-00027",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ほうし",
+    "value": "ほうし"
+  },
+  {
+    "id": "abj-00028",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "シンクロ",
+    "value": "シンクロ"
+  },
+  {
+    "id": "abj-00029",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "クリアボディ",
+    "value": "クリアボディ"
+  },
+  {
+    "id": "abj-00030",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しぜんかいふく",
+    "value": "しぜんかいふく"
+  },
+  {
+    "id": "abj-00031",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ひらいしん",
+    "value": "ひらいしん"
+  },
+  {
+    "id": "abj-00032",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てんのめぐみ",
+    "value": "てんのめぐみ"
+  },
+  {
+    "id": "abj-00033",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すいすい",
+    "value": "すいすい"
+  },
+  {
+    "id": "abj-00034",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ようりょくそ",
+    "value": "ようりょくそ"
+  },
+  {
+    "id": "abj-00035",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はっこう",
+    "value": "はっこう"
+  },
+  {
+    "id": "abj-00036",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "トレース",
+    "value": "トレース"
+  },
+  {
+    "id": "abj-00037",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ちからもち",
+    "value": "ちからもち"
+  },
+  {
+    "id": "abj-00038",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくのトゲ",
+    "value": "どくのトゲ"
+  },
+  {
+    "id": "abj-00039",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "せいしんりょく",
+    "value": "せいしんりょく"
+  },
+  {
+    "id": "abj-00040",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マグマのよろい",
+    "value": "マグマのよろい"
+  },
+  {
+    "id": "abj-00041",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "みずのベール",
+    "value": "みずのベール"
+  },
+  {
+    "id": "abj-00042",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じりょく",
+    "value": "じりょく"
+  },
+  {
+    "id": "abj-00043",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぼうおん",
+    "value": "ぼうおん"
+  },
+  {
+    "id": "abj-00044",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あめうけざら",
+    "value": "あめうけざら"
+  },
+  {
+    "id": "abj-00045",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すなおこし",
+    "value": "すなおこし"
+  },
+  {
+    "id": "abj-00046",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "プレッシャー",
+    "value": "プレッシャー"
+  },
+  {
+    "id": "abj-00047",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あついしぼう",
+    "value": "あついしぼう"
+  },
+  {
+    "id": "abj-00048",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はやおき",
+    "value": "はやおき"
+  },
+  {
+    "id": "abj-00049",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ほのおのからだ",
+    "value": "ほのおのからだ"
+  },
+  {
+    "id": "abj-00050",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "にげあし",
+    "value": "にげあし"
+  },
+  {
+    "id": "abj-00051",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "するどいめ",
+    "value": "するどいめ"
+  },
+  {
+    "id": "abj-00052",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かいりきバサミ",
+    "value": "かいりきバサミ"
+  },
+  {
+    "id": "abj-00053",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ものひろい",
+    "value": "ものひろい"
+  },
+  {
+    "id": "abj-00054",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "なまけ",
+    "value": "なまけ"
+  },
+  {
+    "id": "abj-00055",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はりきり",
+    "value": "はりきり"
+  },
+  {
+    "id": "abj-00056",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "メロメロボディ",
+    "value": "メロメロボディ"
+  },
+  {
+    "id": "abj-00057",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "プラス",
+    "value": "プラス"
+  },
+  {
+    "id": "abj-00058",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マイナス",
+    "value": "マイナス"
+  },
+  {
+    "id": "abj-00059",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てんきや",
+    "value": "てんきや"
+  },
+  {
+    "id": "abj-00060",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ねんちゃく",
+    "value": "ねんちゃく"
+  },
+  {
+    "id": "abj-00061",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "だっぴ",
+    "value": "だっぴ"
+  },
+  {
+    "id": "abj-00062",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "こんじょう",
+    "value": "こんじょう"
+  },
+  {
+    "id": "abj-00063",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふしぎなうろこ",
+    "value": "ふしぎなうろこ"
+  },
+  {
+    "id": "abj-00064",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ヘドロえき",
+    "value": "ヘドロえき"
+  },
+  {
+    "id": "abj-00065",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しんりょく",
+    "value": "しんりょく"
+  },
+  {
+    "id": "abj-00066",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "もうか",
+    "value": "もうか"
+  },
+  {
+    "id": "abj-00067",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "げきりゅう",
+    "value": "げきりゅう"
+  },
+  {
+    "id": "abj-00068",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "むしのしらせ",
+    "value": "むしのしらせ"
+  },
+  {
+    "id": "abj-00069",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いしあたま",
+    "value": "いしあたま"
+  },
+  {
+    "id": "abj-00070",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ひでり",
+    "value": "ひでり"
+  },
+  {
+    "id": "abj-00071",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ありじごく",
+    "value": "ありじごく"
+  },
+  {
+    "id": "abj-00072",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "やるき",
+    "value": "やるき"
+  },
+  {
+    "id": "abj-00073",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しろいけむり",
+    "value": "しろいけむり"
+  },
+  {
+    "id": "abj-00074",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ヨガパワー",
+    "value": "ヨガパワー"
+  },
+  {
+    "id": "abj-00075",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "シェルアーマー",
+    "value": "シェルアーマー"
+  },
+  {
+    "id": "abj-00076",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "エアロック",
+    "value": "エアロック"
+  },
+  {
+    "id": "abj-00077",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ちどりあし",
+    "value": "ちどりあし"
+  },
+  {
+    "id": "abj-00078",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "でんきエンジン",
+    "value": "でんきエンジン"
+  },
+  {
+    "id": "abj-00079",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "とうそうしん",
+    "value": "とうそうしん"
+  },
+  {
+    "id": "abj-00080",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふくつのこころ",
+    "value": "ふくつのこころ"
+  },
+  {
+    "id": "abj-00081",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ゆきがくれ",
+    "value": "ゆきがくれ"
+  },
+  {
+    "id": "abj-00082",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "くいしんぼう",
+    "value": "くいしんぼう"
+  },
+  {
+    "id": "abj-00083",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いかりのつぼ",
+    "value": "いかりのつぼ"
+  },
+  {
+    "id": "abj-00084",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かるわざ",
+    "value": "かるわざ"
+  },
+  {
+    "id": "abj-00085",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "たいねつ",
+    "value": "たいねつ"
+  },
+  {
+    "id": "abj-00086",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "たんじゅん",
+    "value": "たんじゅん"
+  },
+  {
+    "id": "abj-00087",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かんそうはだ",
+    "value": "かんそうはだ"
+  },
+  {
+    "id": "abj-00088",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ダウンロード",
+    "value": "ダウンロード"
+  },
+  {
+    "id": "abj-00089",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てつのこぶし",
+    "value": "てつのこぶし"
+  },
+  {
+    "id": "abj-00090",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ポイズンヒール",
+    "value": "ポイズンヒール"
+  },
+  {
+    "id": "abj-00091",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てきおうりょく",
+    "value": "てきおうりょく"
+  },
+  {
+    "id": "abj-00092",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スキルリンク",
+    "value": "スキルリンク"
+  },
+  {
+    "id": "abj-00093",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "うるおいボディ",
+    "value": "うるおいボディ"
+  },
+  {
+    "id": "abj-00094",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "サンパワー",
+    "value": "サンパワー"
+  },
+  {
+    "id": "abj-00095",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はやあし",
+    "value": "はやあし"
+  },
+  {
+    "id": "abj-00096",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ノーマルスキン",
+    "value": "ノーマルスキン"
+  },
+  {
+    "id": "abj-00097",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スナイパー",
+    "value": "スナイパー"
+  },
+  {
+    "id": "abj-00098",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マジックガード",
+    "value": "マジックガード"
+  },
+  {
+    "id": "abj-00099",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ノーガード",
+    "value": "ノーガード"
+  },
+  {
+    "id": "abj-00100",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あとだし",
+    "value": "あとだし"
+  },
+  {
+    "id": "abj-00101",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テクニシャン",
+    "value": "テクニシャン"
+  },
+  {
+    "id": "abj-00102",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "リーフガード",
+    "value": "リーフガード"
+  },
+  {
+    "id": "abj-00103",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぶきよう",
+    "value": "ぶきよう"
+  },
+  {
+    "id": "abj-00104",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かたやぶり",
+    "value": "かたやぶり"
+  },
+  {
+    "id": "abj-00105",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きょううん",
+    "value": "きょううん"
+  },
+  {
+    "id": "abj-00106",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ゆうばく",
+    "value": "ゆうばく"
+  },
+  {
+    "id": "abj-00107",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きけんよち",
+    "value": "きけんよち"
+  },
+  {
+    "id": "abj-00108",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "よちむ",
+    "value": "よちむ"
+  },
+  {
+    "id": "abj-00109",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てんねん",
+    "value": "てんねん"
+  },
+  {
+    "id": "abj-00110",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いろめがね",
+    "value": "いろめがね"
+  },
+  {
+    "id": "abj-00111",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フィルター",
+    "value": "フィルター"
+  },
+  {
+    "id": "abj-00112",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スロースタート",
+    "value": "スロースタート"
+  },
+  {
+    "id": "abj-00113",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きもったま",
+    "value": "きもったま"
+  },
+  {
+    "id": "abj-00114",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "よびみず",
+    "value": "よびみず"
+  },
+  {
+    "id": "abj-00115",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "アイスボディ",
+    "value": "アイスボディ"
+  },
+  {
+    "id": "abj-00116",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ハードロック",
+    "value": "ハードロック"
+  },
+  {
+    "id": "abj-00117",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ゆきふらし",
+    "value": "ゆきふらし"
+  },
+  {
+    "id": "abj-00118",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "みつあつめ",
+    "value": "みつあつめ"
+  },
+  {
+    "id": "abj-00119",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おみとおし",
+    "value": "おみとおし"
+  },
+  {
+    "id": "abj-00120",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すてみ",
+    "value": "すてみ"
+  },
+  {
+    "id": "abj-00121",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マルチタイプ",
+    "value": "マルチタイプ"
+  },
+  {
+    "id": "abj-00122",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フラワーギフト",
+    "value": "フラワーギフト"
+  },
+  {
+    "id": "abj-00123",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ナイトメア",
+    "value": "ナイトメア"
+  },
+  {
+    "id": "abj-00124",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わるいてぐせ",
+    "value": "わるいてぐせ"
+  },
+  {
+    "id": "abj-00125",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ちからずく",
+    "value": "ちからずく"
+  },
+  {
+    "id": "abj-00126",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "あまのじゃく",
+    "value": "あまのじゃく"
+  },
+  {
+    "id": "abj-00127",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きんちょうかん",
+    "value": "きんちょうかん"
+  },
+  {
+    "id": "abj-00128",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "まけんき",
+    "value": "まけんき"
+  },
+  {
+    "id": "abj-00129",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "よわき",
+    "value": "よわき"
+  },
+  {
+    "id": "abj-00130",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "のろわれボディ",
+    "value": "のろわれボディ"
+  },
+  {
+    "id": "abj-00131",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いやしのこころ",
+    "value": "いやしのこころ"
+  },
+  {
+    "id": "abj-00132",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フレンドガード",
+    "value": "フレンドガード"
+  },
+  {
+    "id": "abj-00133",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "くだけるよろい",
+    "value": "くだけるよろい"
+  },
+  {
+    "id": "abj-00134",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ヘヴィメタル",
+    "value": "ヘヴィメタル"
+  },
+  {
+    "id": "abj-00135",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ライトメタル",
+    "value": "ライトメタル"
+  },
+  {
+    "id": "abj-00136",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マルチスケイル",
+    "value": "マルチスケイル"
+  },
+  {
+    "id": "abj-00137",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくぼうそう",
+    "value": "どくぼうそう"
+  },
+  {
+    "id": "abj-00138",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ねつぼうそう",
+    "value": "ねつぼうそう"
+  },
+  {
+    "id": "abj-00139",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しゅうかく",
+    "value": "しゅうかく"
+  },
+  {
+    "id": "abj-00140",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テレパシー",
+    "value": "テレパシー"
+  },
+  {
+    "id": "abj-00141",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ムラっけ",
+    "value": "ムラっけ"
+  },
+  {
+    "id": "abj-00142",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぼうじん",
+    "value": "ぼうじん"
+  },
+  {
+    "id": "abj-00143",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくしゅ",
+    "value": "どくしゅ"
+  },
+  {
+    "id": "abj-00144",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "さいせいりょく",
+    "value": "さいせいりょく"
+  },
+  {
+    "id": "abj-00145",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はとむね",
+    "value": "はとむね"
+  },
+  {
+    "id": "abj-00146",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すなかき",
+    "value": "すなかき"
+  },
+  {
+    "id": "abj-00147",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ミラクルスキン",
+    "value": "ミラクルスキン"
+  },
+  {
+    "id": "abj-00148",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "アナライズ",
+    "value": "アナライズ"
+  },
+  {
+    "id": "abj-00149",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "イリュージョン",
+    "value": "イリュージョン"
+  },
+  {
+    "id": "abj-00150",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かわりもの",
+    "value": "かわりもの"
+  },
+  {
+    "id": "abj-00151",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すりぬけ",
+    "value": "すりぬけ"
+  },
+  {
+    "id": "abj-00152",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ミイラ",
+    "value": "ミイラ"
+  },
+  {
+    "id": "abj-00153",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じしんかじょう",
+    "value": "じしんかじょう"
+  },
+  {
+    "id": "abj-00154",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "せいぎのこころ",
+    "value": "せいぎのこころ"
+  },
+  {
+    "id": "abj-00155",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "びびり",
+    "value": "びびり"
+  },
+  {
+    "id": "abj-00156",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マジックミラー",
+    "value": "マジックミラー"
+  },
+  {
+    "id": "abj-00157",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "そうしょく",
+    "value": "そうしょく"
+  },
+  {
+    "id": "abj-00158",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いたずらごころ",
+    "value": "いたずらごころ"
+  },
+  {
+    "id": "abj-00159",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すなのちから",
+    "value": "すなのちから"
+  },
+  {
+    "id": "abj-00160",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "てつのトゲ",
+    "value": "てつのトゲ"
+  },
+  {
+    "id": "abj-00161",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ダルマモード",
+    "value": "ダルマモード"
+  },
+  {
+    "id": "abj-00162",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しょうりのほし",
+    "value": "しょうりのほし"
+  },
+  {
+    "id": "abj-00163",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ターボブレイズ",
+    "value": "ターボブレイズ"
+  },
+  {
+    "id": "abj-00164",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テラボルテージ",
+    "value": "テラボルテージ"
+  },
+  {
+    "id": "abj-00165",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "アロマベール",
+    "value": "アロマベール"
+  },
+  {
+    "id": "abj-00166",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フラワーベール",
+    "value": "フラワーベール"
+  },
+  {
+    "id": "abj-00167",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ほおぶくろ",
+    "value": "ほおぶくろ"
+  },
+  {
+    "id": "abj-00168",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "へんげんじざい",
+    "value": "へんげんじざい"
+  },
+  {
+    "id": "abj-00169",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ファーコート",
+    "value": "ファーコート"
+  },
+  {
+    "id": "abj-00170",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マジシャン",
+    "value": "マジシャン"
+  },
+  {
+    "id": "abj-00171",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぼうだん",
+    "value": "ぼうだん"
+  },
+  {
+    "id": "abj-00172",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かちき",
+    "value": "かちき"
+  },
+  {
+    "id": "abj-00173",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "がんじょうあご",
+    "value": "がんじょうあご"
+  },
+  {
+    "id": "abj-00174",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フリーズスキン",
+    "value": "フリーズスキン"
+  },
+  {
+    "id": "abj-00175",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スイートベール",
+    "value": "スイートベール"
+  },
+  {
+    "id": "abj-00176",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "バトルスイッチ",
+    "value": "バトルスイッチ"
+  },
+  {
+    "id": "abj-00177",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はやてのつばさ",
+    "value": "はやてのつばさ"
+  },
+  {
+    "id": "abj-00178",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "メガランチャー",
+    "value": "メガランチャー"
+  },
+  {
+    "id": "abj-00179",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "くさのけがわ",
+    "value": "くさのけがわ"
+  },
+  {
+    "id": "abj-00180",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きょうせい",
+    "value": "きょうせい"
+  },
+  {
+    "id": "abj-00181",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かたいツメ",
+    "value": "かたいツメ"
+  },
+  {
+    "id": "abj-00182",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フェアリースキン",
+    "value": "フェアリースキン"
+  },
+  {
+    "id": "abj-00183",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぬめぬめ",
+    "value": "ぬめぬめ"
+  },
+  {
+    "id": "abj-00184",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スカイスキン",
+    "value": "スカイスキン"
+  },
+  {
+    "id": "abj-00185",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おやこあい",
+    "value": "おやこあい"
+  },
+  {
+    "id": "abj-00186",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ダークオーラ",
+    "value": "ダークオーラ"
+  },
+  {
+    "id": "abj-00187",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "フェアリーオーラ",
+    "value": "フェアリーオーラ"
+  },
+  {
+    "id": "abj-00188",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "オーラブレイク",
+    "value": "オーラブレイク"
+  },
+  {
+    "id": "abj-00189",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はじまりのうみ",
+    "value": "はじまりのうみ"
+  },
+  {
+    "id": "abj-00190",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おわりのだいち",
+    "value": "おわりのだいち"
+  },
+  {
+    "id": "abj-00191",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "デルタストリーム",
+    "value": "デルタストリーム"
+  },
+  {
+    "id": "abj-00192",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じきゅうりょく",
+    "value": "じきゅうりょく"
+  },
+  {
+    "id": "abj-00193",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "にげごし",
+    "value": "にげごし"
+  },
+  {
+    "id": "abj-00194",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ききかいひ",
+    "value": "ききかいひ"
+  },
+  {
+    "id": "abj-00195",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "みずがため",
+    "value": "みずがため"
+  },
+  {
+    "id": "abj-00196",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ひとでなし",
+    "value": "ひとでなし"
+  },
+  {
+    "id": "abj-00197",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "リミットシールド",
+    "value": "リミットシールド"
+  },
+  {
+    "id": "abj-00198",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はりこみ",
+    "value": "はりこみ"
+  },
+  {
+    "id": "abj-00199",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すいほう",
+    "value": "すいほう"
+  },
+  {
+    "id": "abj-00200",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はがねつかい",
+    "value": "はがねつかい"
+  },
+  {
+    "id": "abj-00201",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぎゃくじょう",
+    "value": "ぎゃくじょう"
+  },
+  {
+    "id": "abj-00202",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ゆきかき",
+    "value": "ゆきかき"
+  },
+  {
+    "id": "abj-00203",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "えんかく",
+    "value": "えんかく"
+  },
+  {
+    "id": "abj-00204",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "うるおいボイス",
+    "value": "うるおいボイス"
+  },
+  {
+    "id": "abj-00205",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ヒーリングシフト",
+    "value": "ヒーリングシフト"
+  },
+  {
+    "id": "abj-00206",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "エレキスキン",
+    "value": "エレキスキン"
+  },
+  {
+    "id": "abj-00207",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "サーフテール",
+    "value": "サーフテール"
+  },
+  {
+    "id": "abj-00208",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぎょぐん",
+    "value": "ぎょぐん"
+  },
+  {
+    "id": "abj-00209",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ばけのかわ",
+    "value": "ばけのかわ"
+  },
+  {
+    "id": "abj-00210",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きずなへんげ",
+    "value": "きずなへんげ"
+  },
+  {
+    "id": "abj-00211",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スワームチェンジ",
+    "value": "スワームチェンジ"
+  },
+  {
+    "id": "abj-00212",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふしょく",
+    "value": "ふしょく"
+  },
+  {
+    "id": "abj-00213",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぜったいねむり",
+    "value": "ぜったいねむり"
+  },
+  {
+    "id": "abj-00214",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じょおうのいげん",
+    "value": "じょおうのいげん"
+  },
+  {
+    "id": "abj-00215",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "とびだすなかみ",
+    "value": "とびだすなかみ"
+  },
+  {
+    "id": "abj-00216",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おどりこ",
+    "value": "おどりこ"
+  },
+  {
+    "id": "abj-00217",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "バッテリー",
+    "value": "バッテリー"
+  },
+  {
+    "id": "abj-00218",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "もふもふ",
+    "value": "もふもふ"
+  },
+  {
+    "id": "abj-00219",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ビビッドボディ",
+    "value": "ビビッドボディ"
+  },
+  {
+    "id": "abj-00220",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ソウルハート",
+    "value": "ソウルハート"
+  },
+  {
+    "id": "abj-00221",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "カーリーヘアー",
+    "value": "カーリーヘアー"
+  },
+  {
+    "id": "abj-00222",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "レシーバー",
+    "value": "レシーバー"
+  },
+  {
+    "id": "abj-00223",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かがくのちから",
+    "value": "かがくのちから"
+  },
+  {
+    "id": "abj-00224",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ビーストブースト",
+    "value": "ビーストブースト"
+  },
+  {
+    "id": "abj-00226",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "エレキメイカー",
+    "value": "エレキメイカー"
+  },
+  {
+    "id": "abj-00227",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "サイコメイカー",
+    "value": "サイコメイカー"
+  },
+  {
+    "id": "abj-00228",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ミストメイカー",
+    "value": "ミストメイカー"
+  },
+  {
+    "id": "abj-00229",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "グラスメイカー",
+    "value": "グラスメイカー"
+  },
+  {
+    "id": "abj-00230",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "メタルプロテクト",
+    "value": "メタルプロテクト"
+  },
+  {
+    "id": "abj-00231",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ファントムガード",
+    "value": "ファントムガード"
+  },
+  {
+    "id": "abj-00232",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "プリズムアーマー",
+    "value": "プリズムアーマー"
+  },
+  {
+    "id": "abj-00233",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ブレインフォース",
+    "value": "ブレインフォース"
+  },
+  {
+    "id": "abj-00234",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふとうのけん",
+    "value": "ふとうのけん"
+  },
+  {
+    "id": "abj-00235",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふくつのたて",
+    "value": "ふくつのたて"
+  },
+  {
+    "id": "abj-00236",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "リベロ",
+    "value": "リベロ"
+  },
+  {
+    "id": "abj-00237",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "たまひろい",
+    "value": "たまひろい"
+  },
+  {
+    "id": "abj-00238",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わたげ",
+    "value": "わたげ"
+  },
+  {
+    "id": "abj-00239",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "スクリューおびれ",
+    "value": "スクリューおびれ"
+  },
+  {
+    "id": "abj-00240",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ミラーアーマー",
+    "value": "ミラーアーマー"
+  },
+  {
+    "id": "abj-00241",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "うのミサイル",
+    "value": "うのミサイル"
+  },
+  {
+    "id": "abj-00242",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すじがねいり",
+    "value": "すじがねいり"
+  },
+  {
+    "id": "abj-00243",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じょうききかん",
+    "value": "じょうききかん"
+  },
+  {
+    "id": "abj-00244",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "パンクロック",
+    "value": "パンクロック"
+  },
+  {
+    "id": "abj-00245",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "すなはき",
+    "value": "すなはき"
+  },
+  {
+    "id": "abj-00246",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "こおりのりんぷん",
+    "value": "こおりのりんぷん"
+  },
+  {
+    "id": "abj-00247",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じゅくせい",
+    "value": "じゅくせい"
+  },
+  {
+    "id": "abj-00248",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "アイスフェイス",
+    "value": "アイスフェイス"
+  },
+  {
+    "id": "abj-00249",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "パワースポット",
+    "value": "パワースポット"
+  },
+  {
+    "id": "abj-00250",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ぎたい",
+    "value": "ぎたい"
+  },
+  {
+    "id": "abj-00251",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "バリアフリー",
+    "value": "バリアフリー"
+  },
+  {
+    "id": "abj-00252",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はがねのせいしん",
+    "value": "はがねのせいしん"
+  },
+  {
+    "id": "abj-00253",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ほろびのボディ",
+    "value": "ほろびのボディ"
+  },
+  {
+    "id": "abj-00254",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "さまようたましい",
+    "value": "さまようたましい"
+  },
+  {
+    "id": "abj-00255",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ごりむちゅう",
+    "value": "ごりむちゅう"
+  },
+  {
+    "id": "abj-00256",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かがくへんかガス",
+    "value": "かがくへんかガス"
+  },
+  {
+    "id": "abj-00257",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "パステルベール",
+    "value": "パステルベール"
+  },
+  {
+    "id": "abj-00258",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はらぺこスイッチ",
+    "value": "はらぺこスイッチ"
+  },
+  {
+    "id": "abj-00259",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "クイックドロウ",
+    "value": "クイックドロウ"
+  },
+  {
+    "id": "abj-00260",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふかしのこぶし",
+    "value": "ふかしのこぶし"
+  },
+  {
+    "id": "abj-00261",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きみょうなくすり",
+    "value": "きみょうなくすり"
+  },
+  {
+    "id": "abj-00262",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "トランジスタ",
+    "value": "トランジスタ"
+  },
+  {
+    "id": "abj-00263",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "りゅうのあぎと",
+    "value": "りゅうのあぎと"
+  },
+  {
+    "id": "abj-00264",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しろのいななき",
+    "value": "しろのいななき"
+  },
+  {
+    "id": "abj-00265",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "くろのいななき",
+    "value": "くろのいななき"
+  },
+  {
+    "id": "abj-00266",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "じんばいったい",
+    "value": "じんばいったい"
+  },
+  {
+    "id": "abj-00268",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "とれないにおい",
+    "value": "とれないにおい"
+  },
+  {
+    "id": "abj-00269",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "こぼれダネ",
+    "value": "こぼれダネ"
+  },
+  {
+    "id": "abj-00270",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ねつこうかん",
+    "value": "ねつこうかん"
+  },
+  {
+    "id": "abj-00271",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いかりのこうら",
+    "value": "いかりのこうら"
+  },
+  {
+    "id": "abj-00272",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きよめのしお",
+    "value": "きよめのしお"
+  },
+  {
+    "id": "abj-00273",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "こんがりボディ",
+    "value": "こんがりボディ"
+  },
+  {
+    "id": "abj-00274",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かぜのり",
+    "value": "かぜのり"
+  },
+  {
+    "id": "abj-00275",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ばんけん",
+    "value": "ばんけん"
+  },
+  {
+    "id": "abj-00276",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "いわはこび",
+    "value": "いわはこび"
+  },
+  {
+    "id": "abj-00277",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ふうりょくでんき",
+    "value": "ふうりょくでんき"
+  },
+  {
+    "id": "abj-00278",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "マイティチェンジ",
+    "value": "マイティチェンジ"
+  },
+  {
+    "id": "abj-00279",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しれいとう",
+    "value": "しれいとう"
+  },
+  {
+    "id": "abj-00280",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "でんきにかえる",
+    "value": "でんきにかえる"
+  },
+  {
+    "id": "abj-00281",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "こだいかっせい",
+    "value": "こだいかっせい"
+  },
+  {
+    "id": "abj-00282",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "クォークチャージ",
+    "value": "クォークチャージ"
+  },
+  {
+    "id": "abj-00283",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おうごんのからだ",
+    "value": "おうごんのからだ"
+  },
+  {
+    "id": "abj-00284",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わざわいのうつわ",
+    "value": "わざわいのうつわ"
+  },
+  {
+    "id": "abj-00285",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わざわいのつるぎ",
+    "value": "わざわいのつるぎ"
+  },
+  {
+    "id": "abj-00286",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わざわいのおふだ",
+    "value": "わざわいのおふだ"
+  },
+  {
+    "id": "abj-00287",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "わざわいのたま",
+    "value": "わざわいのたま"
+  },
+  {
+    "id": "abj-00288",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ひひいろのこどう",
+    "value": "ひひいろのこどう"
+  },
+  {
+    "id": "abj-00289",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ハドロンエンジン",
+    "value": "ハドロンエンジン"
+  },
+  {
+    "id": "abj-00290",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "びんじょう",
+    "value": "びんじょう"
+  },
+  {
+    "id": "abj-00291",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "はんすう",
+    "value": "はんすう"
+  },
+  {
+    "id": "abj-00292",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きれあじ",
+    "value": "きれあじ"
+  },
+  {
+    "id": "abj-00293",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "そうだいしょう",
+    "value": "そうだいしょう"
+  },
+  {
+    "id": "abj-00294",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きょうえん",
+    "value": "きょうえん"
+  },
+  {
+    "id": "abj-00295",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくげしょう",
+    "value": "どくげしょう"
+  },
+  {
+    "id": "abj-00296",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テイルアーマー",
+    "value": "テイルアーマー"
+  },
+  {
+    "id": "abj-00297",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どしょく",
+    "value": "どしょく"
+  },
+  {
+    "id": "abj-00298",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "きんしのちから",
+    "value": "きんしのちから"
+  },
+  {
+    "id": "abj-00299",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "しんがん",
+    "value": "しんがん"
+  },
+  {
+    "id": "abj-00300",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かんろなミツ",
+    "value": "かんろなミツ"
+  },
+  {
+    "id": "abj-00301",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おもてなし",
+    "value": "おもてなし"
+  },
+  {
+    "id": "abj-00302",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくのくさり",
+    "value": "どくのくさり"
+  },
+  {
+    "id": "abj-00303",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "おもかげやどし",
+    "value": "おもかげやどし"
+  },
+  {
+    "id": "abj-00304",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テラスチェンジ",
+    "value": "テラスチェンジ"
+  },
+  {
+    "id": "abj-00305",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "テラスシェル",
+    "value": "テラスシェル"
+  },
+  {
+    "id": "abj-00306",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ゼロフォーミング",
+    "value": "ゼロフォーミング"
+  },
+  {
+    "id": "abj-00307",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "どくくぐつ",
+    "value": "どくくぐつ"
+  },
+  {
+    "id": "abj-00308",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "かんつうドリル",
+    "value": "かんつうドリル"
+  },
+  {
+    "id": "abj-00309",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "ドラゴンスキン",
+    "value": "ドラゴンスキン"
+  },
+  {
+    "id": "abj-00310",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "メガソーラー",
+    "value": "メガソーラー"
+  },
+  {
+    "id": "abj-00311",
+    "language": "ja",
+    "category": "ポケモンの特性",
+    "display": "とびだすハバネロ",
+    "value": "とびだすハバネロ"
+  }
+]
