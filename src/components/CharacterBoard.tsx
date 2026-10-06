@@ -51,9 +51,7 @@ export function CharacterBoard({
             const isOpened = opened.has(char);
             const isMine = isOpened && mineChars.has(char);
             const mineCount =
-              isOpened && !isMine
-                ? adjacentMineCount(question, char)
-                : null;
+              isOpened && !isMine ? adjacentMineCount(question, char) : null;
             const disabled = !canOpen || isOpened;
 
             const dynamicStyle: ViewStyle = isMine

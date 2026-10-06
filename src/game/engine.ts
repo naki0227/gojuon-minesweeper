@@ -1,6 +1,6 @@
 import type { Question } from "../data/types";
 import { primaryAnswer } from "../data/questions";
-import { adjacentCharacters } from "./board";
+import { adjacentCharacters, getBoardOrder } from "./board";
 import { normalizeValue } from "./normalize";
 import { createSignatureKey, mineCharacters } from "./signature";
 
@@ -13,6 +13,8 @@ export type GameState = {
   phase: GamePhase;
   openedChars: readonly string[];
   answerBlocked: readonly [boolean, boolean];
+  finalAnswerAttempts: readonly [boolean, boolean];
+  revealedAnswerChars: number;
   winner: PlayerIndex | null;
   lastMessage: string;
 };
@@ -32,6 +34,8 @@ export function createInitialState(question: Question): GameState {
     phase: "answer",
     openedChars: [],
     answerBlocked: [false, false],
+    finalAnswerAttempts: [false, false],
+    revealedAnswerChars: 0,
     winner: null,
     lastMessage: "Player 1 からスタート。まず答えを予想してください。",
   };
@@ -62,11 +66,7 @@ export function isAcceptedAnswer(question: Question, input: string): boolean {
   }
 
   return question.answers.some((answer) => {
-    if (
-      answer.aliases.some(
-        (alias) => rawComparable(alias) === rawInput,
-      )
-    ) {
+    if (answer.aliases.some((alias) => rawComparable(alias) === rawInput)) {
       return true;
     }
 
@@ -91,6 +91,68 @@ export function validateQuestionCollision(question: Question): boolean {
     (answer) =>
       createSignatureKey(answer.value, question.language) === expected,
   );
+}
+
+function isBoardExhausted(state: GameState): boolean {
+  const opened = new Set(state.openedChars);
+  const mines = questionMineCharacters(state.question);
+  return getBoardOrder(state.question.language).every(
+    (char) => mines.has(char) || opened.has(char),
+  );
+}
+
+function answerCharacters(question: Question): string[] {
+  return Array.from(
+    normalizeValue(primaryAnswer(question).value, question.language),
+  );
+}
+
+export function answerHint(state: GameState): string {
+  return answerCharacters(state.question)
+    .map((char, index) => (index < state.revealedAnswerChars ? char : "？"))
+    .join("");
+}
+
+function finishHintTurn(state: GameState, message: string): GameState {
+  const attempted: [boolean, boolean] = [...state.finalAnswerAttempts];
+  attempted[state.currentPlayer] = true;
+  const other: PlayerIndex = state.currentPlayer === 0 ? 1 : 0;
+
+  if (!attempted[other]) {
+    return {
+      ...state,
+      currentPlayer: other,
+      finalAnswerAttempts: attempted,
+      lastMessage: `${message} ${playerName(other)} の回答です。`,
+    };
+  }
+
+  const nextRevealed = state.revealedAnswerChars + 1;
+  const answerChars = answerCharacters(state.question);
+  const nextChar = answerChars[nextRevealed - 1];
+  const openedChars =
+    nextChar && !state.openedChars.includes(nextChar)
+      ? [...state.openedChars, nextChar]
+      : state.openedChars;
+  if (nextRevealed >= answerChars.length) {
+    return {
+      ...state,
+      phase: "finished",
+      finalAnswerAttempts: attempted,
+      revealedAnswerChars: nextRevealed,
+      openedChars,
+      lastMessage: `${message} 答えの全文字が開いたため引き分けです。`,
+    };
+  }
+
+  return {
+    ...state,
+    currentPlayer: other,
+    finalAnswerAttempts: [false, false],
+    revealedAnswerChars: nextRevealed,
+    openedChars,
+    lastMessage: `${message} 答えの次の1文字が開きました。${playerName(other)} の回答です。`,
+  };
 }
 
 function expandZeroArea(
@@ -141,6 +203,10 @@ export function submitAnswer(state: GameState, input: string): GameState {
     };
   }
 
+  if (isBoardExhausted(state)) {
+    return finishHintTurn(state, "不正解。");
+  }
+
   return {
     ...state,
     phase: "open",
@@ -151,6 +217,10 @@ export function submitAnswer(state: GameState, input: string): GameState {
 export function passAnswer(state: GameState): GameState {
   if (state.phase !== "answer" || state.winner !== null) {
     return state;
+  }
+
+  if (isBoardExhausted(state)) {
+    return finishHintTurn(state, "回答をパスしました。");
   }
 
   return {
@@ -191,10 +261,6 @@ export function openCharacter(state: GameState, char: string): GameState {
   const nextPlayer: PlayerIndex = state.currentPlayer === 0 ? 1 : 0;
   const nextPlayerBlocked = blocked[nextPlayer];
 
-  if (nextPlayerBlocked) {
-    blocked[nextPlayer] = false;
-  }
-
   let resultMessage: string;
 
   if (hitMine) {
@@ -207,6 +273,33 @@ export function openCharacter(state: GameState, char: string): GameState {
       count === 0 && chainCount > 0
         ? `「${char}」の周囲は地雷0個。周辺${chainCount}マスも開きました。`
         : `「${char}」はセーフ。周囲の地雷は${count}個。`;
+  }
+
+  const boardComplete = isBoardExhausted({ ...state, openedChars });
+  if (boardComplete) {
+    const answerChars = answerCharacters(state.question);
+    const firstChar = answerChars[0];
+    const revealedBoard =
+      firstChar && !openedChars.includes(firstChar)
+        ? [...openedChars, firstChar]
+        : openedChars;
+    return {
+      ...state,
+      currentPlayer: nextPlayer,
+      phase: answerChars.length <= 1 ? "finished" : "answer",
+      openedChars: revealedBoard,
+      answerBlocked: [false, false],
+      finalAnswerAttempts: [false, false],
+      revealedAnswerChars: 1,
+      lastMessage:
+        answerChars.length <= 1
+          ? `${resultMessage} 答えの全文字が開いたため引き分けです。`
+          : `${resultMessage} 安全なマスがすべて開き、答えの先頭1文字を表示しました。${playerName(nextPlayer)} の回答です。`,
+    };
+  }
+
+  if (nextPlayerBlocked) {
+    blocked[nextPlayer] = false;
   }
 
   return {

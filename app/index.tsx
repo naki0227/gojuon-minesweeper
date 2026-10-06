@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Head from "expo-router/head";
 
 import { BannerAd } from "../src/ads/BannerAd";
 import { trackEvent } from "../src/analytics/events";
@@ -23,6 +24,7 @@ import {
 } from "../src/data/questions";
 import type { QuestionFilters, QuestionLanguage } from "../src/data/types";
 import {
+  answerHint,
   createInitialState,
   isMineCharacter,
   openCharacter,
@@ -34,7 +36,7 @@ import {
 
 const RANDOM_FILTERS: QuestionFilters = {
   language: "any",
-  category: "any",
+  categories: [],
   length: "any",
 };
 
@@ -50,13 +52,17 @@ function FilterChip({
   return (
     <Pressable
       onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
       style={({ pressed }) => [
         styles.chip,
         selected ? styles.chipSelected : null,
         pressed ? styles.pressedButton : null,
       ]}
     >
-      <Text style={[styles.chipText, selected ? styles.chipTextSelected : null]}>
+      <Text
+        style={[styles.chipText, selected ? styles.chipTextSelected : null]}
+      >
         {label}
       </Text>
     </Pressable>
@@ -76,9 +82,9 @@ export default function HomeScreen() {
     () =>
       getAvailableLengths({
         language: filters.language,
-        category: filters.category,
+        categories: filters.categories,
       }),
-    [filters.category, filters.language],
+    [filters.categories, filters.language],
   );
   const candidateCount = useMemo(() => countQuestions(filters), [filters]);
 
@@ -109,17 +115,23 @@ export default function HomeScreen() {
   function setLanguage(language: QuestionLanguage | "any") {
     setFilters({
       language,
-      category: "any",
+      categories: [],
       length: "any",
     });
   }
 
-  function setCategory(category: string | "any") {
+  function toggleCategory(category: string) {
     setFilters((current) => ({
       ...current,
-      category,
+      categories: current.categories.includes(category)
+        ? current.categories.filter((selected) => selected !== category)
+        : [...current.categories, category],
       length: "any",
     }));
+  }
+
+  function selectAnyCategory() {
+    setFilters((current) => ({ ...current, categories: [], length: "any" }));
   }
 
   function setLength(length: number | "any") {
@@ -128,118 +140,140 @@ export default function HomeScreen() {
 
   if (!game) {
     return (
-      <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={styles.page}>
-          <View style={styles.header}>
-            <Text style={styles.eyebrow}>WORD × MINESWEEPER</Text>
-            <Text style={styles.title}>五十音マインスイーパー</Text>
-            <Text style={styles.rule}>
-              日本語の五十音でも英語のA〜Zでも遊べます。ジャンルや文字数を絞るか、全部から完全ランダムで出題できます。
-            </Text>
-          </View>
-
-          <Pressable
-            onPress={() => startGame(RANDOM_FILTERS)}
-            style={({ pressed }) => [
-              styles.randomButton,
-              pressed ? styles.pressedButton : null,
-            ]}
-          >
-            <Text style={styles.randomButtonTitle}>完全ランダムで遊ぶ</Text>
-            <Text style={styles.randomButtonNote}>
-              日本語・英語・全ジャンル・全文字数から出題
-            </Text>
-          </Pressable>
-
-          <View style={styles.setupSection}>
-            <Text style={styles.sectionTitle}>言語</Text>
-            <View style={styles.chipWrap}>
-              <FilterChip
-                label="おまかせ"
-                selected={filters.language === "any"}
-                onPress={() => setLanguage("any")}
-              />
-              <FilterChip
-                label="日本語"
-                selected={filters.language === "ja"}
-                onPress={() => setLanguage("ja")}
-              />
-              <FilterChip
-                label="English"
-                selected={filters.language === "en"}
-                onPress={() => setLanguage("en")}
-              />
+      <>
+        <Head>
+          <title>五十音マインスイーパー | ことば当てゲーム</title>
+          <meta
+            name="description"
+            content="ことばを予想して文字を開く、2人で遊べるマインスイーパー。日本語と英語のカテゴリを選んで対戦できます。"
+          />
+        </Head>
+        <SafeAreaView style={styles.safeArea}>
+          <ScrollView contentContainerStyle={styles.page}>
+            <View style={styles.header}>
+              <Text style={styles.eyebrow}>WORD × MINESWEEPER</Text>
+              <Text style={styles.title}>五十音マインスイーパー</Text>
+              <Text style={styles.rule}>
+                日本語の五十音でも英語のA〜Zでも遊べます。ジャンルや文字数を絞るか、全部から完全ランダムで出題できます。
+              </Text>
             </View>
-          </View>
 
-          <View style={styles.setupSection}>
-            <Text style={styles.sectionTitle}>ジャンル</Text>
-            <View style={styles.chipWrap}>
-              <FilterChip
-                label="おまかせ"
-                selected={filters.category === "any"}
-                onPress={() => setCategory("any")}
-              />
-              {categories.map((category) => (
-                <FilterChip
-                  key={category}
-                  label={category}
-                  selected={filters.category === category}
-                  onPress={() => setCategory(category)}
-                />
-              ))}
-            </View>
-          </View>
-
-          <View style={styles.setupSection}>
-            <Text style={styles.sectionTitle}>文字数</Text>
-            <View style={styles.chipWrap}>
-              <FilterChip
-                label="おまかせ"
-                selected={filters.length === "any"}
-                onPress={() => setLength("any")}
-              />
-              {lengths.map((length) => (
-                <FilterChip
-                  key={length}
-                  label={`${length}文字`}
-                  selected={filters.length === length}
-                  onPress={() => setLength(length)}
-                />
-              ))}
-            </View>
-            <Text style={styles.helperText}>
-              日本語は小文字・濁音・半濁音を同じ文字として扱い、長音「ー」は1文字。英語はスペースや記号を数えません。
-            </Text>
-          </View>
-
-          <View style={styles.startPanel}>
-            <Text style={styles.poolCount}>候補 {candidateCount} 問</Text>
             <Pressable
-              disabled={candidateCount === 0}
-              onPress={() => startGame(filters)}
+              onPress={() => startGame(RANDOM_FILTERS)}
               style={({ pressed }) => [
-                styles.primaryButton,
-                candidateCount === 0 ? styles.disabledButton : null,
+                styles.randomButton,
                 pressed ? styles.pressedButton : null,
               ]}
             >
-              <Text style={styles.primaryButtonText}>この条件で遊ぶ</Text>
+              <Text style={styles.randomButtonTitle}>完全ランダムで遊ぶ</Text>
+              <Text style={styles.randomButtonNote}>
+                日本語・英語・全ジャンル・全文字数から出題
+              </Text>
             </Pressable>
-          </View>
 
-          <View style={styles.adArea}>
-            <BannerAd placement="setup" />
-            <RemoveAdsOptions />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+            <View style={styles.setupSection}>
+              <Text style={styles.sectionTitle}>言語</Text>
+              <View style={styles.chipWrap}>
+                <FilterChip
+                  label="おまかせ"
+                  selected={filters.language === "any"}
+                  onPress={() => setLanguage("any")}
+                />
+                <FilterChip
+                  label="日本語"
+                  selected={filters.language === "ja"}
+                  onPress={() => setLanguage("ja")}
+                />
+                <FilterChip
+                  label="English"
+                  selected={filters.language === "en"}
+                  onPress={() => setLanguage("en")}
+                />
+              </View>
+            </View>
+
+            <View style={styles.setupSection}>
+              <Text style={styles.sectionTitle}>ジャンル</Text>
+              <View style={styles.chipWrap}>
+                <FilterChip
+                  label="おまかせ"
+                  selected={filters.categories.length === 0}
+                  onPress={selectAnyCategory}
+                />
+                {categories.map((category) => (
+                  <FilterChip
+                    key={category}
+                    label={category}
+                    selected={filters.categories.includes(category)}
+                    onPress={() => toggleCategory(category)}
+                  />
+                ))}
+              </View>
+              <Text style={styles.helperText}>
+                複数選択できます。おまかせは全ジャンルから出題します。
+              </Text>
+            </View>
+
+            <View style={styles.setupSection}>
+              <Text style={styles.sectionTitle}>文字数</Text>
+              <View style={styles.chipWrap}>
+                <FilterChip
+                  label="おまかせ"
+                  selected={filters.length === "any"}
+                  onPress={() => setLength("any")}
+                />
+                {lengths.map((length) => (
+                  <FilterChip
+                    key={length}
+                    label={`${length}文字`}
+                    selected={filters.length === length}
+                    onPress={() => setLength(length)}
+                  />
+                ))}
+              </View>
+              <Text style={styles.helperText}>
+                日本語は小文字・濁音・半濁音を同じ文字として扱い、長音「ー」は1文字。英語はスペースや記号を数えません。
+              </Text>
+            </View>
+
+            <View style={styles.startPanel}>
+              <Text style={styles.poolCount}>候補 {candidateCount} 問</Text>
+              <Pressable
+                disabled={candidateCount === 0}
+                onPress={() => startGame(filters)}
+                style={({ pressed }) => [
+                  styles.primaryButton,
+                  candidateCount === 0 ? styles.disabledButton : null,
+                  pressed ? styles.pressedButton : null,
+                ]}
+              >
+                <Text style={styles.primaryButtonText}>この条件で遊ぶ</Text>
+              </Pressable>
+            </View>
+
+            <View style={styles.adArea}>
+              <BannerAd placement="setup" />
+              <RemoveAdsOptions />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </>
     );
   }
 
   const currentPlayerLabel = `Player ${game.currentPlayer + 1}`;
   const canAnswer = game.phase === "answer";
   const canOpen = game.phase === "open";
+
+  function updateGame(previous: GameState, next: GameState) {
+    if (previous.phase !== "finished" && next.phase === "finished") {
+      trackEvent("game_finish", {
+        question_id: previous.question.id,
+        winner: next.winner === null ? "draw" : next.winner + 1,
+      });
+    }
+    setGame(next);
+  }
 
   function handleSubmitAnswer() {
     if (!game) {
@@ -258,14 +292,7 @@ export default function HomeScreen() {
       player: game.currentPlayer + 1,
     });
 
-    if (correct) {
-      trackEvent("game_finish", {
-        question_id: game.question.id,
-        winner: game.currentPlayer + 1,
-      });
-    }
-
-    setGame(next);
+    updateGame(game, next);
     setAnswer("");
   }
 
@@ -274,7 +301,7 @@ export default function HomeScreen() {
       return;
     }
 
-    setGame(passAnswer(game));
+    updateGame(game, passAnswer(game));
     setAnswer("");
   }
 
@@ -299,7 +326,7 @@ export default function HomeScreen() {
       });
     }
 
-    setGame(openCharacter(game, char));
+    updateGame(game, openCharacter(game, char));
   }
 
   const answerPlaceholder =
@@ -351,13 +378,22 @@ export default function HomeScreen() {
           <Text style={styles.message}>{game.lastMessage}</Text>
         </View>
 
+        {game.revealedAnswerChars > 0 && game.phase !== "finished" ? (
+          <View style={styles.messagePanel}>
+            <Text style={styles.message}>答えの文字：{answerHint(game)}</Text>
+          </View>
+        ) : null}
+
         {game.phase === "finished" ? (
           <View style={styles.resultPanel}>
             <Text style={styles.resultTitle}>
-              Player {game.winner! + 1} の勝ち！
+              {game.winner === null
+                ? "引き分け！"
+                : `Player ${game.winner + 1} の勝ち！`}
             </Text>
             <Text style={styles.resultAnswer}>
-              答え：{game.question.answers.map((item) => item.display).join(" / ")}
+              答え：
+              {game.question.answers.map((item) => item.display).join(" / ")}
             </Text>
             {game.question.answers.length > 1 ? (
               <Text style={styles.helperText}>
@@ -405,9 +441,7 @@ export default function HomeScreen() {
                   onPress={handleSubmitAnswer}
                   style={({ pressed }) => [
                     styles.primaryButton,
-                    !canAnswer || !answer.trim()
-                      ? styles.disabledButton
-                      : null,
+                    !canAnswer || !answer.trim() ? styles.disabledButton : null,
                     pressed ? styles.pressedButton : null,
                   ]}
                 >
