@@ -16,7 +16,6 @@ import {
   findSelectedGroup,
   groupCategoriesIn,
   LENGTH_PRESETS,
-  type CategoryGroup,
 } from "../data/categoryGroups";
 import {
   countQuestions,
@@ -40,12 +39,6 @@ const LINE = "#e3ddcf";
 const MINE_FILL = "#f2c9a3";
 const MINE_BORDER = "#e98a2f";
 
-export const RANDOM_FILTERS: QuestionFilters = {
-  language: "any",
-  categories: [],
-  length: "any",
-};
-
 const LANGUAGE_TABS: readonly {
   value: QuestionLanguage | "any";
   label: string;
@@ -68,16 +61,11 @@ function categorySummary(categories: readonly string[]): string {
 }
 
 function SampleTiles({ word }: { word: string }) {
-  const characters = [...word];
-  const mineIndex = Math.floor(characters.length / 2);
-
+  // Every character of an answer is a mine, as on the real board.
   return (
     <View style={styles.sampleTiles}>
-      {characters.map((character, index) => (
-        <View
-          key={`${character}-${index}`}
-          style={[styles.sampleTile, index === mineIndex && styles.sampleMine]}
-        >
+      {[...word].map((character, index) => (
+        <View key={`${character}-${index}`} style={styles.sampleTile}>
           <Text style={styles.sampleTileText}>{character}</Text>
         </View>
       ))}
@@ -86,18 +74,18 @@ function SampleTiles({ word }: { word: string }) {
 }
 
 function GroupRow({
-  group,
-  categories,
+  label,
+  summary,
   count,
   selected,
   sampleWord,
   onPress,
 }: {
-  group: CategoryGroup;
-  categories: readonly string[];
+  label: string;
+  summary: string;
   count: number;
   selected: boolean;
-  sampleWord: string;
+  sampleWord: string | null;
   onPress: () => void;
 }) {
   return (
@@ -113,13 +101,13 @@ function GroupRow({
     >
       <View style={styles.groupText}>
         <Text style={[styles.groupLabel, selected && styles.groupLabelBold]}>
-          {group.label}
+          {label}
         </Text>
         <Text style={styles.groupSummary} numberOfLines={1}>
-          {categorySummary(categories)}
+          {summary}
         </Text>
       </View>
-      {selected ? <SampleTiles word={sampleWord} /> : null}
+      {selected && sampleWord ? <SampleTiles word={sampleWord} /> : null}
       <Text style={styles.groupCount}>{count}問</Text>
     </Pressable>
   );
@@ -198,11 +186,11 @@ export function HomeSetup({
     onChangeFilters(() => ({ language, categories: [], length: "any" }));
   }
 
-  function toggleGroup(categories: readonly string[], selected: boolean) {
-    onChangeFilters((current) => ({
-      ...current,
-      categories: selected ? [] : categories,
-    }));
+  // Groups behave like radio buttons. An empty category list means every
+  // genre, so tapping the selected group again must not clear it; "every
+  // genre" has its own row instead.
+  function selectCategories(categories: readonly string[]) {
+    onChangeFilters((current) => ({ ...current, categories }));
   }
 
   function toggleCategory(category: string) {
@@ -250,20 +238,25 @@ export function HomeSetup({
         </View>
 
         <View>
-          {groups.map(({ group, categories }) => {
-            const selected = selectedGroup?.id === group.id;
-            return (
-              <GroupRow
-                key={group.id}
-                group={group}
-                categories={categories}
-                count={countQuestions({ ...filters, categories })}
-                selected={selected}
-                sampleWord={group.sample[sampleLanguage]}
-                onPress={() => toggleGroup(categories, selected)}
-              />
-            );
-          })}
+          <GroupRow
+            label="ぜんぶのジャンル"
+            summary="すべてのジャンルから出題"
+            count={countQuestions({ ...filters, categories: [] })}
+            selected={filters.categories.length === 0}
+            sampleWord={null}
+            onPress={() => selectCategories([])}
+          />
+          {groups.map(({ group, categories }) => (
+            <GroupRow
+              key={group.id}
+              label={group.label}
+              summary={categorySummary(categories)}
+              count={countQuestions({ ...filters, categories })}
+              selected={selectedGroup?.id === group.id}
+              sampleWord={group.sample[sampleLanguage]}
+              onPress={() => selectCategories(categories)}
+            />
+          ))}
           {customCategories ? (
             <Text style={styles.customNote}>
               細かく選択中：{categorySummary(filters.categories)}
@@ -336,7 +329,13 @@ export function HomeSetup({
           </Pressable>
           <View style={styles.startMeta}>
             <Pressable
-              onPress={() => onStart(RANDOM_FILTERS)}
+              onPress={() =>
+                onStart({
+                  language: filters.language,
+                  categories: [],
+                  length: "any",
+                })
+              }
               accessibilityRole="button"
             >
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
@@ -368,9 +367,21 @@ export function HomeSetup({
         onRequestClose={() => setDetailOpen(false)}
       >
         <SafeAreaView style={styles.safeArea}>
-          <ScrollView contentContainerStyle={styles.page}>
+          <View style={styles.detailHeader}>
             <Text style={styles.detailTitle}>ジャンルと文字数</Text>
-
+            <Pressable
+              onPress={() => setDetailOpen(false)}
+              accessibilityRole="button"
+              hitSlop={8}
+              style={({ pressed }) => [
+                styles.closeButton,
+                pressed && styles.pressed,
+              ]}
+            >
+              <Text style={styles.closeText}>閉じる</Text>
+            </Pressable>
+          </View>
+          <ScrollView contentContainerStyle={styles.page}>
             <View style={styles.detailSection}>
               <Text style={styles.sectionLabel}>ジャンル（複数選べます）</Text>
               <View style={styles.chipWrap}>
@@ -561,12 +572,8 @@ const styles = StyleSheet.create({
     height: 22,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: PAPER,
-    borderWidth: 1,
-    borderColor: "#cfc8b8",
-  },
-  sampleMine: {
     backgroundColor: MINE_FILL,
+    borderWidth: 1,
     borderColor: MINE_BORDER,
   },
   sampleTileText: {
@@ -692,6 +699,30 @@ const styles = StyleSheet.create({
   footerSeparator: {
     color: MUTED,
     fontSize: 12,
+  },
+  detailHeader: {
+    width: "100%",
+    maxWidth: 560,
+    alignSelf: "center",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: LINE,
+  },
+  closeButton: {
+    minHeight: 44,
+    minWidth: 44,
+    justifyContent: "center",
+    alignItems: "flex-end",
+  },
+  closeText: {
+    color: INK,
+    fontSize: 15,
+    fontWeight: "700",
+    textDecorationLine: "underline",
   },
   detailTitle: {
     color: INK,
