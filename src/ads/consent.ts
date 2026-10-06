@@ -18,3 +18,11 @@ export async function canRequestAds(
     }
   }
 }
+
+// UMP reports whether this user must be offered a way to change their ad
+// consent later (e.g. in the EEA / UK). Only then is the entry shown.
+export function isPrivacyOptionsRequired(
+  status: string | undefined | null,
+): boolean {
+  return status === "REQUIRED";
+}

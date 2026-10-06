@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Link } from "expo-router";
 import Head from "expo-router/head";
 
 import { BannerAd } from "../src/ads/BannerAd";
@@ -254,6 +255,16 @@ export default function HomeScreen() {
             <View style={styles.adArea}>
               <BannerAd placement="setup" />
               <RemoveAdsOptions />
+            </View>
+
+            <View style={styles.footerLinks}>
+              <Link href="/privacy" style={styles.footerLink}>
+                プライバシーポリシー
+              </Link>
+              <Text style={styles.footerSeparator}>/</Text>
+              <Link href="/support" style={styles.footerLink}>
+                サポート
+              </Link>
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -597,6 +608,23 @@ const styles = StyleSheet.create({
   startPanel: {
     gap: 8,
     marginTop: 4,
+  },
+  footerLinks: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginTop: 4,
+  },
+  footerLink: {
+    color: "#287da5",
+    fontSize: 12,
+    fontWeight: "700",
+    paddingVertical: 6,
+  },
+  footerSeparator: {
+    color: "#9aa8b1",
+    fontSize: 12,
   },
   adArea: {
     gap: 10,

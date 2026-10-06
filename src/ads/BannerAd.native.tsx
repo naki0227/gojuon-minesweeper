@@ -1,32 +1,17 @@
-import Constants, { ExecutionEnvironment } from "expo-constants";
 import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useAdFree } from "../entitlements/useAdFree";
-import { getAdMobBannerUnitId, shouldUseTestAds } from "./config";
+import {
+  AD_REQUEST_OPTIONS,
+  getAdMobBannerUnitId,
+  shouldUseTestAds,
+} from "./config";
 import { canRequestAds } from "./consent";
+import { mobileAds, type MobileAdsModule } from "./mobileAdsModule";
 import { selectBannerUnitId } from "./selectBannerUnitId";
 import type { BannerAdProps } from "./types";
 
-type MobileAdsModule = typeof import("react-native-google-mobile-ads");
-
-// The Google Mobile Ads SDK is a native module that Expo Go does not contain.
-// Load it lazily so Expo Go (and any build without it) simply shows no ads.
-function loadMobileAds(): MobileAdsModule | null {
-  if (Constants.executionEnvironment === ExecutionEnvironment.StoreClient) {
-    return null;
-  }
-
-  try {
-    // Expo Go has no native ads module, so this must be loaded at runtime.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    return require("react-native-google-mobile-ads") as MobileAdsModule;
-  } catch {
-    return null;
-  }
-}
-
-const mobileAds = loadMobileAds();
 let initialization: Promise<boolean> | null = null;
 
 // Gathers consent (UMP; only shows a form where the law requires it) and
@@ -100,6 +85,7 @@ export function BannerAd({ placement }: BannerAdProps) {
       <AdMobBanner
         unitId={unitId}
         size={BannerAdSize.LARGE_ANCHORED_ADAPTIVE_BANNER}
+        requestOptions={AD_REQUEST_OPTIONS}
         onAdFailedToLoad={() => setFailed(true)}
       />
     </View>

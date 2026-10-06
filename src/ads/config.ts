@@ -62,3 +62,11 @@ export function getAdSenseUnit(placement: AdPlacement): AdSenseUnit | null {
 
   return { clientId, slotId };
 }
+
+// Ads policy: no App Tracking Transparency prompt, and every AdMob request
+// asks for non-personalized ads. UMP still collects consent where required.
+// Flip requestNonPersonalizedAdsOnly only together with the App Privacy
+// answers and the privacy policy.
+export const AD_REQUEST_OPTIONS = {
+  requestNonPersonalizedAdsOnly: true,
+} as const;

@@ -3,6 +3,8 @@ import Head from "expo-router/head";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { AdPrivacyOptionsButton } from "../src/ads/AdPrivacyOptionsButton";
+
 export default function PrivacyScreen() {
   return (
     <>
@@ -41,10 +43,19 @@ export default function PrivacyScreen() {
               AdSense）。広告はゲーム設定画面と結果画面にのみ表示し、対局中には表示しません。
             </Text>
             <Text style={styles.body}>
-              広告の配信・効果測定・不正防止のため、Cookie、広告識別子、IPアドレス、端末やブラウザの種類、おおよその位置情報、広告の表示やタップの状況などの情報がGoogleにより処理される場合があります。地域によっては、広告に関する同意を確認する画面が表示されます。
+              広告の配信、効果測定、不正防止のために、Googleが次の情報を収集・処理することがあります。
             </Text>
             <Text style={styles.body}>
-              Googleによる情報の取り扱いは、Googleのポリシーをご確認ください。パーソナライズ広告はGoogleの広告設定から管理できます。
+              ・IPアドレスと、そこから推定されるおおよその位置{"\n"}
+              ・端末の識別子（iOSのベンダー識別子、Androidの広告ID、Web版のCookieなど）
+              {"\n"}
+              ・広告の表示やタップなどの広告データ{"\n"}
+              ・アプリやページの操作情報{"\n"}
+              ・クラッシュやパフォーマンスの情報{"\n"}
+              ・端末、OS、ブラウザの種類
+            </Text>
+            <Text style={styles.body}>
+              iOS・Android版では「Appのトラッキング」の許可を求めず、AdMobには非パーソナライズ広告のみをリクエストしています。Web版では、Googleの同意管理の結果に応じて、Cookieを使ったパーソナライズ広告が表示される場合があります。
             </Text>
             <Link
               href="https://policies.google.com/technologies/partner-sites?hl=ja"
@@ -61,11 +72,38 @@ export default function PrivacyScreen() {
           </View>
 
           <View style={styles.section}>
+            <Text style={styles.heading}>広告に関する同意の変更・撤回</Text>
+            <Text style={styles.body}>
+              欧州経済領域・英国など同意が必要な地域では、初回に広告に関する同意を確認します。同意の内容は、下の「広告のプライバシー設定を変更する」からいつでも変更・撤回できます（同意が必要な地域でのみ表示されます）。
+            </Text>
+            <AdPrivacyOptionsButton />
+            <Text style={styles.body}>
+              ほかに、Androidでは端末の設定から広告IDを削除またはリセットでき、Web版ではブラウザのCookieを削除するか、Googleの広告設定でパーソナライズ広告を無効にできます。
+            </Text>
+            <Link
+              href="https://myadcenter.google.com/"
+              style={styles.inlineLink}
+            >
+              Googleのマイ アド センター
+            </Link>
+          </View>
+
+          <View style={styles.section}>
             <Text style={styles.heading}>広告の非表示（アプリ内課金）</Text>
             <Text style={styles.body}>
               アプリ版では、広告を非表示にするアプリ内課金を提供します。決済はApple（App
               Store）またはGoogle（Google
               Play）が行い、本サービスがクレジットカード番号などの決済情報を取得することはありません。購入状態は端末上で各ストアに照会して確認します。購入はWeb版には引き継がれません。
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.heading}>保存期間と削除</Text>
+            <Text style={styles.body}>
+              本サービス自体は、サーバーに個人情報や利用状況データを保存していません。ゲームの状態は端末内だけで扱い、アプリを削除すると消えます。購入履歴はAppleまたはGoogleが管理します。Googleが広告のために処理する情報の保存期間と削除方法は、上記のGoogleのポリシーに従います。
+            </Text>
+            <Text style={styles.body}>
+              情報の取り扱いに関するお問い合わせや削除のご相談は、サポートページの窓口からご連絡ください。
             </Text>
           </View>
 
