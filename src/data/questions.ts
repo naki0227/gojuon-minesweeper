@@ -1,4 +1,5 @@
-import rawEntries from "./question-bank.json";
+import japaneseEntries from "./question-bank-ja.json";
+import englishEntries from "./question-bank-en.json";
 import type {
   AnswerOption,
   Question,
@@ -9,7 +10,10 @@ import type {
 import { normalizedLength } from "../game/normalize";
 import { createSignatureKey } from "../game/signature";
 
-const RAW_QUESTION_ENTRIES = rawEntries as RawQuestionEntry[];
+const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
+  ...(japaneseEntries as RawQuestionEntry[]),
+  ...(englishEntries as RawQuestionEntry[]),
+];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
   const seen = new Set<string>();
