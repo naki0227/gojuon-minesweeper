@@ -4,12 +4,12 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
-const files = [
-  path.join(root, "src/data/question-bank-ja.json"),
-  path.join(root, "src/data/question-bank-ja-extra.json"),
-  path.join(root, "src/data/question-bank-en.json"),
-  path.join(root, "src/data/question-bank-en-extra.json"),
-];
+const bankDir = path.join(root, "src/data");
+const files = fs
+  .readdirSync(bankDir)
+  .filter((name) => name.startsWith("question-bank-") && name.endsWith(".json"))
+  .sort()
+  .map((name) => path.join(bankDir, name));
 
 const smallKana = new Map([
   ["ぁ", "あ"], ["ぃ", "い"], ["ぅ", "う"], ["ぇ", "え"], ["ぉ", "お"],
@@ -101,6 +101,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
+console.log(`Question bank files: ${files.length}`);
 console.log(`Question entries: ${entries.length}`);
 console.log(`Categories: ${categories.size}`);
 console.log("By category:");
