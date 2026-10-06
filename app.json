@@ -28,7 +28,7 @@
       "output": "static"
     },
     "plugins": [
-      "expo-router",
+      ["expo-router", { "origin": "https://minesweeper.enludus.com" }],
       "expo-splash-screen"
     ],
     "experiments": {
