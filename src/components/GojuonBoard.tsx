@@ -7,9 +7,12 @@ import {
   type ViewStyle,
 } from "react-native";
 
+import type { Question } from "../data/questions";
+import { adjacentMineCount } from "../game/engine";
 import { GOJUON_GRID } from "../game/gojuon";
 
 type Props = {
+  question: Question;
   openedChars: readonly string[];
   mineChars: ReadonlySet<string>;
   canOpen: boolean;
@@ -17,6 +20,7 @@ type Props = {
 };
 
 export function GojuonBoard({
+  question,
   openedChars,
   mineChars,
   canOpen,
@@ -40,6 +44,8 @@ export function GojuonBoard({
 
             const isOpened = opened.has(char);
             const isMine = isOpened && mineChars.has(char);
+            const mineCount =
+              isOpened && !isMine ? adjacentMineCount(question, char) : null;
             const disabled = !canOpen || isOpened;
 
             const dynamicStyle: ViewStyle = isMine
@@ -48,10 +54,16 @@ export function GojuonBoard({
                 ? styles.safeCell
                 : styles.closedCell;
 
+            const stateLabel = !isOpened
+              ? ""
+              : isMine
+                ? " 地雷"
+                : ` セーフ 周囲の地雷${mineCount}個`;
+
             return (
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel={`${char}${isOpened ? (isMine ? " 地雷" : " セーフ") : ""}`}
+                accessibilityLabel={`${char}${stateLabel}`}
                 disabled={disabled}
                 key={char}
                 onPress={() => onOpen(char)}
@@ -70,7 +82,12 @@ export function GojuonBoard({
                 >
                   {char}
                 </Text>
-                {isMine ? <Text style={styles.mineMark}>●</Text> : null}
+
+                {isMine ? (
+                  <Text style={styles.mineMark}>●</Text>
+                ) : isOpened ? (
+                  <Text style={styles.mineCount}>{mineCount}</Text>
+                ) : null}
               </Pressable>
             );
           })}
@@ -122,13 +139,21 @@ const styles = StyleSheet.create({
   char: {
     color: "#152534",
     fontWeight: "700",
-    fontSize: 18,
+    fontSize: 17,
+    transform: [{ translateY: -3 }],
   },
   openedChar: {
     color: "#71808c",
   },
   mineChar: {
     color: "#8f4300",
+  },
+  mineCount: {
+    position: "absolute",
+    bottom: 2,
+    color: "#263f50",
+    fontSize: 10,
+    fontWeight: "900",
   },
   mineMark: {
     position: "absolute",
