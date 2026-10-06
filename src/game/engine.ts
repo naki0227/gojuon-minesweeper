@@ -1,7 +1,7 @@
-import type { Question } from "../data/questions";
+import type { Question } from "../data/types";
 import { primaryAnswer } from "../data/questions";
-import { adjacentCharacters } from "./gojuon";
-import { normalizeKana } from "./normalize";
+import { adjacentCharacters } from "./board";
+import { normalizeValue } from "./normalize";
 import { createSignatureKey, mineCharacters } from "./signature";
 
 export type PlayerIndex = 0 | 1;
@@ -21,6 +21,10 @@ function playerName(player: PlayerIndex): string {
   return `Player ${player + 1}`;
 }
 
+function rawComparable(value: string): string {
+  return value.normalize("NFKC").trim().toLocaleLowerCase();
+}
+
 export function createInitialState(question: Question): GameState {
   return {
     question,
@@ -34,7 +38,7 @@ export function createInitialState(question: Question): GameState {
 }
 
 export function questionMineCharacters(question: Question): Set<string> {
-  return mineCharacters(primaryAnswer(question));
+  return mineCharacters(primaryAnswer(question).value, question.language);
 }
 
 export function isMineCharacter(question: Question, char: string): boolean {
@@ -44,20 +48,33 @@ export function isMineCharacter(question: Question, char: string): boolean {
 export function adjacentMineCount(question: Question, char: string): number {
   const mines = questionMineCharacters(question);
 
-  return adjacentCharacters(char).filter((neighbor) => mines.has(neighbor))
-    .length;
+  return adjacentCharacters(question.language, char).filter((neighbor) =>
+    mines.has(neighbor),
+  ).length;
 }
 
 export function isAcceptedAnswer(question: Question, input: string): boolean {
-  const normalizedInput = normalizeKana(input);
+  const rawInput = rawComparable(input);
+  const normalizedInput = normalizeValue(input, question.language);
 
-  if (!normalizedInput) {
+  if (!rawInput) {
     return false;
   }
 
-  return question.answers.some(
-    (answer) => normalizeKana(answer) === normalizedInput,
-  );
+  return question.answers.some((answer) => {
+    if (
+      answer.aliases.some(
+        (alias) => rawComparable(alias) === rawInput,
+      )
+    ) {
+      return true;
+    }
+
+    return (
+      normalizedInput.length > 0 &&
+      normalizeValue(answer.value, question.language) === normalizedInput
+    );
+  });
 }
 
 export function validateQuestionCollision(question: Question): boolean {
@@ -65,9 +82,14 @@ export function validateQuestionCollision(question: Question): boolean {
     return true;
   }
 
-  const expected = createSignatureKey(primaryAnswer(question));
+  const expected = createSignatureKey(
+    primaryAnswer(question).value,
+    question.language,
+  );
+
   return question.answers.every(
-    (answer) => createSignatureKey(answer) === expected,
+    (answer) =>
+      createSignatureKey(answer.value, question.language) === expected,
   );
 }
 
@@ -95,7 +117,7 @@ function expandZeroArea(
       continue;
     }
 
-    for (const neighbor of adjacentCharacters(current)) {
+    for (const neighbor of adjacentCharacters(question.language, current)) {
       if (!opened.has(neighbor) && !mines.has(neighbor)) {
         queue.push(neighbor);
       }
@@ -122,7 +144,7 @@ export function submitAnswer(state: GameState, input: string): GameState {
   return {
     ...state,
     phase: "open",
-    lastMessage: "不正解。五十音表から1文字開けてください。",
+    lastMessage: "不正解。盤面から1文字開けてください。",
   };
 }
 
@@ -134,7 +156,7 @@ export function passAnswer(state: GameState): GameState {
   return {
     ...state,
     phase: "open",
-    lastMessage: "回答をパスしました。五十音表から1文字開けてください。",
+    lastMessage: "回答をパスしました。盤面から1文字開けてください。",
   };
 }
 
