@@ -23,7 +23,8 @@
       "expo-splash-screen"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "baseUrl": "/gojuon-minesweeper"
     }
   }
 }
