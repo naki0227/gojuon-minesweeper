@@ -2849,13 +2849,6 @@
     "value": "デボンスコープ"
   },
   {
-    "id": "itj-00543",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "おとどけもの",
-    "value": "おとどけもの"
-  },
-  {
     "id": "itj-00544",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -4046,13 +4039,6 @@
     "value": "メガグローブ"
   },
   {
-    "id": "itj-00770",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "デボンのにもつ",
-    "value": "デボンのにもつ"
-  },
-  {
     "id": "itj-00772",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -4599,90 +4585,6 @@
     "value": "フェアリーメモリ"
   },
   {
-    "id": "itj-00919",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "じてんしゃ",
-    "value": "じてんしゃ"
-  },
-  {
-    "id": "itj-00920",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "そうこのカギ",
-    "value": "そうこのカギ"
-  },
-  {
-    "id": "itj-00921",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ちかのかぎ",
-    "value": "ちかのかぎ"
-  },
-  {
-    "id": "itj-00922",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ライブキャスター",
-    "value": "ライブキャスター"
-  },
-  {
-    "id": "itj-00923",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ライブキャスター",
-    "value": "ライブキャスター"
-  },
-  {
-    "id": "itj-00924",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "いでんしのくさび",
-    "value": "いでんしのくさび"
-  },
-  {
-    "id": "itj-00925",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "いでんしのくさび",
-    "value": "いでんしのくさび"
-  },
-  {
-    "id": "itj-00926",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "わすれもの",
-    "value": "わすれもの"
-  },
-  {
-    "id": "itj-00927",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "わすれもの",
-    "value": "わすれもの"
-  },
-  {
-    "id": "itj-00928",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ホロキャスター",
-    "value": "ホロキャスター"
-  },
-  {
-    "id": "itj-00929",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "じてんしゃ",
-    "value": "じてんしゃ"
-  },
-  {
-    "id": "itj-00930",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ホロキャスター",
-    "value": "ホロキャスター"
-  },
-  {
     "id": "itj-00931",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -4690,46 +4592,11 @@
     "value": "ちかのカギ"
   },
   {
-    "id": "itj-00932",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "そうこのカギ",
-    "value": "そうこのカギ"
-  },
-  {
-    "id": "itj-00933",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ふねのチケット",
-    "value": "ふねのチケット"
-  },
-  {
     "id": "itj-00934",
     "language": "ja",
     "category": "ポケモンの道具",
     "display": "ライブドレス",
     "value": "ライブドレス"
-  },
-  {
-    "id": "itj-00935",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "いんせき",
-    "value": "いんせき"
-  },
-  {
-    "id": "itj-00936",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "いんせき",
-    "value": "いんせき"
-  },
-  {
-    "id": "itj-00937",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "いんせき",
-    "value": "いんせき"
   },
   {
     "id": "itj-00980",
@@ -4803,20 +4670,6 @@
   },
   {
     "id": "itj-00990",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ネクロプラスルナ",
-    "value": "ネクロプラスルナ"
-  },
-  {
-    "id": "itj-00991",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ネクロプラスソル",
-    "value": "ネクロプラスソル"
-  },
-  {
-    "id": "itj-00992",
     "language": "ja",
     "category": "ポケモンの道具",
     "display": "ネクロプラスルナ",
@@ -4991,34 +4844,6 @@
     "value": "きんのパイルのみ"
   },
   {
-    "id": "itj-01020",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ひみつのカギ",
-    "value": "ひみつのカギ"
-  },
-  {
-    "id": "itj-01021",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ふねのチケット",
-    "value": "ふねのチケット"
-  },
-  {
-    "id": "itj-01022",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "おとどけもの",
-    "value": "おとどけもの"
-  },
-  {
-    "id": "itj-01023",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "カードキー",
-    "value": "カードキー"
-  },
-  {
     "id": "itj-01024",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -5083,13 +4908,6 @@
   },
   {
     "id": "itj-01033",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "このはのおてがみ",
-    "value": "このはのおてがみ"
-  },
-  {
-    "id": "itj-01034",
     "language": "ja",
     "category": "ポケモンの道具",
     "display": "このはのおてがみ",
@@ -5726,25 +5544,11 @@
     "value": "すいせんじょう"
   },
   {
-    "id": "itj-01139",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ポケモンボックス",
-    "value": "ポケモンボックス"
-  },
-  {
     "id": "itj-01140",
     "language": "ja",
     "category": "ポケモンの道具",
     "display": "ねがいぼし",
     "value": "ねがいぼし"
-  },
-  {
-    "id": "itj-01142",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "つりざお",
-    "value": "つりざお"
   },
   {
     "id": "itj-01143",
@@ -6272,13 +6076,6 @@
     "value": "ねがいのかけら"
   },
   {
-    "id": "itj-01324",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ロトムじてんしゃ",
-    "value": "ロトムじてんしゃ"
-  },
-  {
     "id": "itj-01325",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -6356,20 +6153,6 @@
     "value": "ヨロイパス"
   },
   {
-    "id": "itj-01636",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ロトムじてんしゃ",
-    "value": "ロトムじてんしゃ"
-  },
-  {
-    "id": "itj-01637",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "ロトムじてんしゃ",
-    "value": "ロトムじてんしゃ"
-  },
-  {
     "id": "itj-01638",
     "language": "ja",
     "category": "ポケモンの道具",
@@ -6392,13 +6175,6 @@
   },
   {
     "id": "itj-01641",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "キズナのタヅナ",
-    "value": "キズナのタヅナ"
-  },
-  {
-    "id": "itj-01642",
     "language": "ja",
     "category": "ポケモンの道具",
     "display": "キズナのタヅナ",
@@ -6480,13 +6256,6 @@
     "category": "ポケモンの道具",
     "display": "とくせいパッチ",
     "value": "とくせいパッチ"
-  },
-  {
-    "id": "itj-01658",
-    "language": "ja",
-    "category": "ポケモンの道具",
-    "display": "キズナのタヅナ",
-    "value": "キズナのタヅナ"
   },
   {
     "id": "itj-01659",
