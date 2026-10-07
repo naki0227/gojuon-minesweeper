@@ -144,12 +144,15 @@ export function HomeSetup({
   filters,
   onChangeFilters,
   onStart,
+  onOnline,
 }: {
   filters: QuestionFilters;
   onChangeFilters: (
     update: (current: QuestionFilters) => QuestionFilters,
   ) => void;
   onStart: (filters: QuestionFilters) => void;
+  // Shown only when this build has the online server configured.
+  onOnline?: (filters: QuestionFilters) => void;
 }) {
   const [detailOpen, setDetailOpen] = useState(false);
 
@@ -344,6 +347,21 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
+          {onOnline ? (
+            <Pressable
+              disabled={candidateCount === 0}
+              onPress={() => onOnline(filters)}
+              accessibilityRole="button"
+              style={({ pressed }) => [
+                styles.onlineButton,
+                candidateCount === 0 && styles.disabled,
+                pressed && styles.pressed,
+              ]}
+            >
+              <Text style={styles.onlineText}>オンラインで対戦</Text>
+              <Text style={styles.onlineNote}>合言葉・ランダムマッチ</Text>
+            </Pressable>
+          ) : null}
         </View>
 
         <View style={styles.adArea}>
@@ -665,6 +683,27 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 1,
+  },
+  onlineButton: {
+    minHeight: 52,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderColor: INK,
+    backgroundColor: "#ffffff",
+    marginRight: 4,
+    paddingVertical: 6,
+  },
+  onlineText: {
+    color: INK,
+    fontSize: 16,
+    fontWeight: "900",
+    letterSpacing: 1,
+  },
+  onlineNote: {
+    color: MUTED,
+    fontSize: 11,
+    marginTop: 2,
   },
   startMeta: {
     alignItems: "center",
