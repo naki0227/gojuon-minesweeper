@@ -7,34 +7,34 @@ import {
   type ViewStyle,
 } from "react-native";
 
-import type { Question } from "../data/types";
-import { adjacentMineCount } from "../game/engine";
+import type { QuestionLanguage } from "../data/types";
 import { getBoardGrid } from "../game/board";
 
 type Props = {
-  question: Question;
+  language: QuestionLanguage;
   openedChars: readonly string[];
   mineChars: ReadonlySet<string>;
+  // Mines around an opened safe cell. Local play computes it from the
+  // question; online play gets it from the server.
+  mineCount: (char: string) => number;
   canOpen: boolean;
   onOpen: (char: string) => void;
 };
 
 export function CharacterBoard({
-  question,
+  language,
   openedChars,
   mineChars,
+  mineCount: countMines,
   canOpen,
   onOpen,
 }: Props) {
   const opened = useMemo(() => new Set(openedChars), [openedChars]);
-  const grid = getBoardGrid(question.language);
+  const grid = getBoardGrid(language);
 
   return (
     <View
-      style={[
-        styles.board,
-        question.language === "en" ? styles.englishBoard : null,
-      ]}
+      style={[styles.board, language === "en" ? styles.englishBoard : null]}
     >
       {grid.map((row, rowIndex) => (
         <View key={`row-${rowIndex}`} style={styles.row}>
@@ -50,8 +50,7 @@ export function CharacterBoard({
 
             const isOpened = opened.has(char);
             const isMine = isOpened && mineChars.has(char);
-            const mineCount =
-              isOpened && !isMine ? adjacentMineCount(question, char) : null;
+            const mineCount = isOpened && !isMine ? countMines(char) : null;
             const disabled = !canOpen || isOpened;
 
             const dynamicStyle: ViewStyle = isMine

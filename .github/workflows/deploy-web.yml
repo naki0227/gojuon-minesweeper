@@ -43,6 +43,9 @@ jobs:
           # Used only to write app-ads.txt for AdMob app verification.
           ADMOB_IOS_APP_ID: ${{ vars.ADMOB_IOS_APP_ID }}
           ADMOB_ANDROID_APP_ID: ${{ vars.ADMOB_ANDROID_APP_ID }}
+          # Online play. Without these the online button stays hidden.
+          EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_KEY }}
 
       - name: Publish gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

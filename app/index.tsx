@@ -10,14 +10,17 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
+import { router } from "expo-router";
 
 import { BannerAd } from "../src/ads/BannerAd";
 import { trackEvent } from "../src/analytics/events";
 import { CharacterBoard } from "../src/components/CharacterBoard";
 import { HomeSetup } from "../src/components/HomeSetup";
+import { isOnlineConfigured } from "../src/online/client";
 import { pickRandomQuestion, questionPrompt } from "../src/data/questions";
 import type { QuestionFilters } from "../src/data/types";
 import {
+  adjacentMineCount,
   answerHint,
   createInitialState,
   isMineCharacter,
@@ -77,6 +80,15 @@ export default function HomeScreen() {
           filters={filters}
           onChangeFilters={setFilters}
           onStart={(nextFilters) => startGame(nextFilters)}
+          onOnline={
+            isOnlineConfigured
+              ? (nextFilters) =>
+                  router.push({
+                    pathname: "/online",
+                    params: { filters: JSON.stringify(nextFilters) },
+                  })
+              : undefined
+          }
         />
       </>
     );
@@ -283,9 +295,10 @@ export default function HomeScreen() {
             </View>
 
             <CharacterBoard
-              question={game.question}
+              language={game.question.language}
               canOpen={canOpen}
               mineChars={mineChars}
+              mineCount={(char) => adjacentMineCount(game.question, char)}
               onOpen={handleOpen}
               openedChars={game.openedChars}
             />
@@ -308,7 +321,7 @@ export default function HomeScreen() {
 
         {Platform.OS === "web" ? (
           <Text style={styles.webNote}>
-            Web版も同じコードで動作します。オンライン対戦では正解をクライアントへ配らない構成に変更予定です。
+            Web版も同じコードで動作します。オンライン対戦では答えと判定をサーバー側に置き、端末には配りません。
           </Text>
         ) : null}
 
