@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import {
+  Animated,
   Platform,
   Pressable,
   ScrollView,
@@ -15,6 +16,9 @@ import { router } from "expo-router";
 import { BannerAd } from "../src/ads/BannerAd";
 import { trackEvent } from "../src/analytics/events";
 import { CharacterBoard } from "../src/components/CharacterBoard";
+import { Confetti } from "../src/components/Confetti";
+import { PopIn } from "../src/components/PopIn";
+import { USE_NATIVE_DRIVER, useReducedMotion } from "../src/components/motion";
 import { HomeSetup } from "../src/components/HomeSetup";
 import { isOnlineConfigured } from "../src/online/client";
 import { pickRandomQuestion, questionPrompt } from "../src/data/questions";
@@ -41,6 +45,8 @@ export default function HomeScreen() {
   const [filters, setFilters] = useState<QuestionFilters>(INITIAL_FILTERS);
   const [game, setGame] = useState<GameState | null>(null);
   const [answer, setAnswer] = useState("");
+  const reducedMotion = useReducedMotion();
+  const wrongShake = useState(() => new Animated.Value(0))[0];
 
   const mineChars = useMemo(
     () => (game ? questionMineCharacters(game.question) : new Set<string>()),
@@ -127,6 +133,15 @@ export default function HomeScreen() {
 
     updateGame(game, next);
     setAnswer("");
+
+    if (!correct && !reducedMotion) {
+      wrongShake.setValue(0);
+      Animated.timing(wrongShake, {
+        toValue: 1,
+        duration: 420,
+        useNativeDriver: USE_NATIVE_DRIVER,
+      }).start();
+    }
   }
 
   function handlePassAnswer() {
@@ -218,7 +233,7 @@ export default function HomeScreen() {
         ) : null}
 
         {game.phase === "finished" ? (
-          <View style={styles.resultPanel}>
+          <PopIn style={styles.resultPanel}>
             <Text style={styles.resultTitle}>
               {game.winner === null
                 ? "引き分け！"
@@ -247,10 +262,24 @@ export default function HomeScreen() {
                 <Text style={styles.secondaryButtonText}>条件を変える</Text>
               </Pressable>
             </View>
-          </View>
+          </PopIn>
         ) : (
           <>
-            <View style={styles.answerArea}>
+            <Animated.View
+              style={[
+                styles.answerArea,
+                {
+                  transform: [
+                    {
+                      translateX: wrongShake.interpolate({
+                        inputRange: [0, 0.15, 0.35, 0.55, 0.75, 1],
+                        outputRange: [0, -12, 10, -7, 4, 0],
+                      }),
+                    },
+                  ],
+                },
+              ]}
+            >
               <TextInput
                 accessibilityLabel="回答"
                 autoCapitalize="none"
@@ -292,7 +321,7 @@ export default function HomeScreen() {
                   <Text style={styles.secondaryButtonText}>回答しない</Text>
                 </Pressable>
               </View>
-            </View>
+            </Animated.View>
 
             <CharacterBoard
               language={game.question.language}
@@ -328,6 +357,9 @@ export default function HomeScreen() {
         {/* Ads only once the game is decided; never during play. */}
         {game.phase === "finished" ? <BannerAd placement="result" /> : null}
       </ScrollView>
+      {game.winner !== null && !reducedMotion ? (
+        <Confetti key={game.question.id} />
+      ) : null}
     </SafeAreaView>
   );
 }
