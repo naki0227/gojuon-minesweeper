@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "../online/client";
 import {
-  currentAppleAccount, isGemWalletConfigured, loadGemBalance, spendGems,
+  currentAppleAccount,
+  isGemWalletConfigured,
+  loadGemBalance,
+  spendGems,
 } from "./client";
 import { gemStore } from "./gemStore";
 
@@ -51,7 +54,9 @@ export function useGemWallet() {
     });
     const { data } = getSupabase().auth.onAuthStateChange(() => {
       // Run after the current authentication event finishes.
-      setTimeout(() => { void refresh(); }, 0);
+      setTimeout(() => {
+        void refresh();
+      }, 0);
     });
     return () => {
       stopPurchaseListener();
@@ -80,7 +85,15 @@ export function useGemWallet() {
   };
 
   return {
-    userId, balance, price, loading, buying, message, refresh, purchase, spend,
+    userId,
+    balance,
+    price,
+    loading,
+    buying,
+    message,
+    refresh,
+    purchase,
+    spend,
     enabled: isGemWalletConfigured && gemStore.isSupported,
   };
 }
