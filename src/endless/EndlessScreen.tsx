@@ -67,8 +67,8 @@ export function EndlessScreen() {
   const [error, setError] = useState<string | null>(null);
   const { owned: adsRemoved } = useRemoveAds();
   const wallet = useGemWallet();
-  const [runId, setRunId] = useState(() =>
-    `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
+  const [runId, setRunId] = useState(
+    () => `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
   );
 
   const mineChars = useMemo(
@@ -119,15 +119,22 @@ export function EndlessScreen() {
   }
 
   async function paidRevive() {
-    if (!game || game.phase !== "revive" || busy ||
-      game.revives < FREE_REVIVE_LIMIT) return;
+    if (
+      !game ||
+      game.phase !== "revive" ||
+      busy ||
+      game.revives < FREE_REVIVE_LIMIT
+    )
+      return;
     setBusy(true);
     setError(null);
     try {
       await wallet.spend("revive", `${runId}:revive:${game.revives}`);
-      setGame((current) => current ? reviveEndless(current) : current);
+      setGame((current) => (current ? reviveEndless(current) : current));
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "復活できませんでした。");
+      setError(
+        cause instanceof Error ? cause.message : "復活できませんでした。",
+      );
     } finally {
       setBusy(false);
     }
@@ -139,11 +146,16 @@ export function EndlessScreen() {
     setError(null);
     try {
       await wallet.spend(
-        "hint", `${runId}:hint:${game.question.id}:${game.hintUses}`,
+        "hint",
+        `${runId}:hint:${game.question.id}:${game.hintUses}`,
       );
-      setGame((current) => current ? grantHint(current) : current);
+      setGame((current) => (current ? grantHint(current) : current));
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "ヒントを取得できませんでした。");
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "ヒントを取得できませんでした。",
+      );
     } finally {
       setBusy(false);
     }
@@ -226,9 +238,12 @@ export function EndlessScreen() {
               answer={answer}
               onChangeAnswer={setAnswer}
               onSubmit={submit}
-              onPass={() => { if (!busy) setGame(passEndless(game)); }}
+              onPass={() => {
+                if (!busy) setGame(passEndless(game));
+              }}
               onOpen={(char) =>
-                !busy && setGame((current) =>
+                !busy &&
+                setGame((current) =>
                   current ? openEndless(current, char) : current,
                 )
               }
@@ -252,7 +267,9 @@ export function EndlessScreen() {
                 const question = pickRandomQuestion(filters);
                 if (question) {
                   setGame(startEndless(question));
-                  setRunId(`run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`);
+                  setRunId(
+                    `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
+                  );
                 }
               }}
             />
