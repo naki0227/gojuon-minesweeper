@@ -37,5 +37,8 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      - name: File size and duplicate code
+        run: npm run quality
+
       - name: Export web
         run: npm run build:web
