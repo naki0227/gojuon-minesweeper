@@ -53,14 +53,11 @@ function sameLength(left: LengthFilter, right: LengthFilter): boolean {
   }
   return left === right;
 }
-
 function categorySummary(categories: readonly string[]): string {
   const shown = categories.slice(0, 4).join("、");
   return categories.length > 4 ? `${shown} など` : shown;
 }
-
 function SampleTiles({ word }: { word: string }) {
-  // Every character of an answer is a mine, as on the real board.
   return (
     <View style={styles.sampleTiles}>
       {[...word].map((character, index) => (
