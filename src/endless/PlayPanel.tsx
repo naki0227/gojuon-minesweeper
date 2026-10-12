@@ -1,10 +1,7 @@
 import { Pressable, Text, TextInput, View } from "react-native";
 
 import { CharacterBoard } from "../components/CharacterBoard";
-import {
-  adjacentMineCount,
-  questionMineMultiplicity,
-} from "../game/engine";
+import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
 import type { EndlessState } from "./engine";
 import { styles } from "./styles";
 
@@ -44,7 +41,10 @@ export function PlayPanel({
       />
       <View style={styles.actions}>
         <Pressable
-          style={[styles.primary, (!canAnswer || !answer.trim()) && styles.disabled]}
+          style={[
+            styles.primary,
+            (!canAnswer || !answer.trim()) && styles.disabled,
+          ]}
           disabled={!canAnswer || !answer.trim()}
           onPress={onSubmit}
         >
