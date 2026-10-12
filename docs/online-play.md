@@ -53,8 +53,8 @@
 
 最初に一度、GitHub の Settings → Environments に `production` を作り、次の Secrets を登録する。必要なら同じ画面で「Required reviewers」に自分を入れ、実行前の承認を必須にできる。
 
-- `SUPABASE_ACCESS_TOKEN`: Supabase の Account → Access Tokens で発行
-- `SUPABASE_DB_PASSWORD`: プロジェクトの DB パスワード
+- `SUPABASE_ACCESS_TOKEN`: Supabase の Account → Access Tokens で発行。対象プロジェクトの Edge Functions を Read-write にする（Edge Function のデプロイだけに使う）
+- `SUPABASE_DB_URL`: ダッシュボードの「Connect」→ Session pooler の接続URI（DBパスワード入り。GitHub の実行環境は IPv4 のため Direct ではなくこちら）
 - `SUPABASE_PROJECT_ID`: プロジェクトの ref（URL の `https://<ref>.supabase.co` の部分）
 
 ## ローカルで試す
