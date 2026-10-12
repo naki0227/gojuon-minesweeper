@@ -121,11 +121,9 @@ describe("curated category pool", () => {
         ),
       ).toBe(false);
 
-      const specialistCategory = general.length > 0
-        ? [...SPECIALIST_IT_CATEGORIES].find((category) =>
-            getCategories(language).includes(category),
-          )
-        : undefined;
+      const specialistCategory = [...SPECIALIST_IT_CATEGORIES].find(
+        (category) => getCategories(language).includes(category),
+      );
       expect(specialistCategory).toBeDefined();
       const explicit = filterQuestions({
         language,
@@ -133,8 +131,9 @@ describe("curated category pool", () => {
         length: "any",
       });
       expect(explicit.length).toBeGreaterThan(0);
-      expect(explicit.every((question) => question.category === specialistCategory))
-        .toBe(true);
+      expect(
+        explicit.every((question) => question.category === specialistCategory),
+      ).toBe(true);
     }
   });
 
