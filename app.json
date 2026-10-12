@@ -2,7 +2,7 @@
   "expo": {
     "name": "五十音マインスイーパー",
     "slug": "gojuon-minesweeper",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "scheme": "gojuonminesweeper",
     "userInterfaceStyle": "light",
@@ -41,6 +41,14 @@
       }
     },
     "owner": "naki0227",
-    "icon": "./assets/icon.png"
+    "icon": "./assets/icon.png",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d89969a4-9553-4f0e-9a7b-3d023e411f40",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    }
   }
 }
