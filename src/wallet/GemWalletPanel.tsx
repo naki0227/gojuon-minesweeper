@@ -13,7 +13,7 @@ export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
       {!wallet.userId ? (
         <>
           <Text style={styles.panelText}>
-            Appleでログインすると、購入したジェムを再インストール後も復元できます。
+            Appleでログインすると初回限定で3ジェムをプレゼント。ジェム残高は再インストール後も引き継げます。
           </Text>
           <AppleAccount onSignedIn={() => void wallet.refresh()} />
         </>
