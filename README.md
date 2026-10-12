@@ -8,19 +8,22 @@
 
 - iOS / Android / Web 共通
 - ローカル2人対戦
+- Supabase を使うオンライン2人対戦（合言葉・ランダムマッチ）
 - 日本語の五十音盤 / 英語のA〜Z盤
 - 完全ランダム出題
 - 言語・ジャンル・文字数フィルター
-- セーフマスは周囲8マスの地雷数を表示
+- セーフマスは周囲8マスの答え文字数（同じ文字の重複も加算）を表示。開いた地雷文字に重複がある場合は「×2」などを表示
 - 0マスは通常のマインスイーパーと同じ連鎖オープン
 - 日本語は小文字・濁音・半濁音を区別しない
 - 長音 `ー` は `ん` の下の独立マス
 - 同じ文字の重複を許可
 - 同ジャンル・同文字数・同signatureの別単語は複数正解として自動グルーピング
 - 漢字の表示名と読みを分離し、どちらでも回答可能
-- 問題バンク 11,284件（raw entries。signature衝突は出題時に自動統合）
-- GA4 / Firebase Analytics 用イベント窓口
-- 問題バンク検証 + TypeScript CI
+- 問題バンク 22,116件（2026-10-12時点の raw entries。signature 衝突は出題時に自動統合）
+- 安全マスを開き切った後は答えを先頭から1文字ずつ公開し、両者の回答が終わるたびに次の文字へ進む。全文字公開で引き分け
+- ネイティブの AdMob / Web の AdSense バナーと、ネイティブの広告非表示購入
+- GA4 / Firebase Analytics 用イベント窓口（送信先は未接続）
+- CIで問題バンク検証・型チェック・整形チェック・lint・単体テスト・ファイル行数と重複コード・マッチングDBテスト・Webビルド
 
 ## 主なジャンル
 
@@ -72,11 +75,18 @@ English:
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run validate:questions
 npm run typecheck
+npm run format:check
+npm run lint
+npm test
+npm run quality
+npm run build:web
 npm run start
 ```
+
+`npm install` / `npm ci` で `.githooks/pre-commit` が有効になり、コミット前に整形・lint・型チェック・ファイル行数・重複コード・単体テストを実行します。`npm run quality` は新規ファイル300行以内（既存の大きいファイルは `scripts/file-line-limits.mjs` の行数から増やさない）と、jscpd による重複率1.5%以下を確認します。
 
 Webのみ:
 
@@ -117,10 +127,13 @@ npm run validate:questions
 - [x] 日本語 / 英語
 - [x] ジャンル / 文字数 / 完全ランダム
 - [x] 10,000件超の問題バンク
+- [x] オンライン対戦（合言葉・ランダムマッチ）
+- [x] 広告表示と広告非表示購入
 - [ ] GA4 / Firebase Analytics 実接続
 - [ ] Search Console / SEO
 - [ ] 問題データのDB同期
-- [ ] オンライン対戦
 - [ ] 任意アカウント・戦績
 
-> オンライン対戦時は、不正防止のため正解データをクライアントへ配らず、サーバー側で判定する構成に変更します。
+オンライン対戦では、その対局で選ばれた問題ID・非公開の盤面状態・判定を Supabase Edge Function に置き、対局中の端末には公開状態だけを送ります。ローカル対戦のため、問題バンク自体はアプリにも含まれます。設定・運用手順と本番反映（Actions の「Deploy Supabase」）は [オンライン対戦](docs/online-play.md) を参照してください。
+
+配布と運用: [TestFlight](docs/testflight.md) / [第三者由来の問題データ](THIRD_PARTY_DATA.md) / [Todo](docs/TODO.md)。
