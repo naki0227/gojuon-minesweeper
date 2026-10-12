@@ -48,6 +48,8 @@ export async function ensureSignedIn(): Promise<string> {
   }
   const { data: signedIn, error } = await supabase.auth.signInAnonymously();
   if (error || !signedIn.user) {
+    // The player sees a plain message; the cause goes to the console.
+    console.warn("Anonymous sign-in failed", error);
     throw new Error("オンラインに接続できませんでした。");
   }
   return signedIn.user.id;
