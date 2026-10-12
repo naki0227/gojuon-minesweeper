@@ -341,18 +341,20 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
-          {Platform.OS === "ios" ? <Link
-            href={{
-              pathname: "/endless",
-              params: { filters: JSON.stringify(filters) },
-            }}
-            asChild
-          >
-            <Pressable accessibilityRole="button" style={styles.onlineButton}>
-              <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
-              <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
-            </Pressable>
-          </Link> : null}
+          {Platform.OS === "ios" ? (
+            <Link
+              href={{
+                pathname: "/endless",
+                params: { filters: JSON.stringify(filters) },
+              }}
+              asChild
+            >
+              <Pressable accessibilityRole="button" style={styles.onlineButton}>
+                <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
+                <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
+              </Pressable>
+            </Link>
+          ) : null}
           {onOnline ? (
             <Pressable
               disabled={candidateCount === 0}
