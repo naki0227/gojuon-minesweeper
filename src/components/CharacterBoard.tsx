@@ -132,7 +132,9 @@ export function CharacterBoard({
                 const mineCount = isOpened && !isMine ? countMines(char) : null;
                 const multiplicity = isMine ? mineMultiplicity(char) : 0;
                 const stateLabel = !isOpened
-                  ? (hintedChars?.has(char) ? " 安全ヒント" : "")
+                  ? hintedChars?.has(char)
+                    ? " 安全ヒント"
+                    : ""
                   : isMine
                     ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
                     : ` セーフ 周囲の答え文字${mineCount}個`;

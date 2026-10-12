@@ -6,7 +6,8 @@ import {
   isMineCharacter,
 } from "../game/engine";
 
-export type EndlessPhase = "answer" | "open" | "cleared" | "revive" | "finished";
+export type EndlessPhase =
+  "answer" | "open" | "cleared" | "revive" | "finished";
 
 export type EndlessState = {
   question: Question;
@@ -120,7 +121,9 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
   if (state.phase !== "open" || state.opened.includes(char)) return state;
   if (!getBoardOrder(state.question.language).includes(char)) return state;
   const mine = isMineCharacter(state.question, char);
-  const expanded = mine ? [char] : expandSafe(state.question, char, state.opened);
+  const expanded = mine
+    ? [char]
+    : expandSafe(state.question, char, state.opened);
   const lives = state.lives - (mine ? 1 : 0);
   const chainBonus = Math.max(0, expanded.length - 1) * CHAIN_BONUS_PER_CELL;
   return {

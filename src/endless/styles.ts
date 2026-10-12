@@ -16,7 +16,12 @@ export const styles = StyleSheet.create({
     paddingBottom: 44,
     gap: 16,
   },
-  top: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12 },
+  top: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+  },
   eyebrow: { color: BLUE, fontWeight: "900", letterSpacing: 1, fontSize: 12 },
   title: { color: INK, fontSize: 27, fontWeight: "900" },
   exit: { color: "#546d7a", fontWeight: "700", padding: 8, fontSize: 13 },

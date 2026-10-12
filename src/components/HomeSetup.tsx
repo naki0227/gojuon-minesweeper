@@ -341,7 +341,10 @@ export function HomeSetup({
             </Pressable>
           </View>
           <Link
-            href={{ pathname: "/endless", params: { filters: JSON.stringify(filters) } }}
+            href={{
+              pathname: "/endless",
+              params: { filters: JSON.stringify(filters) },
+            }}
             asChild
           >
             <Pressable accessibilityRole="button" style={styles.onlineButton}>
