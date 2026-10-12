@@ -35,13 +35,11 @@ import {
   submitAnswer,
   type GameState,
 } from "../src/game/engine";
-
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
   categories: [],
   length: "any",
 };
-
 export default function HomeScreen() {
   const [filters, setFilters] = useState<QuestionFilters>(INITIAL_FILTERS);
   const [game, setGame] = useState<GameState | null>(null);
@@ -358,7 +356,6 @@ export default function HomeScreen() {
           </Text>
         ) : null}
 
-        {/* Experimental inline banner below gameplay, with safe separation. */}
         <BannerAd
           placement={game.phase === "finished" ? "result" : "setup"}
           duringPlay={game.phase !== "finished"}
