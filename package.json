@@ -13,9 +13,13 @@
     "format:check": "prettier --check 'app/**/*.{ts,tsx}' 'src/**/*.{ts,tsx}' 'scripts/**/*.mjs' 'tests/**/*.{ts,tsx}' eslint.config.js package.json",
     "lint": "eslint app src scripts tests eslint.config.js --max-warnings 0",
     "test": "vitest run",
-    "validate:questions": "node scripts/validate-questions.mjs"
+    "validate:questions": "node scripts/validate-questions.mjs",
+    "online:sync": "node scripts/sync-online-function.mjs",
+    "online:deploy": "node scripts/sync-online-function.mjs && npx supabase functions deploy online-game"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@supabase/supabase-js": "^2.117.2",
     "expo": "~57.0.10",
     "expo-build-properties": "~57.0.22",
     "expo-constants": "~57.0.9",

@@ -19,7 +19,7 @@ export default function PrivacyScreen() {
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.page}>
           <Text style={styles.title}>プライバシーポリシー</Text>
-          <Text style={styles.updated}>最終更新: 2026年10月6日</Text>
+          <Text style={styles.updated}>最終更新: 2026年10月7日</Text>
 
           <View style={styles.section}>
             <Text style={styles.heading}>取得する情報</Text>
@@ -100,7 +100,7 @@ export default function PrivacyScreen() {
           <View style={styles.section}>
             <Text style={styles.heading}>保存期間と削除</Text>
             <Text style={styles.body}>
-              本サービス自体は、サーバーに個人情報や利用状況データを保存していません。ゲームの状態は端末内だけで扱い、アプリを削除すると消えます。購入履歴はAppleまたはGoogleが管理します。Googleが広告のために処理する情報の保存期間と削除方法は、上記のGoogleのポリシーに従います。
+              本サービス自体は、サーバーに個人情報や利用状況データを保存していません。ひとりの端末で遊ぶゲームの状態は端末内だけで扱い、アプリを削除すると消えます。オンライン対戦のデータは下記「オンライン対戦」のとおりです。購入履歴はAppleまたはGoogleが管理します。Googleが広告のために処理する情報の保存期間と削除方法は、上記のGoogleのポリシーに従います。
             </Text>
             <Text style={styles.body}>
               情報の取り扱いに関するお問い合わせや削除のご相談は、下記のメールアドレスまでご連絡ください。
@@ -113,7 +113,11 @@ export default function PrivacyScreen() {
           <View style={styles.section}>
             <Text style={styles.heading}>オンライン対戦</Text>
             <Text style={styles.body}>
-              オンライン対戦機能を提供する場合、対戦ルームの識別子、参加者を区別するための一時的な識別子、対戦状態などを処理することがあります。ゲーム進行に不要な個人情報は要求しません。
+              オンライン対戦では、対戦を成立させるために、端末ごとに自動で発行するランダムな識別子（匿名ログイン。氏名やメールアドレスは使いません）、入力した合言葉、出題内容、回答や開いた文字などの対戦の記録を、Supabase（Supabase,
+              Inc.）のサーバーに保存します。通信の過程でIPアドレスが処理されます。
+            </Text>
+            <Text style={styles.body}>
+              対戦相手に見えるのは盤面と回答の結果だけで、あなたの識別子は表示しません。対戦の記録は対戦の進行と不正防止のためだけに使い、終了した部屋の記録はおよそ1週間で削除します。
             </Text>
           </View>
 

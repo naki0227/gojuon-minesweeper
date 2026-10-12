@@ -1,16 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { Animated, StyleSheet, View } from "react-native";
 
-import type { Question } from "../data/types";
-import { adjacentMineCount } from "../game/engine";
+import type { QuestionLanguage } from "../data/types";
 import { getBoardGrid } from "../game/board";
 import { BoardTile } from "./BoardTile";
 import { USE_NATIVE_DRIVER, useReducedMotion } from "./motion";
 
 type Props = {
-  question: Question;
+  language: QuestionLanguage;
   openedChars: readonly string[];
   mineChars: ReadonlySet<string>;
+  // Mines around an opened safe cell. Local play computes it from the
+  // question; online play gets it from the server.
+  mineCount: (char: string) => number;
   canOpen: boolean;
   onOpen: (char: string) => void;
 };
@@ -20,14 +22,15 @@ const GAP = 3;
 const WAVE_STEP_MS = 55;
 
 export function CharacterBoard({
-  question,
+  language,
   openedChars,
   mineChars,
+  mineCount: countMines,
   canOpen,
   onOpen,
 }: Props) {
   const opened = useMemo(() => new Set(openedChars), [openedChars]);
-  const grid = getBoardGrid(question.language);
+  const grid = getBoardGrid(language);
   const columns = grid[0]?.length ?? 1;
   const reducedMotion = useReducedMotion();
   const [width, setWidth] = useState(0);
@@ -103,7 +106,7 @@ export function CharacterBoard({
       onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
       style={[
         styles.board,
-        question.language === "en" ? styles.englishBoard : null,
+        language === "en" ? styles.englishBoard : null,
         { transform: [{ translateX: shakeX }] },
       ]}
     >
@@ -122,10 +125,7 @@ export function CharacterBoard({
 
                 const isOpened = opened.has(char);
                 const isMine = isOpened && mineChars.has(char);
-                const mineCount =
-                  isOpened && !isMine
-                    ? adjacentMineCount(question, char)
-                    : null;
+                const mineCount = isOpened && !isMine ? countMines(char) : null;
                 const stateLabel = !isOpened
                   ? ""
                   : isMine
