@@ -1,15 +1,8 @@
 # Third-party question data
 
-Some question-bank entries are derived from public open-source datasets.
+Some current question-bank entries are derived from public open-source datasets. This file describes the current bank, not historical imports.
 
-## PokéAPI
-
-- Source: https://github.com/PokeAPI/pokeapi
-- Used datasets: localized Pokémon species names, move names, item names, and ability names.
-- License: BSD-style license in the upstream `LICENSE.md`.
-- Pokémon and Pokémon character names are trademarks of Nintendo, as noted by the upstream project.
-
-Imported entries are filtered so that the current kana / alphabet boards can represent them.
+The PokéAPI-derived question files were removed on 2026-10-06. See [the removal report](docs/reports/2026-10-06-question-bank-rebalance-report.md). Historical reports may mention those files, but they are not part of the current question bank.
 
 ## imsky/wordlists
 
