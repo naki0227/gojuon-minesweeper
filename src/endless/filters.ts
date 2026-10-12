@@ -6,7 +6,9 @@ const DEFAULT_FILTERS: QuestionFilters = {
   length: "any",
 };
 
-export function parseFilters(raw: string | string[] | undefined): QuestionFilters {
+export function parseFilters(
+  raw: string | string[] | undefined,
+): QuestionFilters {
   if (typeof raw !== "string") return DEFAULT_FILTERS;
   try {
     const value = JSON.parse(raw) as QuestionFilters;
@@ -26,4 +28,3 @@ export function parseFilters(raw: string | string[] | undefined): QuestionFilter
     return DEFAULT_FILTERS;
   }
 }
-
