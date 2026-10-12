@@ -152,6 +152,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         },
       ],
       "expo-iap",
+      "expo-apple-authentication",
       [
         "expo-build-properties",
         {
