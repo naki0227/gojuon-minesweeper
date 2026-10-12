@@ -72,6 +72,18 @@ type AppleTransaction = {
   purchaseDate?: number;
   revocationDate?: number;
 };
+async function requestUuid(accountId: string, actionId: string): Promise<string> {
+  const hash = new Uint8Array(await crypto.subtle.digest(
+    "SHA-256", new TextEncoder().encode(accountId + ":" + actionId),
+  ));
+  // Deterministic UUID for PostgreSQL's idempotent debit, never client trust.
+  hash[6] = (hash[6] & 0x0f) | 0x40;
+  hash[8] = (hash[8] & 0x3f) | 0x80;
+  const hex = Array.from(hash.slice(0, 16), (x) => x.toString(16).padStart(2, "0")).join("");
+  return [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16),
+    hex.slice(16, 20), hex.slice(20)].join("-");
+}
+
 async function queryApple(transactionId: string): Promise<AppleTransaction> {
   const bearer = await appStoreToken();
   let result: Response | null = null;
@@ -127,12 +139,13 @@ Deno.serve(async (request: Request) => {
       if (!amount || !/^[a-zA-Z0-9:_-]{8,120}$/.test(actionId)) {
         throw new ClientError("消費内容が正しくありません。");
       }
-      const { data, error } = await admin.rpc("spend_gems", {
-        p_user_id: user.id, p_amount: amount,
-        p_reason: reason, p_action_id: actionId,
+      const { data, error } = await admin.rpc("gem_spend", {
+        p_user_id: user.id,
+        p_request_id: await requestUuid(user.id, actionId),
+        p_reason: reason === "hint" ? "safe_hint" : "revive",
       });
       if (error) {
-        if (error.message.includes("Not enough gems")) {
+        if (error.message.includes("Insufficient gems")) {
           throw new ClientError("ジェムが足りません。");
         }
         throw error;
@@ -157,10 +170,10 @@ Deno.serve(async (request: Request) => {
       if (environment !== "Production" && environment !== "Sandbox") {
         throw new ClientError("購入の検証環境が不明です。");
       }
-      const { data, error } = await admin.rpc("credit_verified_gem_purchase", {
+      const { data, error } = await admin.rpc("gem_credit_apple_purchase", {
         p_user_id: user.id, p_transaction_id: transactionId,
         p_product_id: PRODUCT_ID, p_environment: environment,
-        p_purchase_date_ms: signed.purchaseDate,
+        p_purchased_at: new Date(signed.purchaseDate!).toISOString(),
       });
       if (error) throw error;
       return respond({ ok: true, balance: data });
