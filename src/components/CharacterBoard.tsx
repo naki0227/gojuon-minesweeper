@@ -13,6 +13,7 @@ type Props = {
   // Mines around an opened safe cell. Local play computes it from the
   // question; online play gets it from the server.
   mineCount: (char: string) => number;
+  mineMultiplicity: (char: string) => number;
   canOpen: boolean;
   onOpen: (char: string) => void;
 };
@@ -26,6 +27,7 @@ export function CharacterBoard({
   openedChars,
   mineChars,
   mineCount: countMines,
+  mineMultiplicity,
   canOpen,
   onOpen,
 }: Props) {
@@ -126,11 +128,12 @@ export function CharacterBoard({
                 const isOpened = opened.has(char);
                 const isMine = isOpened && mineChars.has(char);
                 const mineCount = isOpened && !isMine ? countMines(char) : null;
+                const multiplicity = isMine ? mineMultiplicity(char) : 0;
                 const stateLabel = !isOpened
                   ? ""
                   : isMine
-                    ? " 地雷"
-                    : ` セーフ 周囲の地雷${mineCount}個`;
+                    ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
+                    : ` セーフ 周囲の答え文字${mineCount}個`;
 
                 return (
                   <BoardTile
@@ -139,6 +142,7 @@ export function CharacterBoard({
                     size={tileSize}
                     opened={isOpened}
                     mine={isMine}
+                    multiplicity={multiplicity}
                     count={mineCount}
                     delay={wave.delays.get(char) ?? 0}
                     disabled={!canOpen || isOpened}

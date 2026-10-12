@@ -15,6 +15,7 @@ type Props = {
   size: number;
   opened: boolean;
   mine: boolean;
+  multiplicity: number;
   count: number | null;
   // Milliseconds to wait before flipping, so a chain opens like a wave.
   delay: number;
@@ -32,6 +33,7 @@ export function BoardTile({
   size,
   opened,
   mine,
+  multiplicity,
   count,
   delay,
   disabled,
@@ -176,6 +178,16 @@ export function BoardTile({
               <Text style={[styles.mineChar, { fontSize: size * 0.48 }]}>
                 {char}
               </Text>
+              {multiplicity > 1 ? (
+                <Text
+                  style={[
+                    styles.mineMultiplicity,
+                    { fontSize: Math.max(9, size * 0.2) },
+                  ]}
+                >
+                  ×{multiplicity}
+                </Text>
+              ) : null}
             </>
           ) : (
             <>
@@ -326,6 +338,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#c96a14",
   },
   mineChar: {
+    color: "#ffffff",
+    fontWeight: "900",
+  },
+  mineMultiplicity: {
+    position: "absolute",
+    right: 2,
+    bottom: 1,
     color: "#ffffff",
     fontWeight: "900",
   },
