@@ -1,6 +1,6 @@
 # iOS Endless Gems — staged integration (not production ready)
 
-This branch is **stacked on PR #23**, not on `main`. Keep both PRs as drafts until TestFlight and App Store setup have been verified.
+PRs #23 and #24 have been merged into `main`. The wallet database migration and `gem-wallet` Edge Function are deployed. **This is not approval to enable real purchases in a public release**: App Store Connect setup, Apple-provider configuration, TestFlight validation and the release blockers below remain.
 
 ## Account & recovery
 
@@ -20,8 +20,15 @@ This branch is **stacked on PR #23**, not on `main`. Keep both PRs as drafts unt
    - `APPLE_IAP_ISSUER_ID`
    - `APPLE_IAP_KEY_ID`
    - `APPLE_IAP_PRIVATE_KEY` (the original PEM or its newline-escaped form)
-5. Deploy migration `20261012200000_gem_wallet.sql` and the Edge Function `gem-wallet` through the manual `deploy-supabase` workflow *after this branch is approved and merged*. Deploy DB before the app.
+5. **Done:** migration `20261012115142_gem_wallet.sql` and Edge Function `gem-wallet` have been deployed via the manual `Deploy Supabase` workflow. Subsequent schema changes should use that workflow after merging to `main`.
 6. Configure product metadata, the IAP review requirements, and TestFlight sandbox tester. Validate product visibility, actual price tier, StoreKit purchase callback, server verification, product delivery, relaunch, reinstall and duplicate transaction delivery.
+
+## Authentication policy
+
+- Keep **anonymous sign-in enabled** for online play and **Sign in with Apple** for iOS gems. Do not disable global signups because both features need to create users.
+- The app does not use email/password sign-in, email OTP or magic links. Locally `[auth.email].enable_signup = false` blocks new email registrations, but **does not disable existing email sign-in or change hosted project settings**.
+- Before release, open **Supabase Dashboard → Authentication → Sign In / Providers → Email** for project `afcrdwxwqdenvejogdre` and **disable the Email provider**. Keep Apple and anonymous sign-ins enabled. Verify each supported sign-in still works after the change. No current connected integration can mutate the hosted Auth provider settings.
+- The password-leak-protection advisor is only applicable if email/password sign-in is used; closing the Email provider is the intended remediation for this app, rather than introducing password auth.
 
 ## Server behavior
 
