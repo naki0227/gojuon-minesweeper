@@ -63,6 +63,8 @@ jobs:
         if: ${{ !inputs.dry_run }}
         run: npm run online:sync
 
-      - name: Deploy Edge Function
+      - name: Deploy Edge Functions
         if: ${{ !inputs.dry_run }}
-        run: supabase functions deploy online-game --project-ref "$SUPABASE_PROJECT_ID"
+        run: |
+          supabase functions deploy online-game --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy gem-wallet --project-ref "$SUPABASE_PROJECT_ID"
