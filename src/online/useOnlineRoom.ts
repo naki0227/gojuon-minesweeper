@@ -4,9 +4,9 @@ import { AppState } from "react-native";
 import { callOnline, ensureSignedIn, fetchRoom, subscribeRoom } from "./client";
 import { seatOf, type OnlineRequest, type OnlineRoom } from "./protocol";
 
-// How often a random-match player asks the server to pair them again, and
-// how often any open room is re-read in case a Realtime update was missed.
-const QUICK_MATCH_RETRY_MS = 4000;
+// Keep a waiting room alive while its screen is active. The server excludes
+// rooms with no heartbeat for two minutes.
+const WAITING_HEARTBEAT_MS = 30000;
 const REFRESH_MS = 15000;
 // Extra wait after the opponent's deadline before claiming the win, so a
 // slightly slow clock doesn't end the game early.
@@ -27,8 +27,11 @@ export function useOnlineRoom() {
   const [now, setNow] = useState(() => Date.now());
   const claimedDeadline = useRef<string | null>(null);
 
-  const accept = useCallback((next: OnlineRoom | null) => {
+  const accept = useCallback((next: OnlineRoom | null, expectedId?: string) => {
     setRoom((current) => {
+      if (expectedId && current?.id !== expectedId) {
+        return current;
+      }
       if (!next) {
         return null;
       }
@@ -48,7 +51,10 @@ export function useOnlineRoom() {
       try {
         setUserId(await ensureSignedIn());
         const next = await callOnline(request);
-        accept(next);
+        accept(
+          next,
+          request.action === "heartbeat" ? request.roomId : undefined,
+        );
         return next;
       } catch (caught) {
         if (!quiet) {
@@ -68,8 +74,6 @@ export function useOnlineRoom() {
 
   const roomId = room?.id ?? null;
   const status = room?.status ?? null;
-  const kind = room?.kind ?? null;
-  const matchKey = room?.match_key ?? null;
 
   // Live updates for the open room, plus a slow re-read as a safety net and
   // a re-read whenever the app comes back to the foreground.
@@ -78,9 +82,9 @@ export function useOnlineRoom() {
       return;
     }
     const refresh = () => {
-      void fetchRoom(roomId).then((next) => next && accept(next));
+      void fetchRoom(roomId).then((next) => next && accept(next, roomId));
     };
-    const unsubscribe = subscribeRoom(roomId, accept);
+    const unsubscribe = subscribeRoom(roomId, (next) => accept(next, roomId));
     const interval = setInterval(refresh, REFRESH_MS);
     const appState = AppState.addEventListener("change", (state) => {
       if (state === "active") {
@@ -94,18 +98,30 @@ export function useOnlineRoom() {
     };
   }, [accept, roomId, status]);
 
-  // A random-match player keeps asking to be paired with someone who
-  // queued earlier.
+  // Matching happens on the newcomer's POST. This only proves that the
+  // waiting player is still present; it does not search for an opponent.
   useEffect(() => {
-    if (!roomId || status !== "waiting" || kind !== "random" || !matchKey) {
+    if (!roomId || status !== "waiting") {
       return;
     }
-    const language = matchKey === "en" || matchKey === "any" ? matchKey : "ja";
+    const renew = () => {
+      if (AppState.currentState === "active") {
+        void run({ action: "heartbeat", roomId }, true);
+      }
+    };
     const interval = setInterval(() => {
-      void run({ action: "quick_match", language, roomId }, true);
-    }, QUICK_MATCH_RETRY_MS);
-    return () => clearInterval(interval);
-  }, [kind, matchKey, roomId, run, status]);
+      renew();
+    }, WAITING_HEARTBEAT_MS);
+    const appState = AppState.addEventListener("change", (state) => {
+      if (state === "active") {
+        renew();
+      }
+    });
+    return () => {
+      clearInterval(interval);
+      appState.remove();
+    };
+  }, [roomId, run, status]);
 
   // Clock for the turn timer.
   useEffect(() => {
