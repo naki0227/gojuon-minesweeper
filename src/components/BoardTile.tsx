@@ -18,7 +18,6 @@ type Props = {
   mine: boolean;
   multiplicity: number;
   count: number | null;
-  // Milliseconds to wait before flipping, so a chain opens like a wave.
   delay: number;
   disabled: boolean;
   reducedMotion: boolean;
@@ -43,8 +42,6 @@ export function BoardTile({
   accessibilityLabel,
   onPress,
 }: Props) {
-  // 0 = closed face up, 1 = open face up. Cells that are already open when
-  // the board mounts start open without animating.
   const flip = useState(() => new Animated.Value(opened ? 1 : 0))[0];
   const press = useState(() => new Animated.Value(0))[0];
   const burst = useState(() => new Animated.Value(0))[0];
@@ -121,7 +118,6 @@ export function BoardTile({
       ? COUNT_COLORS[0]
       : (COUNT_COLORS[count] ?? COUNT_COLOR_MANY);
   const faceStyle = { borderRadius: radius };
-
   return (
     <Pressable
       accessibilityRole="button"
@@ -223,7 +219,6 @@ export function BoardTile({
     </Pressable>
   );
 }
-
 // A ring and sparks that fly out of a mine when it opens.
 function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
   const fade = progress.interpolate({
@@ -234,7 +229,6 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
     inputRange: [0, 1],
     outputRange: [0.4, 2.8],
   });
-
   return (
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
       <Animated.View
@@ -289,7 +283,6 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   slot: {
     position: "relative",
