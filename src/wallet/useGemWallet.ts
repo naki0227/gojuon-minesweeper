@@ -51,7 +51,7 @@ export function useGemWallet() {
     });
     const { data } = getSupabase().auth.onAuthStateChange(() => {
       // Run after the current authentication event finishes.
-      void refresh();
+      setTimeout(() => { void refresh(); }, 0);
     });
     return () => {
       stopPurchaseListener();
