@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { Question } from "../src/data/types";
+import { SPECIALIST_IT_CATEGORIES } from "../src/data/specialistCategories";
 import { createInitialState } from "../src/game/engine";
 import { normalizeRoomCode, seatOf } from "../src/online/protocol";
 import {
@@ -56,6 +57,31 @@ describe("online public state", () => {
       text: "cat",
     });
     expect(moved.ok && toPublicState(moved.state).answers).toEqual(["cat"]);
+  });
+});
+
+describe("online matchmaking question pools", () => {
+  it("excludes specialist IT in quick match and code rooms with no category", () => {
+    for (const language of ["ja", "en"] as const) {
+      const filters = { language, categories: [], length: "any" as const };
+      for (let i = 0; i < 50; i += 1) {
+        const quickMatch = startOnlineGame(filters);
+        const codeMatch = startOnlineGame(sanitizeFilters(filters));
+        const quickCategory = quickMatch.question.category;
+        const codeCategory = codeMatch.question.category;
+        expect(SPECIALIST_IT_CATEGORIES.has(quickCategory)).toBe(false);
+        expect(SPECIALIST_IT_CATEGORIES.has(codeCategory)).toBe(false);
+      }
+    }
+  });
+
+  it("keeps explicitly selected specialist IT playable in code rooms", () => {
+    const state = startOnlineGame({
+      language: "ja",
+      categories: ["IT用語"],
+      length: "any",
+    });
+    expect(state.question.category).toBe("IT用語");
   });
 });
 

@@ -21,6 +21,7 @@ import type {
 } from "./types";
 import { normalizedLength } from "../game/normalize";
 import { createSignatureKey } from "../game/signature";
+import { isSpecialistItCategory } from "./specialistCategories";
 
 const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(japaneseEntries as RawQuestionEntry[]),
@@ -125,6 +126,15 @@ export function matchesLength(length: number, filter: LengthFilter): boolean {
 export function filterQuestions(filters: QuestionFilters): readonly Question[] {
   return QUESTIONS.filter((question) => {
     if (filters.language !== "any" && question.language !== filters.language) {
+      return false;
+    }
+
+    // Category-free selections ("おまかせ", random matchmaking, default endless)
+    // exclude advanced IT topics. Explicit selections can still play them.
+    if (
+      filters.categories.length === 0 &&
+      isSpecialistItCategory(question.category)
+    ) {
       return false;
     }
 
