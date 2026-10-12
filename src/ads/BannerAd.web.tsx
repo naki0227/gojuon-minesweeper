@@ -29,7 +29,13 @@ function ensureAdSenseScript(clientId: string) {
   document.head.appendChild(script);
 }
 
-function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
+function AdSenseUnitView({
+  unit,
+  duringPlay,
+}: {
+  unit: AdSenseUnit;
+  duringPlay: boolean;
+}) {
   const insRef = useRef<HTMLModElement | null>(null);
   const [unfilled, setUnfilled] = useState(false);
 
@@ -81,7 +87,7 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
   // Responsive display ad unit. The ins is 0px tall until AdSense fills it,
   // and the label/markup inside comes from AdSense unchanged.
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, duringPlay ? styles.gameplaySpacer : null]}>
       <ins
         ref={insRef}
         className="adsbygoogle"
@@ -96,7 +102,7 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
   );
 }
 
-export function BannerAd({ placement }: BannerAdProps) {
+export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
   const { resolved, adFree } = useAdFree();
   // Static export renders on the server first; ad markup is client-only.
   const mounted = useSyncExternalStore(
@@ -111,11 +117,18 @@ export function BannerAd({ placement }: BannerAdProps) {
     return null;
   }
 
-  return <AdSenseUnitView key={placement} unit={unit} />;
+  return <AdSenseUnitView key={placement} unit={unit} duringPlay={duringPlay} />;
 }
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+  },
+  gameplaySpacer: {
+    // Google AdSense recommends at least 150 CSS px from the game.
+    marginTop: 150,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: "#d5dee4",
   },
 });
