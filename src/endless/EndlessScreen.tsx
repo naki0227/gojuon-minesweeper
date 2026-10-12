@@ -4,7 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
 import { Link, useLocalSearchParams } from "expo-router";
 
-import { CharacterBoard } from "../components/CharacterBoard";
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
 import { pickRandomQuestion, questionPrompt } from "../data/questions";
 import type { QuestionFilters } from "../data/types";
