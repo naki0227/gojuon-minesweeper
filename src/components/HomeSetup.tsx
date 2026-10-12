@@ -235,8 +235,8 @@ export function HomeSetup({
         </View>
         <View>
           <GroupRow
-            label="ぜんぶのジャンル"
-            summary="すべてのジャンルから出題"
+            label="おまかせ向けジャンル"
+            summary="専門的なIT用語を除いて出題"
             count={countQuestions({ ...filters, categories: [] })}
             selected={filters.categories.length === 0}
             sampleWord={null}
@@ -408,7 +408,7 @@ export function HomeSetup({
               <Text style={styles.sectionLabel}>ジャンル（複数選べます）</Text>
               <View style={styles.chipWrap}>
                 <SquareChip
-                  label="ぜんぶ"
+                  label="おまかせ"
                   selected={filters.categories.length === 0}
                   onPress={() =>
                     onChangeFilters((current) => ({
