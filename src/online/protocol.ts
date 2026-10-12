@@ -62,9 +62,10 @@ export type OnlineRequest =
   | {
       action: "quick_match";
       language: QuestionLanguage | "any";
-      // The room this player is already queued in, when retrying.
+      // Optional previous room, for recovering an interrupted request.
       roomId?: string;
     }
+  | { action: "heartbeat"; roomId: string }
   | { action: "cancel"; roomId: string }
   | { action: "move"; roomId: string; move: OnlineMove }
   | { action: "claim_timeout"; roomId: string }

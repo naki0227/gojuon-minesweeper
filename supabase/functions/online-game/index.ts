@@ -43,7 +43,7 @@ const CORS_HEADERS = {
 
 // Waiting rooms nobody joined, and games nobody touched, are closed after
 // these many minutes.
-const WAITING_TTL_MINUTES = 30;
+const WAITING_TTL_MINUTES = 2;
 const IDLE_TTL_MINUTES = 24 * 60;
 // Closed rooms (and their hidden state) are deleted after a week.
 const CLOSED_TTL_MINUTES = 7 * 24 * 60;
@@ -296,109 +296,52 @@ async function joinByCode(
   throw new UserError("混み合っています。もう一度どうぞ。");
 }
 
-// Random matching. Each player first queues their own waiting room, then
-// keeps calling this while waiting. A player only takes a room that was
-// queued before their own, so two waiting players never grab each other's
-// rooms at the same time.
+// The database serializes each language queue. The caller's POST either
+// joins the oldest waiting player or creates one room; no match retry loop.
 async function quickMatch(
   userId: string,
   rawLanguage: unknown,
   previousRoomId: string,
 ): Promise<OnlineRoom> {
   const language = sanitizeLanguage(rawLanguage);
-
-  // A retry from a player whose queued room was taken in the meantime:
-  // hand back that game instead of queueing again.
-  if (previousRoomId) {
-    const previous = (
-      must(
-        await admin
-          .from("online_rooms")
-          .select("*")
-          .eq("id", previousRoomId)
-          .eq("kind", "random")
-          .contains("players", [userId])
-          .limit(1),
-      ) as OnlineRoom[]
-    )[0];
-    if (previous?.status === "playing" || previous?.status === "finished") {
-      return previous;
-    }
-  }
-
-  const mine = (
-    must(
-      await admin
-        .from("online_rooms")
-        .select("*")
-        .eq("kind", "random")
-        .eq("status", "waiting")
-        .contains("players", [userId])
-        .order("created_at", { ascending: false })
-        .limit(1),
-    ) as OnlineRoom[]
-  )[0];
-
-  if (mine && mine.match_key !== language) {
-    await closeMyWaitingRooms(userId);
-  }
-  const queued = mine && mine.match_key === language ? mine : null;
-
-  let query = admin
-    .from("online_rooms")
-    .select("*")
-    .eq("kind", "random")
-    .eq("status", "waiting")
-    .eq("match_key", language)
-    .not("players", "cs", `{${userId}}`)
-    .order("created_at", { ascending: true })
-    .limit(5);
-  if (queued) {
-    query = query.lt("created_at", queued.created_at);
-  }
-  const candidates = must(await query) as OnlineRoom[];
-
-  for (const candidate of candidates) {
-    if (queued) {
-      // Leave our own queue first; if that fails, someone just matched us.
-      const left = must(
-        await admin
-          .from("online_rooms")
-          .update({ status: "closed", updated_at: new Date().toISOString() })
-          .eq("id", queued.id)
-          .eq("status", "waiting")
-          .select("id"),
-      ) as unknown[];
-      if (left.length === 0) {
-        return loadRoom(queued.id);
-      }
-    }
-    const joined = await claimRoom(candidate, userId);
-    if (joined) {
-      return joined;
-    }
-    if (queued) {
-      // We left our queue but lost the race; queue again below.
-      break;
-    }
-  }
-
-  if (queued && candidates.length === 0) {
-    return queued;
-  }
-
+  const state = startOnlineGame({ language, categories: [], length: "any" });
   return must(
+    await admin.rpc("quick_match_room", {
+      p_user_id: userId,
+      p_language: language,
+      p_previous_room_id: previousRoomId || null,
+      p_secret_state: storeGame(state),
+      p_public_state: toPublicState(state),
+      p_turn_deadline: deadlineFromNow(),
+    }),
+  ) as OnlineRoom;
+}
+
+// A waiting screen renews its room every 30s. A closed/started room is
+// returned unchanged so the client can leave the waiting screen.
+async function heartbeat(userId: string, roomId: string): Promise<OnlineRoom> {
+  const room = await loadRoom(roomId);
+  requireSeat(room, userId);
+  if (room.status !== "waiting") {
+    return room;
+  }
+  const renewed = must(
     await admin
       .from("online_rooms")
-      .insert({
-        kind: "random",
-        match_key: language,
-        players: [userId],
-        filters: { language, categories: [], length: "any" },
-      })
-      .select("*")
-      .single(),
-  ) as OnlineRoom;
+      .update({ updated_at: new Date().toISOString() })
+      .eq("id", roomId)
+      .eq("status", "waiting")
+      .gte("updated_at", minutesAgo(WAITING_TTL_MINUTES))
+      .select("*"),
+  ) as OnlineRoom[];
+  if (renewed[0]) {
+    return renewed[0];
+  }
+  const latest = await loadRoom(roomId);
+  if (latest.status !== "waiting") {
+    return latest;
+  }
+  return cancel(userId, roomId);
 }
 
 function requireSeat(room: OnlineRoom, userId: string) {
@@ -561,6 +504,9 @@ Deno.serve(async (request) => {
       case "quick_match":
         await closeStaleRooms();
         room = await quickMatch(userId, body.language, roomId);
+        break;
+      case "heartbeat":
+        room = await heartbeat(userId, roomId);
         break;
       case "cancel":
         room = await cancel(userId, roomId);
