@@ -66,11 +66,17 @@ export function EndPanels({
             </Pressable>
           ) : (
             <Pressable
-              style={[styles.primary, (busy || gemBalance === null || gemBalance < 3) && styles.disabled]}
+              style={[
+                styles.primary,
+                (busy || gemBalance === null || gemBalance < 3) &&
+                  styles.disabled,
+              ]}
               disabled={busy || gemBalance === null || gemBalance < 3}
               onPress={onPaidRevive}
             >
-              <Text style={styles.primaryText}>3ジェムで復活する（残高 {gemBalance ?? "未同期"}）</Text>
+              <Text style={styles.primaryText}>
+                3ジェムで復活する（残高 {gemBalance ?? "未同期"}）
+              </Text>
             </Pressable>
           )}
           <Pressable style={styles.secondary} onPress={onFinish}>
