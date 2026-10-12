@@ -34,7 +34,6 @@ const LANGUAGE_LABELS = {
   en: "English",
   any: "まぜる",
 } as const;
-
 function parseFilters(raw: string | string[] | undefined): QuestionFilters {
   if (typeof raw !== "string") {
     return DEFAULT_FILTERS;
@@ -54,7 +53,6 @@ function personalize(text: string, seat: number | null): string {
     Number(number) - 1 === seat ? "あなた" : "相手",
   );
 }
-
 export default function OnlineScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
   const filters = useMemo(() => parseFilters(params.filters), [params.filters]);
@@ -130,7 +128,6 @@ export default function OnlineScreen() {
     </SafeAreaView>
   );
 }
-
 type Online = ReturnType<typeof useOnlineRoom>;
 
 function Lobby({
