@@ -9,6 +9,7 @@ import { USE_NATIVE_DRIVER, useReducedMotion } from "./motion";
 type Props = {
   language: QuestionLanguage;
   openedChars: readonly string[];
+  hintedChars?: ReadonlySet<string>;
   mineChars: ReadonlySet<string>;
   // Mines around an opened safe cell. Local play computes it from the
   // question; online play gets it from the server.
@@ -25,6 +26,7 @@ const WAVE_STEP_MS = 55;
 export function CharacterBoard({
   language,
   openedChars,
+  hintedChars,
   mineChars,
   mineCount: countMines,
   mineMultiplicity,
@@ -130,7 +132,9 @@ export function CharacterBoard({
                 const mineCount = isOpened && !isMine ? countMines(char) : null;
                 const multiplicity = isMine ? mineMultiplicity(char) : 0;
                 const stateLabel = !isOpened
-                  ? ""
+                  ? hintedChars?.has(char)
+                    ? " 安全ヒント"
+                    : ""
                   : isMine
                     ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
                     : ` セーフ 周囲の答え文字${mineCount}個`;
@@ -141,6 +145,7 @@ export function CharacterBoard({
                     char={char}
                     size={tileSize}
                     opened={isOpened}
+                    hinted={!!hintedChars?.has(char) && !isOpened}
                     mine={isMine}
                     multiplicity={multiplicity}
                     count={mineCount}

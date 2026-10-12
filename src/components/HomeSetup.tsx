@@ -29,8 +29,6 @@ import type {
 } from "../data/types";
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
 
-// Colors for the home screen, taken from the game screen (app/index.tsx)
-// so both screens read as one app.
 const INK = "#102433";
 const PAPER = "#f7fafc";
 const ACCENT = "#3388b0";
@@ -151,7 +149,6 @@ export function HomeSetup({
     update: (current: QuestionFilters) => QuestionFilters,
   ) => void;
   onStart: (filters: QuestionFilters) => void;
-  // Shown only when this build has the online server configured.
   onOnline?: (filters: QuestionFilters) => void;
 }) {
   const [detailOpen, setDetailOpen] = useState(false);
@@ -220,7 +217,6 @@ export function HomeSetup({
           </View>
           <Text style={styles.titleText}>マインスイーパー</Text>
         </View>
-
         <View style={styles.tabs}>
           {LANGUAGE_TABS.map((tab) => {
             const selected = filters.language === tab.value;
@@ -239,7 +235,6 @@ export function HomeSetup({
             );
           })}
         </View>
-
         <View>
           <GroupRow
             label="ぜんぶのジャンル"
@@ -266,7 +261,6 @@ export function HomeSetup({
             </Text>
           ) : null}
         </View>
-
         <View style={styles.lengthSection}>
           <Text style={styles.sectionLabel}>ことばの長さ</Text>
           <View style={styles.segment}>
@@ -316,7 +310,6 @@ export function HomeSetup({
             <Text style={styles.textLink}>ジャンルと文字数を細かく選ぶ</Text>
           </Pressable>
         </View>
-
         <View style={styles.startArea}>
           <Pressable
             disabled={candidateCount === 0}
@@ -347,6 +340,18 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
+          <Link
+            href={{
+              pathname: "/endless",
+              params: { filters: JSON.stringify(filters) },
+            }}
+            asChild
+          >
+            <Pressable accessibilityRole="button" style={styles.onlineButton}>
+              <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
+              <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
+            </Pressable>
+          </Link>
           {onOnline ? (
             <Pressable
               disabled={candidateCount === 0}
@@ -363,12 +368,10 @@ export function HomeSetup({
             </Pressable>
           ) : null}
         </View>
-
         <View style={styles.adArea}>
           <BannerAd placement="setup" />
           <RemoveAdsOptions />
         </View>
-
         <View style={styles.footerLinks}>
           <Link href="/privacy" style={styles.footerLink}>
             プライバシーポリシー
@@ -379,7 +382,6 @@ export function HomeSetup({
           </Link>
         </View>
       </ScrollView>
-
       <Modal
         visible={detailOpen}
         animationType="slide"
@@ -432,7 +434,6 @@ export function HomeSetup({
                 </View>
               ))}
             </View>
-
             <View style={styles.detailSection}>
               <Text style={styles.sectionLabel}>文字数</Text>
               <View style={styles.chipWrap}>
@@ -454,7 +455,6 @@ export function HomeSetup({
                 日本語は小文字・濁音・半濁音を同じ文字として扱い、長音「ー」は1文字。英語はスペースや記号を数えません。
               </Text>
             </View>
-
             <Pressable
               onPress={() => setDetailOpen(false)}
               accessibilityRole="button"
@@ -473,7 +473,6 @@ export function HomeSetup({
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,

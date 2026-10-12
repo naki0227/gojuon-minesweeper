@@ -7,17 +7,16 @@ import {
   Text,
   View,
 } from "react-native";
-
 import { COUNT_COLOR_MANY, COUNT_COLORS, USE_NATIVE_DRIVER } from "./motion";
 
 type Props = {
   char: string;
   size: number;
   opened: boolean;
+  hinted?: boolean;
   mine: boolean;
   multiplicity: number;
   count: number | null;
-  // Milliseconds to wait before flipping, so a chain opens like a wave.
   delay: number;
   disabled: boolean;
   reducedMotion: boolean;
@@ -32,6 +31,7 @@ export function BoardTile({
   char,
   size,
   opened,
+  hinted = false,
   mine,
   multiplicity,
   count,
@@ -41,8 +41,6 @@ export function BoardTile({
   accessibilityLabel,
   onPress,
 }: Props) {
-  // 0 = closed face up, 1 = open face up. Cells that are already open when
-  // the board mounts start open without animating.
   const flip = useState(() => new Animated.Value(opened ? 1 : 0))[0];
   const press = useState(() => new Animated.Value(0))[0];
   const burst = useState(() => new Animated.Value(0))[0];
@@ -119,7 +117,6 @@ export function BoardTile({
       ? COUNT_COLORS[0]
       : (COUNT_COLORS[count] ?? COUNT_COLOR_MANY);
   const faceStyle = { borderRadius: radius };
-
   return (
     <Pressable
       accessibilityRole="button"
@@ -147,6 +144,7 @@ export function BoardTile({
           style={[
             styles.face,
             styles.closed,
+            hinted ? styles.hinted : null,
             faceStyle,
             { opacity: closedOpacity },
           ]}
@@ -220,7 +218,6 @@ export function BoardTile({
     </Pressable>
   );
 }
-
 // A ring and sparks that fly out of a mine when it opens.
 function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
   const fade = progress.interpolate({
@@ -231,7 +228,6 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
     inputRange: [0, 1],
     outputRange: [0.4, 2.8],
   });
-
   return (
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
       <Animated.View
@@ -286,7 +282,6 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   slot: {
     position: "relative",
@@ -308,6 +303,11 @@ const styles = StyleSheet.create({
     borderColor: "#c9d5df",
     borderBottomWidth: 3,
     borderBottomColor: "#bccbd6",
+  },
+  hinted: {
+    backgroundColor: "#d4f5dd",
+    borderColor: "#5db47a",
+    borderBottomColor: "#379361",
   },
   closedChar: {
     color: "#152534",
