@@ -131,7 +131,10 @@ export function filterQuestions(filters: QuestionFilters): readonly Question[] {
 
     // Category-free selections ("おまかせ", random matchmaking, default endless)
     // exclude advanced IT topics. Explicit selections can still play them.
-    if (filters.categories.length === 0 && isSpecialistItCategory(question.category)) {
+    if (
+      filters.categories.length === 0 &&
+      isSpecialistItCategory(question.category)
+    ) {
       return false;
     }
 
