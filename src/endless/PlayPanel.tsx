@@ -80,8 +80,20 @@ export function PlayPanel({
         ヒント：緑色のマスは安全。タップした時に初めて数字が分かります。
       </Text>
       <Pressable
-        style={[styles.secondary, (busy || !safeHintCandidate(game) || gemBalance === null || gemBalance < 1) && styles.disabled]}
-        disabled={busy || !safeHintCandidate(game) || gemBalance === null || gemBalance < 1}
+        style={[
+          styles.secondary,
+          (busy ||
+            !safeHintCandidate(game) ||
+            gemBalance === null ||
+            gemBalance < 1) &&
+            styles.disabled,
+        ]}
+        disabled={
+          busy ||
+          !safeHintCandidate(game) ||
+          gemBalance === null ||
+          gemBalance < 1
+        }
         onPress={onHint}
       >
         <Text style={styles.secondaryText}>安全なマスを表示（1ジェム）</Text>
