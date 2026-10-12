@@ -39,7 +39,9 @@ export function useGemWallet() {
   }, []);
 
   useEffect(() => {
-    const initial = setTimeout(() => { void refresh(); }, 0);
+    const initial = setTimeout(() => {
+      void refresh();
+    }, 0);
     if (!isGemWalletConfigured || !gemStore.isSupported) {
       return () => clearTimeout(initial);
     }
