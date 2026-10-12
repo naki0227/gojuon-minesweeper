@@ -28,6 +28,7 @@ const SOURCES = [
     include: (name) =>
       name === "types.ts" ||
       name === "questions.ts" ||
+      name === "specialistCategories.ts" ||
       /^question-bank-.*\.json$/.test(name),
   },
   {
