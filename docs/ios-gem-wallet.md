@@ -7,6 +7,8 @@ PRs #23 and #24 have been merged into `main`. The wallet database migration and 
 - Endless and the gem storefront are **iOS-only**. The Web route redirects to the home page, and the Web home has no Endless button.
 - Sign in with Apple (native Apple Authentication → Supabase `signInWithIdToken`) is required before gems can be purchased or spent.
 - Supabase Auth user UUID is passed to StoreKit as `appAccountToken` and verified against Apple's server transaction.
+- First successful Apple sign-in wallet fetch credits **3 welcome gems, once per Supabase Apple account**. The `balance` action calls a service-role-only, idempotent database RPC. Reauthentication, retries, reinstall or spending do not reissue the bonus.
+- This is **not** automatic Apple linking of the anonymous online account: `signInWithIdToken` switches to the Apple session. Do not promise anonymous online room history transfers.
 - After reinstall, the same Apple sign-in retrieves the server wallet. **Game Center is not a wallet backup.** Anonymous online-play sessions are separate from the Apple login. Switching to an Apple session will replace an anonymous session.
 - Do not expose service role or Apple API private key in the app bundle.
 - This version does not migrate guest purchases because they are forbidden: sign in before checkout.
