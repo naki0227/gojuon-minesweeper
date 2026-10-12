@@ -42,8 +42,11 @@ const CORS_HEADERS = {
 };
 
 // Waiting rooms nobody joined, and games nobody touched, are closed after
-// these many minutes.
-const WAITING_TTL_MINUTES = 2;
+// these many minutes. Random-match rooms expire quickly so absent players
+// are not matched. Code rooms keep the longer limit because app builds
+// before 2026-10-12 do not send heartbeats while waiting for a friend.
+const RANDOM_WAITING_TTL_MINUTES = 2;
+const CODE_WAITING_TTL_MINUTES = 30;
 const IDLE_TTL_MINUTES = 24 * 60;
 // Closed rooms (and their hidden state) are deleted after a week.
 const CLOSED_TTL_MINUTES = 7 * 24 * 60;
@@ -55,6 +58,12 @@ function respond(body: unknown, status = 200): Response {
     status,
     headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
   });
+}
+
+function waitingTtlMinutes(room: OnlineRoom): number {
+  return room.kind === "random"
+    ? RANDOM_WAITING_TTL_MINUTES
+    : CODE_WAITING_TTL_MINUTES;
 }
 
 function minutesAgo(minutes: number): string {
@@ -78,7 +87,16 @@ async function closeStaleRooms(): Promise<void> {
       .from("online_rooms")
       .update({ status: "closed", updated_at: new Date().toISOString() })
       .eq("status", "waiting")
-      .lt("updated_at", minutesAgo(WAITING_TTL_MINUTES)),
+      .eq("kind", "random")
+      .lt("updated_at", minutesAgo(RANDOM_WAITING_TTL_MINUTES)),
+  );
+  must(
+    await admin
+      .from("online_rooms")
+      .update({ status: "closed", updated_at: new Date().toISOString() })
+      .eq("status", "waiting")
+      .eq("kind", "code")
+      .lt("updated_at", minutesAgo(CODE_WAITING_TTL_MINUTES)),
   );
   must(
     await admin
@@ -331,7 +349,7 @@ async function heartbeat(userId: string, roomId: string): Promise<OnlineRoom> {
       .update({ updated_at: new Date().toISOString() })
       .eq("id", roomId)
       .eq("status", "waiting")
-      .gte("updated_at", minutesAgo(WAITING_TTL_MINUTES))
+      .gte("updated_at", minutesAgo(waitingTtlMinutes(room)))
       .select("*"),
   ) as OnlineRoom[];
   if (renewed[0]) {
