@@ -2,7 +2,7 @@ import { Pressable, Text, TextInput, View } from "react-native";
 
 import { CharacterBoard } from "../components/CharacterBoard";
 import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
-import type { EndlessState } from "./engine";
+import { safeHintCandidate, type EndlessState } from "./engine";
 import { styles } from "./styles";
 
 type Props = {
@@ -14,6 +14,9 @@ type Props = {
   onOpen: (char: string) => void;
   mineChars: ReadonlySet<string>;
   hintedChars: ReadonlySet<string>;
+  busy: boolean;
+  gemBalance: number | null;
+  onHint: () => void;
 };
 
 export function PlayPanel({
@@ -25,6 +28,9 @@ export function PlayPanel({
   onOpen,
   mineChars,
   hintedChars,
+  busy,
+  gemBalance,
+  onHint,
 }: Props) {
   if (game.phase !== "answer" && game.phase !== "open") return null;
   const canAnswer = game.phase === "answer";
@@ -73,12 +79,13 @@ export function PlayPanel({
       <Text style={styles.micro}>
         ヒント：緑色のマスは安全。タップした時に初めて数字が分かります。
       </Text>
-      <View style={styles.notice}>
-        <Text style={styles.noticeTitle}>ジェムのヒント（1個）</Text>
-        <Text style={styles.noticeText}>
-          安全な未開封マスを1つ表示。購入・残高同期の実装後に有効になります。
-        </Text>
-      </View>
+      <Pressable
+        style={[styles.secondary, (busy || !safeHintCandidate(game) || gemBalance === null || gemBalance < 1) && styles.disabled]}
+        disabled={busy || !safeHintCandidate(game) || gemBalance === null || gemBalance < 1}
+        onPress={onHint}
+      >
+        <Text style={styles.secondaryText}>安全なマスを表示（1ジェム）</Text>
+      </Pressable>
     </>
   );
 }
