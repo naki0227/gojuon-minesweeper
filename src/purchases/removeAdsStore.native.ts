@@ -1,6 +1,8 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
 import { Platform } from "react-native";
 
+import { GEMS_PRODUCT_ID } from "../wallet/client";
+import { handleGemPurchase } from "../wallet/gemStore.native";
 import { supportsInAppOfferCodes } from "./offerCodes";
 import { REMOVE_ADS_PRODUCT_ID } from "./products";
 import type {
@@ -92,7 +94,11 @@ export const removeAdsStore: RemoveAdsStore = {
     nativeSubscriptions.forEach((subscription) => subscription.remove());
     nativeSubscriptions = [
       iap.purchaseUpdatedListener((purchase) => {
-        void handlePurchase(purchase);
+        if (purchase.productId === GEMS_PRODUCT_ID) {
+          void handleGemPurchase(purchase);
+        } else {
+          void handlePurchase(purchase);
+        }
       }),
       iap.purchaseErrorListener((error) => {
         emit({
