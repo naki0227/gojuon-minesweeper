@@ -119,6 +119,10 @@ export default function OnlineScreen() {
               placement={
                 room.public_state?.phase === "finished" ? "result" : "setup"
               }
+              duringPlay={
+                room.status === "playing" &&
+                room.public_state?.phase !== "finished"
+              }
             />
           </View>
         ) : null}
