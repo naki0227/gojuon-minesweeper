@@ -27,6 +27,8 @@ export type OnlinePublicState = {
   openedChars: readonly string[];
   mineChars: readonly string[];
   mineCounts: Readonly<Record<string, number>>;
+  // Sent only for opened mine letters. Optional for older deployed servers.
+  mineMultiplicities?: Readonly<Record<string, number>>;
   answerBlocked: readonly [boolean, boolean];
   hint: string | null;
   winner: PlayerIndex | null;

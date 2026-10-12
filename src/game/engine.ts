@@ -2,7 +2,11 @@ import type { Question } from "../data/types";
 import { primaryAnswer } from "../data/questions";
 import { adjacentCharacters, getBoardOrder } from "./board";
 import { normalizeValue } from "./normalize";
-import { createSignatureKey, mineCharacters } from "./signature";
+import {
+  createCountMap,
+  createSignatureKey,
+  mineCharacters,
+} from "./signature";
 
 export type PlayerIndex = 0 | 1;
 export type GamePhase = "answer" | "open" | "finished";
@@ -49,12 +53,27 @@ export function isMineCharacter(question: Question, char: string): boolean {
   return questionMineCharacters(question).has(char);
 }
 
-export function adjacentMineCount(question: Question, char: string): number {
-  const mines = questionMineCharacters(question);
+export function questionMineMultiplicity(
+  question: Question,
+  char: string,
+): number {
+  return (
+    createCountMap(primaryAnswer(question).value, question.language).get(
+      char,
+    ) ?? 0
+  );
+}
 
-  return adjacentCharacters(question.language, char).filter((neighbor) =>
-    mines.has(neighbor),
-  ).length;
+export function adjacentMineCount(question: Question, char: string): number {
+  const mines = createCountMap(
+    primaryAnswer(question).value,
+    question.language,
+  );
+
+  return adjacentCharacters(question.language, char).reduce(
+    (total, neighbor) => total + (mines.get(neighbor) ?? 0),
+    0,
+  );
 }
 
 export function isAcceptedAnswer(question: Question, input: string): boolean {
@@ -264,15 +283,17 @@ export function openCharacter(state: GameState, char: string): GameState {
   let resultMessage: string;
 
   if (hitMine) {
-    resultMessage = `「${char}」は地雷！ ${playerName(state.currentPlayer)} は次回の回答権なし。`;
+    const multiplicity = questionMineMultiplicity(state.question, char);
+    const repeated = multiplicity > 1 ? `（答えに${multiplicity}回）` : "";
+    resultMessage = `「${char}」は地雷${repeated}！ ${playerName(state.currentPlayer)} は次回の回答権なし。`;
   } else {
     const count = adjacentMineCount(state.question, char);
     const chainCount = Math.max(0, newlyOpened.length - 1);
 
     resultMessage =
       count === 0 && chainCount > 0
-        ? `「${char}」の周囲は地雷0個。周辺${chainCount}マスも開きました。`
-        : `「${char}」はセーフ。周囲の地雷は${count}個。`;
+        ? `「${char}」の周囲に答えの文字なし。周辺${chainCount}マスも開きました。`
+        : `「${char}」はセーフ。周囲の答え文字は${count}個。`;
   }
 
   const boardComplete = isBoardExhausted({ ...state, openedChars });

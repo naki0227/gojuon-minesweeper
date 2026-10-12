@@ -22,6 +22,7 @@ import {
   openCharacter,
   passAnswer,
   questionMineCharacters,
+  questionMineMultiplicity,
   submitAnswer,
   type GameState,
   type PlayerIndex,
@@ -133,10 +134,15 @@ export function toPublicState(state: GameState): OnlinePublicState {
   const mines = questionMineCharacters(state.question);
   const mineChars: string[] = [];
   const mineCounts: Record<string, number> = {};
+  const mineMultiplicities: Record<string, number> = {};
 
   for (const char of state.openedChars) {
     if (mines.has(char)) {
       mineChars.push(char);
+      const multiplicity = questionMineMultiplicity(state.question, char);
+      if (multiplicity > 1) {
+        mineMultiplicities[char] = multiplicity;
+      }
     } else {
       mineCounts[char] = adjacentMineCount(state.question, char);
     }
@@ -152,6 +158,7 @@ export function toPublicState(state: GameState): OnlinePublicState {
     openedChars: state.openedChars,
     mineChars,
     mineCounts,
+    mineMultiplicities,
     answerBlocked: state.answerBlocked,
     hint: state.revealedAnswerChars > 0 && !finished ? answerHint(state) : null,
     winner: state.winner,
