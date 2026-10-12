@@ -1,0 +1,10 @@
+#!/bin/sh
+# Installed by `npm install` (scripts/install-git-hooks.mjs).
+# Skip once with `git commit --no-verify` only when you know why it fails.
+set -e
+
+npm run --silent format:check
+npm run --silent lint
+npm run --silent typecheck
+npm run --silent quality
+npm test --silent

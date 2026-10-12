@@ -19,6 +19,7 @@
     "quality:lines": "node scripts/check-file-lines.mjs",
     "quality:duplicates": "jscpd",
     "quality": "npm run quality:lines && npm run quality:duplicates",
+    "prepare": "node scripts/install-git-hooks.mjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
