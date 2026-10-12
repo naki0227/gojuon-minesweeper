@@ -9,6 +9,18 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_PASSWORD: local-test-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout
@@ -39,6 +51,11 @@ jobs:
 
       - name: File size and duplicate code
         run: npm run quality
+
+      - name: Matchmaking database test
+        env:
+          PGPASSWORD: local-test-only
+        run: psql -X -h 127.0.0.1 -p 5432 -U postgres -d postgres -v ON_ERROR_STOP=1 -f tests/sql/quick-match.sql
 
       - name: Export web
         run: npm run build:web
