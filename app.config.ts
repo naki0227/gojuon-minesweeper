@@ -74,6 +74,10 @@ const SK_AD_NETWORK_ITEMS = [
 const isProduction =
   process.env.APP_ENV === "production" ||
   process.env.EAS_BUILD_PROFILE === "production";
+// The real AdMob IDs are required only where the app is actually built (an
+// EAS build worker, or `eas build --local`). eas-cli also reads this config
+// on the machine that starts the build, which may not have the IDs.
+const isBuildingProduction = isProduction && process.env.EAS_BUILD === "true";
 const targetPlatform =
   process.env.APP_TARGET_PLATFORM ?? process.env.EAS_BUILD_PLATFORM;
 
@@ -84,7 +88,10 @@ function resolveAdMobAppId(
 ): string {
   const value = process.env[envName]?.trim();
 
-  if (isProduction && (!targetPlatform || targetPlatform === platform)) {
+  if (
+    isBuildingProduction &&
+    (!targetPlatform || targetPlatform === platform)
+  ) {
     if (!value || value.startsWith(GOOGLE_SAMPLE_PUBLISHER_PREFIX)) {
       throw new Error(
         `${envName} must be set to the real AdMob app ID for production builds.`,
@@ -103,7 +110,10 @@ function requireBannerUnitId(
     "EXPO_PUBLIC_ADMOB_IOS_BANNER_ID" | "EXPO_PUBLIC_ADMOB_ANDROID_BANNER_ID",
   platform: "ios" | "android",
 ) {
-  if (!isProduction || (targetPlatform && targetPlatform !== platform)) {
+  if (
+    !isBuildingProduction ||
+    (targetPlatform && targetPlatform !== platform)
+  ) {
     return;
   }
 
