@@ -127,10 +127,13 @@ Deno.serve(async (request: Request) => {
     const body = await request.json() as Record<string, unknown>;
     const action = readString(body.action);
     if (action === "balance") {
-      const { data, error } = await admin.from("gem_wallets")
-        .select("balance").eq("user_id", user.id).maybeSingle();
+      // The caller has a verified Apple identity. Grant three gems once per
+      // account on first wallet access; retries and reinstalls never re-credit.
+      const { data, error } = await admin.rpc("gem_credit_apple_signin_bonus", {
+        p_user_id: user.id,
+      });
       if (error) throw error;
-      return respond({ ok: true, balance: data?.balance ?? 0 });
+      return respond({ ok: true, balance: data });
     }
     if (action === "spend") {
       const reason = readString(body.reason);
