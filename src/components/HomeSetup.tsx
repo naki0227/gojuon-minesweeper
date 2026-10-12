@@ -347,6 +347,12 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
+          <Link href="/endless" asChild>
+            <Pressable accessibilityRole="button" style={styles.onlineButton}>
+              <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
+              <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
+            </Pressable>
+          </Link>
           {onOnline ? (
             <Pressable
               disabled={candidateCount === 0}
