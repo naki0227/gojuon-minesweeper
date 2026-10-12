@@ -7,7 +7,6 @@ import {
   Text,
   View,
 } from "react-native";
-
 import { COUNT_COLOR_MANY, COUNT_COLORS, USE_NATIVE_DRIVER } from "./motion";
 
 type Props = {
