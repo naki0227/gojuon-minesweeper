@@ -22,6 +22,8 @@ export type EndlessState = {
   hintUses: number;
   totalOpenedMoves: number;
   totalMineHits: number;
+  chainBonus: number;
+  lastChainBonus: number;
   revives: number;
   message: string;
 };
@@ -31,6 +33,7 @@ export const HINT_CREDIT_COST = 1;
 export const REVIVE_CREDIT_COST = 3;
 export const GEM_PACK_SIZE = 10;
 export const GEM_PACK_PRICE_YEN = 200;
+export const CHAIN_BONUS_PER_CELL = 3;
 
 export function startEndless(question: Question): EndlessState {
   return {
@@ -47,6 +50,8 @@ export function startEndless(question: Question): EndlessState {
     hintUses: 0,
     totalOpenedMoves: 0,
     totalMineHits: 0,
+    chainBonus: 0,
+    lastChainBonus: 0,
     revives: 0,
     message: "答えを予想するか、回答をパスしてマスを開こう。",
   };
@@ -117,6 +122,7 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
   const mine = isMineCharacter(state.question, char);
   const expanded = mine ? [char] : expandSafe(state.question, char, state.opened);
   const lives = state.lives - (mine ? 1 : 0);
+  const chainBonus = Math.max(0, expanded.length - 1) * CHAIN_BONUS_PER_CELL;
   return {
     ...state,
     opened: [...state.opened, ...expanded],
@@ -125,6 +131,9 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
     mineHits: state.mineHits + (mine ? 1 : 0),
     totalMineHits: state.totalMineHits + (mine ? 1 : 0),
     lives,
+    score: state.score + chainBonus,
+    chainBonus: state.chainBonus + chainBonus,
+    lastChainBonus: chainBonus,
     phase: lives === 0 ? "revive" : "answer",
     message:
       lives === 0
@@ -132,7 +141,7 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
         : mine
           ? "地雷！ ライフが1つ減った。"
           : expanded.length > 1
-            ? `安全！ 周囲の${expanded.length - 1}マスも開いた。`
+            ? `CHAIN +${chainBonus}点！ 周囲の${expanded.length - 1}マスも開いた。`
             : "安全！ 数字を手掛かりに次の答えを考えよう。",
   };
 }
@@ -188,6 +197,7 @@ export function nextEndlessQuestion(
     mineHits: 0,
     wrongGuesses: 0,
     hintUses: 0,
+    lastChainBonus: 0,
     message: "次の問題！ 少ない手数・被弾で正解を目指そう。",
   };
 }
