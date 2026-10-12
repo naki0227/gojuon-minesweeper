@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { SPECIALIST_IT_CATEGORIES } from "../src/data/specialistCategories";
 
 import {
   countQuestions,
@@ -104,6 +105,37 @@ describe("curated category pool", () => {
 
     expect(first?.category).toBe("都道府県");
     expect(second?.category).toBe("文房具");
+  });
+
+  it("excludes advanced IT from all no-category picks while allowing opt-in", () => {
+    for (const language of ["ja", "en"] as const) {
+      const general = filterQuestions({
+        language,
+        categories: [],
+        length: "any",
+      });
+      expect(general.length).toBeGreaterThan(0);
+      expect(
+        general.some((question) =>
+          SPECIALIST_IT_CATEGORIES.has(question.category),
+        ),
+      ).toBe(false);
+
+      const specialistCategory = general.length > 0
+        ? [...SPECIALIST_IT_CATEGORIES].find((category) =>
+            getCategories(language).includes(category),
+          )
+        : undefined;
+      expect(specialistCategory).toBeDefined();
+      const explicit = filterQuestions({
+        language,
+        categories: [specialistCategory!],
+        length: "any",
+      });
+      expect(explicit.length).toBeGreaterThan(0);
+      expect(explicit.every((question) => question.category === specialistCategory))
+        .toBe(true);
+    }
   });
 
   it("returns no question for an unavailable length", () => {
