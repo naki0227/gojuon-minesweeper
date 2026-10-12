@@ -9,7 +9,9 @@ export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     if (Platform.OS === "ios") {
-      void AppleAuthentication.isAvailableAsync().then(setAvailable).catch(() => {});
+      void AppleAuthentication.isAvailableAsync()
+        .then(setAvailable)
+        .catch(() => {});
     }
   }, []);
 
@@ -17,11 +19,10 @@ export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
     setError(null);
     try {
       const credential = await AppleAuthentication.signInAsync({
-        requestedScopes: [
-          AppleAuthentication.AppleAuthenticationScope.EMAIL,
-        ],
+        requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
       });
-      if (!credential.identityToken) throw new Error("Appleの認証情報を受け取れませんでした。");
+      if (!credential.identityToken)
+        throw new Error("Appleの認証情報を受け取れませんでした。");
       const { error: authError } = await getSupabase().auth.signInWithIdToken({
         provider: "apple",
         token: credential.identityToken,
