@@ -67,10 +67,10 @@ describe("online matchmaking question pools", () => {
       for (let i = 0; i < 50; i += 1) {
         const quickMatch = startOnlineGame(filters);
         const codeMatch = startOnlineGame(sanitizeFilters(filters));
-        expect(SPECIALIST_IT_CATEGORIES.has(quickMatch.question.category))
-          .toBe(false);
-        expect(SPECIALIST_IT_CATEGORIES.has(codeMatch.question.category))
-          .toBe(false);
+        const quickCategory = quickMatch.question.category;
+        const codeCategory = codeMatch.question.category;
+        expect(SPECIALIST_IT_CATEGORIES.has(quickCategory)).toBe(false);
+        expect(SPECIALIST_IT_CATEGORIES.has(codeCategory)).toBe(false);
       }
     }
   });
