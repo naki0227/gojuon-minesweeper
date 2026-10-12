@@ -1,0 +1,48 @@
+name: TestFlight
+
+# Run by hand from the Actions tab ("Run workflow"). Builds the iOS app on
+# EAS with the production profile and uploads it to App Store Connect, where
+# it lands in TestFlight. Each run uses one EAS build.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate question bank
+        run: npm run validate:questions
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      # The build number goes up on EAS by itself (autoIncrement). The
+      # version string comes from app.json, so raise it there for a new
+      # App Store version.
+      - name: Build and submit to TestFlight
+        run: eas build --platform ios --profile production --auto-submit --non-interactive --no-wait
