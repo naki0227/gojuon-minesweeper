@@ -43,7 +43,7 @@ function resolveUnitId(sdk: MobileAdsModule): string | null {
   );
 }
 
-export function BannerAd({ placement }: BannerAdProps) {
+export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
   const { resolved, adFree } = useAdFree();
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -81,7 +81,10 @@ export function BannerAd({ placement }: BannerAdProps) {
   // No fixed height: the container is 0px until an ad loads and collapses
   // again on failure, so no empty box or error UI is ever shown.
   return (
-    <View style={styles.container} testID={`banner-ad-${placement}`}>
+    <View
+      style={[styles.container, duringPlay ? styles.gameplaySpacer : null]}
+      testID={`banner-ad-${placement}`}
+    >
       <AdMobBanner
         unitId={unitId}
         size={BannerAdSize.LARGE_ANCHORED_ADAPTIVE_BANNER}
@@ -96,5 +99,11 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     width: "100%",
+  },
+  gameplaySpacer: {
+    marginTop: 80,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: "#d5dee4",
   },
 });
