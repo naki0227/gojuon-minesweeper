@@ -358,8 +358,11 @@ export default function HomeScreen() {
           </Text>
         ) : null}
 
-        {/* Ads only once the game is decided; never during play. */}
-        {game.phase === "finished" ? <BannerAd placement="result" /> : null}
+        {/* Experimental inline banner below gameplay, with safe separation. */}
+        <BannerAd
+          placement={game.phase === "finished" ? "result" : "setup"}
+          duringPlay={game.phase !== "finished"}
+        />
       </ScrollView>
       {game.winner !== null && !reducedMotion ? (
         <Confetti key={game.question.id} />
