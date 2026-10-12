@@ -30,6 +30,7 @@ async function readAdMobIds() {
 describe("production AdMob app IDs", () => {
   it("allows an iOS build before an Android app ID exists", async () => {
     vi.stubEnv("APP_ENV", "production");
+    vi.stubEnv("EAS_BUILD", "true");
     vi.stubEnv("APP_TARGET_PLATFORM", "ios");
     vi.stubEnv("ADMOB_IOS_APP_ID", "ca-app-pub-1234567890123456~1234567890");
     vi.stubEnv("ADMOB_ANDROID_APP_ID", "");
@@ -45,6 +46,7 @@ describe("production AdMob app IDs", () => {
 
   it("rejects a missing ID for the platform being built", async () => {
     vi.stubEnv("APP_ENV", "production");
+    vi.stubEnv("EAS_BUILD", "true");
     vi.stubEnv("APP_TARGET_PLATFORM", "android");
     vi.stubEnv("ADMOB_ANDROID_APP_ID", "");
 
@@ -52,9 +54,23 @@ describe("production AdMob app IDs", () => {
   });
 });
 
+describe("reading the config before an EAS build", () => {
+  it("does not require AdMob IDs on the computer that starts the build", async () => {
+    vi.stubEnv("EAS_BUILD_PROFILE", "production");
+    vi.stubEnv("EAS_BUILD", "");
+    vi.stubEnv("ADMOB_IOS_APP_ID", "");
+    vi.stubEnv("ADMOB_ANDROID_APP_ID", "");
+    vi.stubEnv("EXPO_PUBLIC_ADMOB_IOS_BANNER_ID", "");
+
+    const config = await readConfig();
+    expect(config.extra?.ads).toEqual({ useTestIds: false });
+  });
+});
+
 describe("production AdMob banner unit IDs", () => {
   it("rejects a production build without a banner ID for that platform", async () => {
     vi.stubEnv("APP_ENV", "production");
+    vi.stubEnv("EAS_BUILD", "true");
     vi.stubEnv("APP_TARGET_PLATFORM", "ios");
     vi.stubEnv("ADMOB_IOS_APP_ID", "ca-app-pub-1234567890123456~1234567890");
     vi.stubEnv("EXPO_PUBLIC_ADMOB_IOS_BANNER_ID", "");
@@ -66,6 +82,7 @@ describe("production AdMob banner unit IDs", () => {
 
   it("rejects Google's sample banner ID in production", async () => {
     vi.stubEnv("APP_ENV", "production");
+    vi.stubEnv("EAS_BUILD", "true");
     vi.stubEnv("APP_TARGET_PLATFORM", "ios");
     vi.stubEnv("ADMOB_IOS_APP_ID", "ca-app-pub-1234567890123456~1234567890");
     vi.stubEnv(
