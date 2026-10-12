@@ -1,6 +1,6 @@
 # TestFlight 配布
 
-GitHub の Actions タブにある「TestFlight」ワークフローを手で実行すると、EAS で iOS の production ビルドを作り、App Store Connect にアップロードする。処理が終わると TestFlight に出る。
+GitHub の Actions タブにある「TestFlight」ワークフローを手で実行すると、EAS で iOS の production ビルドを開始し、完成後に App Store Connect への提出を予約する。ワークフローは `--no-wait` で終了するため、Actions の成功はビルド・アップロード・Apple 側の処理完了を意味しない。EAS のビルドと提出画面、および App Store Connect の TestFlight 画面で個別に結果を確認する。[EAS の自動提出](https://docs.expo.dev/build/automate-submissions/) / [App Store Connect のビルド状態](https://developer.apple.com/help/app-store-connect/reference/app-build-statuses/)
 
 ## 最初に1回だけ
 
@@ -16,8 +16,9 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
 
 1. 新しいストアバージョンにするなら `app.json` の `expo.version` を上げてマージする（例: 1.0.1）。ビルド番号は EAS が自動で上げる。
 2. Actions → TestFlight → Run workflow。
-3. 内部テスターのグループで自動配信をオンにしておけば、App Store Connect の処理が終わり次第テスターに届く。外部テスターは最初のビルドだけ Apple のベータ審査がある。
+3. EAS でビルドと提出の完了を確認し、App Store Connect で Apple 側の処理と TestFlight の状態を確認する。
+4. 内部テスターのグループで自動配信をオンにしておけば、App Store Connect の処理後にテスターへ配信できる。外部テスター用ビルドにはベータ審査が必要になる場合がある。
 
-公開済みのバージョン番号には新しいビルドを上げられない。v1.0.0 の公開後は 1.0.1 以降で配る。
+同じストアバージョンで複数のビルドをアップロードできるが、各ビルド番号は新しくする。新しい App Store 公開版を出すときはストアバージョンも上げる。[Apple のビルド管理](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds) / [新バージョンの作成](https://developer.apple.com/help/app-store-connect/update-your-app/create-a-new-version)
 
-EAS 無料プランは iOS ビルドの月間回数に上限があるので、マージのたびではなく手動実行にしている。
+ビルド回数と提出タイミングを管理できるよう、マージごとの自動実行ではなく手動実行にしている。
