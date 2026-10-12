@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import {
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -340,7 +341,7 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
-          <Link
+          {Platform.OS === "ios" ? <Link
             href={{
               pathname: "/endless",
               params: { filters: JSON.stringify(filters) },
@@ -351,7 +352,7 @@ export function HomeSetup({
               <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
               <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
             </Pressable>
-          </Link>
+          </Link> : null}
           {onOnline ? (
             <Pressable
               disabled={candidateCount === 0}
