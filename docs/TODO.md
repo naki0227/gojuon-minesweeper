@@ -16,6 +16,7 @@
 - [x] Webトップに `lang="ja"`・title・descriptionを設定、`userInterfaceStyle: "light"` とAndroidアダプティブアイコンを設定（2026-10-06）。
 - [x] 1.0.1のiOS Simulator用ReleaseビルドをiPhone 17 Pro Maxに入れ、設定画面下部のAdMobテスト広告を実画面で確認（2026-10-12）。記録は `docs/reports/2026-10-12-ios-simulator-ad-build-report.md`。
 - [x] オンライン対戦の待機中・対局中・決着後に画面下部の広告枠を追加し、iPhone 17 Pro Max Simulatorで3状態のテスト広告を確認（2026-10-12）。記録は `docs/reports/2026-10-12-online-banner-report.md`。
+- [x] ファイル行数（300行、既存は増加禁止）と重複コード（jscpd）の検査をCIとpre-commitに追加（2026-10-12）。記録は `docs/reports/2026-10-12-quality-gates-report.md`。
 
 ## 未着手
 
@@ -28,6 +29,8 @@
 - [ ] npm auditが報告した本番依存の既知の脆弱性を、Expoとの互換性を確認して解消する。`npm audit fix --force`は破壊的なExpo変更を提示するため未実施。
 - [ ] 必要なら未購入状態の実機でTestFlight 1.0.1の本番広告を確認する。Simulatorで確認したのはテスト広告。
 - [ ] オンライン対局中のバナーについて、実機の操作感とAdMobの誤タップ指標を公開後に確認する。盤面操作画面への広告はGoogleのガイダンス上、特に注意が必要。
+
+- [ ] 300行を超える既存6ファイル（`HomeSetup.tsx`・`app/online.tsx`・`app/index.tsx` など）を責務ごとに分割し、`scripts/file-line-limits.mjs` の上限を下げる。
 
 ## 進行中
 

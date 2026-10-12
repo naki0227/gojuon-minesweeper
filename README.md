@@ -75,8 +75,15 @@ English:
 npm install
 npm run validate:questions
 npm run typecheck
+npm run format:check
+npm run lint
+npm test
+npm run quality
+npm run build:web
 npm run start
 ```
+
+`npm install` / `npm ci` で `.githooks/pre-commit` が有効になり、コミット前に整形・lint・型チェック・ファイル行数・重複コード・単体テストを実行します。`npm run quality` は新規ファイル300行以内（既存の大きいファイルは `scripts/file-line-limits.mjs` の行数から増やさない）と、jscpd による重複率1.5%以下を確認します。
 
 Webのみ:
 
