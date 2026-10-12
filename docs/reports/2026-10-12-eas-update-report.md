@@ -11,7 +11,7 @@ JavaScript だけの変更を審査なしで iOS アプリに配れるよう、E
 ## 変更内容・変更したファイル
 
 - `package.json` / `package-lock.json`: `expo-updates`（SDK 57 対応版）を追加。
-- `app.json`: `version` を 1.0.2 に上げ、`runtimeVersion`（appVersion）と `updates.url` を設定。
+- `app.json`: `version` は 1.0.1（審査中の 1.0.0 の次）のまま、`runtimeVersion`（appVersion）と `updates.url` を設定。
 - `eas.json`: production / preview ビルドにチャンネルを設定。
 - `.github/workflows/eas-update.yml`: 手動実行の更新配信（main のみ、`APP_ENV=production`、EAS の production 環境変数を使用）。
 - `tests/updates-config.test.ts`、`docs/testflight.md`、`docs/adr/2026-10-12-eas-update.md`。
@@ -22,7 +22,7 @@ JavaScript だけの変更を審査なしで iOS アプリに配れるよう、E
 
 ## 影響範囲
 
-次のストア版（1.0.2）から有効。1.0.1 以前には届かない。Web には影響なし。
+次のストア版（1.0.1）のうち、この変更以降のビルドから有効。1.0.0 と、これより前の 1.0.1 ビルドには届かない。Web には影響なし。
 
 ## 追加・更新したテスト・確認コマンド
 
@@ -30,7 +30,7 @@ JavaScript だけの変更を審査なしで iOS アプリに配れるよう、E
 
 ## 未解決の課題・次にやること
 
-- 1.0.2 を TestFlight → 審査に出す。
+- 1.0.1 の新しいビルドを TestFlight で作り、1.0.0 の審査後に申請する。
 - 初回の EAS Update は TestFlight ビルドで反映を確認する。実際の配信はまだ一度も試していない。
 
 ## 次回最初に見るべきファイル

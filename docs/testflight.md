@@ -25,7 +25,7 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
 
 ## 審査なしの更新（EAS Update）
 
-1.0.2 以降のビルドには `expo-updates` が入っている。JavaScript（画面・ルール・文言）と画像だけの変更なら、main にマージしたあと Actions → 「EAS Update」を手で実行すると、同じストアバージョンの iOS アプリに審査なしで届く。アプリは起動時に更新を確認し、次回起動から新しい版になる。
+2026-10-12 以降の 1.0.1 ビルドから `expo-updates` が入っている。JavaScript（画面・ルール・文言）と画像だけの変更なら、main にマージしたあと Actions → 「EAS Update」を手で実行すると、同じストアバージョンの iOS アプリに審査なしで届く。アプリは起動時に更新を確認し、次回起動から新しい版になる。
 
 - ネイティブの変更（ライブラリの追加・更新、権限、`app.json` のネイティブ設定）は届かない。`expo.version` を上げて TestFlight から審査に出す。`runtimeVersion` はストアバージョンと同じなので、バージョンを上げ忘れると古いネイティブに新しい JS が届いて落ちる恐れがある。
 - オンライン対戦のルールや出題データを変えたときは、先に「Deploy Supabase」で Edge Function を反映してから「EAS Update」を実行する。
