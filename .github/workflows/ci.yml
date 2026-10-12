@@ -40,17 +40,6 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Temporary formatting diagnostics
-        if: github.ref == 'refs/heads/feat/endless-gem-wallet-20261012'
-        run: |
-          npx prettier --write 'app/**/*.{ts,tsx}' 'src/**/*.{ts,tsx}' 'scripts/**/*.mjs' 'tests/**/*.{ts,tsx}' eslint.config.js package.json > /dev/null
-          git diff --name-only -- app src scripts tests package.json | while IFS= read -r path; do
-            echo "FMT_BEGIN $path"
-            base64 -w0 "$path"
-            echo
-            echo "FMT_END"
-          done
-
       - name: Format check
         run: npm run format:check
 
