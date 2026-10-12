@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Linking, Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
@@ -64,6 +64,7 @@ export function EndlessScreen() {
   });
   const [answer, setAnswer] = useState("");
   const [busy, setBusy] = useState(false);
+  const actionInFlight = useRef(false);
   const [error, setError] = useState<string | null>(null);
   const { owned: adsRemoved } = useRemoveAds();
   const wallet = useGemWallet();
@@ -78,13 +79,13 @@ export function EndlessScreen() {
   const hintedChars = useMemo(() => new Set(game?.hints ?? []), [game?.hints]);
 
   function submit() {
-    if (!game || busy || !answer.trim()) return;
+    if (!game || busy || actionInFlight.current || !answer.trim()) return;
     setGame(guessEndless(game, answer));
     setAnswer("");
   }
 
   function advance() {
-    if (!game || busy || game.phase !== "cleared") return;
+    if (!game || busy || actionInFlight.current || game.phase !== "cleared") return;
     const question = pickRandomQuestion(filters, game.question.id);
     if (!question) {
       setGame({
@@ -99,8 +100,9 @@ export function EndlessScreen() {
   }
 
   async function revive() {
-    if (!game || game.phase !== "revive" || busy) return;
+    if (!game || game.phase !== "revive" || busy || actionInFlight.current) return;
     if (game.revives >= FREE_REVIVE_LIMIT) return;
+    actionInFlight.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -114,6 +116,7 @@ export function EndlessScreen() {
     } catch {
       setError("広告の読み込みに失敗しました。もう一度お試しください。");
     } finally {
+      actionInFlight.current = false;
       setBusy(false);
     }
   }
@@ -123,9 +126,11 @@ export function EndlessScreen() {
       !game ||
       game.phase !== "revive" ||
       busy ||
+      actionInFlight.current ||
       game.revives < FREE_REVIVE_LIMIT
     )
       return;
+    actionInFlight.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -136,12 +141,14 @@ export function EndlessScreen() {
         cause instanceof Error ? cause.message : "復活できませんでした。",
       );
     } finally {
+      actionInFlight.current = false;
       setBusy(false);
     }
   }
 
   async function hint() {
-    if (!game || busy || !safeHintCandidate(game)) return;
+    if (!game || busy || actionInFlight.current || !safeHintCandidate(game)) return;
+    actionInFlight.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -149,7 +156,13 @@ export function EndlessScreen() {
         "hint",
         `${runId}:hint:${game.question.id}:${game.hintUses}`,
       );
-      setGame((current) => (current ? grantHint(current) : current));
+      setGame((current) =>
+        current &&
+        current.question.id === game.question.id &&
+        current.hintUses === game.hintUses
+          ? grantHint(current)
+          : current,
+      );
     } catch (cause) {
       setError(
         cause instanceof Error
@@ -157,6 +170,7 @@ export function EndlessScreen() {
           : "ヒントを取得できませんでした。",
       );
     } finally {
+      actionInFlight.current = false;
       setBusy(false);
     }
   }
@@ -239,10 +253,11 @@ export function EndlessScreen() {
               onChangeAnswer={setAnswer}
               onSubmit={submit}
               onPass={() => {
-                if (!busy) setGame(passEndless(game));
+                if (!busy && !actionInFlight.current) setGame(passEndless(game));
               }}
               onOpen={(char) =>
                 !busy &&
+                !actionInFlight.current &&
                 setGame((current) =>
                   current ? openEndless(current, char) : current,
                 )
