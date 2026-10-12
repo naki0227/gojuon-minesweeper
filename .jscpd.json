@@ -1,0 +1,15 @@
+{
+  "path": ["app", "src", "scripts", "tests", "supabase/functions"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/*.json",
+    "supabase/functions/_shared/app/**"
+  ],
+  "format": ["typescript", "tsx", "javascript"],
+  "minLines": 10,
+  "minTokens": 70,
+  "threshold": 1.5,
+  "reporters": ["console"],
+  "absolute": false,
+  "gitignore": true
+}

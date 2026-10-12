@@ -49,6 +49,9 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      - name: File size and duplicate code
+        run: npm run quality
+
       - name: Matchmaking database test
         env:
           PGPASSWORD: local-test-only

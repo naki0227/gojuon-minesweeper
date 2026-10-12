@@ -15,7 +15,11 @@
     "test": "vitest run",
     "validate:questions": "node scripts/validate-questions.mjs",
     "online:sync": "node scripts/sync-online-function.mjs",
-    "online:deploy": "node scripts/sync-online-function.mjs && npx supabase functions deploy online-game"
+    "online:deploy": "node scripts/sync-online-function.mjs && npx supabase functions deploy online-game",
+    "quality:lines": "node scripts/check-file-lines.mjs",
+    "quality:duplicates": "jscpd",
+    "quality": "npm run quality:lines && npm run quality:duplicates",
+    "prepare": "node scripts/install-git-hooks.mjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -42,6 +46,7 @@
     "@types/react": "~19.2.2",
     "eslint": "^9.39.5",
     "eslint-config-expo": "^57.0.2",
+    "jscpd": "^4.3.0",
     "prettier": "^3.9.9",
     "typescript": "~6.0.3",
     "vitest": "^4.1.11"
