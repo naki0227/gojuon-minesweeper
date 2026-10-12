@@ -10,7 +10,7 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
    npx eas-cli build --platform ios --profile production --auto-submit
    ```
    途中で Apple ID でログインし、「App Store Connect API Key を作るか」に Yes と答える。
-3. **ascAppId**: CI（非対話）での提出には `eas.json` の `submit.production.ios.ascAppId` が要る。App Store Connect → アプリ → App情報 の「Apple ID」（数字）を入れる。
+3. **ascAppId**: CI（非対話）での提出に使う `eas.json` の `submit.production.ios.ascAppId`。App Store Connect → アプリ → App情報 の「Apple ID」（数字）で、設定済み（6819539119）。
 
 ## 配るとき
 
