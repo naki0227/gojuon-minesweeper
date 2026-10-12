@@ -11,6 +11,8 @@ import { questionMineCharacters } from "../game/engine";
 import {
   endEndless,
   FREE_REVIVE_LIMIT,
+  grantHint,
+  safeHintCandidate,
   guessEndless,
   nextEndlessQuestion,
   openEndless,
@@ -23,6 +25,8 @@ import { requestRewardedRevive } from "./rewardedRevive";
 import { PlayPanel } from "./PlayPanel";
 import { EndPanels } from "./EndPanels";
 import { styles } from "./styles";
+import { useGemWallet } from "../wallet/useGemWallet";
+import { GemWalletPanel } from "../wallet/GemWalletPanel";
 
 const DEFAULT_FILTERS: QuestionFilters = {
   language: "ja",
@@ -62,6 +66,10 @@ export function EndlessScreen() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { owned: adsRemoved } = useRemoveAds();
+  const wallet = useGemWallet();
+  const [runId, setRunId] = useState(() =>
+    `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
+  );
 
   const mineChars = useMemo(
     () => (game ? questionMineCharacters(game.question) : new Set<string>()),
@@ -70,13 +78,13 @@ export function EndlessScreen() {
   const hintedChars = useMemo(() => new Set(game?.hints ?? []), [game?.hints]);
 
   function submit() {
-    if (!game || !answer.trim()) return;
+    if (!game || busy || !answer.trim()) return;
     setGame(guessEndless(game, answer));
     setAnswer("");
   }
 
   function advance() {
-    if (!game || game.phase !== "cleared") return;
+    if (!game || busy || game.phase !== "cleared") return;
     const question = pickRandomQuestion(filters, game.question.id);
     if (!question) {
       setGame({
@@ -105,6 +113,37 @@ export function EndlessScreen() {
       else setError("広告を視聴できませんでした。時間をおいて試してください。");
     } catch {
       setError("広告の読み込みに失敗しました。もう一度お試しください。");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function paidRevive() {
+    if (!game || game.phase !== "revive" || busy ||
+      game.revives < FREE_REVIVE_LIMIT) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await wallet.spend("revive", `${runId}:revive:${game.revives}`);
+      setGame((current) => current ? reviveEndless(current) : current);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "復活できませんでした。");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function hint() {
+    if (!game || busy || !safeHintCandidate(game)) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await wallet.spend(
+        "hint", `${runId}:hint:${game.question.id}:${game.hintUses}`,
+      );
+      setGame((current) => current ? grantHint(current) : current);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "ヒントを取得できませんでした。");
     } finally {
       setBusy(false);
     }
@@ -170,6 +209,7 @@ export function EndlessScreen() {
                 </Text>
               </View>
             </View>
+            <GemWalletPanel wallet={wallet} />
             <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
             <Text style={styles.help}>
               少ない手数・少ない被弾で正解しよう。安全な0マスの連鎖はボーナス！
@@ -186,14 +226,17 @@ export function EndlessScreen() {
               answer={answer}
               onChangeAnswer={setAnswer}
               onSubmit={submit}
-              onPass={() => setGame(passEndless(game))}
+              onPass={() => { if (!busy) setGame(passEndless(game)); }}
               onOpen={(char) =>
-                setGame((current) =>
+                !busy && setGame((current) =>
                   current ? openEndless(current, char) : current,
                 )
               }
               mineChars={mineChars}
               hintedChars={hintedChars}
+              busy={busy}
+              gemBalance={wallet.balance}
+              onHint={() => void hint()}
             />
             <EndPanels
               game={game}
@@ -201,11 +244,16 @@ export function EndlessScreen() {
               adsRemoved={adsRemoved}
               onAdvance={advance}
               onRevive={() => void revive()}
+              onPaidRevive={() => void paidRevive()}
+              gemBalance={wallet.balance}
               onFinish={() => setGame(endEndless(game))}
               onShare={() => void share()}
               onRestart={() => {
                 const question = pickRandomQuestion(filters);
-                if (question) setGame(startEndless(question));
+                if (question) {
+                  setGame(startEndless(question));
+                  setRunId(`run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`);
+                }
               }}
             />
 
