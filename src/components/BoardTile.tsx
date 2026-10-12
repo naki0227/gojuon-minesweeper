@@ -14,6 +14,7 @@ type Props = {
   char: string;
   size: number;
   opened: boolean;
+  hinted?: boolean;
   mine: boolean;
   multiplicity: number;
   count: number | null;
@@ -32,6 +33,7 @@ export function BoardTile({
   char,
   size,
   opened,
+  hinted = false,
   mine,
   multiplicity,
   count,
@@ -147,6 +149,7 @@ export function BoardTile({
           style={[
             styles.face,
             styles.closed,
+            hinted ? styles.hinted : null,
             faceStyle,
             { opacity: closedOpacity },
           ]}
@@ -308,6 +311,11 @@ const styles = StyleSheet.create({
     borderColor: "#c9d5df",
     borderBottomWidth: 3,
     borderBottomColor: "#bccbd6",
+  },
+  hinted: {
+    backgroundColor: "#d4f5dd",
+    borderColor: "#5db47a",
+    borderBottomColor: "#379361",
   },
   closedChar: {
     color: "#152534",
