@@ -16,7 +16,6 @@
 - [x] Webトップに `lang="ja"`・title・descriptionを設定、`userInterfaceStyle: "light"` とAndroidアダプティブアイコンを設定（2026-10-06）。
 - [x] 1.0.1のiOS Simulator用ReleaseビルドをiPhone 17 Pro Maxに入れ、設定画面下部のAdMobテスト広告を実画面で確認（2026-10-12）。記録は `docs/reports/2026-10-12-ios-simulator-ad-build-report.md`。
 - [x] オンライン対戦の待機中・対局中・決着後に画面下部の広告枠を追加し、iPhone 17 Pro Max Simulatorで3状態のテスト広告を確認（2026-10-12）。記録は `docs/reports/2026-10-12-online-banner-report.md`。
-- [x] 地雷文字が答えに複数回出るとき「×2」などを表示し、周囲の数字を重複込みで数えるよう変更（2026-10-12）。記録は `docs/reports/2026-10-12-repeated-letter-mines-report.md`。オンライン対戦への反映にはEdge Functionの再デプロイが必要。
 
 ## 未着手
 
