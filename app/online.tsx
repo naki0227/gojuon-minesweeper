@@ -110,6 +110,18 @@ export default function OnlineScreen() {
             <Text style={styles.errorText}>{online.error}</Text>
           </Pressable>
         ) : null}
+        {room &&
+        (room.status === "waiting" ||
+          room.status === "playing" ||
+          room.public_state?.phase === "finished") ? (
+          <View style={styles.adArea}>
+            <BannerAd
+              placement={
+                room.public_state?.phase === "finished" ? "result" : "setup"
+              }
+            />
+          </View>
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );
@@ -425,9 +437,6 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
           </Pressable>
         </>
       )}
-
-      {/* Ads only once the game is decided; never during play. */}
-      {finished ? <BannerAd placement="result" /> : null}
     </>
   );
 }
@@ -438,6 +447,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f7fafc",
   },
   page: {
+    flexGrow: 1,
     width: "100%",
     maxWidth: 760,
     alignSelf: "center",
@@ -445,6 +455,12 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 36,
     gap: 16,
+  },
+  adArea: {
+    marginTop: "auto",
+    borderTopColor: "#d5dee4",
+    borderTopWidth: 1,
+    paddingTop: 16,
   },
   topBar: {
     flexDirection: "row",
