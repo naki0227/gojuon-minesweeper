@@ -9,6 +9,8 @@ type Props = {
   adsRemoved: boolean;
   onAdvance: () => void;
   onRevive: () => void;
+  onPaidRevive: () => void;
+  gemBalance: number | null;
   onFinish: () => void;
   onShare: () => void;
   onRestart: () => void;
@@ -20,6 +22,8 @@ export function EndPanels({
   adsRemoved,
   onAdvance,
   onRevive,
+  onPaidRevive,
+  gemBalance,
   onFinish,
   onShare,
   onRestart,
@@ -61,12 +65,19 @@ export function EndPanels({
               </Text>
             </Pressable>
           ) : (
-            <View style={styles.notice}>
-              <Text style={styles.noticeTitle}>4回目以降：3ジェム</Text>
-              <Text style={styles.noticeText}>
-                現在はジェム決済の準備中です。記録を確定してください。
+            <Pressable
+              style={[
+                styles.primary,
+                (busy || gemBalance === null || gemBalance < 3) &&
+                  styles.disabled,
+              ]}
+              disabled={busy || gemBalance === null || gemBalance < 3}
+              onPress={onPaidRevive}
+            >
+              <Text style={styles.primaryText}>
+                3ジェムで復活する（残高 {gemBalance ?? "未同期"}）
               </Text>
-            </View>
+            </Pressable>
           )}
           <Pressable style={styles.secondary} onPress={onFinish}>
             <Text style={styles.secondaryText}>復活せず記録を確定</Text>

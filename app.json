@@ -13,7 +13,8 @@
       "buildNumber": "1",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "usesAppleSignIn": true
     },
     "android": {
       "package": "com.naki0227.gojuonminesweeper",
@@ -28,7 +29,12 @@
       "output": "static"
     },
     "plugins": [
-      ["expo-router", { "headOrigin": "https://minesweeper.enludus.com" }],
+      [
+        "expo-router",
+        {
+          "headOrigin": "https://minesweeper.enludus.com"
+        }
+      ],
       "expo-splash-screen"
     ],
     "experiments": {

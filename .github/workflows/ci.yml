@@ -57,5 +57,10 @@ jobs:
           PGPASSWORD: local-test-only
         run: psql -X -h 127.0.0.1 -p 5432 -U postgres -d postgres -v ON_ERROR_STOP=1 -f tests/sql/quick-match.sql
 
+      - name: Gem wallet SQL tests
+        env:
+          PGPASSWORD: local-test-only
+        run: psql -X -h 127.0.0.1 -p 5432 -U postgres -d postgres -v ON_ERROR_STOP=1 -f tests/sql/gem-wallet.sql
+
       - name: Export web
         run: npm run build:web

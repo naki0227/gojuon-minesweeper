@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import {
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -52,14 +53,11 @@ function sameLength(left: LengthFilter, right: LengthFilter): boolean {
   }
   return left === right;
 }
-
 function categorySummary(categories: readonly string[]): string {
   const shown = categories.slice(0, 4).join("、");
   return categories.length > 4 ? `${shown} など` : shown;
 }
-
 function SampleTiles({ word }: { word: string }) {
-  // Every character of an answer is a mine, as on the real board.
   return (
     <View style={styles.sampleTiles}>
       {[...word].map((character, index) => (
@@ -340,18 +338,20 @@ export function HomeSetup({
               <Text style={styles.textLink}>おまかせで遊ぶ</Text>
             </Pressable>
           </View>
-          <Link
-            href={{
-              pathname: "/endless",
-              params: { filters: JSON.stringify(filters) },
-            }}
-            asChild
-          >
-            <Pressable accessibilityRole="button" style={styles.onlineButton}>
-              <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
-              <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
-            </Pressable>
-          </Link>
+          {Platform.OS === "ios" ? (
+            <Link
+              href={{
+                pathname: "/endless",
+                params: { filters: JSON.stringify(filters) },
+              }}
+              asChild
+            >
+              <Pressable accessibilityRole="button" style={styles.onlineButton}>
+                <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
+                <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
+              </Pressable>
+            </Link>
+          ) : null}
           {onOnline ? (
             <Pressable
               disabled={candidateCount === 0}
