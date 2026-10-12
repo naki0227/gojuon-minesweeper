@@ -418,3 +418,7 @@ enabled = true
 # it also works with the newer asymmetric JWT signing keys.
 [functions.online-game]
 verify_jwt = false
+
+# The handler authenticates the bearer with Supabase Auth (asymmetric JWTs supported).
+[functions.gem-wallet]
+verify_jwt = false
