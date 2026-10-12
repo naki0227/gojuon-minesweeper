@@ -2,8 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import type { Question } from "../src/data/types";
 import {
+  BASE_QUESTION_SCORE,
   CHAIN_BONUS_PER_CELL,
+  difficultyBonus,
   endEndless,
+  MAX_DIFFICULTY_BONUS,
   FREE_REVIVE_LIMIT,
   grantHint,
   guessEndless,
@@ -30,8 +33,8 @@ describe("endless solo rules", () => {
     const opened = openEndless(passEndless(startEndless(question)), "ね");
     const later = guessEndless(opened, "ねこら");
     expect(first.phase).toBe("cleared");
-    expect(first.score).toBe(200);
-    expect(questionScore(opened)).toBeLessThan(200);
+    expect(first.score).toBe(BASE_QUESTION_SCORE + difficultyBonus(question));
+    expect(questionScore(opened)).toBeLessThan(first.score);
     expect(later.score).toBeLessThan(first.score);
   });
 
@@ -74,10 +77,51 @@ describe("endless solo rules", () => {
   it("carries score and survival progress across questions", () => {
     const solved = guessEndless(startEndless(question), "ねこら");
     const next = nextEndlessQuestion(solved, { ...question, id: "next" });
-    expect(next.score).toBe(200);
+    expect(next.score).toBe(solved.score);
     expect(next.solved).toBe(1);
     expect(next.lives).toBe(3);
     expect(next.question.id).toBe("next");
     expect(next.openedMoves).toBe(0);
+  });
+
+  it("scales the base score by answer length and distinct mine letters", () => {
+    const shaped = (value: string): Question => ({
+      ...question,
+      id: value,
+      length: Array.from(value).length,
+      answers: [{ display: value, value, aliases: [value] }],
+    });
+    const anchor = shaped("さくらん");
+    expect(difficultyBonus(anchor)).toBe(0);
+    expect(difficultyBonus(shaped("ねこ"))).toBeLessThan(0);
+    const long = shaped("ちょこれーとけーき");
+    expect(difficultyBonus(long)).toBeGreaterThan(0);
+    // Repeated letters mean fewer distinct mines than characters.
+    expect(difficultyBonus(shaped("ちょうちょう"))).toBeLessThan(
+      difficultyBonus(shaped("かぶとむしだ")),
+    );
+    const solved = guessEndless(
+      startEndless(long),
+      Array.from("ちょこれーとけーき").join(""),
+    );
+    expect(solved.score).toBe(BASE_QUESTION_SCORE + difficultyBonus(long));
+    expect(solved.message).toContain("難易度ボーナス");
+  });
+
+  it("keeps the difficulty bonus within bounds and the score floor at 10", () => {
+    const value = "abcdefghijklmnopqrstuvwxyz";
+    const huge: Question = {
+      ...question,
+      language: "en",
+      length: value.length,
+      answers: [{ display: value, value, aliases: [value] }],
+    };
+    expect(difficultyBonus(huge)).toBe(MAX_DIFFICULTY_BONUS);
+    const battered = {
+      ...startEndless(question),
+      openedMoves: 30,
+      mineHits: 3,
+    };
+    expect(questionScore(battered)).toBe(10);
   });
 });

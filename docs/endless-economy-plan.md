@@ -6,6 +6,7 @@ Status: draft. Do **not** enable real-money purchases or consume virtual currenc
 
 - Endless solo uses 3 hearts, sequential questions, and measures solving efficiency.
 - Each deliberate opened character costs one move. A zero-cell cascade costs only one move and grants **+3 points per extra automatically opened safe cell**.
+- Question score: base 200 + difficulty bonus − 6 per opening − 30 per mine − 12 per wrong guess − 20 per hint (minimum 10). Difficulty bonus = 12 × (answer length − 4) + 12 × (distinct mine letters − 4), clamped to −60…+150, so the common 4-letter / 4-mine question keeps 200. Measured over the bank: Japanese mean +26 (median 0〜+24), English mean +55 (English answers are longer and its 26-letter board is denser with mines).
 - Mines reduce hearts; 0 hearts enters revival choice. A revival restores **2 hearts** and highlights one safe, still-closed tile green; it does not open that tile.
 - Revivals 1–3: owners of the existing non-consumable remove-ads item receive free revival; others earn one from completed rewarded video. Web preview temporarily offers those 3 revivals free; it must not falsely claim that a reward video played.
 - Revivals 4+: **3 gems each** for all users, including remove-ads purchasers.

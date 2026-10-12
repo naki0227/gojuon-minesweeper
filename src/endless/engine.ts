@@ -4,6 +4,7 @@ import {
   adjacentMineCount,
   isAcceptedAnswer,
   isMineCharacter,
+  questionMineCharacters,
 } from "../game/engine";
 
 export type EndlessPhase =
@@ -36,6 +37,15 @@ export const GEM_PACK_SIZE = 10;
 export const GEM_PACK_PRICE_YEN = 200;
 export const CHAIN_BONUS_PER_CELL = 3;
 
+// Difficulty is anchored on the most common question shape (4 characters,
+// 4 distinct mines), which keeps the classic 200-point base.
+export const BASE_QUESTION_SCORE = 200;
+export const DIFFICULTY_ANCHOR = 4;
+export const LENGTH_BONUS_PER_CHAR = 12;
+export const MINE_BONUS_PER_TYPE = 12;
+export const MIN_DIFFICULTY_BONUS = -60;
+export const MAX_DIFFICULTY_BONUS = 150;
+
 export function startEndless(question: Question): EndlessState {
   return {
     question,
@@ -58,11 +68,23 @@ export function startEndless(question: Question): EndlessState {
   };
 }
 
+// Longer answers are harder to guess, and more distinct mine letters make
+// the board more dangerous; both raise the base. Penalties stay fixed so a
+// mistake costs the same on every question.
+export function difficultyBonus(question: Question): number {
+  const mineTypes = questionMineCharacters(question).size;
+  const raw =
+    (question.length - DIFFICULTY_ANCHOR) * LENGTH_BONUS_PER_CHAR +
+    (mineTypes - DIFFICULTY_ANCHOR) * MINE_BONUS_PER_TYPE;
+  return Math.min(MAX_DIFFICULTY_BONUS, Math.max(MIN_DIFFICULTY_BONUS, raw));
+}
+
 // Only deliberate opens count as moves; a zero-cell flood counts as one.
 export function questionScore(state: EndlessState): number {
   return Math.max(
     10,
-    200 -
+    BASE_QUESTION_SCORE +
+      difficultyBonus(state.question) -
       state.openedMoves * 6 -
       state.mineHits * 30 -
       state.wrongGuesses * 12 -
@@ -74,12 +96,19 @@ export function guessEndless(state: EndlessState, input: string): EndlessState {
   if (state.phase !== "answer" || !input.trim()) return state;
   if (isAcceptedAnswer(state.question, input)) {
     const earned = questionScore(state);
+    const bonus = difficultyBonus(state.question);
+    const bonusNote =
+      bonus > 0
+        ? `（難易度ボーナス +${bonus}）`
+        : bonus < 0
+          ? `（易しめ ${bonus}）`
+          : "";
     return {
       ...state,
       score: state.score + earned,
       solved: state.solved + 1,
       phase: "cleared",
-      message: `正解！ +${earned}点。次の問題に進もう。`,
+      message: `正解！ +${earned}点${bonusNote}。次の問題に進もう。`,
     };
   }
   return {
