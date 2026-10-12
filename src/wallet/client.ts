@@ -4,8 +4,7 @@ export const GEMS_PRODUCT_ID = "com.naki0227.gojuonminesweeper.gems10";
 export const isGemWalletConfigured = isOnlineConfigured;
 
 type WalletResponse =
-  | { ok: true; balance: number }
-  | { ok: false; error: string };
+  { ok: true; balance: number } | { ok: false; error: string };
 
 export async function currentAppleAccount(): Promise<string | null> {
   if (!isGemWalletConfigured) return null;
@@ -20,7 +19,8 @@ export async function currentAppleAccount(): Promise<string | null> {
 async function walletAction(body: Record<string, string>): Promise<number> {
   const supabase = getSupabase();
   const { data, error } = await supabase.functions.invoke<WalletResponse>(
-    "gem-wallet", { body },
+    "gem-wallet",
+    { body },
   );
   if (error) {
     const context = (error as { context?: Response }).context;
@@ -33,7 +33,9 @@ async function walletAction(body: Record<string, string>): Promise<number> {
     );
   }
   if (!data || !data.ok || !Number.isSafeInteger(data.balance)) {
-    throw new Error(data && !data.ok ? data.error : "残高を取得できませんでした。");
+    throw new Error(
+      data && !data.ok ? data.error : "残高を取得できませんでした。",
+    );
   }
   return data.balance;
 }
