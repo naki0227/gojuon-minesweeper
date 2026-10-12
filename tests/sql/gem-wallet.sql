@@ -11,6 +11,7 @@ begin
   if not exists (select from pg_roles where rolname = 'service_role') then create role service_role; end if;
 end $$;
 \i supabase/migrations/20261012115142_gem_wallet.sql
+\i supabase/migrations/20261012143000_apple_signin_welcome_gems.sql
 insert into auth.users (id) values
  ('11111111-1111-4111-8111-111111111111'),
  ('22222222-2222-4222-8222-222222222222');
@@ -67,4 +68,33 @@ begin
   if has_table_privilege('authenticated','public.gem_wallets','INSERT')
      or has_table_privilege('authenticated','public.gem_ledger','UPDATE')
   then raise exception 'client has direct wallet write access'; end if;
+end $$;
+
+-- Welcome credit remains exactly three per Apple account even after spend.
+do $$
+declare
+  uid uuid := '11111111-1111-4111-8111-111111111111';
+  other uuid := '22222222-2222-4222-8222-222222222222';
+  gems integer;
+begin
+  gems := public.gem_credit_apple_signin_bonus(uid);
+  if gems <> 9 then raise exception 'first welcome bonus should add three'; end if;
+  gems := public.gem_credit_apple_signin_bonus(uid);
+  if gems <> 9 then raise exception 'repeated Apple sign-in added extra gems'; end if;
+  gems := public.gem_spend(uid, 'ffffffff-ffff-4fff-8fff-ffffffffffff', 'revive');
+  if gems <> 6 then raise exception 'bonus gems are not spendable'; end if;
+  gems := public.gem_credit_apple_signin_bonus(uid);
+  if gems <> 6 then raise exception 'welcome gift was reissued after spending'; end if;
+  gems := public.gem_credit_apple_signin_bonus(other);
+  if gems <> 3 then raise exception 'second account must get its own bonus'; end if;
+  if (select count(*) from public.gem_ledger
+      where user_id = uid and reason = 'apple_signin_bonus') <> 1 then
+    raise exception 'duplicate welcome ledger rows';
+  end if;
+  if has_function_privilege('authenticated',
+      'public.gem_credit_apple_signin_bonus(uuid)', 'EXECUTE')
+    or has_function_privilege('anon',
+      'public.gem_credit_apple_signin_bonus(uuid)', 'EXECUTE') then
+    raise exception 'client can grant free welcome gems';
+  end if;
 end $$;
