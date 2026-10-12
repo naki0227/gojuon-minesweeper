@@ -47,6 +47,16 @@
 
 今回のマッチング変更を戻す場合は、先にアプリを旧版へ戻してからEdge Functionを旧版へ戻す。DB関数は旧版から参照されないため、稼働中の部屋がなくなってから削除できる。既存テーブルのデータを消すマイグレーションはない。
 
+### 本番への反映（GitHub Actions）
+
+本番への反映は Actions の「Deploy Supabase」を手で実行する（main のみ）。マイグレーション → Edge Function の順に流れ、成功してからアプリを配布する。`dry_run` は既定でオンで、適用待ちのマイグレーションを表示するだけ。中身を確認してからオフにして再実行する。
+
+最初に一度、GitHub の Settings → Environments に `production` を作り、次の Secrets を登録する。必要なら同じ画面で「Required reviewers」に自分を入れ、実行前の承認を必須にできる。
+
+- `SUPABASE_ACCESS_TOKEN`: Supabase の Account → Access Tokens で発行
+- `SUPABASE_DB_PASSWORD`: プロジェクトの DB パスワード
+- `SUPABASE_PROJECT_ID`: プロジェクトの ref（URL の `https://<ref>.supabase.co` の部分）
+
 ## ローカルで試す
 
 Docker があれば `npx supabase start` でローカルの Supabase が立つ（`supabase/config.toml` で匿名ログインは有効）。そのうえで `npm run online:sync && npx supabase functions serve` を動かし、`.env` に `npx supabase status` の API URL と Publishable key を入れて `npm run web` を2つのブラウザで開く。
