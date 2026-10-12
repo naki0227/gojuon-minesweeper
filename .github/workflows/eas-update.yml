@@ -1,0 +1,62 @@
+name: EAS Update
+
+# Manual only. Publishes the JavaScript bundle on main to iOS builds on the
+# production channel, without App Store review. Only builds whose store
+# version (app.json expo.version) matches receive it, so a change to native
+# code needs a new version and a TestFlight / App Store build instead.
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "What changed (shown in the EAS dashboard)"
+        type: string
+        required: true
+
+concurrency:
+  group: eas-update
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      # app.config.ts turns off Google's test ad IDs only for production.
+      APP_ENV: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate question bank
+        run: npm run validate:questions
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      # --environment loads the same EAS variables as production builds
+      # (Supabase URL/key, AdMob banner IDs), which are baked into the bundle.
+      - name: Publish update
+        env:
+          MESSAGE: ${{ inputs.message }}
+        run: eas update --channel production --environment production --platform ios --message "$MESSAGE" --non-interactive

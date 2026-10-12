@@ -22,3 +22,11 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
 同じストアバージョンで複数のビルドをアップロードできるが、各ビルド番号は新しくする。新しい App Store 公開版を出すときはストアバージョンも上げる。[Apple のビルド管理](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds) / [新バージョンの作成](https://developer.apple.com/help/app-store-connect/update-your-app/create-a-new-version)
 
 ビルド回数と提出タイミングを管理できるよう、マージごとの自動実行ではなく手動実行にしている。
+
+## 審査なしの更新（EAS Update）
+
+1.0.2 以降のビルドには `expo-updates` が入っている。JavaScript（画面・ルール・文言）と画像だけの変更なら、main にマージしたあと Actions → 「EAS Update」を手で実行すると、同じストアバージョンの iOS アプリに審査なしで届く。アプリは起動時に更新を確認し、次回起動から新しい版になる。
+
+- ネイティブの変更（ライブラリの追加・更新、権限、`app.json` のネイティブ設定）は届かない。`expo.version` を上げて TestFlight から審査に出す。`runtimeVersion` はストアバージョンと同じなので、バージョンを上げ忘れると古いネイティブに新しい JS が届いて落ちる恐れがある。
+- オンライン対戦のルールや出題データを変えたときは、先に「Deploy Supabase」で Edge Function を反映してから「EAS Update」を実行する。
+- 配った更新は EAS のダッシュボード（Updates）から前の版に戻せる。
