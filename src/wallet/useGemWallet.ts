@@ -39,8 +39,10 @@ export function useGemWallet() {
   }, []);
 
   useEffect(() => {
-    void refresh();
-    if (!isGemWalletConfigured || !gemStore.isSupported) return;
+    const initial = setTimeout(() => { void refresh(); }, 0);
+    if (!isGemWalletConfigured || !gemStore.isSupported) {
+      return () => clearTimeout(initial);
+    }
     const stopPurchaseListener = gemStore.subscribe((event) => {
       setBuying(false);
       if (event.type === "credited") {
@@ -59,6 +61,7 @@ export function useGemWallet() {
       }, 0);
     });
     return () => {
+      clearTimeout(initial);
       stopPurchaseListener();
       data.subscription.unsubscribe();
     };
