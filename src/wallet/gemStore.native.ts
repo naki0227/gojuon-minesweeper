@@ -20,6 +20,7 @@ function loadIap(): ExpoIap | null {
 }
 const iap = loadIap();
 const listeners = new Set<(event: GemEvent) => void>();
+let awaitingPurchase = false;
 function emit(event: GemEvent) {
   listeners.forEach((listener) => listener(event));
 }
@@ -28,6 +29,7 @@ function emit(event: GemEvent) {
 // finished until the Apple server confirms it and Supabase commits the credit.
 export async function handleGemPurchase(purchase: Purchase): Promise<void> {
   if (!iap || purchase.productId !== GEMS_PRODUCT_ID) return;
+  awaitingPurchase = false;
   if (purchase.purchaseState !== "purchased") {
     emit({ type: "pending" });
     return;
@@ -45,6 +47,13 @@ export async function handleGemPurchase(purchase: Purchase): Promise<void> {
       message: error instanceof Error ? error.message : "購入を確認できませんでした。",
     });
   }
+}
+
+export function handleGemPurchaseError(message: string): boolean {
+  if (!awaitingPurchase) return false;
+  awaitingPurchase = false;
+  emit({ type: "error", message });
+  return true;
 }
 
 export const gemStore = {
@@ -66,9 +75,15 @@ export const gemStore = {
     if (userId !== await currentAppleAccount()) {
       throw new Error("Appleアカウントでログインしてください。");
     }
-    await iap.requestPurchase({
-      request: { apple: { sku: GEMS_PRODUCT_ID, appAccountToken: userId } },
-      type: "in-app",
-    });
+    awaitingPurchase = true;
+    try {
+      await iap.requestPurchase({
+        request: { apple: { sku: GEMS_PRODUCT_ID, appAccountToken: userId } },
+        type: "in-app",
+      });
+    } catch (error) {
+      awaitingPurchase = false;
+      throw error;
+    }
   },
 };
