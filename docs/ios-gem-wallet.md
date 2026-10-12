@@ -37,6 +37,7 @@ This branch is **stacked on PR #23**, not on `main`. Keep both PRs as drafts unt
 
 - This PR's CI and SQL tests don't exercise real Apple Sandbox or real iPhone credentials.
 - App Store Server Notifications V2 / reconciliation for **refunds and revocations after fulfillment** must be added before production; a past successful payment is not proof that it was never later refunded.
+- App Store account-deletion compliance: Apple sign-in creates a server account, so provide a user-initiated deletion flow and a clear policy for wallet balance, purchase audit records and outstanding transactions.
 - The game state is still client-local. A debit that succeeds while the response is lost is idempotent for the same action ID, but crash recovery of a partially fulfilled **hint/revive** should be tested and hardened before production.
 - Verify Expo IAP's unfinished consumable replay on a real iPhone (network interruption, force quit and app update). Do not claim that finished consumables are automatically restored by StoreKit.
 - Need actual iOS build and Apple capability check; the code is not remotely enabling purchases until the product and signing credentials are configured.
