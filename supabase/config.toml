@@ -218,8 +218,10 @@ web3 = 30
 # secret = ""
 
 [auth.email]
-# Allow/disallow new user signups via email to your project.
-enable_signup = true
+# The app only uses anonymous auth (online play) and Sign in with Apple (iOS gems).
+# Disable email signups for local development. Hosted auth providers are set
+# separately in the Supabase Dashboard; this does not disable existing email login.
+enable_signup = false
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
