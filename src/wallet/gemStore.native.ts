@@ -1,5 +1,9 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
-import { currentAppleAccount, GEMS_PRODUCT_ID, verifyGemPurchase } from "./client";
+import {
+  currentAppleAccount,
+  GEMS_PRODUCT_ID,
+  verifyGemPurchase,
+} from "./client";
 
 type ExpoIap = typeof import("expo-iap");
 type Purchase = import("expo-iap").Purchase;
@@ -10,7 +14,8 @@ export type GemEvent =
   | { type: "error"; message: string };
 
 function loadIap(): ExpoIap | null {
-  if (Constants.executionEnvironment === ExecutionEnvironment.StoreClient) return null;
+  if (Constants.executionEnvironment === ExecutionEnvironment.StoreClient)
+    return null;
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require("expo-iap") as ExpoIap;
@@ -36,7 +41,8 @@ export async function handleGemPurchase(purchase: Purchase): Promise<void> {
   }
   try {
     const owner = await currentAppleAccount();
-    if (!owner) throw new Error("購入時のAppleアカウントでログインしてください。");
+    if (!owner)
+      throw new Error("購入時のAppleアカウントでログインしてください。");
     const balance = await verifyGemPurchase(purchase.id);
     await iap.finishTransaction({ purchase, isConsumable: true });
     emit({ type: "credited", balance });
@@ -44,7 +50,8 @@ export async function handleGemPurchase(purchase: Purchase): Promise<void> {
     // Keep unfinished purchases for retry. The ledger is idempotent.
     emit({
       type: "error",
-      message: error instanceof Error ? error.message : "購入を確認できませんでした。",
+      message:
+        error instanceof Error ? error.message : "購入を確認できませんでした。",
     });
   }
 }
@@ -60,19 +67,22 @@ export const gemStore = {
   isSupported: iap !== null,
   subscribe(callback: (event: GemEvent) => void) {
     listeners.add(callback);
-    return () => { listeners.delete(callback); };
+    return () => {
+      listeners.delete(callback);
+    };
   },
   async fetchProduct(): Promise<{ displayPrice: string } | null> {
     if (!iap) return null;
     const products = await iap.fetchProducts({
-      skus: [GEMS_PRODUCT_ID], type: "in-app",
+      skus: [GEMS_PRODUCT_ID],
+      type: "in-app",
     });
     const result = products?.find((product) => product.id === GEMS_PRODUCT_ID);
     return result ? { displayPrice: result.displayPrice } : null;
   },
   async buy(userId: string): Promise<void> {
     if (!iap) throw new Error("この端末では購入できません。");
-    if (userId !== await currentAppleAccount()) {
+    if (userId !== (await currentAppleAccount())) {
       throw new Error("Appleアカウントでログインしてください。");
     }
     awaitingPurchase = true;
