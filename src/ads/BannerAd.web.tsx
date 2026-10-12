@@ -87,7 +87,9 @@ function AdSenseUnitView({
   // Responsive display ad unit. The ins is 0px tall until AdSense fills it,
   // and the label/markup inside comes from AdSense unchanged.
   return (
-    <View style={[styles.container, duringPlay ? styles.gameplaySpacer : null]}>
+    <View
+      style={[styles.container, duringPlay ? styles.gameplaySpacer : null]}
+    >
       <ins
         ref={insRef}
         className="adsbygoogle"
