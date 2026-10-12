@@ -29,13 +29,7 @@ function ensureAdSenseScript(clientId: string) {
   document.head.appendChild(script);
 }
 
-function AdSenseUnitView({
-  unit,
-  duringPlay,
-}: {
-  unit: AdSenseUnit;
-  duringPlay: boolean;
-}) {
+function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
   const insRef = useRef<HTMLModElement | null>(null);
   const [unfilled, setUnfilled] = useState(false);
 
@@ -87,9 +81,7 @@ function AdSenseUnitView({
   // Responsive display ad unit. The ins is 0px tall until AdSense fills it,
   // and the label/markup inside comes from AdSense unchanged.
   return (
-    <View
-      style={[styles.container, duringPlay ? styles.gameplaySpacer : null]}
-    >
+    <View style={styles.container}>
       <ins
         ref={insRef}
         className="adsbygoogle"
@@ -120,11 +112,9 @@ export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
   }
 
   return (
-    <AdSenseUnitView
-      key={placement}
-      unit={unit}
-      duringPlay={duringPlay}
-    />
+    <View style={duringPlay ? styles.gameplaySpacer : undefined}>
+      <AdSenseUnitView key={placement} unit={unit} />
+    </View>
   );
 }
 
@@ -133,7 +123,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   gameplaySpacer: {
-    // Google AdSense recommends at least 150 CSS px from the game.
+    // In Web, preserve the recommended game-to-ad separation in CSS px.
     marginTop: 150,
     paddingTop: 12,
     borderTopWidth: 1,
