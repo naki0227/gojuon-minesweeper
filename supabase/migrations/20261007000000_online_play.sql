@@ -61,4 +61,12 @@ create policy "Players read their rooms"
 revoke all on public.online_room_secrets from anon, authenticated;
 revoke insert, update, delete on public.online_rooms from anon, authenticated;
 
+-- Grant what is needed explicitly, so this works whether or not the project
+-- exposes new tables to the Data API automatically: players read their rooms
+-- (RLS still limits which rows), and the Edge Function's service role does
+-- everything.
+grant select on public.online_rooms to authenticated;
+grant select, insert, update, delete on public.online_rooms to service_role;
+grant select, insert, update, delete on public.online_room_secrets to service_role;
+
 alter publication supabase_realtime add table public.online_rooms;

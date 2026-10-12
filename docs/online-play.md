@@ -22,7 +22,11 @@
 
 ## Supabase の準備（初回だけ）
 
-1. https://supabase.com でプロジェクトを作る（リージョンは Tokyo）。
+1. https://supabase.com でプロジェクトを作る。
+   - リージョンは Tokyo（Northeast Asia）。
+   - GitHub 連携はつながない。関数はルールのコピー（生成物）が必要なので、手順5のとおり手元からデプロイする。
+   - Security の「Enable Data API」はオン。「Automatically expose new tables」はオフでよい（必要な権限はマイグレーションで明示的に付けている）。
+   - Database password はパスワードマネージャーに保存しておく（アプリには入れない）。
 2. Authentication → Sign In / Providers で **Allow anonymous sign-ins** をオンにする。
 3. このリポジトリで CLI をつなぐ。
 
