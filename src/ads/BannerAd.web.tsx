@@ -117,7 +117,13 @@ export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
     return null;
   }
 
-  return <AdSenseUnitView key={placement} unit={unit} duringPlay={duringPlay} />;
+  return (
+    <AdSenseUnitView
+      key={placement}
+      unit={unit}
+      duringPlay={duringPlay}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
