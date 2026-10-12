@@ -6,7 +6,6 @@ import { Link, useLocalSearchParams } from "expo-router";
 
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
 import { pickRandomQuestion, questionPrompt } from "../data/questions";
-import type { QuestionFilters } from "../data/types";
 import { questionMineCharacters } from "../game/engine";
 import {
   endEndless,
@@ -25,35 +24,9 @@ import { requestRewardedRevive } from "./rewardedRevive";
 import { PlayPanel } from "./PlayPanel";
 import { EndPanels } from "./EndPanels";
 import { styles } from "./styles";
+import { parseFilters } from "./filters";
 import { useGemWallet } from "../wallet/useGemWallet";
 import { GemWalletPanel } from "../wallet/GemWalletPanel";
-
-const DEFAULT_FILTERS: QuestionFilters = {
-  language: "ja",
-  categories: [],
-  length: "any",
-};
-
-function parseFilters(raw: string | string[] | undefined): QuestionFilters {
-  if (typeof raw !== "string") return DEFAULT_FILTERS;
-  try {
-    const value = JSON.parse(raw) as QuestionFilters;
-    if (!["ja", "en", "any"].includes(value.language)) return DEFAULT_FILTERS;
-    if (!Array.isArray(value.categories)) return DEFAULT_FILTERS;
-    if (!value.categories.every((item) => typeof item === "string"))
-      return DEFAULT_FILTERS;
-    const validLength =
-      value.length === "any" ||
-      (typeof value.length === "number" && Number.isInteger(value.length)) ||
-      (typeof value.length === "object" &&
-        value.length !== null &&
-        typeof value.length.min === "number" &&
-        (value.length.max === null || typeof value.length.max === "number"));
-    return validLength ? value : DEFAULT_FILTERS;
-  } catch {
-    return DEFAULT_FILTERS;
-  }
-}
 
 export function EndlessScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
@@ -85,7 +58,8 @@ export function EndlessScreen() {
   }
 
   function advance() {
-    if (!game || busy || actionInFlight.current || game.phase !== "cleared") return;
+    if (!game || busy || actionInFlight.current || game.phase !== "cleared")
+      return;
     const question = pickRandomQuestion(filters, game.question.id);
     if (!question) {
       setGame({
@@ -100,7 +74,8 @@ export function EndlessScreen() {
   }
 
   async function revive() {
-    if (!game || game.phase !== "revive" || busy || actionInFlight.current) return;
+    if (!game || game.phase !== "revive" || busy || actionInFlight.current)
+      return;
     if (game.revives >= FREE_REVIVE_LIMIT) return;
     actionInFlight.current = true;
     setBusy(true);
@@ -147,7 +122,8 @@ export function EndlessScreen() {
   }
 
   async function hint() {
-    if (!game || busy || actionInFlight.current || !safeHintCandidate(game)) return;
+    if (!game || busy || actionInFlight.current || !safeHintCandidate(game))
+      return;
     actionInFlight.current = true;
     setBusy(true);
     setError(null);
@@ -253,7 +229,8 @@ export function EndlessScreen() {
               onChangeAnswer={setAnswer}
               onSubmit={submit}
               onPass={() => {
-                if (!busy && !actionInFlight.current) setGame(passEndless(game));
+                if (!busy && !actionInFlight.current)
+                  setGame(passEndless(game));
               }}
               onOpen={(char) =>
                 !busy &&
