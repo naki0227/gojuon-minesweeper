@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import type { Question } from "../data/types";
-import { adjacentMineCount } from "../game/engine";
+import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
 import { GOJUON_GRID } from "../game/gojuon";
 
 type Props = {
@@ -46,6 +46,9 @@ export function GojuonBoard({
             const isMine = isOpened && mineChars.has(char);
             const mineCount =
               isOpened && !isMine ? adjacentMineCount(question, char) : null;
+            const multiplicity = isMine
+              ? questionMineMultiplicity(question, char)
+              : 0;
             const disabled = !canOpen || isOpened;
 
             const dynamicStyle: ViewStyle = isMine
@@ -57,8 +60,8 @@ export function GojuonBoard({
             const stateLabel = !isOpened
               ? ""
               : isMine
-                ? " 地雷"
-                : ` セーフ 周囲の地雷${mineCount}個`;
+                ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
+                : ` セーフ 周囲の答え文字${mineCount}個`;
 
             return (
               <Pressable
@@ -84,7 +87,9 @@ export function GojuonBoard({
                 </Text>
 
                 {isMine ? (
-                  <Text style={styles.mineMark}>●</Text>
+                  <Text style={styles.mineMark}>
+                    {multiplicity > 1 ? `×${multiplicity}` : "●"}
+                  </Text>
                 ) : isOpened ? (
                   <Text style={styles.mineCount}>{mineCount}</Text>
                 ) : null}
@@ -158,7 +163,9 @@ const styles = StyleSheet.create({
   mineMark: {
     position: "absolute",
     bottom: 2,
+    right: 2,
     color: "#e97817",
-    fontSize: 7,
+    fontSize: 9,
+    fontWeight: "900",
   },
 });

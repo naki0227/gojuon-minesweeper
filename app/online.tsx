@@ -420,6 +420,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
             canOpen={canOpen}
             mineChars={mineChars}
             mineCount={(char) => state.mineCounts[char] ?? 0}
+            mineMultiplicity={(char) => state.mineMultiplicities?.[char] ?? 1}
             onOpen={(char) =>
               void online.run({
                 action: "move",

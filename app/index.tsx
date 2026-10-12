@@ -31,6 +31,7 @@ import {
   openCharacter,
   passAnswer,
   questionMineCharacters,
+  questionMineMultiplicity,
   submitAnswer,
   type GameState,
 } from "../src/game/engine";
@@ -202,7 +203,7 @@ export default function HomeScreen() {
         <View style={styles.header}>
           <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
           <Text style={styles.rule}>
-            回答してから1文字開く。セーフなら周囲8マスの地雷数を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。
+            回答してから1文字開く。セーフなら周囲8マスの答え文字数（重複込み）を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。
           </Text>
         </View>
 
@@ -328,6 +329,9 @@ export default function HomeScreen() {
               canOpen={canOpen}
               mineChars={mineChars}
               mineCount={(char) => adjacentMineCount(game.question, char)}
+              mineMultiplicity={(char) =>
+                questionMineMultiplicity(game.question, char)
+              }
               onOpen={handleOpen}
               openedChars={game.openedChars}
             />
@@ -337,7 +341,7 @@ export default function HomeScreen() {
         <View style={styles.legend}>
           <View style={styles.legendItem}>
             <View style={[styles.legendSwatch, styles.safeSwatch]} />
-            <Text style={styles.legendText}>セーフ + 周囲の地雷数</Text>
+            <Text style={styles.legendText}>セーフ + 周囲の答え文字数</Text>
           </View>
           <View style={styles.legendItem}>
             <View style={[styles.legendSwatch, styles.mineSwatch]} />
