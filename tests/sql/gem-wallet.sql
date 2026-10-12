@@ -1,5 +1,5 @@
 \set ON_ERROR_STOP on
--- Minimal Supabase Auth emulation in the CI PostgreSQL service.
+-- Minimal Supabase Auth emulation for the CI PostgreSQL service.
 create schema auth;
 create table auth.users (id uuid primary key);
 create function auth.uid() returns uuid language sql stable
@@ -10,9 +10,7 @@ begin
   if not exists (select from pg_roles where rolname = 'authenticated') then create role authenticated; end if;
   if not exists (select from pg_roles where rolname = 'service_role') then create role service_role; end if;
 end $$;
-
-\i supabase/migrations/20261012203000_gem_wallet.sql
-
+\i supabase/migrations/20261012200000_gem_wallet.sql
 insert into auth.users (id) values
  ('11111111-1111-4111-8111-111111111111'),
  ('22222222-2222-4222-8222-222222222222');
@@ -21,54 +19,52 @@ do $$
 declare
   uid uuid := '11111111-1111-4111-8111-111111111111';
   other uuid := '22222222-2222-4222-8222-222222222222';
+  request_id uuid := 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
   gems integer;
 begin
-  -- One credited transaction; duplicates cannot mint extra gems.
-  gems := public.credit_verified_gem_purchase(uid,'20000001000001',
-    'com.naki0227.gojuonminesweeper.gems10','Sandbox',1760000000000);
-  if gems <> 10 then raise exception 'first purchase should give ten'; end if;
-  gems := public.credit_verified_gem_purchase(uid,'20000001000001',
-    'com.naki0227.gojuonminesweeper.gems10','Sandbox',1760000000000);
-  if gems <> 10 then raise exception 'duplicate receipt credited twice'; end if;
+  gems := public.gem_credit_apple_purchase(uid,'20000001000001',
+    'com.naki0227.gojuonminesweeper.gems10','Sandbox','2026-10-12T00:00:00Z');
+  if gems <> 10 then raise exception 'first purchase should credit ten'; end if;
+  gems := public.gem_credit_apple_purchase(uid,'20000001000001',
+    'com.naki0227.gojuonminesweeper.gems10','Sandbox','2026-10-12T00:00:00Z');
+  if gems <> 10 then raise exception 'duplicate purchase credited twice'; end if;
   begin
-    perform public.credit_verified_gem_purchase(other,'20000001000001',
-      'com.naki0227.gojuonminesweeper.gems10','Sandbox',1760000000000);
-    raise exception 'transaction was stolen by another account';
+    perform public.gem_credit_apple_purchase(other,'20000001000001',
+      'com.naki0227.gojuonminesweeper.gems10','Sandbox','2026-10-12T00:00:00Z');
+    raise exception 'transaction stolen by another account';
   exception when others then
-    if sqlerrm = 'transaction was stolen by another account' then raise; end if;
+    if sqlerrm = 'transaction stolen by another account' then raise; end if;
   end;
-
-  gems := public.spend_gems(uid, 3, 'revive', 'run_abc:revive:3');
+  gems := public.gem_spend(uid, request_id, 'revive');
   if gems <> 7 then raise exception 'revive debit wrong'; end if;
-  gems := public.spend_gems(uid, 3, 'revive', 'run_abc:revive:3');
-  if gems <> 7 then raise exception 'duplicate revival charged twice'; end if;
-  gems := public.spend_gems(uid, 1, 'hint', 'run_abc:hint:0');
+  gems := public.gem_spend(uid, request_id, 'revive');
+  if gems <> 7 then raise exception 'duplicate spend charged twice'; end if;
+  gems := public.gem_spend(uid, 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', 'safe_hint');
   if gems <> 6 then raise exception 'hint debit wrong'; end if;
   begin
-    perform public.spend_gems(uid, 3, 'revive', 'run_abc:hint:0');
-    raise exception 'idempotency key used for different reason';
+    perform public.gem_spend(uid, request_id, 'safe_hint');
+    raise exception 'conflicting idempotency accepted';
   exception when others then
-    if sqlerrm = 'idempotency key used for different reason' then raise; end if;
+    if sqlerrm = 'conflicting idempotency accepted' then raise; end if;
   end;
   begin
-    perform public.spend_gems(uid, 3, 'revive', 'run_abc:revive:4');
-    perform public.spend_gems(uid, 3, 'revive', 'run_abc:revive:5');
-    perform public.spend_gems(uid, 1, 'hint', 'run_abc:hint:1');
+    perform public.gem_spend(uid, 'cccccccc-cccc-4ccc-8ccc-cccccccccccc', 'revive');
+    perform public.gem_spend(uid, 'dddddddd-dddd-4ddd-8ddd-dddddddddddd', 'revive');
+    perform public.gem_spend(uid, 'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee', 'safe_hint');
     raise exception 'negative wallet balance accepted';
   exception when others then
     if sqlerrm = 'negative wallet balance accepted' then raise; end if;
   end;
   select balance into gems from public.gem_wallets where user_id = uid;
-  if gems < 0 then raise exception 'negative balance'; end if;
-  if (select count(*) from public.gem_purchases) <> 1 then
-    raise exception 'purchase ledger duplicate';
-  end if;
+  if gems <> 6 then raise exception 'failed spend did not roll back'; end if;
+  if (select count(*) from public.gem_apple_purchases) <> 1 then
+    raise exception 'duplicate purchase record'; end if;
   if has_function_privilege('authenticated',
-       'public.spend_gems(uuid,integer,text,text)', 'EXECUTE')
+       'public.gem_spend(uuid,uuid,text)', 'EXECUTE')
      or has_function_privilege('anon',
-       'public.credit_verified_gem_purchase(uuid,text,text,text,bigint)', 'EXECUTE')
-  then raise exception 'user has privileged wallet RPC access'; end if;
+       'public.gem_credit_apple_purchase(uuid,text,text,text,timestamptz)', 'EXECUTE')
+  then raise exception 'users can execute wallet write RPC'; end if;
   if has_table_privilege('authenticated','public.gem_wallets','INSERT')
      or has_table_privilege('authenticated','public.gem_ledger','UPDATE')
-  then raise exception 'client has balance write access'; end if;
+  then raise exception 'client has direct wallet write access'; end if;
 end $$;
