@@ -20,15 +20,15 @@ This branch is **stacked on PR #23**, not on `main`. Keep both PRs as drafts unt
    - `APPLE_IAP_ISSUER_ID`
    - `APPLE_IAP_KEY_ID`
    - `APPLE_IAP_PRIVATE_KEY` (the original PEM or its newline-escaped form)
-5. Deploy migration `20261012203000_gem_wallet.sql` and the Edge Function `gem-wallet` through the manual `deploy-supabase` workflow *after this branch is approved and merged*. Deploy DB before the app.
+5. Deploy migration `20261012200000_gem_wallet.sql` and the Edge Function `gem-wallet` through the manual `deploy-supabase` workflow *after this branch is approved and merged*. Deploy DB before the app.
 6. Configure product metadata, the IAP review requirements, and TestFlight sandbox tester. Validate product visibility, actual price tier, StoreKit purchase callback, server verification, product delivery, relaunch, reinstall and duplicate transaction delivery.
 
 ## Server behavior
 
 - `POST /functions/v1/gem-wallet`: `balance`, `verify`, `spend`. Requires a valid bearer JWT belonging to a Sign in with Apple user.
 - The Edge Function obtains transaction details directly from the Apple App Store Server API, authenticating with a short-lived signed JWT. It validates bundle ID, product ID, purchase type, transaction ID, non-revoked status, Apple environment, and **appAccountToken == authenticated Supabase user UUID**.
-- `credit_verified_gem_purchase` adds exactly 10 once per unique Apple transaction ID in one Postgres transaction.
-- `spend_gems` takes a per-user wallet row lock, validates price 1 (hint) or 3 (revive), forbids negative balances, and deduplicates retries using an action ID.
+- `gem_credit_apple_purchase` adds exactly 10 once per unique Apple transaction ID in one Postgres transaction.
+- `gem_spend` takes a per-user wallet row lock, validates price 1 (hint) or 3 (revive), forbids negative balances, and deduplicates retries using an action ID.
 - Only the Edge Function service role can execute the write RPCs. RLS lets clients read their own wallet and ledger but no direct modification.
 - The app calls `finishTransaction(isConsumable: true)` **only after** backend confirmation; unfinished transactions can be retried on StoreKit delivery.
 - No StoreKit `restorePurchases` for consumables: the server wallet is the source of truth.
