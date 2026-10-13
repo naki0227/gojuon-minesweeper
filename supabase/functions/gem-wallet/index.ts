@@ -6,7 +6,7 @@ import {
   BUNDLE_ID,
   ClientError,
   notificationTransactionId,
-  PRODUCT_ID,
+  GEM_PRODUCT_IDS,
   queryApple,
   revokeAppleSignIn,
 } from "./apple.ts";
@@ -50,7 +50,7 @@ async function handleNotification(body: Record<string, unknown>) {
   if (!known) return respond({ ok: true });
   const signed = await queryApple(transactionId);
   if (signed.transactionId === transactionId &&
-    signed.productId === PRODUCT_ID && signed.bundleId === BUNDLE_ID &&
+    GEM_PRODUCT_IDS.includes(signed.productId ?? "") && signed.bundleId === BUNDLE_ID &&
     Number.isSafeInteger(signed.revocationDate)) {
     const { error: revokeError } = await admin.rpc("gem_revoke_apple_purchase", {
       p_transaction_id: transactionId,
@@ -120,7 +120,7 @@ Deno.serve(async (request: Request) => {
       }
       const signed = await queryApple(transactionId);
       if (signed.transactionId !== transactionId ||
-        signed.bundleId !== BUNDLE_ID || signed.productId !== PRODUCT_ID ||
+        signed.bundleId !== BUNDLE_ID || !GEM_PRODUCT_IDS.includes(signed.productId ?? "") ||
         signed.appAccountToken?.toLowerCase() !== user.id.toLowerCase() ||
         signed.type !== "Consumable" ||
         !Number.isSafeInteger(signed.purchaseDate) ||
@@ -133,7 +133,7 @@ Deno.serve(async (request: Request) => {
       }
       const { data, error } = await admin.rpc("gem_credit_apple_purchase", {
         p_user_id: user.id, p_transaction_id: transactionId,
-        p_product_id: PRODUCT_ID, p_environment: environment,
+        p_product_id: signed.productId, p_environment: environment,
         p_purchased_at: new Date(signed.purchaseDate!).toISOString(),
       });
       if (error) throw error;

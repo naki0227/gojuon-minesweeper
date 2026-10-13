@@ -1,6 +1,11 @@
 // Apple server APIs used by the wallet: App Store Server API (transactions)
 // and Sign in with Apple token revocation (account deletion).
-export const PRODUCT_ID = "com.naki0227.gojuonminesweeper.gems10";
+// Gem consumables. The database decides how many gems each one credits.
+export const GEM_PRODUCT_IDS: readonly string[] = [
+  "com.naki0227.gojuonminesweeper.gems10",
+  "com.naki0227.gojuonminesweeper.gems30",
+  "com.naki0227.gojuonminesweeper.gems70",
+];
 export const BUNDLE_ID = "com.naki0227.gojuonminesweeper";
 
 export class ClientError extends Error {}

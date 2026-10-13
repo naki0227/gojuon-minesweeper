@@ -33,8 +33,6 @@ export type EndlessState = {
 export const FREE_REVIVE_LIMIT = 3;
 export const HINT_CREDIT_COST = 1;
 export const REVIVE_CREDIT_COST = 3;
-export const GEM_PACK_SIZE = 10;
-export const GEM_PACK_PRICE_YEN = 200;
 export const CHAIN_BONUS_PER_CELL = 3;
 
 // Difficulty is anchored on the most common question shape (4 characters,

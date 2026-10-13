@@ -1,7 +1,10 @@
--- Refunds, support grants and account deletion for the gem wallet.
+-- Gem packs, refunds, support grants and account deletion for the wallet.
 --
--- Refund policy: a refunded or revoked 10-gem purchase takes back up to 10
--- gems from the current balance and stops at zero. Gems already spent are
+-- Packs: gems10 (¥200), gems30 (¥500), gems70 (¥1,000). The gem count per
+-- product lives here; the Edge Function only passes Apple's product ID.
+--
+-- Refund policy: a refunded or revoked purchase takes back up to the gems
+-- it credited from the current balance and stops at zero. Gems already spent are
 -- written off; the balance never goes negative.
 --
 -- Support policy: when a crash spent gems without giving the hint or
@@ -16,9 +19,66 @@ alter table public.gem_ledger add constraint gem_ledger_reason_check
   ));
 
 alter table public.gem_apple_purchases
+  -- Gems this purchase credited. Earlier rows are all 10-gem packs.
+  add column gems integer not null default 10 check (gems > 0),
   add column revoked_at timestamptz,
-  -- Gems actually taken back (0..10); the rest was already spent.
-  add column clawed_back integer check (clawed_back between 0 and 10);
+  -- Gems actually taken back; the rest was already spent.
+  add column clawed_back integer check (clawed_back >= 0);
+
+create function public.gem_pack_size(p_product_id text) returns integer
+language sql immutable set search_path = ''
+as $$
+  select case p_product_id
+    when 'com.naki0227.gojuonminesweeper.gems10' then 10
+    when 'com.naki0227.gojuonminesweeper.gems30' then 30
+    when 'com.naki0227.gojuonminesweeper.gems70' then 70
+  end
+$$;
+
+-- Same contract as before, now for every pack.
+create or replace function public.gem_credit_apple_purchase(
+  p_user_id uuid, p_transaction_id text, p_product_id text,
+  p_environment text, p_purchased_at timestamptz
+) returns integer
+language plpgsql security invoker set search_path = ''
+as $$
+declare
+  v_gems integer := public.gem_pack_size(p_product_id);
+  v_existing_user uuid;
+  v_balance integer;
+begin
+  if p_user_id is null or p_transaction_id is null
+     or p_transaction_id !~ '^[0-9]{10,40}$'
+     or v_gems is null
+     or p_environment not in ('Production','Sandbox')
+     or p_purchased_at is null then
+    raise exception 'Invalid Apple purchase';
+  end if;
+  insert into public.gem_wallets (user_id) values (p_user_id)
+    on conflict (user_id) do nothing;
+  perform 1 from public.gem_wallets where user_id = p_user_id for update;
+  insert into public.gem_apple_purchases
+    (transaction_id, user_id, product_id, environment, purchased_at, gems)
+  values (p_transaction_id, p_user_id, p_product_id, p_environment,
+    p_purchased_at, v_gems)
+  on conflict (transaction_id) do nothing;
+  if found then
+    insert into public.gem_ledger (user_id, delta, reason, source_key)
+      values (p_user_id, v_gems, 'apple_purchase', 'apple:' || p_transaction_id);
+    update public.gem_wallets
+      set balance = balance + v_gems, updated_at = pg_catalog.now()
+      where user_id = p_user_id returning balance into v_balance;
+    return v_balance;
+  end if;
+  select user_id into v_existing_user from public.gem_apple_purchases
+    where transaction_id = p_transaction_id;
+  if v_existing_user is distinct from p_user_id then
+    raise exception 'Apple transaction already assigned';
+  end if;
+  select balance into v_balance from public.gem_wallets where user_id = p_user_id;
+  return v_balance;
+end;
+$$;
 
 -- Idempotent: a repeated notification for the same transaction changes
 -- nothing. Returns the gems taken back by this call (0 on repeats).
@@ -42,7 +102,7 @@ begin
 
   -- The account may have been deleted; keep the record either way.
   if v_purchase.user_id is not null then
-    select least(10, balance) into v_take from public.gem_wallets
+    select least(v_purchase.gems, balance) into v_take from public.gem_wallets
       where user_id = v_purchase.user_id for update;
     v_take := coalesce(v_take, 0);
     if v_take > 0 then
@@ -92,6 +152,9 @@ begin
 end;
 $$;
 
+revoke all on function public.gem_pack_size(text)
+  from public, anon, authenticated;
+grant execute on function public.gem_pack_size(text) to service_role;
 revoke all on function public.gem_revoke_apple_purchase(text, timestamptz)
   from public, anon, authenticated;
 grant execute on function public.gem_revoke_apple_purchase(text, timestamptz)

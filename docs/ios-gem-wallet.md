@@ -17,7 +17,11 @@ PRs #23 and #24 have been merged into `main`. The wallet database migration and 
 
 1. Enable **Sign in with Apple** for `com.naki0227.gojuonminesweeper`; ensure EAS signing profile supports the capability. A new native build is required.
 2. Under Supabase Authentication → Providers, enable Apple for **native** login and allow the bundle ID above. Verify the client ID and provider settings on an actual iPhone.
-3. In App Store Connect, register consumable `com.naki0227.gojuonminesweeper.gems10` with Japanese pricing **¥200** (the UI uses StoreKit's localized price, never a hardcoded price).
+3. In App Store Connect, register three consumables (the UI shows StoreKit's localized price; the discount label is fixed from the Japanese prices in `src/wallet/packs.ts`):
+   - `com.naki0227.gojuonminesweeper.gems10` — 10 gems, ¥200
+   - `com.naki0227.gojuonminesweeper.gems30` — 30 gems, ¥500 (17% off)
+   - `com.naki0227.gojuonminesweeper.gems70` — 70 gems, ¥1,000 (29% off)
+   The gem count per product is defined in SQL (`gem_pack_size`); a new pack needs a migration, the Edge Function list and `packs.ts`.
 4. Create an App Store Connect **In-App Purchase API key** (issuer ID, key ID, private .p8). Store these values **only as Supabase Edge Function secrets**:
    - `APPLE_IAP_ISSUER_ID`
    - `APPLE_IAP_KEY_ID`
@@ -36,7 +40,7 @@ PRs #23 and #24 have been merged into `main`. The wallet database migration and 
 
 - `POST /functions/v1/gem-wallet`: `balance`, `verify`, `spend`. Requires a valid bearer JWT belonging to a Sign in with Apple user.
 - The Edge Function obtains transaction details directly from the Apple App Store Server API, authenticating with a short-lived signed JWT. It validates bundle ID, product ID, purchase type, transaction ID, non-revoked status, Apple environment, and **appAccountToken == authenticated Supabase user UUID**.
-- `gem_credit_apple_purchase` adds exactly 10 once per unique Apple transaction ID in one Postgres transaction.
+- `gem_credit_apple_purchase` adds the pack's gems (10/30/70) once per unique Apple transaction ID in one Postgres transaction.
 - `gem_spend` takes a per-user wallet row lock, validates price 1 (hint) or 3 (revive), forbids negative balances, and deduplicates retries using an action ID.
 - Only the Edge Function service role can execute the write RPCs. RLS lets clients read their own wallet and ledger but no direct modification.
 - The app calls `finishTransaction(isConsumable: true)` **only after** backend confirmation; unfinished transactions can be retried on StoreKit delivery.

@@ -1,6 +1,5 @@
 import { getSupabase, isOnlineConfigured } from "../online/client";
 
-export const GEMS_PRODUCT_ID = "com.naki0227.gojuonminesweeper.gems10";
 export const isGemWalletConfigured = isOnlineConfigured;
 
 type WalletResponse =

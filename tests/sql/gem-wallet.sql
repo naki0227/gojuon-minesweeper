@@ -142,10 +142,30 @@ begin
        'public.gem_revoke_apple_purchase(text,timestamptz)', 'EXECUTE')
   then raise exception 'users can call refund/support RPC'; end if;
 
+  -- Larger packs credit their own size and refund up to it.
+  gems := public.gem_credit_apple_purchase(uid,'20000001000003',
+    'com.naki0227.gojuonminesweeper.gems70','Sandbox','2026-10-13T00:00:00Z');
+  if gems <> 73 then raise exception 'gems70 credited to %', gems; end if;
+  gems := public.gem_credit_apple_purchase(uid,'20000001000004',
+    'com.naki0227.gojuonminesweeper.gems30','Sandbox','2026-10-13T00:00:00Z');
+  if gems <> 103 then raise exception 'gems30 credited to %', gems; end if;
+  taken := public.gem_revoke_apple_purchase('20000001000003', now());
+  if taken <> 70 then raise exception 'gems70 refund took %', taken; end if;
+  update public.gem_wallets set balance = 12 where user_id = uid;
+  taken := public.gem_revoke_apple_purchase('20000001000004', now());
+  if taken <> 12 then raise exception 'gems30 refund should stop at zero, took %', taken; end if;
+  begin
+    perform public.gem_credit_apple_purchase(uid,'20000001000005',
+      'com.naki0227.gojuonminesweeper.gems999','Sandbox','2026-10-13T00:00:00Z');
+    raise exception 'unknown pack credited';
+  exception when others then
+    if sqlerrm = 'unknown pack credited' then raise; end if;
+  end;
+
   -- Deleting the account removes the wallet but keeps purchase records.
   delete from auth.users where id = uid;
   if exists (select 1 from public.gem_wallets where user_id = uid) then
     raise exception 'wallet survived account deletion'; end if;
-  if (select count(*) from public.gem_apple_purchases where user_id is null) <> 2 then
+  if (select count(*) from public.gem_apple_purchases where user_id is null) <> 4 then
     raise exception 'purchase records lost on account deletion'; end if;
 end $$;

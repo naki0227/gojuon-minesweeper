@@ -9,11 +9,12 @@ import {
   spendGems,
 } from "./client";
 import { gemStore } from "./gemStore";
+import type { GemProduct } from "./gemStore.native";
 
 export function useGemWallet() {
   const [userId, setUserId] = useState<string | null>(null);
   const [balance, setBalance] = useState<number | null>(null);
-  const [price, setPrice] = useState<string | null>(null);
+  const [products, setProducts] = useState<GemProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [buying, setBuying] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -29,8 +30,7 @@ export function useGemWallet() {
       setUserId(account);
       setBalance(account ? await loadGemBalance() : null);
       if (account) {
-        const product = await gemStore.fetchProduct().catch(() => null);
-        setPrice(product?.displayPrice ?? null);
+        setProducts(await gemStore.fetchProducts().catch(() => []));
       }
     } catch {
       setBalance(null);
@@ -71,12 +71,12 @@ export function useGemWallet() {
     };
   }, [refresh]);
 
-  const purchase = async () => {
-    if (!userId || !price || buying) return;
+  const purchase = async (productId: string) => {
+    if (!userId || buying) return;
     setBuying(true);
     setMessage(null);
     try {
-      await gemStore.buy(userId);
+      await gemStore.buy(userId, productId);
     } catch {
       setBuying(false);
       setMessage("購入を開始できませんでした。");
@@ -114,7 +114,7 @@ export function useGemWallet() {
   return {
     userId,
     balance,
-    price,
+    products,
     loading,
     buying,
     message,

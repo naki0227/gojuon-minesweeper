@@ -1,5 +1,6 @@
 import { Alert, Pressable, Text, View } from "react-native";
 import { AppleAccount } from "./AppleAccount";
+import { packDiscountPercent } from "./packs";
 import { styles } from "../endless/styles";
 import { useGemWallet } from "./useGemWallet";
 
@@ -42,23 +43,31 @@ export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
           <Text style={styles.statValue}>
             残高：{wallet.balance === null ? "同期中" : wallet.balance} ジェム
           </Text>
-          <Pressable
-            style={[
-              styles.primary,
-              (!wallet.price || wallet.buying || wallet.loading) &&
-                styles.disabled,
-            ]}
-            disabled={!wallet.price || wallet.buying || wallet.loading}
-            onPress={() => void wallet.purchase()}
-          >
-            <Text style={styles.primaryText}>
-              {wallet.buying
-                ? "購入処理中…"
-                : wallet.price
-                  ? `10ジェムを購入（${wallet.price}）`
-                  : "商品情報を取得できません"}
+          {wallet.products.length === 0 ? (
+            <Text style={styles.panelText}>
+              {wallet.loading
+                ? "商品情報を取得中…"
+                : "商品情報を取得できません"}
             </Text>
-          </Pressable>
+          ) : null}
+          {wallet.products.map((product) => {
+            const discount = packDiscountPercent(product);
+            const disabled = wallet.buying || wallet.loading;
+            return (
+              <Pressable
+                key={product.productId}
+                style={[styles.primary, disabled && styles.disabled]}
+                disabled={disabled}
+                onPress={() => void wallet.purchase(product.productId)}
+              >
+                <Text style={styles.primaryText}>
+                  {wallet.buying
+                    ? "購入処理中…"
+                    : `${product.gems}ジェム（${product.displayPrice}）${discount > 0 ? ` ${discount}%オフ` : ""}`}
+                </Text>
+              </Pressable>
+            );
+          })}
           <Text style={styles.panelText}>
             お問い合わせID：{supportId(wallet.userId)}
             {"\n"}
