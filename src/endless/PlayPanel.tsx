@@ -3,7 +3,8 @@ import { Pressable, Text, TextInput, View } from "react-native";
 
 import { CharacterBoard } from "../components/CharacterBoard";
 import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
-import { safeHintCandidate, type EndlessState } from "./engine";
+import { isExhausted, safeHintCandidate, type EndlessState } from "./engine";
+import { LETTER_HINT_PENALTY, letterHint } from "./letterHints";
 import { GEM_COLOR } from "../wallet/GemSheet";
 import { styles } from "./styles";
 
@@ -38,6 +39,7 @@ export function PlayPanel({
 }: Props) {
   if (game.phase !== "answer" && game.phase !== "open") return null;
   const canAnswer = game.phase === "answer";
+  const exhausted = isExhausted(game);
   const canHint =
     !busy &&
     !!safeHintCandidate(game) &&
@@ -57,6 +59,21 @@ export function PlayPanel({
         canOpen={game.phase === "open"}
         onOpen={onOpen}
       />
+      {exhausted ? (
+        <View style={styles.letterHint}>
+          <Text style={styles.letterHintCaption}>答えの文字</Text>
+          <Text
+            style={[
+              styles.letterHintText,
+              // Long answers shrink so up to 15 letters fit on one line.
+              { fontSize: game.question.length > 9 ? 16 : 22 },
+              { letterSpacing: game.question.length > 9 ? 1 : 4 },
+            ]}
+          >
+            {letterHint(game.question, game.revealedLetters)}
+          </Text>
+        </View>
+      ) : null}
       <View style={styles.answerRow}>
         <TextInput
           accessibilityLabel="答えを入力"
@@ -85,7 +102,11 @@ export function PlayPanel({
           disabled={!canAnswer}
           onPress={onPass}
         >
-          <Text style={styles.secondaryText}>回答せず開く</Text>
+          <Text style={styles.secondaryText}>
+            {exhausted
+              ? `1文字見る（-${LETTER_HINT_PENALTY}）`
+              : "回答せず開く"}
+          </Text>
         </Pressable>
         <Pressable
           accessibilityLabel="1ジェムで安全なマスを緑色で表示"

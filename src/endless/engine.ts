@@ -6,6 +6,11 @@ import {
   isMineCharacter,
   questionMineCharacters,
 } from "../game/engine";
+import {
+  answerLetters,
+  isBoardExhausted,
+  LETTER_HINT_PENALTY,
+} from "./letterHints";
 
 export type EndlessPhase =
   "answer" | "open" | "cleared" | "revive" | "finished";
@@ -22,6 +27,8 @@ export type EndlessState = {
   mineHits: number;
   wrongGuesses: number;
   hintUses: number;
+  // Answer letters shown after every safe cell was opened.
+  revealedLetters: number;
   totalOpenedMoves: number;
   totalMineHits: number;
   chainBonus: number;
@@ -59,6 +66,7 @@ export function startEndless(question: Question): EndlessState {
     mineHits: 0,
     wrongGuesses: 0,
     hintUses: 0,
+    revealedLetters: 0,
     totalOpenedMoves: 0,
     totalMineHits: 0,
     chainBonus: 0,
@@ -88,8 +96,29 @@ export function questionScore(state: EndlessState): number {
       state.openedMoves * 6 -
       state.mineHits * 30 -
       state.wrongGuesses * 12 -
-      state.hintUses * 20,
+      state.hintUses * 20 -
+      state.revealedLetters * LETTER_HINT_PENALTY,
   );
+}
+
+// With no safe cell left to open, a wrong answer or a pass shows the next
+// answer letter instead, as in two-player games, for a score penalty.
+function revealLetter(state: EndlessState, lead: string): EndlessState {
+  const total = answerLetters(state.question).length;
+  const revealedLetters = Math.min(total, state.revealedLetters + 1);
+  const shown = revealedLetters > state.revealedLetters;
+  return {
+    ...state,
+    phase: "answer",
+    revealedLetters,
+    message: !shown
+      ? `${lead}答えはすべて表示中。入力して次へ進もう。`
+      : `${lead}答えの${revealedLetters}文字目を表示（-${LETTER_HINT_PENALTY}点）。`,
+  };
+}
+
+export function isExhausted(state: EndlessState): boolean {
+  return isBoardExhausted(state.question, state.opened);
 }
 
 export function guessEndless(state: EndlessState, input: string): EndlessState {
@@ -111,18 +140,23 @@ export function guessEndless(state: EndlessState, input: string): EndlessState {
       message: `正解！ +${earned}点${bonusNote}。次の問題に進もう。`,
     };
   }
+  const wrong = { ...state, wrongGuesses: state.wrongGuesses + 1 };
+  if (isExhausted(state)) return revealLetter(wrong, "不正解。");
   return {
-    ...state,
-    wrongGuesses: state.wrongGuesses + 1,
+    ...wrong,
     phase: "open",
     message: "不正解。1文字開けてヒントを探そう。",
   };
 }
 
 export function passEndless(state: EndlessState): EndlessState {
-  return state.phase === "answer"
-    ? { ...state, phase: "open", message: "安全だと思うマスを1つ開けよう。" }
-    : state;
+  if (state.phase !== "answer") return state;
+  if (isExhausted(state)) return revealLetter(state, "");
+  return {
+    ...state,
+    phase: "open",
+    message: "安全だと思うマスを1つ開けよう。",
+  };
 }
 
 function expandSafe(
@@ -155,6 +189,8 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
     : expandSafe(state.question, char, state.opened);
   const lives = state.lives - (mine ? 1 : 0);
   const chainBonus = Math.max(0, expanded.length - 1) * CHAIN_BONUS_PER_CELL;
+  const exhausted =
+    !mine && isBoardExhausted(state.question, [...state.opened, ...expanded]);
   return {
     ...state,
     opened: [...state.opened, ...expanded],
@@ -172,9 +208,11 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
         ? "ライフがなくなった！ 復活するか記録を確定しよう。"
         : mine
           ? "地雷！ ライフが1つ減った。"
-          : expanded.length > 1
-            ? `CHAIN +${chainBonus}点！ 周囲の${expanded.length - 1}マスも開いた。`
-            : "安全！ 数字を手掛かりに次の答えを考えよう。",
+          : exhausted
+            ? `安全なマスはすべて開いた！ ここからは回答を外すかパスするたびに、答えの文字が1つずつ出る（1文字-${LETTER_HINT_PENALTY}点）。`
+            : expanded.length > 1
+              ? `CHAIN +${chainBonus}点！ 周囲の${expanded.length - 1}マスも開いた。`
+              : "安全！ 数字を手掛かりに次の答えを考えよう。",
   };
 }
 
@@ -229,6 +267,7 @@ export function nextEndlessQuestion(
     mineHits: 0,
     wrongGuesses: 0,
     hintUses: 0,
+    revealedLetters: 0,
     lastChainBonus: 0,
     message: "次の問題！ 少ない手数・被弾で正解を目指そう。",
   };
