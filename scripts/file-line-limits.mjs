@@ -5,8 +5,8 @@ export const DEFAULT_LIMIT = 300;
 
 /** @type {Readonly<Record<string, number>>} */
 export const LEGACY_LIMITS = {
-  "app/index.tsx": 588,
-  "app/online.tsx": 655,
+  "app/index.tsx": 516,
+  "app/online.tsx": 649,
   "src/components/BoardTile.tsx": 360,
   "src/components/HomeSetup.tsx": 814,
   "src/game/engine.ts": 336,

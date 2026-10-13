@@ -101,5 +101,5 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   // Space between the game's last control and the ad, against mistaps.
-  duringPlay: { marginTop: 80 },
+  duringPlay: { marginTop: 150 },
 });
