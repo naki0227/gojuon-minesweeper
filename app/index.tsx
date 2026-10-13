@@ -201,7 +201,7 @@ export default function HomeScreen() {
             <Text style={styles.changeButtonText}>条件を変える</Text>
           </Pressable>
         </View>
-        <RuleHelp kana={game.question.language === "ja"} />
+        <RuleHelp />
 
         <View
           style={[styles.turnPanel, game.currentPlayer === 1 && styles.turnP2]}

@@ -190,7 +190,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
     <>
       <View style={styles.header}>
         <Text style={styles.prompt}>{state.prompt}</Text>
-        <RuleHelp kana={state.language === "ja"} />
+        <RuleHelp />
       </View>
 
       {!finished ? (

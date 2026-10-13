@@ -1,13 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState, type ComponentType } from "react";
-import {
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useReducedMotion } from "../components/motion";
 import { Popup } from "../components/Popup";
@@ -38,12 +31,11 @@ const PAGES: readonly Page[] = [
 
 const SEEN_KEY = "tutorial.v1.seen";
 
-// Opens the tutorial once on the first launch of the app (not on web,
-// which shows the rules as text).
+// Opens the tutorial once, on the first launch of the app or the first
+// visit to the website.
 export function useFirstRunTutorial() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    if (Platform.OS === "web") return;
     void AsyncStorage.getItem(SEEN_KEY)
       .then((seen) => {
         if (!seen) setVisible(true);
@@ -88,6 +80,7 @@ export function TutorialModal({
     >
       <ScrollView
         ref={pager}
+        style={styles.pager}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
@@ -140,6 +133,8 @@ export function TutorialModal({
 
 const styles = StyleSheet.create({
   card: { paddingBottom: 16 },
+  // No focus ring around the pager on the web.
+  pager: { outlineWidth: 0 },
   page: { paddingHorizontal: 22, paddingTop: 16, gap: 8 },
   step: { color: "#8a9aa5", fontSize: 11, fontWeight: "800" },
   title: { color: colors.ink, fontSize: 20, fontWeight: "900" },
