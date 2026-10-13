@@ -1,9 +1,8 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
-import {
-  currentAppleAccount,
-  GEMS_PRODUCT_ID,
-  verifyGemPurchase,
-} from "./client";
+import { currentAppleAccount, verifyGemPurchase } from "./client";
+import { GEM_PACKS, isGemProduct, type GemPack } from "./packs";
+
+export type GemProduct = GemPack & { displayPrice: string };
 
 type ExpoIap = typeof import("expo-iap");
 type Purchase = import("expo-iap").Purchase;
@@ -33,7 +32,7 @@ function emit(event: GemEvent) {
 // Called by the app-wide IAP listener. StoreKit transaction is *not*
 // finished until the Apple server confirms it and Supabase commits the credit.
 export async function handleGemPurchase(purchase: Purchase): Promise<void> {
-  if (!iap || purchase.productId !== GEMS_PRODUCT_ID) return;
+  if (!iap || !isGemProduct(purchase.productId)) return;
   awaitingPurchase = false;
   if (purchase.purchaseState !== "purchased") {
     emit({ type: "pending" });
@@ -71,16 +70,21 @@ export const gemStore = {
       listeners.delete(callback);
     };
   },
-  async fetchProduct(): Promise<{ displayPrice: string } | null> {
-    if (!iap) return null;
+  // Packs that StoreKit returned, in GEM_PACKS order. Missing ones (not yet
+  // approved, or not sold in the storefront) are left out.
+  async fetchProducts(): Promise<GemProduct[]> {
+    if (!iap) return [];
     const products = await iap.fetchProducts({
-      skus: [GEMS_PRODUCT_ID],
+      skus: GEM_PACKS.map((pack) => pack.productId),
       type: "in-app",
     });
-    const result = products?.find((product) => product.id === GEMS_PRODUCT_ID);
-    return result ? { displayPrice: result.displayPrice } : null;
+    return GEM_PACKS.flatMap((pack) => {
+      const found = products?.find((product) => product.id === pack.productId);
+      return found ? [{ ...pack, displayPrice: found.displayPrice }] : [];
+    });
   },
-  async buy(userId: string): Promise<void> {
+  async buy(userId: string, productId: string): Promise<void> {
+    if (!isGemProduct(productId)) throw new Error("商品が見つかりません。");
     if (!iap) throw new Error("この端末では購入できません。");
     if (userId !== (await currentAppleAccount())) {
       throw new Error("Appleアカウントでログインしてください。");
@@ -88,7 +92,7 @@ export const gemStore = {
     awaitingPurchase = true;
     try {
       await iap.requestPurchase({
-        request: { apple: { sku: GEMS_PRODUCT_ID, appAccountToken: userId } },
+        request: { apple: { sku: productId, appAccountToken: userId } },
         type: "in-app",
       });
     } catch (error) {

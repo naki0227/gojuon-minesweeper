@@ -10,7 +10,7 @@ export const LEGACY_LIMITS = {
   "src/components/BoardTile.tsx": 360,
   "src/components/HomeSetup.tsx": 814,
   "src/game/engine.ts": 336,
-  "supabase/functions/online-game/index.ts": 595,
+  "supabase/functions/online-game/index.ts": 507,
 };
 
 export const CHECKED_DIRECTORIES = [

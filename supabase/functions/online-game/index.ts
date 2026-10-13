@@ -152,111 +152,60 @@ async function loadGame(
   return { state, version: secret.version };
 }
 
-// Writes a new game state. The secret row's version is the lock: if another
-// request changed the game first, nothing is written and the player retries.
+const CONFLICT_MESSAGE = "ほかの操作と重なりました。もう一度どうぞ。";
+
+// Writes the hidden and public state in one database transaction. The room
+// must still be playing at `expectedVersion`; otherwise another request won
+// and nothing is written.
 async function commitGame(
   room: OnlineRoom,
   state: GameState,
   expectedVersion: number,
-  extra: Partial<OnlineRoom> = {},
+  options: {
+    status?: "closed";
+    endReason?: OnlineRoom["end_reason"];
+    requireExpiredDeadline?: boolean;
+  } = {},
 ): Promise<OnlineRoom> {
-  const version = expectedVersion + 1;
-  const now = new Date().toISOString();
-  const updated = must(
-    await admin
-      .from("online_room_secrets")
-      .update({ state: storeGame(state), version, updated_at: now })
-      .eq("room_id", room.id)
-      .eq("version", expectedVersion)
-      .select("room_id"),
-  ) as unknown[];
-  if (updated.length === 0) {
-    throw new UserError("ほかの操作と重なりました。もう一度どうぞ。");
-  }
-
   const finished = state.phase === "finished";
-  return must(
-    await admin
-      .from("online_rooms")
-      .update({
-        public_state: toPublicState(state),
-        version,
-        status: finished ? "finished" : "playing",
-        turn_deadline: finished ? null : deadlineFromNow(),
-        end_reason: finished
-          ? state.winner === null
-            ? "draw"
-            : "answer"
-          : null,
-        updated_at: now,
-        ...extra,
-      })
-      .eq("id", room.id)
-      .select("*")
-      .single(),
-  ) as OnlineRoom;
-}
-
-// Starts a fresh game in a room that just got its second player (or both
-// players asked for a rematch).
-async function startGame(
-  room: OnlineRoom,
-  players: readonly string[],
-  excludeId?: string,
-): Promise<OnlineRoom> {
-  const state = startOnlineGame(sanitizeFilters(room.filters), excludeId);
-  const version = room.version + 1;
-  const now = new Date().toISOString();
-
-  must(
-    await admin.from("online_room_secrets").upsert({
-      room_id: room.id,
-      state: storeGame(state),
-      version,
-      updated_at: now,
+  const status = options.status ?? (finished ? "finished" : "playing");
+  const updated = must(
+    await admin.rpc("online_commit_game", {
+      p_room_id: room.id,
+      p_expected_version: expectedVersion,
+      p_secret_state: storeGame(state),
+      p_public_state: toPublicState(state),
+      p_status: status,
+      p_turn_deadline: status === "playing" ? deadlineFromNow() : null,
+      p_end_reason:
+        options.endReason ??
+        (finished ? (state.winner === null ? "draw" : "answer") : null),
+      p_require_expired_deadline: options.requireExpiredDeadline ?? false,
     }),
-  );
-
-  return must(
-    await admin
-      .from("online_rooms")
-      .update({
-        players,
-        status: "playing",
-        public_state: toPublicState(state),
-        version,
-        turn_deadline: deadlineFromNow(),
-        rematch: [false, false],
-        end_reason: null,
-        updated_at: now,
-      })
-      .eq("id", room.id)
-      .select("*")
-      .single(),
-  ) as OnlineRoom;
+  ) as OnlineRoom | null;
+  if (!updated?.id) {
+    throw new UserError(CONFLICT_MESSAGE);
+  }
+  return updated;
 }
 
-// Takes a waiting room for `userId`. Only one caller can win the race,
-// because the update only matches while the room is still waiting.
+// Takes a waiting room for `userId` and starts the game in one transaction.
+// Only one caller can win the race; the loser gets null.
 async function claimRoom(
   room: OnlineRoom,
   userId: string,
 ): Promise<OnlineRoom | null> {
-  const players = [...room.players, userId];
-  const claimed = must(
-    await admin
-      .from("online_rooms")
-      .update({
-        status: "playing",
-        players,
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", room.id)
-      .eq("status", "waiting")
-      .select("*"),
-  ) as OnlineRoom[];
-  const taken = claimed[0];
-  return taken ? startGame(taken, players) : null;
+  const state = startOnlineGame(sanitizeFilters(room.filters));
+  const started = must(
+    await admin.rpc("online_start_game", {
+      p_room_id: room.id,
+      p_user_id: userId,
+      p_secret_state: storeGame(state),
+      p_public_state: toPublicState(state),
+      p_turn_deadline: deadlineFromNow(),
+    }),
+  ) as OnlineRoom | null;
+  return started?.id ? started : null;
 }
 
 async function joinByCode(
@@ -419,6 +368,11 @@ async function claimTimeout(
     throw new UserError("まだ持ち時間が残っています。");
   }
   const { state, version } = await loadGame(roomId);
+  // The deadline above belongs to the room as read; a newer hidden state
+  // means the opponent already moved and has a fresh deadline.
+  if (version !== room.version) {
+    throw new UserError(CONFLICT_MESSAGE);
+  }
   if (state.currentPlayer === seat) {
     throw new UserError("あなたの手番です。");
   }
@@ -426,40 +380,35 @@ async function claimTimeout(
     room,
     concedeGame(state, state.currentPlayer, "timeout"),
     version,
-    { end_reason: "timeout" },
+    { endReason: "timeout", requireExpiredDeadline: true },
   );
 }
 
 async function rematch(userId: string, roomId: string): Promise<OnlineRoom> {
   const room = await loadRoom(roomId);
-  const seat = requireSeat(room, userId);
+  requireSeat(room, userId);
   if (room.status !== "finished") {
     throw new UserError("この部屋ではもう一戦できません。");
   }
 
-  const flags = [room.rematch[0] ?? false, room.rematch[1] ?? false];
-  flags[seat] = true;
-  const updated = must(
-    await admin
-      .from("online_rooms")
-      .update({ rematch: flags, updated_at: new Date().toISOString() })
-      .eq("id", roomId)
-      .eq("status", "finished")
-      .eq("version", room.version)
-      .select("*"),
-  ) as OnlineRoom[];
-  const next = updated[0];
-  if (!next) {
-    return loadRoom(roomId);
-  }
-  if (!flags[0] || !flags[1]) {
-    return next;
-  }
-
-  // Both agreed: swap seats so the other player moves first, and avoid
-  // repeating the question.
+  // The flag and, once both agree, the next game are written together. The
+  // next game is prepared up front and avoids repeating the question.
   const { state } = await loadGame(roomId);
-  return startGame(next, [...next.players].reverse(), state.question.id);
+  const next = startOnlineGame(
+    sanitizeFilters(room.filters),
+    state.question.id,
+  );
+  const updated = must(
+    await admin.rpc("online_request_rematch", {
+      p_room_id: roomId,
+      p_user_id: userId,
+      p_expected_version: room.version,
+      p_secret_state: storeGame(next),
+      p_public_state: toPublicState(next),
+      p_turn_deadline: deadlineFromNow(),
+    }),
+  ) as OnlineRoom | null;
+  return updated?.id ? updated : loadRoom(roomId);
 }
 
 async function leave(userId: string, roomId: string): Promise<OnlineRoom> {
@@ -473,8 +422,7 @@ async function leave(userId: string, roomId: string): Promise<OnlineRoom> {
     const { state, version } = await loadGame(roomId);
     return commitGame(room, concedeGame(state, seat, "forfeit"), version, {
       status: "closed",
-      end_reason: "forfeit",
-      turn_deadline: null,
+      endReason: "forfeit",
     });
   }
   if (room.status === "finished") {

@@ -1,6 +1,5 @@
 import { getSupabase, isOnlineConfigured } from "../online/client";
 
-export const GEMS_PRODUCT_ID = "com.naki0227.gojuonminesweeper.gems10";
 export const isGemWalletConfigured = isOnlineConfigured;
 
 type WalletResponse =
@@ -51,4 +50,27 @@ export function spendGems(
   actionId: string,
 ): Promise<number> {
   return walletAction({ action: "spend", reason, actionId });
+}
+
+// Deletes the Apple account's wallet and server account. Remaining gems are
+// lost; Apple purchase records stay without the account to stop reuse.
+export async function deleteAppleAccount(
+  authorizationCode: string | null,
+): Promise<void> {
+  const supabase = getSupabase();
+  const { data, error } = await supabase.functions.invoke<
+    { ok: true } | { ok: false; error: string }
+  >("gem-wallet", {
+    body: {
+      action: "delete_account",
+      authorizationCode: authorizationCode ?? "",
+    },
+  });
+  if (error || !data?.ok) {
+    throw new Error(
+      "アカウントを削除できませんでした。通信を確認してください。",
+    );
+  }
+  // The server already removed the user; only the local session is left.
+  await supabase.auth.signOut({ scope: "local" }).catch(() => {});
 }
