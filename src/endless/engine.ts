@@ -44,7 +44,9 @@ export const DIFFICULTY_ANCHOR = 4;
 export const LENGTH_BONUS_PER_CHAR = 12;
 export const MINE_BONUS_PER_TYPE = 12;
 export const MIN_DIFFICULTY_BONUS = -60;
-export const MAX_DIFFICULTY_BONUS = 150;
+// The longest questions (15 characters, 14 mine types) earn +252; the cap
+// only guards against unexpected data.
+export const MAX_DIFFICULTY_BONUS = 300;
 
 export function startEndless(question: Question): EndlessState {
   return {

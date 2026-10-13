@@ -117,6 +117,16 @@ describe("endless solo rules", () => {
       answers: [{ display: value, value, aliases: [value] }],
     };
     expect(difficultyBonus(huge)).toBe(MAX_DIFFICULTY_BONUS);
+    // The bank's longest answers (15 characters) stay below the cap.
+    const longest = { ...huge, length: 15 };
+    expect(
+      difficultyBonus({
+        ...longest,
+        answers: [
+          { display: "abcdefghijklmno", value: "abcdefghijklmno", aliases: [] },
+        ],
+      }),
+    ).toBe((15 - 4) * 12 + (15 - 4) * 12);
     const battered = {
       ...startEndless(question),
       openedMoves: 30,
