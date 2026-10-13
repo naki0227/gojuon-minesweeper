@@ -1,16 +1,16 @@
 import type { Question } from "../data/types";
-import { adjacentCharacters, getBoardOrder } from "../game/board";
+import { getBoardOrder } from "../game/board";
 import {
-  adjacentMineCount,
+  allSafeCellsOpen,
+  answerCharacters,
+  expandZeroArea,
   isAcceptedAnswer,
   isMineCharacter,
   questionMineCharacters,
 } from "../game/engine";
-import {
-  answerLetters,
-  isBoardExhausted,
-  LETTER_HINT_PENALTY,
-} from "./letterHints";
+
+// Points taken from the question for each answer letter shown.
+export const LETTER_HINT_PENALTY = 25;
 
 export type EndlessPhase =
   "answer" | "open" | "cleared" | "revive" | "finished";
@@ -104,7 +104,7 @@ export function questionScore(state: EndlessState): number {
 // With no safe cell left to open, a wrong answer or a pass shows the next
 // answer letter instead, as in two-player games, for a score penalty.
 function revealLetter(state: EndlessState, lead: string): EndlessState {
-  const total = answerLetters(state.question).length;
+  const total = answerCharacters(state.question).length;
   const revealedLetters = Math.min(total, state.revealedLetters + 1);
   const shown = revealedLetters > state.revealedLetters;
   return {
@@ -118,7 +118,7 @@ function revealLetter(state: EndlessState, lead: string): EndlessState {
 }
 
 export function isExhausted(state: EndlessState): boolean {
-  return isBoardExhausted(state.question, state.opened);
+  return allSafeCellsOpen(state.question, state.opened);
 }
 
 export function guessEndless(state: EndlessState, input: string): EndlessState {
@@ -159,38 +159,17 @@ export function passEndless(state: EndlessState): EndlessState {
   };
 }
 
-function expandSafe(
-  question: Question,
-  first: string,
-  opened: readonly string[],
-): string[] {
-  const seen = new Set(opened);
-  const queue = [first];
-  const additions: string[] = [];
-  for (let i = 0; i < queue.length; i += 1) {
-    const current = queue[i];
-    if (!current || seen.has(current) || isMineCharacter(question, current))
-      continue;
-    seen.add(current);
-    additions.push(current);
-    if (adjacentMineCount(question, current) === 0) {
-      queue.push(...adjacentCharacters(question.language, current));
-    }
-  }
-  return additions;
-}
-
 export function openEndless(state: EndlessState, char: string): EndlessState {
   if (state.phase !== "open" || state.opened.includes(char)) return state;
   if (!getBoardOrder(state.question.language).includes(char)) return state;
   const mine = isMineCharacter(state.question, char);
   const expanded = mine
     ? [char]
-    : expandSafe(state.question, char, state.opened);
+    : expandZeroArea(state.question, char, state.opened);
   const lives = state.lives - (mine ? 1 : 0);
   const chainBonus = Math.max(0, expanded.length - 1) * CHAIN_BONUS_PER_CELL;
   const exhausted =
-    !mine && isBoardExhausted(state.question, [...state.opened, ...expanded]);
+    !mine && allSafeCellsOpen(state.question, [...state.opened, ...expanded]);
   return {
     ...state,
     opened: [...state.opened, ...expanded],

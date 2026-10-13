@@ -1,10 +1,14 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Pressable, Text, TextInput, View } from "react-native";
 
-import { CharacterBoard } from "../components/CharacterBoard";
-import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
-import { isExhausted, safeHintCandidate, type EndlessState } from "./engine";
-import { LETTER_HINT_PENALTY, letterHint } from "./letterHints";
+import { maskedAnswer } from "../game/engine";
+import { EndlessBoard } from "./EndlessBoard";
+import {
+  isExhausted,
+  LETTER_HINT_PENALTY,
+  safeHintCandidate,
+  type EndlessState,
+} from "./engine";
 import { GEM_COLOR } from "../wallet/GemSheet";
 import { styles } from "./styles";
 
@@ -47,16 +51,10 @@ export function PlayPanel({
     gemBalance >= 1;
   return (
     <>
-      <CharacterBoard
-        language={game.question.language}
-        openedChars={game.opened}
-        hintedChars={hintedChars}
+      <EndlessBoard
+        game={game}
         mineChars={mineChars}
-        mineCount={(char) => adjacentMineCount(game.question, char)}
-        mineMultiplicity={(char) =>
-          questionMineMultiplicity(game.question, char)
-        }
-        canOpen={game.phase === "open"}
+        hintedChars={hintedChars}
         onOpen={onOpen}
       />
       {exhausted ? (
@@ -70,7 +68,7 @@ export function PlayPanel({
               { letterSpacing: game.question.length > 9 ? 1 : 4 },
             ]}
           >
-            {letterHint(game.question, game.revealedLetters)}
+            {maskedAnswer(game.question, game.revealedLetters)}
           </Text>
         </View>
       ) : null}

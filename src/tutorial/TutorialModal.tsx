@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState, type ComponentType } from "react";
 import {
-  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -11,6 +10,7 @@ import {
 } from "react-native";
 
 import { useReducedMotion } from "../components/motion";
+import { Popup } from "../components/Popup";
 import {
   AnswerScene,
   ChainScene,
@@ -98,85 +98,65 @@ export function TutorialModal({
   };
 
   return (
-    <Modal visible={visible} transparent animationType="fade">
-      <View style={styles.backdrop}>
-        <View
-          style={styles.card}
-          onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
-        >
-          <ScrollView
-            ref={pager}
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            onMomentumScrollEnd={(event) =>
-              width > 0 &&
-              setPage(Math.round(event.nativeEvent.contentOffset.x / width))
-            }
-          >
-            {width > 0
-              ? PAGES.map(({ title, body, Scene }, index) => (
-                  <View key={title} style={[styles.page, { width }]}>
-                    <Text style={styles.step}>
-                      {index + 1} / {PAGES.length}
-                    </Text>
-                    <Scene
-                      active={visible && index === page}
-                      reduced={reduced}
-                    />
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.body}>{body}</Text>
-                  </View>
-                ))
-              : null}
-          </ScrollView>
-          <View style={styles.dots}>
-            {PAGES.map(({ title }, index) => (
-              <View
-                key={title}
-                style={[styles.dot, index === page && styles.dotActive]}
-              />
-            ))}
-          </View>
-          <View style={styles.actions}>
-            <Pressable
-              accessibilityRole="button"
-              onPress={close}
-              hitSlop={8}
-              style={styles.skip}
-            >
-              <Text style={styles.skipText}>{last ? "" : "スキップ"}</Text>
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => (last ? close() : goTo(page + 1))}
-              style={styles.next}
-            >
-              <Text style={styles.nextText}>{last ? "はじめる" : "次へ"}</Text>
-            </Pressable>
-          </View>
-        </View>
+    <Popup
+      visible={visible}
+      cardStyle={styles.card}
+      onCardLayout={(event) => setWidth(event.nativeEvent.layout.width)}
+    >
+      <ScrollView
+        ref={pager}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onMomentumScrollEnd={(event) =>
+          width > 0 &&
+          setPage(Math.round(event.nativeEvent.contentOffset.x / width))
+        }
+      >
+        {width > 0
+          ? PAGES.map(({ title, body, Scene }, index) => (
+              <View key={title} style={[styles.page, { width }]}>
+                <Text style={styles.step}>
+                  {index + 1} / {PAGES.length}
+                </Text>
+                <Scene active={visible && index === page} reduced={reduced} />
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.body}>{body}</Text>
+              </View>
+            ))
+          : null}
+      </ScrollView>
+      <View style={styles.dots}>
+        {PAGES.map(({ title }, index) => (
+          <View
+            key={title}
+            style={[styles.dot, index === page && styles.dotActive]}
+          />
+        ))}
       </View>
-    </Modal>
+      <View style={styles.actions}>
+        <Pressable
+          accessibilityRole="button"
+          onPress={close}
+          hitSlop={8}
+          style={styles.skip}
+        >
+          <Text style={styles.skipText}>{last ? "" : "スキップ"}</Text>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => (last ? close() : goTo(page + 1))}
+          style={styles.next}
+        >
+          <Text style={styles.nextText}>{last ? "はじめる" : "次へ"}</Text>
+        </Pressable>
+      </View>
+    </Popup>
   );
 }
 
 const styles = StyleSheet.create({
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(16, 36, 51, 0.5)",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 18,
-  },
-  card: {
-    width: "100%",
-    maxWidth: 400,
-    borderRadius: 20,
-    backgroundColor: "#ffffff",
-    overflow: "hidden",
-    paddingBottom: 16,
-  },
+  card: { paddingBottom: 16 },
   page: { paddingHorizontal: 22, paddingTop: 16, gap: 8 },
   step: { color: "#8a9aa5", fontSize: 11, fontWeight: "800" },
   title: { color: "#102433", fontSize: 20, fontWeight: "900" },

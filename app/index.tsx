@@ -36,6 +36,7 @@ import {
   submitAnswer,
   type GameState,
 } from "../src/game/engine";
+import { matchStyles } from "../src/components/matchStyles";
 
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
@@ -352,178 +353,95 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#f7fafc",
-  },
-  page: {
-    width: "100%",
-    maxWidth: 760,
-    alignSelf: "center",
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 20,
-    gap: 10,
-  },
-  prompt: {
-    flex: 1,
-    color: "#102433",
-    fontSize: 22,
-    fontWeight: "900",
-    lineHeight: 30,
-  },
-  helperText: {
-    color: "#7b8992",
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  gameTopBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
-  },
-  changeButton: {
-    minHeight: 38,
-    justifyContent: "center",
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: "#c4d1d9",
-    borderRadius: 9,
-    backgroundColor: "#ffffff",
-  },
-  changeButtonText: {
-    color: "#526975",
-    fontSize: 12,
-    fontWeight: "800",
-  },
-  turnPanel: {
-    backgroundColor: "#eaf6fb",
-    borderColor: "#bcddea",
-    borderWidth: 1,
-    borderRadius: 14,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  // Player 2's turn is orange so passing the phone is easy to notice.
-  turnP2: { backgroundColor: "#fff1e4", borderColor: "#f2c9a0" },
-  turnPlayerP2: { color: "#8a3f10" },
-  turnWho: { flexDirection: "row", alignItems: "baseline", gap: 8 },
-  turnCaption: {
-    color: "#637b89",
-    fontSize: 11,
-    fontWeight: "700",
-  },
-  turnPlayer: {
-    color: "#173f55",
-    fontSize: 17,
-    fontWeight: "900",
-  },
-  phaseBadge: {
-    backgroundColor: "#ffffff",
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
-  },
-  phaseText: {
-    color: "#28566e",
-    fontSize: 13,
-    fontWeight: "800",
-  },
-  messagePanel: {
-    minHeight: 36,
-    justifyContent: "center",
-    borderLeftColor: "#e98a2f",
-    borderLeftWidth: 3,
-    paddingLeft: 12,
-  },
-  message: {
-    color: "#3e4c56",
-    fontSize: 14,
-    lineHeight: 21,
-  },
-  answerArea: {
-    gap: 10,
-  },
-  input: {
-    minHeight: 48,
-    backgroundColor: "#ffffff",
-    borderColor: "#bdcbd5",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    color: "#142733",
-    fontSize: 16,
-  },
-  inputDisabled: {
-    backgroundColor: "#eef2f5",
-    color: "#84919a",
-  },
-  answerActions: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  primaryButton: {
-    minHeight: 46,
-    backgroundColor: "#3388b0",
-    borderRadius: 10,
-    paddingHorizontal: 18,
-    alignItems: "center",
-    justifyContent: "center",
-    flexGrow: 1,
-  },
-  primaryButtonText: {
-    color: "#ffffff",
-    fontWeight: "800",
-    fontSize: 15,
-  },
-  secondaryButton: {
-    minHeight: 46,
-    borderColor: "#b9c9d3",
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  secondaryButtonText: {
-    color: "#405967",
-    fontWeight: "800",
-    fontSize: 14,
-  },
-  disabledButton: {
-    opacity: 0.4,
-  },
-  pressedButton: {
-    opacity: 0.72,
-  },
-  resultPanel: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#cfdce4",
-    borderRadius: 14,
-    padding: 18,
-    gap: 10,
-  },
-  resultTitle: {
-    color: "#173f55",
-    fontSize: 24,
-    fontWeight: "900",
-  },
-  resultAnswer: {
-    color: "#596d79",
-    fontSize: 16,
-    marginBottom: 4,
-  },
-  webNote: {
-    color: "#88959d",
-    fontSize: 11,
-    lineHeight: 17,
-  },
-});
+const styles = {
+  ...matchStyles,
+  ...StyleSheet.create({
+    page: {
+      width: "100%",
+      maxWidth: 760,
+      alignSelf: "center",
+      paddingHorizontal: 16,
+      paddingTop: 12,
+      paddingBottom: 20,
+      gap: 10,
+    },
+    prompt: {
+      flex: 1,
+      color: "#102433",
+      fontSize: 22,
+      fontWeight: "900",
+      lineHeight: 30,
+    },
+    helperText: {
+      color: "#7b8992",
+      fontSize: 12,
+      lineHeight: 18,
+    },
+    gameTopBar: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 10,
+    },
+    changeButton: {
+      minHeight: 38,
+      justifyContent: "center",
+      paddingHorizontal: 12,
+      borderWidth: 1,
+      borderColor: "#c4d1d9",
+      borderRadius: 9,
+      backgroundColor: "#ffffff",
+    },
+    changeButtonText: {
+      color: "#526975",
+      fontSize: 12,
+      fontWeight: "800",
+    },
+    turnPanel: {
+      backgroundColor: "#eaf6fb",
+      borderColor: "#bcddea",
+      borderWidth: 1,
+      borderRadius: 14,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+    // Player 2's turn is orange so passing the phone is easy to notice.
+    turnP2: { backgroundColor: "#fff1e4", borderColor: "#f2c9a0" },
+    turnPlayerP2: { color: "#8a3f10" },
+    answerActions: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      gap: 8,
+    },
+    primaryButton: {
+      minHeight: 46,
+      backgroundColor: "#3388b0",
+      borderRadius: 10,
+      paddingHorizontal: 18,
+      alignItems: "center",
+      justifyContent: "center",
+      flexGrow: 1,
+    },
+    resultPanel: {
+      backgroundColor: "#ffffff",
+      borderWidth: 1,
+      borderColor: "#cfdce4",
+      borderRadius: 14,
+      padding: 18,
+      gap: 10,
+    },
+    resultAnswer: {
+      color: "#596d79",
+      fontSize: 16,
+      marginBottom: 4,
+    },
+    webNote: {
+      color: "#88959d",
+      fontSize: 11,
+      lineHeight: 17,
+    },
+  }),
+};

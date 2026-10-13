@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
 
 import { isPrivacyOptionsRequired } from "./consent";
 import { mobileAds } from "./mobileAdsModule";
+import { PrivacyOptionsLink } from "./PrivacyOptionsLink";
 
 // Persistent entry to Google's UMP privacy options form, so users can change
 // or withdraw ad consent at any time. Rendered only where UMP says it is
@@ -46,24 +46,10 @@ export function AdPrivacyOptionsButton() {
   const { AdsConsent } = mobileAds;
 
   return (
-    <Pressable
-      accessibilityRole="button"
+    <PrivacyOptionsLink
       onPress={() => {
         void AdsConsent.showPrivacyOptionsForm().catch(() => {});
       }}
-      style={({ pressed }) => [styles.button, pressed ? styles.pressed : null]}
-    >
-      <Text style={styles.text}>広告のプライバシー設定を変更する</Text>
-    </Pressable>
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    alignSelf: "flex-start",
-    minHeight: 38,
-    justifyContent: "center",
-  },
-  text: { color: "#287da5", fontSize: 14, fontWeight: "700" },
-  pressed: { opacity: 0.72 },
-});
