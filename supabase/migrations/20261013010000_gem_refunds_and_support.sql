@@ -1,6 +1,7 @@
 -- Gem packs, refunds, support grants and account deletion for the wallet.
 --
--- Packs: gems10 (¥200), gems30 (¥500), gems70 (¥1,000). The gem count per
+-- Packs: gems10 (¥200), gems30 (¥500), gems70 (¥1,000), gems385 (¥5,000)
+-- and gems1000 (¥10,000). The gem count per
 -- product lives here; the Edge Function only passes Apple's product ID.
 --
 -- Refund policy: a refunded or revoked purchase takes back up to the gems
@@ -32,6 +33,8 @@ as $$
     when 'com.naki0227.gojuonminesweeper.gems10' then 10
     when 'com.naki0227.gojuonminesweeper.gems30' then 30
     when 'com.naki0227.gojuonminesweeper.gems70' then 70
+    when 'com.naki0227.gojuonminesweeper.gems385' then 385
+    when 'com.naki0227.gojuonminesweeper.gems1000' then 1000
   end
 $$;
 

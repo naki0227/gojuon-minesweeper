@@ -23,6 +23,16 @@ export const GEM_PACKS: readonly GemPack[] = [
     gems: 70,
     priceYen: 1000,
   },
+  {
+    productId: "com.naki0227.gojuonminesweeper.gems385",
+    gems: 385,
+    priceYen: 5000,
+  },
+  {
+    productId: "com.naki0227.gojuonminesweeper.gems1000",
+    gems: 1000,
+    priceYen: 10000,
+  },
 ];
 
 const BASE_YEN_PER_GEM = 20;
