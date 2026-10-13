@@ -30,10 +30,16 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 8,
-    width: 96,
+    width: 120,
   },
   exitText: { color: "#546d7a", fontWeight: "700", fontSize: 14 },
-  topRight: { width: 96, alignItems: "flex-end" },
+  topRight: {
+    width: 120,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 10,
+  },
   panelLink: { color: colors.primary, fontWeight: "800", fontSize: 14 },
   iconLabel: { flexDirection: "row", alignItems: "center", gap: 4 },
   gemChip: {
