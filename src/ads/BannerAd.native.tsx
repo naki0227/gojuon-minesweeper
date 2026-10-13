@@ -11,6 +11,7 @@ import { canRequestAds } from "./consent";
 import { mobileAds, type MobileAdsModule } from "./mobileAdsModule";
 import { selectBannerUnitId } from "./selectBannerUnitId";
 import type { BannerAdProps } from "./types";
+import { startAds } from "./startAds";
 
 let initialization: Promise<boolean> | null = null;
 
@@ -24,7 +25,7 @@ function initializeAds(sdk: MobileAdsModule): Promise<boolean> {
       }
 
       try {
-        await sdk.default().initialize();
+        await startAds(sdk);
         return true;
       } catch {
         return false;
