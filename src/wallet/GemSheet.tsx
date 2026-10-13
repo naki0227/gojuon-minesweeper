@@ -1,7 +1,8 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
-import { Modal, Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 
+import { Popup } from "../components/Popup";
 import { styles } from "../endless/styles";
 import { GemWalletPanel } from "./GemWalletPanel";
 import { GEM_COLOR, walletStyles } from "./styles";
@@ -37,36 +38,22 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
           <MaterialIcons name="add" size={14} color="#ffffff" />
         </View>
       </Pressable>
-      <Modal
-        visible={open}
-        transparent
-        animationType="fade"
-        onRequestClose={close}
-      >
-        <Pressable
-          style={walletStyles.backdrop}
-          onPress={close}
-          accessibilityLabel="閉じる"
-        >
-          {/* Taps inside the card must not close it. */}
-          <Pressable style={walletStyles.card} onPress={() => {}}>
-            <View style={walletStyles.header}>
-              <Text style={walletStyles.title}>ジェム</Text>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="閉じる"
-                onPress={close}
-                hitSlop={12}
-              >
-                <MaterialIcons name="close" size={22} color="#546d7a" />
-              </Pressable>
-            </View>
-            <ScrollView contentContainerStyle={walletStyles.body}>
-              <GemWalletPanel wallet={wallet} />
-            </ScrollView>
+      <Popup visible={open} onDismiss={close}>
+        <View style={walletStyles.header}>
+          <Text style={walletStyles.title}>ジェム</Text>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="閉じる"
+            onPress={close}
+            hitSlop={12}
+          >
+            <MaterialIcons name="close" size={22} color="#546d7a" />
           </Pressable>
-        </Pressable>
-      </Modal>
+        </View>
+        <ScrollView contentContainerStyle={walletStyles.body}>
+          <GemWalletPanel wallet={wallet} />
+        </ScrollView>
+      </Popup>
     </>
   );
 }

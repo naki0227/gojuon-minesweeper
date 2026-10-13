@@ -1,8 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-import { CharacterBoard } from "../components/CharacterBoard";
 import { PopIn } from "../components/PopIn";
-import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
+import { EndlessBoard } from "./EndlessBoard";
 import type { EndlessState } from "./engine";
 import type { StingerKind } from "./pauses";
 
@@ -44,17 +43,10 @@ export function Stinger({
       style={styles.wrap}
     >
       <View pointerEvents="none">
-        <CharacterBoard
-          language={game.question.language}
-          openedChars={game.opened}
-          hintedChars={hintedChars}
+        <EndlessBoard
+          game={game}
           mineChars={mineChars}
-          mineCount={(char) => adjacentMineCount(game.question, char)}
-          mineMultiplicity={(char) =>
-            questionMineMultiplicity(game.question, char)
-          }
-          canOpen={false}
-          onOpen={() => {}}
+          hintedChars={hintedChars}
         />
       </View>
       <View style={styles.veil} pointerEvents="none">

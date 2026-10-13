@@ -6,21 +6,6 @@ const MUTED = "#647786";
 const LINE = "#dbe3ea";
 
 export const walletStyles = StyleSheet.create({
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(16, 36, 51, 0.45)",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16,
-  },
-  card: {
-    width: "100%",
-    maxWidth: 400,
-    maxHeight: "88%",
-    borderRadius: 18,
-    backgroundColor: "#ffffff",
-    overflow: "hidden",
-  },
   header: {
     flexDirection: "row",
     alignItems: "center",

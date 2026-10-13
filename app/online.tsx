@@ -23,6 +23,7 @@ import {
   type OnlineRoom,
 } from "../src/online/protocol";
 import { useOnlineRoom } from "../src/online/useOnlineRoom";
+import { matchStyles } from "../src/components/matchStyles";
 
 const DEFAULT_FILTERS: QuestionFilters = {
   language: "ja",
@@ -442,211 +443,127 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#f7fafc",
-  },
-  page: {
-    flexGrow: 1,
-    width: "100%",
-    maxWidth: 760,
-    alignSelf: "center",
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 20,
-    gap: 10,
-  },
-  topBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    minHeight: 38,
-  },
-  eyebrow: {
-    color: "#4285a8",
-    fontSize: 13,
-    fontWeight: "800",
-    letterSpacing: 1,
-  },
-  smallButton: {
-    minHeight: 38,
-    justifyContent: "center",
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: "#c4d1d9",
-    borderRadius: 9,
-    backgroundColor: "#ffffff",
-  },
-  smallButtonText: {
-    color: "#526975",
-    fontSize: 12,
-    fontWeight: "800",
-  },
-  panel: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#cfdce4",
-    borderRadius: 14,
-    padding: 18,
-    gap: 10,
-  },
-  panelTitle: {
-    color: "#173f55",
-    fontSize: 18,
-    fontWeight: "900",
-  },
-  helperText: {
-    color: "#627481",
-    fontSize: 13,
-    lineHeight: 20,
-  },
-  header: {
-    gap: 6,
-  },
-  prompt: {
-    color: "#102433",
-    fontSize: 24,
-    fontWeight: "900",
-    lineHeight: 30,
-  },
-  turnPanel: {
-    backgroundColor: "#f1f4f6",
-    borderColor: "#d5dee4",
-    borderWidth: 1,
-    borderRadius: 14,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  turnPanelMine: {
-    backgroundColor: "#eaf6fb",
-    borderColor: "#bcddea",
-  },
-  turnWho: { flexDirection: "row", alignItems: "baseline", gap: 8 },
-  turnCaption: {
-    color: "#637b89",
-    fontSize: 11,
-    fontWeight: "700",
-  },
-  turnPlayer: {
-    color: "#173f55",
-    fontSize: 17,
-    fontWeight: "900",
-  },
-  phaseBadge: {
-    backgroundColor: "#ffffff",
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
-  },
-  phaseText: {
-    color: "#28566e",
-    fontSize: 13,
-    fontWeight: "800",
-    fontVariant: ["tabular-nums"],
-  },
-  messagePanel: {
-    minHeight: 36,
-    justifyContent: "center",
-    borderLeftColor: "#e98a2f",
-    borderLeftWidth: 3,
-    paddingLeft: 12,
-  },
-  message: {
-    color: "#3e4c56",
-    fontSize: 14,
-    lineHeight: 21,
-  },
-  answerArea: {
-    gap: 10,
-  },
-  row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  input: {
-    minHeight: 48,
-    backgroundColor: "#ffffff",
-    borderColor: "#bdcbd5",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    color: "#142733",
-    fontSize: 16,
-  },
-  inputDisabled: {
-    backgroundColor: "#eef2f5",
-    color: "#84919a",
-  },
-  primaryButton: {
-    minHeight: 46,
-    backgroundColor: "#3388b0",
-    borderRadius: 10,
-    paddingHorizontal: 18,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  primaryButtonText: {
-    color: "#ffffff",
-    fontWeight: "800",
-    fontSize: 15,
-  },
-  secondaryButton: {
-    minHeight: 46,
-    borderColor: "#b9c9d3",
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  secondaryButtonText: {
-    color: "#405967",
-    fontWeight: "800",
-    fontSize: 14,
-  },
-  disabledButton: {
-    opacity: 0.4,
-  },
-  pressedButton: {
-    opacity: 0.72,
-  },
-  textButton: {
-    alignSelf: "center",
-    paddingVertical: 8,
-  },
-  textButtonText: {
-    color: "#7b8992",
-    fontSize: 12,
-    textDecorationLine: "underline",
-  },
-  resultTitle: {
-    color: "#173f55",
-    fontSize: 24,
-    fontWeight: "900",
-  },
-  resultAnswer: {
-    color: "#596d79",
-    fontSize: 16,
-  },
-  errorPanel: {
-    backgroundColor: "#fff0df",
-    borderColor: "#e98a2f",
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 12,
-  },
-  errorText: {
-    color: "#8a4b12",
-    fontSize: 13,
-    lineHeight: 19,
-  },
-});
+const styles = {
+  ...matchStyles,
+  ...StyleSheet.create({
+    page: {
+      flexGrow: 1,
+      width: "100%",
+      maxWidth: 760,
+      alignSelf: "center",
+      paddingHorizontal: 16,
+      paddingTop: 12,
+      paddingBottom: 20,
+      gap: 10,
+    },
+    topBar: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      minHeight: 38,
+    },
+    eyebrow: {
+      color: "#4285a8",
+      fontSize: 13,
+      fontWeight: "800",
+      letterSpacing: 1,
+    },
+    smallButton: {
+      minHeight: 38,
+      justifyContent: "center",
+      paddingHorizontal: 12,
+      borderWidth: 1,
+      borderColor: "#c4d1d9",
+      borderRadius: 9,
+      backgroundColor: "#ffffff",
+    },
+    smallButtonText: {
+      color: "#526975",
+      fontSize: 12,
+      fontWeight: "800",
+    },
+    panel: {
+      backgroundColor: "#ffffff",
+      borderWidth: 1,
+      borderColor: "#cfdce4",
+      borderRadius: 14,
+      padding: 18,
+      gap: 10,
+    },
+    panelTitle: {
+      color: "#173f55",
+      fontSize: 18,
+      fontWeight: "900",
+    },
+    helperText: {
+      color: "#627481",
+      fontSize: 13,
+      lineHeight: 20,
+    },
+    header: {
+      gap: 6,
+    },
+    prompt: {
+      color: "#102433",
+      fontSize: 24,
+      fontWeight: "900",
+      lineHeight: 30,
+    },
+    turnPanel: {
+      backgroundColor: "#f1f4f6",
+      borderColor: "#d5dee4",
+      borderWidth: 1,
+      borderRadius: 14,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+    turnPanelMine: {
+      backgroundColor: "#eaf6fb",
+      borderColor: "#bcddea",
+    },
+    row: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      gap: 8,
+    },
+    grow: {
+      flexGrow: 1,
+    },
+    primaryButton: {
+      minHeight: 46,
+      backgroundColor: "#3388b0",
+      borderRadius: 10,
+      paddingHorizontal: 18,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    textButton: {
+      alignSelf: "center",
+      paddingVertical: 8,
+    },
+    textButtonText: {
+      color: "#7b8992",
+      fontSize: 12,
+      textDecorationLine: "underline",
+    },
+    resultAnswer: {
+      color: "#596d79",
+      fontSize: 16,
+    },
+    errorPanel: {
+      backgroundColor: "#fff0df",
+      borderColor: "#e98a2f",
+      borderWidth: 1,
+      borderRadius: 10,
+      padding: 12,
+    },
+    errorText: {
+      color: "#8a4b12",
+      fontSize: 13,
+      lineHeight: 19,
+    },
+  }),
+};

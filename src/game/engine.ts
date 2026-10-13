@@ -112,24 +112,33 @@ export function validateQuestionCollision(question: Question): boolean {
   );
 }
 
-function isBoardExhausted(state: GameState): boolean {
-  const opened = new Set(state.openedChars);
-  const mines = questionMineCharacters(state.question);
-  return getBoardOrder(state.question.language).every(
-    (char) => mines.has(char) || opened.has(char),
+// Every safe cell is open, so only mines are left to open.
+export function allSafeCellsOpen(
+  question: Question,
+  opened: Iterable<string>,
+): boolean {
+  const open = new Set(opened);
+  const mines = questionMineCharacters(question);
+  return getBoardOrder(question.language).every(
+    (char) => mines.has(char) || open.has(char),
   );
 }
 
-function answerCharacters(question: Question): string[] {
+export function answerCharacters(question: Question): string[] {
   return Array.from(
     normalizeValue(primaryAnswer(question).value, question.language),
   );
 }
 
-export function answerHint(state: GameState): string {
-  return answerCharacters(state.question)
-    .map((char, index) => (index < state.revealedAnswerChars ? char : "？"))
+// "う？？" with the first `revealed` letters shown.
+export function maskedAnswer(question: Question, revealed: number): string {
+  return answerCharacters(question)
+    .map((char, index) => (index < revealed ? char : "？"))
     .join("");
+}
+
+export function answerHint(state: GameState): string {
+  return maskedAnswer(state.question, state.revealedAnswerChars);
 }
 
 function finishHintTurn(state: GameState, message: string): GameState {
@@ -174,38 +183,27 @@ function finishHintTurn(state: GameState, message: string): GameState {
   };
 }
 
-function expandZeroArea(
+// Opens `startChar` and, while the opened cell touches no mine, its
+// neighbors too. Returns only the newly opened cells, in BFS order.
+export function expandZeroArea(
   question: Question,
   startChar: string,
-  alreadyOpened: ReadonlySet<string>,
+  alreadyOpened: Iterable<string>,
 ): string[] {
   const mines = questionMineCharacters(question);
-  const opened = new Set(alreadyOpened);
-  const newlyOpened = new Set<string>();
+  const seen = new Set(alreadyOpened);
   const queue = [startChar];
-
-  while (queue.length > 0) {
-    const current = queue.shift();
-
-    if (!current || opened.has(current) || mines.has(current)) {
-      continue;
-    }
-
-    opened.add(current);
-    newlyOpened.add(current);
-
-    if (adjacentMineCount(question, current) !== 0) {
-      continue;
-    }
-
-    for (const neighbor of adjacentCharacters(question.language, current)) {
-      if (!opened.has(neighbor) && !mines.has(neighbor)) {
-        queue.push(neighbor);
-      }
+  const newlyOpened: string[] = [];
+  for (let i = 0; i < queue.length; i += 1) {
+    const current = queue[i]!;
+    if (seen.has(current) || mines.has(current)) continue;
+    seen.add(current);
+    newlyOpened.push(current);
+    if (adjacentMineCount(question, current) === 0) {
+      queue.push(...adjacentCharacters(question.language, current));
     }
   }
-
-  return [...newlyOpened];
+  return newlyOpened;
 }
 
 export function submitAnswer(state: GameState, input: string): GameState {
@@ -222,7 +220,7 @@ export function submitAnswer(state: GameState, input: string): GameState {
     };
   }
 
-  if (isBoardExhausted(state)) {
+  if (allSafeCellsOpen(state.question, state.openedChars)) {
     return finishHintTurn(state, "不正解。");
   }
 
@@ -238,7 +236,7 @@ export function passAnswer(state: GameState): GameState {
     return state;
   }
 
-  if (isBoardExhausted(state)) {
+  if (allSafeCellsOpen(state.question, state.openedChars)) {
     return finishHintTurn(state, "回答をパスしました。");
   }
 
@@ -296,7 +294,7 @@ export function openCharacter(state: GameState, char: string): GameState {
         : `「${char}」はセーフ。周囲の答え文字は${count}個。`;
   }
 
-  const boardComplete = isBoardExhausted({ ...state, openedChars });
+  const boardComplete = allSafeCellsOpen(state.question, openedChars);
   if (boardComplete) {
     const answerChars = answerCharacters(state.question);
     const firstChar = answerChars[0];

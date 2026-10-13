@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AdPrivacyOptionsButton } from "../src/ads/AdPrivacyOptionsButton";
+import { docPageStyles } from "../src/components/docPageStyles";
 
 export default function PrivacyScreen() {
   return (
@@ -148,21 +149,10 @@ export default function PrivacyScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: "#f7fafc" },
-  page: {
-    width: "100%",
-    maxWidth: 760,
-    alignSelf: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 28,
-    gap: 18,
-  },
-  title: { color: "#102433", fontSize: 30, fontWeight: "900" },
-  updated: { color: "#73838d", fontSize: 12 },
-  section: { gap: 7 },
-  heading: { color: "#263c49", fontSize: 17, fontWeight: "800" },
-  body: { color: "#536875", fontSize: 14, lineHeight: 23 },
-  link: { color: "#287da5", fontWeight: "700", marginTop: 4 },
-  inlineLink: { color: "#287da5", fontSize: 14, fontWeight: "700" },
-});
+const styles = {
+  ...docPageStyles,
+  ...StyleSheet.create({
+    updated: { color: "#73838d", fontSize: 12 },
+    inlineLink: { color: "#287da5", fontSize: 14, fontWeight: "700" },
+  }),
+};
