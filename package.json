@@ -19,7 +19,9 @@
     "quality:lines": "node scripts/check-file-lines.mjs",
     "quality:duplicates": "jscpd",
     "quality": "npm run quality:lines && npm run quality:duplicates",
-    "prepare": "node scripts/install-git-hooks.mjs"
+    "prepare": "node scripts/install-git-hooks.mjs",
+    "daily:plan": "tsx scripts/daily/plan.ts",
+    "daily:publish": "tsx scripts/daily/publish.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
@@ -51,7 +53,9 @@
     "eslint": "^9.39.5",
     "eslint-config-expo": "^57.0.2",
     "jscpd": "^4.3.0",
+    "playwright-core": "^1.64.0",
     "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
     "typescript": "~6.0.3",
     "vitest": "^4.1.11"
   },

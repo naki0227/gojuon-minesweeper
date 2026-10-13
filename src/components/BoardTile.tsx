@@ -7,8 +7,8 @@ import {
   Text,
   View,
 } from "react-native";
-import { COUNT_COLOR_MANY, COUNT_COLORS, USE_NATIVE_DRIVER } from "./motion";
-import { colors } from "../theme/colors";
+import { USE_NATIVE_DRIVER } from "./motion";
+import { colors, COUNT_COLOR_MANY, COUNT_COLORS } from "../theme/colors";
 import { tileStyles } from "./tileStyles";
 
 type Props = {
