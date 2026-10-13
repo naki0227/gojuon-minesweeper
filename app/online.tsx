@@ -13,6 +13,7 @@ import Head from "expo-router/head";
 import { router, useLocalSearchParams } from "expo-router";
 
 import { BannerAd } from "../src/ads/BannerAd";
+import { matchBanner } from "../src/ads/types";
 import { CharacterBoard } from "../src/components/CharacterBoard";
 import type { QuestionFilters } from "../src/data/types";
 import { isOnlineConfigured } from "../src/online/client";
@@ -115,11 +116,7 @@ export default function OnlineScreen() {
           room.status === "playing" ||
           room.public_state?.phase === "finished") ? (
           <View style={styles.adArea}>
-            <BannerAd
-              placement={
-                room.public_state?.phase === "finished" ? "result" : "setup"
-              }
-            />
+            <BannerAd {...matchBanner(room.public_state?.phase, room.status)} />
           </View>
         ) : null}
       </ScrollView>

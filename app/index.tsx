@@ -14,6 +14,7 @@ import Head from "expo-router/head";
 import { router } from "expo-router";
 
 import { BannerAd } from "../src/ads/BannerAd";
+import { matchBanner } from "../src/ads/types";
 import { trackEvent } from "../src/analytics/events";
 import { CharacterBoard } from "../src/components/CharacterBoard";
 import { Confetti } from "../src/components/Confetti";
@@ -358,8 +359,7 @@ export default function HomeScreen() {
           </Text>
         ) : null}
 
-        {/* Ads only once the game is decided; never during play. */}
-        {game.phase === "finished" ? <BannerAd placement="result" /> : null}
+        <BannerAd {...matchBanner(game.phase)} />
       </ScrollView>
       {game.winner !== null && !reducedMotion ? (
         <Confetti key={game.question.id} />
