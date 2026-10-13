@@ -1,6 +1,7 @@
 import { Animated, StyleSheet, Text, View } from "react-native";
 
-import { COUNT_COLORS } from "../components/motion";
+import { COUNT_COLOR_MANY, COUNT_COLORS } from "../components/motion";
+import { tileStyles } from "../components/tileStyles";
 
 export type MiniCell = {
   char: string;
@@ -12,9 +13,10 @@ export type MiniCell = {
 };
 
 const SIZE = 46;
+const RADIUS = Math.max(5, SIZE * 0.2);
 
-// A 3x3 piece of the board for the tutorial: the same look as the game
-// (white closed tiles, grey open ones, orange mines) without game logic.
+// A 3x3 piece of the board for the tutorial, drawn with the game's own
+// tile styles (see BoardTile) but driven by the scenes' animations.
 export function MiniBoard({ cells }: { cells: readonly MiniCell[] }) {
   return (
     <View style={styles.board}>
@@ -38,42 +40,57 @@ function MiniTile({ cell }: { cell: MiniCell }) {
     inputRange: [0, 0.5, 0.51, 1],
     outputRange: [0, 0, 1, 1],
   });
-  const countColor =
-    COUNT_COLORS[Math.min(cell.count ?? 0, COUNT_COLORS.length - 1)];
+  const count = cell.count ?? 0;
+  const countColor = COUNT_COLORS[count] ?? COUNT_COLOR_MANY;
+  const face = [tileStyles.face, { borderRadius: RADIUS }];
   return (
     <Animated.View style={[styles.tile, { transform: [{ scaleX: flip }] }]}>
       <Animated.View
         style={[
-          StyleSheet.absoluteFill,
-          styles.face,
-          styles.closed,
-          cell.hinted && styles.hinted,
+          face,
+          tileStyles.closed,
+          cell.hinted && tileStyles.hinted,
           { opacity: closedOpacity },
         ]}
       >
-        <Text style={styles.char}>{cell.char}</Text>
+        <Text style={[tileStyles.closedChar, { fontSize: SIZE * 0.5 }]}>
+          {cell.char}
+        </Text>
       </Animated.View>
       <Animated.View
         style={[
-          StyleSheet.absoluteFill,
-          styles.face,
-          cell.mine ? styles.mine : styles.safe,
+          face,
+          cell.mine ? tileStyles.mine : tileStyles.safe,
           { opacity: openOpacity },
         ]}
       >
-        <Text style={[styles.char, cell.mine && styles.mineChar]}>
-          {cell.char}
-        </Text>
-        {cell.mine ? null : (
-          <Text style={[styles.count, { color: countColor }]}>
-            {cell.count ?? 0}
-          </Text>
+        {cell.mine ? (
+          <>
+            <View style={[tileStyles.mineDot, styles.mineDot]} />
+            <Text style={[tileStyles.mineChar, { fontSize: SIZE * 0.48 }]}>
+              {cell.char}
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text style={[tileStyles.openChar, styles.openChar]}>
+              {cell.char}
+            </Text>
+            {count ? (
+              <Text
+                style={[tileStyles.count, styles.count, { color: countColor }]}
+              >
+                {count}
+              </Text>
+            ) : null}
+          </>
         )}
       </Animated.View>
     </Animated.View>
   );
 }
 
+// Size-dependent values, computed the way BoardTile does for its size.
 const styles = StyleSheet.create({
   board: {
     width: SIZE * 3 + 8,
@@ -83,27 +100,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   tile: { width: SIZE, height: SIZE },
-  face: {
-    borderRadius: 9,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  mineDot: {
+    width: SIZE * 0.62,
+    height: SIZE * 0.62,
+    borderRadius: SIZE * 0.31,
   },
-  closed: {
-    backgroundColor: "#ffffff",
-    borderColor: "#c9d4dc",
-    borderBottomWidth: 3,
-  },
-  hinted: { backgroundColor: "#e5f6ea", borderColor: "#8fcf9f" },
-  safe: { backgroundColor: "#eef2f5", borderColor: "#dbe3ea" },
-  mine: { backgroundColor: "#ffe6d2", borderColor: "#f0a46b" },
-  char: { color: "#173f55", fontSize: 17, fontWeight: "900" },
-  mineChar: { color: "#b5531a" },
-  count: {
-    position: "absolute",
-    right: 4,
-    bottom: 1,
-    fontSize: 12,
-    fontWeight: "900",
-  },
+  openChar: { fontSize: SIZE * 0.3, top: SIZE * 0.04, left: SIZE * 0.1 },
+  count: { fontSize: SIZE * 0.5, marginTop: SIZE * 0.18 },
 });

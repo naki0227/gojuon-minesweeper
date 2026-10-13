@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AdPrivacyOptionsButton } from "../src/ads/AdPrivacyOptionsButton";
 import { docPageStyles } from "../src/components/docPageStyles";
+import { colors } from "../src/theme/colors";
 
 export default function PrivacyScreen() {
   return (
@@ -153,6 +154,6 @@ const styles = {
   ...docPageStyles,
   ...StyleSheet.create({
     updated: { color: "#73838d", fontSize: 12 },
-    inlineLink: { color: "#287da5", fontSize: 14, fontWeight: "700" },
+    inlineLink: { color: colors.link, fontSize: 14, fontWeight: "700" },
   }),
 };

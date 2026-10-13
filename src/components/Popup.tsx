@@ -8,6 +8,7 @@ import {
   type StyleProp,
   type ViewStyle,
 } from "react-native";
+import { colors } from "../theme/colors";
 
 type Props = {
   visible: boolean;
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: "88%",
     borderRadius: 18,
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
     overflow: "hidden",
   },
 });

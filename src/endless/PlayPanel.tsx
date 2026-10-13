@@ -9,8 +9,8 @@ import {
   safeHintCandidate,
   type EndlessState,
 } from "./engine";
-import { GEM_COLOR } from "../wallet/GemSheet";
 import { styles } from "./styles";
+import { colors } from "../theme/colors";
 
 type Props = {
   game: EndlessState;
@@ -113,7 +113,7 @@ export function PlayPanel({
           onPress={onHint}
         >
           <View style={styles.iconLabel}>
-            <MaterialIcons name="diamond" size={15} color={GEM_COLOR} />
+            <MaterialIcons name="diamond" size={15} color={colors.gem} />
             <Text style={styles.secondaryText}>1</Text>
             <Text style={styles.secondaryText}>安全マス</Text>
           </View>

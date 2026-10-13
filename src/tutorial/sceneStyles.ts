@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../theme/colors";
+import { buttonStyles } from "../components/buttonStyles";
 
 export const sceneStyles = StyleSheet.create({
   scene: {
@@ -8,50 +10,48 @@ export const sceneStyles = StyleSheet.create({
     gap: 14,
   },
   caption: { color: "#465963", fontSize: 13, fontWeight: "700" },
-  em: { color: "#3388b0", fontSize: 16, fontWeight: "900" },
+  em: { color: colors.primary, fontSize: 16, fontWeight: "900" },
   mine: { color: "#b5531a", fontWeight: "900" },
   finger: { position: "absolute" },
   fingerCenter: { left: 58, top: 58 },
   fingerHelp: { left: 30, top: 10 },
-  mockPrompt: { color: "#102433", fontSize: 20, fontWeight: "900" },
+  mockPrompt: { color: colors.ink, fontSize: 20, fontWeight: "900" },
   mockInput: {
     width: 220,
     height: 42,
     borderWidth: 1,
     borderColor: "#b9c9d3",
     borderRadius: 10,
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 12,
   },
-  mockInputText: { color: "#102433", fontSize: 17, fontWeight: "700" },
-  caret: { width: 2, height: 20, backgroundColor: "#3388b0", marginLeft: 2 },
-  mockButton: {
-    width: 220,
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: "#3388b0",
-    alignItems: "center",
-    justifyContent: "center",
+  mockInputText: { color: colors.ink, fontSize: 17, fontWeight: "700" },
+  caret: {
+    width: 2,
+    height: 20,
+    backgroundColor: colors.primary,
+    marginLeft: 2,
   },
-  mockButtonText: { color: "#ffffff", fontSize: 15, fontWeight: "800" },
+  mockButton: { ...buttonStyles.primaryButton, width: 220 },
+  mockButtonText: buttonStyles.primaryButtonText,
   badge: {
     position: "absolute",
     top: 4,
     borderRadius: 999,
-    backgroundColor: "#2f9e6a",
+    backgroundColor: colors.success,
     paddingHorizontal: 12,
     paddingVertical: 5,
   },
-  badgeText: { color: "#ffffff", fontSize: 13, fontWeight: "900" },
+  badgeText: { color: colors.white, fontSize: 13, fontWeight: "900" },
   mockTop: {
     width: 250,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  mockPromptSmall: { color: "#102433", fontSize: 18, fontWeight: "900" },
+  mockPromptSmall: { color: colors.ink, fontSize: 18, fontWeight: "900" },
   mockChange: {
     borderWidth: 1,
     borderColor: "#c4d1d9",
@@ -71,5 +71,5 @@ export const sceneStyles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
-  mockHelpText: { color: "#4285a8", fontSize: 13, fontWeight: "800" },
+  mockHelpText: { color: colors.help, fontSize: 13, fontWeight: "800" },
 });

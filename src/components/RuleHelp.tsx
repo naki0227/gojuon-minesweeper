@@ -2,10 +2,9 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 
+import { RULE_STEPS } from "../tutorial/rules";
 import { TutorialModal } from "../tutorial/TutorialModal";
-
-const RULE =
-  "回答してから1文字開く。セーフなら周囲8マスの答え文字数（重複込み）を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。";
+import { colors } from "../theme/colors";
 
 const LEGEND =
   "白いマス：セーフ（数字は周囲の答え文字数）／オレンジのマス：地雷";
@@ -17,7 +16,7 @@ export function RuleHelp({ kana = false }: { kana?: boolean }) {
   if (Platform.OS === "web") {
     return (
       <Text style={styles.rule}>
-        {RULE}
+        {RULE_STEPS.map((step) => step.body).join("")}
         {"\n"}
         {LEGEND}
         {kana ? "。「ー」は「ん」の下" : ""}
@@ -33,7 +32,7 @@ export function RuleHelp({ kana = false }: { kana?: boolean }) {
         hitSlop={8}
         style={styles.button}
       >
-        <MaterialIcons name="help-outline" size={16} color="#4285a8" />
+        <MaterialIcons name="help-outline" size={16} color={colors.help} />
         <Text style={styles.label}>ルール</Text>
       </Pressable>
       <TutorialModal visible={open} onClose={() => setOpen(false)} />
@@ -48,6 +47,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     gap: 3,
   },
-  label: { color: "#4285a8", fontSize: 12, fontWeight: "800" },
+  label: { color: colors.help, fontSize: 12, fontWeight: "800" },
   rule: { color: "#627481", fontSize: 13, lineHeight: 20 },
 });

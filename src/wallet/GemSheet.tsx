@@ -5,12 +5,11 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { Popup } from "../components/Popup";
 import { styles } from "../endless/styles";
 import { GemWalletPanel } from "./GemWalletPanel";
-import { GEM_COLOR, walletStyles } from "./styles";
+import { walletStyles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
+import { colors } from "../theme/colors";
 
 type Wallet = ReturnType<typeof useGemWallet>;
-
-export { GEM_COLOR };
 
 // A small balance chip for the game header. Tapping it opens the wallet
 // (sign-in, packs, support ID, account deletion) as a popup over the game,
@@ -32,10 +31,10 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
         style={styles.gemChip}
         onPress={() => setOpen(true)}
       >
-        <MaterialIcons name="diamond" size={16} color={GEM_COLOR} />
+        <MaterialIcons name="diamond" size={16} color={colors.gem} />
         <Text style={styles.gemChipText}>{label}</Text>
         <View style={styles.gemChipPlus}>
-          <MaterialIcons name="add" size={14} color="#ffffff" />
+          <MaterialIcons name="add" size={14} color={colors.white} />
         </View>
       </Pressable>
       <Popup visible={open} onDismiss={close}>

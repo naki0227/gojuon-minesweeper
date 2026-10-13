@@ -8,6 +8,8 @@ import {
   View,
 } from "react-native";
 import { COUNT_COLOR_MANY, COUNT_COLORS, USE_NATIVE_DRIVER } from "./motion";
+import { colors } from "../theme/colors";
+import { tileStyles } from "./tileStyles";
 
 type Props = {
   char: string;
@@ -258,7 +260,7 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
                 borderRadius: index % 3 === 0 ? 2 : spark / 2,
                 left: size / 2 - spark / 2,
                 top: size / 2 - spark / 2,
-                backgroundColor: index % 2 ? "#ffcf4a" : "#e98a2f",
+                backgroundColor: index % 2 ? "#ffcf4a" : colors.accent,
                 opacity: fade,
                 transform: [
                   {
@@ -282,79 +284,4 @@ function Burst({ size, progress }: { size: number; progress: Animated.Value }) {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  slot: {
-    position: "relative",
-  },
-  face: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    backfaceVisibility: "hidden",
-    overflow: "hidden",
-  },
-  closed: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#c9d5df",
-    borderBottomWidth: 3,
-    borderBottomColor: "#bccbd6",
-  },
-  hinted: {
-    backgroundColor: "#d4f5dd",
-    borderColor: "#5db47a",
-    borderBottomColor: "#379361",
-  },
-  closedChar: {
-    color: "#152534",
-    fontWeight: "800",
-    marginTop: 1,
-  },
-  safe: {
-    backgroundColor: "#e6edf2",
-    borderWidth: 1,
-    borderColor: "#d8e0e6",
-  },
-  openChar: {
-    position: "absolute",
-    color: "#8696a1",
-    fontWeight: "800",
-  },
-  count: {
-    fontWeight: "900",
-  },
-  mine: {
-    backgroundColor: "#e98a2f",
-    borderWidth: 1,
-    borderColor: "#e97817",
-    borderBottomWidth: 3,
-  },
-  mineDot: {
-    position: "absolute",
-    backgroundColor: "#c96a14",
-  },
-  mineChar: {
-    color: "#ffffff",
-    fontWeight: "900",
-  },
-  mineMultiplicity: {
-    position: "absolute",
-    right: 2,
-    bottom: 1,
-    color: "#ffffff",
-    fontWeight: "900",
-  },
-  ring: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    borderColor: "#ffcf4a",
-  },
-  spark: {
-    position: "absolute",
-  },
-});
+const styles = tileStyles;

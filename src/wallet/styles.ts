@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../theme/colors";
 
-export const GEM_COLOR = "#4a63c9";
-const INK = "#102433";
 const MUTED = "#647786";
 const LINE = "#dbe3ea";
 
@@ -14,7 +13,7 @@ export const walletStyles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 6,
   },
-  title: { color: INK, fontSize: 17, fontWeight: "900" },
+  title: { color: colors.ink, fontSize: 17, fontWeight: "900" },
   body: { paddingHorizontal: 16, paddingBottom: 18, gap: 10 },
   balance: {
     flexDirection: "row",
@@ -23,7 +22,7 @@ export const walletStyles = StyleSheet.create({
     gap: 6,
     paddingVertical: 4,
   },
-  balanceValue: { color: INK, fontSize: 32, fontWeight: "900" },
+  balanceValue: { color: colors.ink, fontSize: 32, fontWeight: "900" },
   balanceUnit: { color: MUTED, fontSize: 14, fontWeight: "800" },
   note: { color: MUTED, fontSize: 12, lineHeight: 18, textAlign: "center" },
   pack: {
@@ -36,8 +35,8 @@ export const walletStyles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 10,
   },
-  packBest: { borderColor: GEM_COLOR, backgroundColor: "#f3f5ff" },
-  packGems: { color: INK, fontSize: 17, fontWeight: "900" },
+  packBest: { borderColor: colors.gem, backgroundColor: "#f3f5ff" },
+  packGems: { color: colors.ink, fontSize: 17, fontWeight: "900" },
   packUnit: { color: MUTED, fontSize: 12, fontWeight: "700", flexShrink: 0 },
   badge: {
     borderRadius: 999,
@@ -52,12 +51,12 @@ export const walletStyles = StyleSheet.create({
     minWidth: 72,
     flexShrink: 0,
     borderRadius: 999,
-    backgroundColor: GEM_COLOR,
+    backgroundColor: colors.gem,
     paddingHorizontal: 10,
     paddingVertical: 7,
     alignItems: "center",
   },
-  priceText: { color: "#ffffff", fontSize: 13, fontWeight: "900" },
+  priceText: { color: colors.white, fontSize: 13, fontWeight: "900" },
   footer: {
     borderTopWidth: 1,
     borderTopColor: LINE,

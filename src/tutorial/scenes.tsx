@@ -2,9 +2,10 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useEffect, useMemo, useState } from "react";
 import { Animated, Easing, Text, View } from "react-native";
 
-import { USE_NATIVE_DRIVER } from "../components/motion";
+import { shakeTranslateX, USE_NATIVE_DRIVER } from "../components/motion";
 import { MiniBoard, type MiniCell } from "./MiniBoard";
 import { sceneStyles as styles } from "./sceneStyles";
+import { colors } from "../theme/colors";
 
 type SceneProps = { active: boolean; reduced: boolean };
 
@@ -209,10 +210,7 @@ export function MineScene(props: SceneProps) {
       ]),
     [0, 1, 0],
   );
-  const translateX = shake.interpolate({
-    inputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
-    outputRange: [0, -8, 7, -5, 3, 0],
-  });
+  const translateX = shakeTranslateX(shake);
   return (
     <View style={styles.scene}>
       <Animated.View style={{ transform: [{ translateX }] }}>
@@ -259,7 +257,7 @@ export function HelpScene(props: SceneProps) {
       </View>
       <View style={styles.mockHelpRow}>
         <Animated.View style={[styles.mockHelp, { transform: [{ scale }] }]}>
-          <MaterialIcons name="help-outline" size={16} color="#4285a8" />
+          <MaterialIcons name="help-outline" size={16} color={colors.help} />
           <Text style={styles.mockHelpText}>ルール</Text>
         </Animated.View>
         <Finger tap={tap} style={styles.fingerHelp} />

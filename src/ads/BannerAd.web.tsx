@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { useAdFree } from "../entitlements/useAdFree";
 import { getAdSenseUnit, type AdSenseUnit } from "./config";
 import type { BannerAdProps } from "./types";
+import { colors } from "../theme/colors";
 
 declare global {
   interface Window {
@@ -127,6 +128,6 @@ const styles = StyleSheet.create({
   duringPlay: {
     paddingTop: 150,
     borderTopWidth: 1,
-    borderTopColor: "#d5dee4",
+    borderTopColor: colors.line,
   },
 });

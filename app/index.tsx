@@ -37,6 +37,8 @@ import {
   type GameState,
 } from "../src/game/engine";
 import { matchStyles } from "../src/components/matchStyles";
+import { colors } from "../src/theme/colors";
+import { buttonStyles } from "../src/components/buttonStyles";
 
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
@@ -367,13 +369,13 @@ const styles = {
     },
     prompt: {
       flex: 1,
-      color: "#102433",
+      color: colors.ink,
       fontSize: 22,
       fontWeight: "900",
       lineHeight: 30,
     },
     helperText: {
-      color: "#7b8992",
+      color: colors.muted,
       fontSize: 12,
       lineHeight: 18,
     },
@@ -390,7 +392,7 @@ const styles = {
       borderWidth: 1,
       borderColor: "#c4d1d9",
       borderRadius: 9,
-      backgroundColor: "#ffffff",
+      backgroundColor: colors.white,
     },
     changeButtonText: {
       color: "#526975",
@@ -398,8 +400,8 @@ const styles = {
       fontWeight: "800",
     },
     turnPanel: {
-      backgroundColor: "#eaf6fb",
-      borderColor: "#bcddea",
+      backgroundColor: colors.primarySoft,
+      borderColor: colors.primaryBorder,
       borderWidth: 1,
       borderRadius: 14,
       paddingHorizontal: 12,
@@ -416,17 +418,9 @@ const styles = {
       flexWrap: "wrap",
       gap: 8,
     },
-    primaryButton: {
-      minHeight: 46,
-      backgroundColor: "#3388b0",
-      borderRadius: 10,
-      paddingHorizontal: 18,
-      alignItems: "center",
-      justifyContent: "center",
-      flexGrow: 1,
-    },
+    primaryButton: { ...buttonStyles.primaryButton, flexGrow: 1 },
     resultPanel: {
-      backgroundColor: "#ffffff",
+      backgroundColor: colors.white,
       borderWidth: 1,
       borderColor: "#cfdce4",
       borderRadius: 14,

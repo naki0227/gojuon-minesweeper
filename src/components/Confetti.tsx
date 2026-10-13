@@ -8,8 +8,9 @@ import {
 } from "react-native";
 
 import { USE_NATIVE_DRIVER } from "./motion";
+import { colors } from "../theme/colors";
 
-const COLORS = ["#ffcf4a", "#3388b0", "#e98a2f", "#7fd1b9", "#152534"];
+const COLORS = ["#ffcf4a", colors.primary, colors.accent, "#7fd1b9", "#152534"];
 const PIECES = 60;
 
 // Paper confetti bursting up from both lower corners, shown once on a win.

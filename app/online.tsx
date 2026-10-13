@@ -24,6 +24,7 @@ import {
 } from "../src/online/protocol";
 import { useOnlineRoom } from "../src/online/useOnlineRoom";
 import { matchStyles } from "../src/components/matchStyles";
+import { colors } from "../src/theme/colors";
 
 const DEFAULT_FILTERS: QuestionFilters = {
   language: "ja",
@@ -200,7 +201,7 @@ function Lobby({
           <Text style={styles.primaryButtonText}>相手を探す</Text>
         </Pressable>
       </View>
-      {online.busy ? <ActivityIndicator color="#3388b0" /> : null}
+      {online.busy ? <ActivityIndicator color={colors.primary} /> : null}
     </>
   );
 }
@@ -208,7 +209,7 @@ function Lobby({
 function Waiting({ room, online }: { room: OnlineRoom; online: Online }) {
   return (
     <View style={styles.panel}>
-      <ActivityIndicator color="#3388b0" />
+      <ActivityIndicator color={colors.primary} />
       <Text style={styles.panelTitle}>
         {room.kind === "code"
           ? `合言葉「${room.code}」で相手を待っています`
@@ -247,7 +248,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
   if (!state) {
     return (
       <View style={styles.panel}>
-        <ActivityIndicator color="#3388b0" />
+        <ActivityIndicator color={colors.primary} />
         <Text style={styles.panelTitle}>対戦を準備しています…</Text>
       </View>
     );
@@ -463,7 +464,7 @@ const styles = {
       minHeight: 38,
     },
     eyebrow: {
-      color: "#4285a8",
+      color: colors.help,
       fontSize: 13,
       fontWeight: "800",
       letterSpacing: 1,
@@ -475,7 +476,7 @@ const styles = {
       borderWidth: 1,
       borderColor: "#c4d1d9",
       borderRadius: 9,
-      backgroundColor: "#ffffff",
+      backgroundColor: colors.white,
     },
     smallButtonText: {
       color: "#526975",
@@ -483,7 +484,7 @@ const styles = {
       fontWeight: "800",
     },
     panel: {
-      backgroundColor: "#ffffff",
+      backgroundColor: colors.white,
       borderWidth: 1,
       borderColor: "#cfdce4",
       borderRadius: 14,
@@ -491,7 +492,7 @@ const styles = {
       gap: 10,
     },
     panelTitle: {
-      color: "#173f55",
+      color: colors.inkSoft,
       fontSize: 18,
       fontWeight: "900",
     },
@@ -504,14 +505,14 @@ const styles = {
       gap: 6,
     },
     prompt: {
-      color: "#102433",
+      color: colors.ink,
       fontSize: 24,
       fontWeight: "900",
       lineHeight: 30,
     },
     turnPanel: {
       backgroundColor: "#f1f4f6",
-      borderColor: "#d5dee4",
+      borderColor: colors.line,
       borderWidth: 1,
       borderRadius: 14,
       paddingHorizontal: 12,
@@ -521,8 +522,8 @@ const styles = {
       justifyContent: "space-between",
     },
     turnPanelMine: {
-      backgroundColor: "#eaf6fb",
-      borderColor: "#bcddea",
+      backgroundColor: colors.primarySoft,
+      borderColor: colors.primaryBorder,
     },
     row: {
       flexDirection: "row",
@@ -532,20 +533,12 @@ const styles = {
     grow: {
       flexGrow: 1,
     },
-    primaryButton: {
-      minHeight: 46,
-      backgroundColor: "#3388b0",
-      borderRadius: 10,
-      paddingHorizontal: 18,
-      alignItems: "center",
-      justifyContent: "center",
-    },
     textButton: {
       alignSelf: "center",
       paddingVertical: 8,
     },
     textButtonText: {
-      color: "#7b8992",
+      color: colors.muted,
       fontSize: 12,
       textDecorationLine: "underline",
     },
@@ -555,7 +548,7 @@ const styles = {
     },
     errorPanel: {
       backgroundColor: "#fff0df",
-      borderColor: "#e98a2f",
+      borderColor: colors.accent,
       borderWidth: 1,
       borderRadius: 10,
       padding: 12,

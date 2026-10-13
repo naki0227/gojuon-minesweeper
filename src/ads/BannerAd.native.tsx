@@ -12,6 +12,7 @@ import { mobileAds, type MobileAdsModule } from "./mobileAdsModule";
 import { selectBannerUnitId } from "./selectBannerUnitId";
 import type { BannerAdProps } from "./types";
 import { startAds } from "./startAds";
+import { colors } from "../theme/colors";
 
 let initialization: Promise<boolean> | null = null;
 
@@ -106,6 +107,6 @@ const styles = StyleSheet.create({
   duringPlay: {
     paddingTop: 150,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: "#d5dee4",
+    borderTopColor: colors.line,
   },
 });

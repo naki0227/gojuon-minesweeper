@@ -3,8 +3,9 @@ import { Alert, Pressable, Text, View } from "react-native";
 
 import { AppleAccount } from "./AppleAccount";
 import { packDiscountPercent } from "./packs";
-import { GEM_COLOR, walletStyles as styles } from "./styles";
+import { walletStyles as styles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
+import { colors } from "../theme/colors";
 
 type Wallet = ReturnType<typeof useGemWallet>;
 
@@ -56,7 +57,7 @@ export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
   return (
     <>
       <View style={styles.balance}>
-        <MaterialIcons name="diamond" size={26} color={GEM_COLOR} />
+        <MaterialIcons name="diamond" size={26} color={colors.gem} />
         <Text style={styles.balanceValue}>
           {wallet.balance === null ? "…" : wallet.balance.toLocaleString()}
         </Text>
@@ -85,7 +86,7 @@ export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
             disabled={disabled}
             onPress={() => void wallet.purchase(product.productId)}
           >
-            <MaterialIcons name="diamond" size={18} color={GEM_COLOR} />
+            <MaterialIcons name="diamond" size={18} color={colors.gem} />
             <Text style={styles.packGems}>{product.gems.toLocaleString()}</Text>
             <Text style={styles.packUnit}>ジェム</Text>
             {discount > 0 ? (

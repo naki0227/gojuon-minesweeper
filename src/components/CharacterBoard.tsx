@@ -4,7 +4,7 @@ import { Animated, StyleSheet, View } from "react-native";
 import type { QuestionLanguage } from "../data/types";
 import { getBoardGrid } from "../game/board";
 import { BoardTile } from "./BoardTile";
-import { USE_NATIVE_DRIVER, useReducedMotion } from "./motion";
+import { shakeTranslateX, USE_NATIVE_DRIVER, useReducedMotion } from "./motion";
 
 type Props = {
   language: QuestionLanguage;
@@ -100,10 +100,7 @@ export function CharacterBoard({
     }).start();
   }, [wave.mineHits, reducedMotion, shake]);
 
-  const shakeX = shake.interpolate({
-    inputRange: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1],
-    outputRange: [0, -9, 8, -6, 5, -3, 2, 0],
-  });
+  const shakeX = shakeTranslateX(shake);
 
   return (
     <Animated.View
