@@ -1,8 +1,10 @@
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Alert, Pressable, Text, View } from "react-native";
+
 import { AppleAccount } from "./AppleAccount";
 import { packDiscountPercent } from "./packs";
-import { styles } from "../endless/styles";
-import { useGemWallet } from "./useGemWallet";
+import { GEM_COLOR, walletStyles as styles } from "./styles";
+import type { useGemWallet } from "./useGemWallet";
 
 type Wallet = ReturnType<typeof useGemWallet>;
 
@@ -26,63 +28,95 @@ function confirmDelete(wallet: Wallet) {
   );
 }
 
+// The biggest discount is highlighted as the best value.
+function bestProductId(wallet: Wallet): string | null {
+  const best = [...wallet.products].sort(
+    (a, b) => packDiscountPercent(b) - packDiscountPercent(a),
+  )[0];
+  return best && packDiscountPercent(best) > 0 ? best.productId : null;
+}
+
 export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
   if (!wallet.enabled) return null;
+  if (!wallet.userId) {
+    return (
+      <>
+        <Text style={styles.note}>
+          Appleでログインすると初回限定で3ジェムをプレゼント。再インストール後も残高を引き継げます。
+        </Text>
+        <AppleAccount onSignedIn={() => void wallet.refresh()} />
+        {wallet.message ? (
+          <Text style={styles.error}>{wallet.message}</Text>
+        ) : null}
+      </>
+    );
+  }
+  const best = bestProductId(wallet);
+  const disabled = wallet.buying || wallet.loading;
   return (
-    <View style={styles.panel}>
-      {!wallet.userId ? (
-        <>
-          <Text style={styles.panelText}>
-            Appleでログインすると初回限定で3ジェムをプレゼント。ジェム残高は再インストール後も引き継げます。
-          </Text>
-          <AppleAccount onSignedIn={() => void wallet.refresh()} />
-        </>
-      ) : (
-        <>
-          <Text style={styles.statValue}>
-            残高：{wallet.balance === null ? "同期中" : wallet.balance} ジェム
-          </Text>
-          {wallet.products.length === 0 ? (
-            <Text style={styles.panelText}>
-              {wallet.loading
-                ? "商品情報を取得中…"
-                : "商品情報を取得できません"}
-            </Text>
-          ) : null}
-          {wallet.products.map((product) => {
-            const discount = packDiscountPercent(product);
-            const disabled = wallet.buying || wallet.loading;
-            return (
-              <Pressable
-                key={product.productId}
-                style={[styles.primary, disabled && styles.disabled]}
-                disabled={disabled}
-                onPress={() => void wallet.purchase(product.productId)}
-              >
-                <Text style={styles.primaryText}>
-                  {wallet.buying
-                    ? "購入処理中…"
-                    : `${product.gems}ジェム（${product.displayPrice}）${discount > 0 ? ` ${discount}%オフ` : ""}`}
-                </Text>
-              </Pressable>
-            );
-          })}
-          <Text style={styles.panelText}>
-            お問い合わせID：{supportId(wallet.userId)}
-            {"\n"}
-            ジェムが減ったのにヒントや復活が届かなかった場合は、このIDを添えてサポートへご連絡ください。
-          </Text>
+    <>
+      <View style={styles.balance}>
+        <MaterialIcons name="diamond" size={26} color={GEM_COLOR} />
+        <Text style={styles.balanceValue}>
+          {wallet.balance === null ? "…" : wallet.balance.toLocaleString()}
+        </Text>
+        <Text style={styles.balanceUnit}>ジェム</Text>
+      </View>
+      <Text style={styles.note}>
+        安全マス 1ジェム ／ 4回目以降の復活 3ジェム
+      </Text>
+      {wallet.products.length === 0 ? (
+        <Text style={styles.note}>
+          {wallet.loading ? "商品情報を取得中…" : "商品情報を取得できません"}
+        </Text>
+      ) : null}
+      {wallet.products.map((product) => {
+        const discount = packDiscountPercent(product);
+        return (
           <Pressable
-            style={styles.secondary}
-            onPress={() => confirmDelete(wallet)}
+            key={product.productId}
+            accessibilityRole="button"
+            accessibilityLabel={`${product.gems}ジェムを${product.displayPrice}で購入`}
+            style={[
+              styles.pack,
+              product.productId === best && styles.packBest,
+              disabled && styles.disabled,
+            ]}
+            disabled={disabled}
+            onPress={() => void wallet.purchase(product.productId)}
           >
-            <Text style={styles.secondaryText}>アカウントを削除</Text>
+            <MaterialIcons name="diamond" size={18} color={GEM_COLOR} />
+            <Text style={styles.packGems}>{product.gems.toLocaleString()}</Text>
+            <Text style={styles.packUnit}>ジェム</Text>
+            {discount > 0 ? (
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{discount}%OFF</Text>
+              </View>
+            ) : null}
+            <View style={styles.spacer} />
+            <View style={styles.price}>
+              <Text style={styles.priceText}>{product.displayPrice}</Text>
+            </View>
           </Pressable>
-        </>
-      )}
+        );
+      })}
+      {wallet.buying ? <Text style={styles.note}>購入処理中…</Text> : null}
       {wallet.message ? (
         <Text style={styles.error}>{wallet.message}</Text>
       ) : null}
-    </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          お問い合わせID：{supportId(wallet.userId)}
+          。ジェムが減ったのにヒントや復活が届かなかったときは、このIDを添えてサポートへご連絡ください。
+        </Text>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => confirmDelete(wallet)}
+          hitSlop={8}
+        >
+          <Text style={styles.deleteText}>アカウントを削除</Text>
+        </Pressable>
+      </View>
+    </>
   );
 }

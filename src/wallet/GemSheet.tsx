@@ -1,27 +1,28 @@
-import { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useState } from "react";
 import { Modal, Pressable, ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "../endless/styles";
 import { GemWalletPanel } from "./GemWalletPanel";
+import { GEM_COLOR, walletStyles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
 
 type Wallet = ReturnType<typeof useGemWallet>;
 
-export const GEM_COLOR = "#4a63c9";
+export { GEM_COLOR };
 
-// A small balance chip for the game header. Tapping it opens the full
-// wallet (sign-in, packs, support ID, account deletion) as a sheet, so the
-// play screen stays on one screen.
+// A small balance chip for the game header. Tapping it opens the wallet
+// (sign-in, packs, support ID, account deletion) as a popup over the game,
+// so the play screen stays on one screen.
 export function GemChip({ wallet }: { wallet: Wallet }) {
   const [open, setOpen] = useState(false);
   if (!wallet.enabled) return null;
-  // Just the balance; signing in and buying happen in the sheet.
+  // Just the balance; signing in and buying happen in the popup.
   const label =
     wallet.userId && wallet.balance !== null
       ? wallet.balance.toLocaleString()
       : "－";
+  const close = () => setOpen(false);
   return (
     <>
       <Pressable
@@ -38,28 +39,33 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
       </Pressable>
       <Modal
         visible={open}
-        animationType="slide"
-        presentationStyle="pageSheet"
-        onRequestClose={() => setOpen(false)}
+        transparent
+        animationType="fade"
+        onRequestClose={close}
       >
-        <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
-          <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>ジェム</Text>
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => setOpen(false)}
-              hitSlop={12}
-            >
-              <Text style={styles.sheetClose}>閉じる</Text>
-            </Pressable>
-          </View>
-          <ScrollView contentContainerStyle={styles.sheetBody}>
-            <Text style={styles.panelText}>
-              ヒント（安全マスの表示）は1ジェム、4回目以降の復活は3ジェム。
-            </Text>
-            <GemWalletPanel wallet={wallet} />
-          </ScrollView>
-        </SafeAreaView>
+        <Pressable
+          style={walletStyles.backdrop}
+          onPress={close}
+          accessibilityLabel="閉じる"
+        >
+          {/* Taps inside the card must not close it. */}
+          <Pressable style={walletStyles.card} onPress={() => {}}>
+            <View style={walletStyles.header}>
+              <Text style={walletStyles.title}>ジェム</Text>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="閉じる"
+                onPress={close}
+                hitSlop={12}
+              >
+                <MaterialIcons name="close" size={22} color="#546d7a" />
+              </Pressable>
+            </View>
+            <ScrollView contentContainerStyle={walletStyles.body}>
+              <GemWalletPanel wallet={wallet} />
+            </ScrollView>
+          </Pressable>
+        </Pressable>
       </Modal>
     </>
   );

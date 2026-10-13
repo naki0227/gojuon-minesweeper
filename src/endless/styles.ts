@@ -104,18 +104,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   actions: { flexDirection: "row", gap: 8 },
-  sheetHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 18,
-    paddingVertical: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: LINE,
-  },
-  sheetTitle: { color: INK, fontSize: 18, fontWeight: "900" },
-  sheetClose: { color: BLUE, fontSize: 15, fontWeight: "800" },
-  sheetBody: { padding: 16, gap: 12 },
   primary: {
     minHeight: 44,
     borderRadius: 10,
