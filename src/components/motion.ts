@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { AccessibilityInfo, Platform } from "react-native";
+import { AccessibilityInfo, Animated, Platform } from "react-native";
+import { colors } from "../theme/colors";
 
 // React Native Web has no native animation driver.
 export const USE_NATIVE_DRIVER = Platform.OS !== "web";
@@ -29,5 +30,18 @@ export function useReducedMotion(): boolean {
 }
 
 // Colors for the number of mines around an opened cell.
-export const COUNT_COLORS = ["#9aa7b0", "#3388b0", "#2f9e6a", "#e97817"];
-export const COUNT_COLOR_MANY = "#c2410c";
+export const COUNT_COLORS = [
+  "#9aa7b0",
+  colors.primary,
+  colors.success,
+  colors.accentStrong,
+];
+export const COUNT_COLOR_MANY = colors.danger;
+
+// Side-to-side board shake for a mine hit, driven by `progress` 0 → 1.
+export function shakeTranslateX(progress: Animated.Value) {
+  return progress.interpolate({
+    inputRange: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1],
+    outputRange: [0, -9, 8, -6, 5, -3, 2, 0],
+  });
+}

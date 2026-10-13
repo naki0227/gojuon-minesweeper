@@ -18,6 +18,9 @@ import {
   MineScene,
   OpenScene,
 } from "./scenes";
+import { HELP_STEP, RULE_STEPS } from "./rules";
+import { colors } from "../theme/colors";
+import { buttonStyles } from "../components/buttonStyles";
 
 type Page = {
   title: string;
@@ -26,31 +29,11 @@ type Page = {
 };
 
 const PAGES: readonly Page[] = [
-  {
-    title: "答えを予想して回答",
-    body: "お題の言葉を予想して入力。当たれば勝ち。自信がなければ回答せずに進めます。",
-    Scene: AnswerScene,
-  },
-  {
-    title: "1文字開いてヒント",
-    body: "回答のあとに1マス開きます。数字は周り8マスにある答えの文字の数（重複込み）。",
-    Scene: OpenScene,
-  },
-  {
-    title: "0なら連鎖",
-    body: "周りに答えの文字がなければ、安全なマスがまとめて開きます。",
-    Scene: ChainScene,
-  },
-  {
-    title: "地雷に注意",
-    body: "答えに含まれる文字を開くと地雷。次の自分の番は回答できません。",
-    Scene: MineScene,
-  },
-  {
-    title: "ルールはいつでも",
-    body: "対戦中も「ルール」を押すと、この説明をもう一度見られます。",
-    Scene: HelpScene,
-  },
+  ...RULE_STEPS.map((step, index) => ({
+    ...step,
+    Scene: [AnswerScene, OpenScene, ChainScene, MineScene][index]!,
+  })),
+  { ...HELP_STEP, Scene: HelpScene },
 ];
 
 const SEEN_KEY = "tutorial.v1.seen";
@@ -159,7 +142,7 @@ const styles = StyleSheet.create({
   card: { paddingBottom: 16 },
   page: { paddingHorizontal: 22, paddingTop: 16, gap: 8 },
   step: { color: "#8a9aa5", fontSize: 11, fontWeight: "800" },
-  title: { color: "#102433", fontSize: 20, fontWeight: "900" },
+  title: { color: colors.ink, fontSize: 20, fontWeight: "900" },
   body: { color: "#516775", fontSize: 14, lineHeight: 21, minHeight: 63 },
   dots: {
     flexDirection: "row",
@@ -167,8 +150,8 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingVertical: 12,
   },
-  dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: "#d5dee4" },
-  dotActive: { width: 18, backgroundColor: "#3388b0" },
+  dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.line },
+  dotActive: { width: 18, backgroundColor: colors.primary },
   actions: {
     flexDirection: "row",
     alignItems: "center",
@@ -176,13 +159,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
   },
   skip: { minWidth: 72, paddingVertical: 10 },
-  skipText: { color: "#7b8992", fontSize: 14, fontWeight: "700" },
-  next: {
-    minWidth: 120,
-    borderRadius: 999,
-    backgroundColor: "#3388b0",
-    paddingVertical: 11,
-    alignItems: "center",
-  },
-  nextText: { color: "#ffffff", fontSize: 15, fontWeight: "900" },
+  skipText: { color: colors.muted, fontSize: 14, fontWeight: "700" },
+  next: { ...buttonStyles.primaryButton, minWidth: 120, borderRadius: 999 },
+  nextText: buttonStyles.primaryButtonText,
 });

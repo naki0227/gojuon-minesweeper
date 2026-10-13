@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
+import { colors } from "../theme/colors";
 
 // Remove-ads purchase, restore and offer-code entry shown under the setup
 // screen ad. Renders nothing where no store exists (web, Expo Go).
@@ -99,9 +100,9 @@ const styles = StyleSheet.create({
     minHeight: 38,
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: "#bcddea",
+    borderColor: colors.primaryBorder,
     borderRadius: 9,
-    backgroundColor: "#eaf6fb",
+    backgroundColor: colors.primarySoft,
     paddingHorizontal: 12,
   },
   buttonText: {
@@ -115,16 +116,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
   },
   linkText: {
-    color: "#287da5",
+    color: colors.link,
     fontSize: 13,
     fontWeight: "700",
   },
   caption: {
-    color: "#7b8992",
+    color: colors.muted,
     fontSize: 12,
   },
   ownedText: {
-    color: "#7b8992",
+    color: colors.muted,
     fontSize: 12,
   },
   message: {

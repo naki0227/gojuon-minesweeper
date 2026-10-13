@@ -4,11 +4,12 @@ import { PopIn } from "../components/PopIn";
 import { EndlessBoard } from "./EndlessBoard";
 import type { EndlessState } from "./engine";
 import type { StingerKind } from "./pauses";
+import { colors } from "../theme/colors";
 
 const COPY: Record<StingerKind, { title: string; color: string }> = {
-  start: { title: "START", color: "#3388b0" },
-  clear: { title: "CLEAR!", color: "#2f9e6a" },
-  over: { title: "GAME OVER", color: "#c2410c" },
+  start: { title: "START", color: colors.primary },
+  clear: { title: "CLEAR!", color: colors.success },
+  over: { title: "GAME OVER", color: colors.danger },
 };
 
 type Props = {
@@ -77,10 +78,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 4,
     borderRadius: 18,
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
     paddingHorizontal: 26,
     paddingVertical: 18,
-    shadowColor: "#102433",
+    shadowColor: colors.ink,
     shadowOpacity: 0.18,
     shadowRadius: 18,
     shadowOffset: { width: 0, height: 6 },

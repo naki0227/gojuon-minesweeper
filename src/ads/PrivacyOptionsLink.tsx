@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
+import { colors } from "../theme/colors";
 
 // The link both platforms' AdPrivacyOptionsButton render; only what a
 // press opens differs.
@@ -20,6 +21,6 @@ const styles = StyleSheet.create({
     minHeight: 38,
     justifyContent: "center",
   },
-  text: { color: "#287da5", fontSize: 14, fontWeight: "700" },
+  text: { color: colors.link, fontSize: 14, fontWeight: "700" },
   pressed: { opacity: 0.72 },
 });

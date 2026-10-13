@@ -29,14 +29,11 @@ import type {
   QuestionLanguage,
 } from "../data/types";
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
+import { colors } from "../theme/colors";
 
-const INK = "#102433";
-const PAPER = "#f7fafc";
-const ACCENT = "#3388b0";
 const MUTED = "#536875";
 const LINE = "#cfdce4";
 const MINE_FILL = "#fff0df";
-const MINE_BORDER = "#e98a2f";
 
 const LANGUAGE_TABS: readonly {
   value: QuestionLanguage | "any";
@@ -476,7 +473,7 @@ export function HomeSetup({
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: PAPER,
+    backgroundColor: colors.background,
   },
   page: {
     width: "100%",
@@ -499,8 +496,8 @@ const styles = StyleSheet.create({
   titleTile: {
     width: 30,
     height: 30,
-    backgroundColor: INK,
-    color: PAPER,
+    backgroundColor: colors.ink,
+    color: colors.background,
     fontSize: 17,
     fontWeight: "900",
     lineHeight: 30,
@@ -508,11 +505,11 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   titleTileAccent: {
-    backgroundColor: ACCENT,
-    color: "#ffffff",
+    backgroundColor: colors.primary,
+    color: colors.white,
   },
   titleText: {
-    color: INK,
+    color: colors.ink,
     fontSize: 19,
     fontWeight: "900",
     letterSpacing: 0.8,
@@ -532,7 +529,7 @@ const styles = StyleSheet.create({
     marginBottom: -1,
   },
   tabSelected: {
-    borderBottomColor: INK,
+    borderBottomColor: colors.ink,
   },
   tabText: {
     color: MUTED,
@@ -540,7 +537,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   tabTextOn: {
-    color: INK,
+    color: colors.ink,
     fontWeight: "900",
   },
   groupRow: {
@@ -554,9 +551,9 @@ const styles = StyleSheet.create({
     borderBottomColor: LINE,
   },
   groupRowSelected: {
-    backgroundColor: "#eaf6fb",
+    backgroundColor: colors.primarySoft,
     borderLeftWidth: 4,
-    borderLeftColor: ACCENT,
+    borderLeftColor: colors.primary,
     paddingLeft: 8,
   },
   groupText: {
@@ -564,7 +561,7 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   groupLabel: {
-    color: INK,
+    color: colors.ink,
     fontSize: 17,
     fontWeight: "700",
   },
@@ -593,10 +590,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: MINE_FILL,
     borderWidth: 1,
-    borderColor: MINE_BORDER,
+    borderColor: colors.accent,
   },
   sampleTileText: {
-    color: INK,
+    color: colors.ink,
     fontSize: 12,
     fontWeight: "700",
   },
@@ -617,7 +614,7 @@ const styles = StyleSheet.create({
   segment: {
     flexDirection: "row",
     borderWidth: 1.5,
-    borderColor: INK,
+    borderColor: colors.ink,
   },
   segmentItem: {
     flex: 1,
@@ -628,18 +625,18 @@ const styles = StyleSheet.create({
   },
   segmentDivider: {
     borderLeftWidth: 1.5,
-    borderLeftColor: INK,
+    borderLeftColor: colors.ink,
   },
   segmentSelected: {
-    backgroundColor: INK,
+    backgroundColor: colors.ink,
   },
   segmentLabel: {
-    color: INK,
+    color: colors.ink,
     fontSize: 14,
     fontWeight: "700",
   },
   segmentLabelOn: {
-    color: PAPER,
+    color: colors.background,
     fontWeight: "900",
   },
   segmentNote: {
@@ -650,7 +647,7 @@ const styles = StyleSheet.create({
     color: "#d7e7ef",
   },
   textLink: {
-    color: INK,
+    color: colors.ink,
     fontSize: 13,
     textDecorationLine: "underline",
     paddingVertical: 6,
@@ -664,9 +661,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 2,
-    borderColor: INK,
-    backgroundColor: ACCENT,
-    shadowColor: INK,
+    borderColor: colors.ink,
+    backgroundColor: colors.primary,
+    shadowColor: colors.ink,
     shadowOffset: { width: 4, height: 4 },
     shadowOpacity: 1,
     shadowRadius: 0,
@@ -678,7 +675,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
   },
   startText: {
-    color: "#ffffff",
+    color: colors.white,
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 1,
@@ -688,13 +685,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 2,
-    borderColor: INK,
-    backgroundColor: "#ffffff",
+    borderColor: colors.ink,
+    backgroundColor: colors.white,
     marginRight: 4,
     paddingVertical: 6,
   },
   onlineText: {
-    color: INK,
+    color: colors.ink,
     fontSize: 16,
     fontWeight: "900",
     letterSpacing: 1,
@@ -730,7 +727,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   footerLink: {
-    color: INK,
+    color: colors.ink,
     fontSize: 12,
     fontWeight: "700",
     paddingVertical: 6,
@@ -758,13 +755,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   closeText: {
-    color: INK,
+    color: colors.ink,
     fontSize: 15,
     fontWeight: "700",
     textDecorationLine: "underline",
   },
   detailTitle: {
-    color: INK,
+    color: colors.ink,
     fontSize: 22,
     fontWeight: "900",
   },
@@ -776,7 +773,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   detailGroupLabel: {
-    color: INK,
+    color: colors.ink,
     fontSize: 14,
     fontWeight: "900",
   },
@@ -791,14 +788,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: "#bdcbd5",
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
   },
   chipSelected: {
-    borderColor: ACCENT,
-    backgroundColor: "#eaf6fb",
+    borderColor: colors.primary,
+    backgroundColor: colors.primarySoft,
   },
   chipText: {
-    color: INK,
+    color: colors.ink,
     fontSize: 13,
     fontWeight: "700",
   },

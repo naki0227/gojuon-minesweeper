@@ -10,6 +10,7 @@ import {
 import type { Question } from "../data/types";
 import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
 import { GOJUON_GRID } from "../game/gojuon";
+import { colors } from "../theme/colors";
 
 type Props = {
   question: Question;
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
   },
   closedCell: {
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
     borderColor: "#c9d5df",
   },
   safeCell: {
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
   },
   mineCell: {
     backgroundColor: "#fff0df",
-    borderColor: "#e98a2f",
+    borderColor: colors.accent,
   },
   pressedCell: {
     opacity: 0.65,
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 2,
     right: 2,
-    color: "#e97817",
+    color: colors.accentStrong,
     fontSize: 9,
     fontWeight: "900",
   },
