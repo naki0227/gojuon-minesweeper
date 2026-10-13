@@ -82,6 +82,20 @@ export const styles = StyleSheet.create({
   messageText: { color: "#465963", fontSize: 13, lineHeight: 19 },
   chain: { color: "#36864a", fontSize: 13, fontWeight: "900" },
   answerRow: { flexDirection: "row", gap: 8 },
+  letterHint: {
+    alignItems: "center",
+    gap: 2,
+    borderRadius: 10,
+    backgroundColor: "#fff4e8",
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+  },
+  letterHintCaption: { color: "#8a5a2b", fontSize: 11, fontWeight: "800" },
+  letterHintText: {
+    color: "#5a3410",
+    fontWeight: "900",
+    textAlign: "center",
+  },
   input: {
     flex: 1,
     minWidth: 0,

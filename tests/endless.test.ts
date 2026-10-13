@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { Question } from "../src/data/types";
+import { getBoardOrder } from "../src/game/board";
 import {
   BASE_QUESTION_SCORE,
   CHAIN_BONUS_PER_CELL,
@@ -10,6 +11,7 @@ import {
   FREE_REVIVE_LIMIT,
   grantHint,
   guessEndless,
+  isExhausted,
   nextEndlessQuestion,
   openEndless,
   passEndless,
@@ -133,5 +135,40 @@ describe("endless solo rules", () => {
       mineHits: 3,
     };
     expect(questionScore(battered)).toBe(10);
+  });
+
+  it("shows answer letters for a penalty once every safe cell is open", () => {
+    const safe = getBoardOrder("ja").filter(
+      (char) => !["ね", "こ", "ら"].includes(char),
+    );
+    const last = safe.at(-1)!;
+    const almost = {
+      ...startEndless(question),
+      phase: "open" as const,
+      opened: safe.filter((char) => char !== last),
+    };
+    const opened = openEndless(almost, last);
+    expect(isExhausted(opened)).toBe(true);
+    expect(opened.phase).toBe("answer");
+    expect(opened.message).toContain("すべて開いた");
+
+    const passed = passEndless(opened);
+    expect(passed.phase).toBe("answer");
+    expect(passed.revealedLetters).toBe(1);
+    const wrong = guessEndless(passed, "いぬ");
+    expect(wrong.phase).toBe("answer");
+    expect(wrong.revealedLetters).toBe(2);
+    expect(questionScore(wrong)).toBe(questionScore(opened) - 12 - 50);
+
+    const all = passEndless(passEndless(wrong));
+    expect(all.revealedLetters).toBe(3);
+    expect(all.message).toContain("すべて表示中");
+    expect(guessEndless(all, "ねこら").phase).toBe("cleared");
+  });
+
+  it("keeps the usual open step while safe cells remain", () => {
+    const passed = passEndless(startEndless(question));
+    expect(passed.phase).toBe("open");
+    expect(passed.revealedLetters).toBe(0);
   });
 });
