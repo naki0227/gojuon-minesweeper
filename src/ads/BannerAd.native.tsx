@@ -100,6 +100,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  // Space between the game's last control and the ad, against mistaps.
-  duringPlay: { marginTop: 150 },
+  // A light divider under the game, then space before the ad, against
+  // mistaps.
+  duringPlay: {
+    paddingTop: 150,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "#d5dee4",
+  },
 });

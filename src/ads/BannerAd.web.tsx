@@ -122,7 +122,11 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
   },
-  // Space between the game's last control and the ad (CSS px), against
-  // mistaps.
-  duringPlay: { marginTop: 150 },
+  // A light divider under the game, then space (CSS px) before the ad,
+  // against mistaps.
+  duringPlay: {
+    paddingTop: 150,
+    borderTopWidth: 1,
+    borderTopColor: "#d5dee4",
+  },
 });

@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   View,
@@ -16,23 +17,40 @@ import type { BannerAdProps } from "./types";
 const BANNER_ROOM = 90;
 const PLAY_GAP = 150;
 
+// Only the apps pin: AdMob's anchored banner is made for it, while web
+// AdSense units must not float.
+const CAN_PIN = Platform.OS === "ios" || Platform.OS === "android";
+
 type Props = {
   banner: BannerAdProps | null;
+  // Changes when a new game starts; the pin decision holds until then, so
+  // the ad never jumps while someone is playing.
+  layoutKey: string;
   // The page container: width, padding and gap between children.
   contentStyle: StyleProp<ViewStyle>;
   children: ReactNode;
 };
 
-// A scrolling screen with its banner pinned to the bottom when everything
-// fits: during play only if the whole game plus the 150 px gap and the
-// banner fit without scrolling, so a tap on the game can never land near
-// the ad. Otherwise the banner sits at the end of the page as before.
-export function PinnedBannerScreen({ banner, contentStyle, children }: Props) {
+// A scrolling screen with its banner pinned to the bottom when the game,
+// the 150 px gap and the banner fit without scrolling at the start of a
+// game. Once pinned only the game area scrolls; the gap belongs to the
+// pinned footer, so nothing tappable can come near the ad. Otherwise the
+// banner sits at the end of the page.
+export function PinnedBannerScreen({
+  banner,
+  layoutKey,
+  contentStyle,
+  children,
+}: Props) {
   const [screen, setScreen] = useState(0);
   const [page, setPage] = useState(0);
+  const [decision, setDecision] = useState<{ key: string; pin: boolean }>();
   const flat = StyleSheet.flatten(contentStyle) ?? {};
   const needed = page + BANNER_ROOM + (banner?.duringPlay ? PLAY_GAP : 0);
-  const pinned = banner !== null && screen > 0 && page > 0 && needed <= screen;
+  if (decision?.key !== layoutKey && screen > 0 && page > 0) {
+    setDecision({ key: layoutKey, pin: CAN_PIN && needed <= screen });
+  }
+  const pinned = banner !== null && decision?.key === layoutKey && decision.pin;
   return (
     <View
       style={styles.fill}

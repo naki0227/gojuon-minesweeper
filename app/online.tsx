@@ -14,6 +14,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { PinnedBannerScreen } from "../src/ads/PinnedBannerScreen";
 import { matchBanner } from "../src/ads/types";
 import { CharacterBoard } from "../src/components/CharacterBoard";
+import { RuleHelp } from "../src/components/RuleHelp";
 import type { QuestionFilters } from "../src/data/types";
 import { isOnlineConfigured } from "../src/online/client";
 import {
@@ -101,6 +102,7 @@ export default function OnlineScreen() {
             ? matchBanner(room.public_state?.phase, room.status)
             : null
         }
+        layoutKey={`${room?.id}:${room?.status}:${room?.public_state?.prompt}`}
         contentStyle={styles.page}
       >
         {room?.status !== "playing" ? (
@@ -285,6 +287,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
     <>
       <View style={styles.header}>
         <Text style={styles.prompt}>{state.prompt}</Text>
+        <RuleHelp kana={state.language === "ja"} />
       </View>
 
       {!finished ? (

@@ -1,6 +1,8 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+
+import { TutorialModal } from "../tutorial/TutorialModal";
 
 const RULE =
   "回答してから1文字開く。セーフなら周囲8マスの答え文字数（重複込み）を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。";
@@ -8,36 +10,38 @@ const RULE =
 const LEGEND =
   "白いマス：セーフ（数字は周囲の答え文字数）／オレンジのマス：地雷";
 
-// The rules and the board legend take several lines, so they open on
-// demand under the prompt.
+// Web has room for the rules as text. The apps keep the match on one
+// screen and open the animated tutorial from a small link instead.
 export function RuleHelp({ kana = false }: { kana?: boolean }) {
   const [open, setOpen] = useState(false);
+  if (Platform.OS === "web") {
+    return (
+      <Text style={styles.rule}>
+        {RULE}
+        {"\n"}
+        {LEGEND}
+        {kana ? "。「ー」は「ん」の下" : ""}
+      </Text>
+    );
+  }
   return (
-    <View style={styles.wrap}>
+    <View>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={open ? "ルールを閉じる" : "ルールを見る"}
-        onPress={() => setOpen((value) => !value)}
+        accessibilityLabel="ルールを見る"
+        onPress={() => setOpen(true)}
         hitSlop={8}
         style={styles.button}
       >
         <MaterialIcons name="help-outline" size={16} color="#4285a8" />
         <Text style={styles.label}>ルール</Text>
       </Pressable>
-      {open ? (
-        <Text style={styles.rule}>
-          {RULE}
-          {"\n"}
-          {LEGEND}
-          {kana ? "。「ー」は「ん」の下" : ""}
-        </Text>
-      ) : null}
+      <TutorialModal visible={open} onClose={() => setOpen(false)} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { gap: 6 },
   button: {
     flexDirection: "row",
     alignItems: "center",

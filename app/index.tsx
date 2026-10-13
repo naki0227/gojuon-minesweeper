@@ -188,6 +188,7 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.safeArea}>
       <PinnedBannerScreen
         banner={matchBanner(game.phase)}
+        layoutKey={game.question.id}
         contentStyle={styles.page}
       >
         <View style={styles.gameTopBar}>
@@ -198,10 +199,19 @@ export default function HomeScreen() {
         </View>
         <RuleHelp kana={game.question.language === "ja"} />
 
-        <View style={styles.turnPanel}>
+        <View
+          style={[styles.turnPanel, game.currentPlayer === 1 && styles.turnP2]}
+        >
           <View style={styles.turnWho}>
             <Text style={styles.turnCaption}>手番</Text>
-            <Text style={styles.turnPlayer}>{currentPlayerLabel}</Text>
+            <Text
+              style={[
+                styles.turnPlayer,
+                game.currentPlayer === 1 && styles.turnPlayerP2,
+              ]}
+            >
+              {currentPlayerLabel}
+            </Text>
           </View>
           <View style={styles.phaseBadge}>
             <Text style={styles.phaseText}>
@@ -399,6 +409,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  // Player 2's turn is orange so passing the phone is easy to notice.
+  turnP2: { backgroundColor: "#fff1e4", borderColor: "#f2c9a0" },
+  turnPlayerP2: { color: "#8a3f10" },
   turnWho: { flexDirection: "row", alignItems: "baseline", gap: 8 },
   turnCaption: {
     color: "#637b89",
