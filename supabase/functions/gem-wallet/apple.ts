@@ -86,24 +86,32 @@ export type AppleTransaction = {
 
 export async function queryApple(transactionId: string): Promise<AppleTransaction> {
   const bearer = await appStoreToken();
+  // Production first, then sandbox (TestFlight and sandbox testers). The
+  // production endpoint answers 404 for sandbox transactions, and 401 for
+  // apps not yet live there, so both fall through to sandbox; the sandbox
+  // call needs the same valid key, so nothing is accepted unauthenticated.
+  const failures: string[] = [];
   let result: Response | null = null;
   for (const host of ["https://api.storekit.apple.com", "https://api.storekit-sandbox.apple.com"]) {
     const response = await fetch(
       host + "/inApps/v1/transactions/" + encodeURIComponent(transactionId),
       { headers: { Authorization: "Bearer " + bearer } },
     );
-    if (response.status === 404) continue;
-    if (!response.ok) {
-      // Apple's error body is a code and a short message, never a secret.
-      const detail = await response.text().catch(() => "");
-      throw new Error(
-        `Apple verification HTTP ${response.status} at ${host}: ${detail.slice(0, 200)}`,
-      );
+    if (response.ok) {
+      result = response;
+      break;
     }
-    result = response;
-    break;
+    // Apple's error body is a code and a short message, never a secret.
+    const detail = await response.text().catch(() => "");
+    failures.push(`${host} HTTP ${response.status} ${detail.slice(0, 120)}`);
+    if (response.status !== 404 && response.status !== 401) break;
   }
-  if (!result) throw new ClientError("購入情報をAppleに確認できませんでした。");
+  if (!result) {
+    if (failures.every((failure) => / HTTP 404 /.test(failure))) {
+      throw new ClientError("購入情報をAppleに確認できませんでした。");
+    }
+    throw new Error("Apple verification failed: " + failures.join(" | "));
+  }
   const json = await result.json() as { signedTransactionInfo?: string };
   // The JWS is obtained directly from Apple's authenticated, TLS-protected
   // App Store Server API, not from client-supplied signedTransactionInfo.
