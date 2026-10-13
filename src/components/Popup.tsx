@@ -36,23 +36,26 @@ export function Popup({
       animationType="fade"
       onRequestClose={onDismiss}
     >
-      <Pressable
-        style={styles.backdrop}
-        onPress={onDismiss}
-        disabled={!onDismiss}
-        accessible={false}
-      >
-        {onDismiss ? (
-          // Taps inside the card must not reach the backdrop.
+      {onDismiss ? (
+        <Pressable
+          style={styles.backdrop}
+          onPress={onDismiss}
+          accessible={false}
+        >
+          {/* Taps inside the card must not reach the backdrop. */}
           <Pressable onPress={() => {}} onLayout={onCardLayout} style={card}>
             {children}
           </Pressable>
-        ) : (
+        </Pressable>
+      ) : (
+        // No disabled Pressable here: on web its disabled state would
+        // also disable every button inside the card.
+        <View style={styles.backdrop}>
           <View onLayout={onCardLayout} style={card}>
             {children}
           </View>
-        )}
-      </Pressable>
+        </View>
+      )}
     </Modal>
   );
 }
