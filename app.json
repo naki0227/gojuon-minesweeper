@@ -15,9 +15,7 @@
         "ITSAppUsesNonExemptEncryption": false
       },
       "usesAppleSignIn": true,
-      "associatedDomains": [
-        "applinks:minesweeper.enludus.com"
-      ]
+      "associatedDomains": ["applinks:minesweeper.enludus.com"]
     },
     "android": {
       "package": "com.naki0227.gojuonminesweeper",
@@ -38,7 +36,15 @@
           "headOrigin": "https://minesweeper.enludus.com"
         }
       ],
-      "expo-splash-screen"
+      "expo-splash-screen",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "このアプリは録音を行いません（音声再生のための設定です）。",
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

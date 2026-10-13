@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { PopIn } from "../components/PopIn";
 import { EndlessBoard } from "./EndlessBoard";
 import type { EndlessState } from "./engine";
 import type { StingerKind } from "./pauses";
+import { playSound } from "../sound/sounds";
 import { colors } from "../theme/colors";
 
 const COPY: Record<StingerKind, { title: string; color: string }> = {
@@ -30,6 +32,14 @@ export function Stinger({
   onContinue,
 }: Props) {
   const { title, color } = COPY[kind];
+  // START and GAME OVER have their own sound; CLEAR is the correct-answer
+  // fanfare already played. GAME OVER waits for the mine's boom to fade.
+  useEffect(() => {
+    if (kind === "start") playSound("start");
+    if (kind !== "over") return;
+    const timer = setTimeout(() => playSound("over"), 700);
+    return () => clearTimeout(timer);
+  }, [kind]);
   const detail =
     kind === "start"
       ? `第${game.solved + 1}問`

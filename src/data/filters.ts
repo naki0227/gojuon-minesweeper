@@ -1,4 +1,6 @@
-import type { QuestionFilters } from "../data/types";
+// Question filters passed between screens as a JSON route parameter;
+// anything malformed falls back to the defaults.
+import type { QuestionFilters } from "./types";
 
 const DEFAULT_FILTERS: QuestionFilters = {
   language: "ja",

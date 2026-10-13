@@ -15,7 +15,7 @@ import { PinnedBannerScreen } from "../src/ads/PinnedBannerScreen";
 import { matchBanner } from "../src/ads/types";
 import { CharacterBoard } from "../src/components/CharacterBoard";
 import { RuleHelp } from "../src/components/RuleHelp";
-import type { QuestionFilters } from "../src/data/types";
+import { parseFilters } from "../src/data/filters";
 import { isOnlineConfigured } from "../src/online/client";
 import { joinCodeFromParam } from "../src/online/invite";
 import type { OnlineRoom } from "../src/online/protocol";
@@ -24,24 +24,7 @@ import { lobbyStyles } from "../src/online/lobbyStyles";
 import { useOnlineRoom } from "../src/online/useOnlineRoom";
 import { colors } from "../src/theme/colors";
 import { noteWinForReview } from "../src/review/askForReview";
-
-const DEFAULT_FILTERS: QuestionFilters = {
-  language: "ja",
-  categories: [],
-  length: "any",
-};
-
-function parseFilters(raw: string | string[] | undefined): QuestionFilters {
-  if (typeof raw !== "string") {
-    return DEFAULT_FILTERS;
-  }
-  try {
-    const parsed = JSON.parse(raw) as Partial<QuestionFilters>;
-    return { ...DEFAULT_FILTERS, ...parsed };
-  } catch {
-    return DEFAULT_FILTERS;
-  }
-}
+import { onlineSnapshot, useTransitionSounds } from "../src/sound/snapshots";
 
 // The server writes "Player 1" / "Player 2"; each device reads them as
 // "あなた" / "相手".
@@ -137,6 +120,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
   const [answer, setAnswer] = useState("");
   const state = room.public_state;
   const { seat } = online;
+  useTransitionSounds(onlineSnapshot(room, seat));
   const iWon = room.status === "finished" && state?.winner === seat;
   useEffect(() => {
     if (iWon) void noteWinForReview();

@@ -2,6 +2,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Link } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
+import { SoundButton } from "../sound/SoundButton";
 import { GemChip } from "../wallet/GemSheet";
 import type { useGemWallet } from "../wallet/useGemWallet";
 import type { EndlessState } from "./engine";
@@ -30,6 +31,7 @@ export function EndlessHud({ game, wallet }: Props) {
         </Link>
         <Text style={styles.eyebrow}>ENDLESS</Text>
         <View style={styles.topRight}>
+          <SoundButton />
           <GemChip wallet={wallet} />
         </View>
       </View>
