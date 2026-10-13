@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   Animated,
-  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -39,6 +38,7 @@ import {
 import { matchStyles } from "../src/components/matchStyles";
 import { colors } from "../src/theme/colors";
 import { buttonStyles } from "../src/components/buttonStyles";
+import { noteWinForReview } from "../src/review/askForReview";
 
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
@@ -115,6 +115,7 @@ export default function HomeScreen() {
         question_id: previous.question.id,
         winner: next.winner === null ? "draw" : next.winner + 1,
       });
+      if (next.winner !== null) void noteWinForReview();
     }
     setGame(next);
   }
@@ -341,12 +342,6 @@ export default function HomeScreen() {
             />
           </>
         )}
-
-        {Platform.OS === "web" ? (
-          <Text style={styles.webNote}>
-            Web版も同じコードで動作します。オンライン対戦では答えと判定をサーバー側に置き、端末には配りません。
-          </Text>
-        ) : null}
       </PinnedBannerScreen>
       {game.winner !== null && !reducedMotion ? (
         <Confetti key={game.question.id} />
@@ -431,11 +426,6 @@ const styles = {
       color: "#596d79",
       fontSize: 16,
       marginBottom: 4,
-    },
-    webNote: {
-      color: "#88959d",
-      fontSize: 11,
-      lineHeight: 17,
     },
   }),
 };

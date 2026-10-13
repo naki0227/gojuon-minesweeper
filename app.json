@@ -14,7 +14,10 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
-      "usesAppleSignIn": true
+      "usesAppleSignIn": true,
+      "associatedDomains": [
+        "applinks:minesweeper.enludus.com"
+      ]
     },
     "android": {
       "package": "com.naki0227.gojuonminesweeper",
