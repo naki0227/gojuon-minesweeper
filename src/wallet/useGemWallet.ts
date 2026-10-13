@@ -28,10 +28,15 @@ export function useGemWallet() {
     try {
       const account = await currentAppleAccount();
       setUserId(account);
-      setBalance(account ? await loadGemBalance() : null);
+      // Packs load even when the balance request fails, so the sheet can
+      // still show what is for sale.
       if (account) {
-        setProducts(await gemStore.fetchProducts().catch(() => []));
+        void gemStore
+          .fetchProducts()
+          .catch(() => [])
+          .then(setProducts);
       }
+      setBalance(account ? await loadGemBalance() : null);
     } catch {
       setBalance(null);
       setMessage("ジェム残高を取得できませんでした。");

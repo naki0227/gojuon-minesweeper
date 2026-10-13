@@ -30,7 +30,6 @@ export function GemWalletPanel({ wallet }: { wallet: Wallet }) {
   if (!wallet.enabled) return null;
   return (
     <View style={styles.panel}>
-      <Text style={styles.noticeTitle}>ジェム</Text>
       {!wallet.userId ? (
         <>
           <Text style={styles.panelText}>
