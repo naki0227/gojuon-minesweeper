@@ -30,6 +30,8 @@ import {
 import { requestRewardedRevive } from "./rewardedRevive";
 import { PlayPanel } from "./PlayPanel";
 import { EndPanels } from "./EndPanels";
+import { stingerFor } from "./pauses";
+import { Stinger } from "./Stinger";
 import { styles } from "./styles";
 import { parseFilters } from "./filters";
 import { useGemWallet } from "../wallet/useGemWallet";
@@ -56,6 +58,9 @@ export function EndlessScreen() {
     () => (game ? questionMineCharacters(game.question) : new Set<string>()),
     [game],
   );
+  // The key of the last start/clear/game-over pause the player tapped away.
+  const [seenStinger, setSeenStinger] = useState<string | null>(null);
+  const stinger = game ? stingerFor(game) : null;
   const hintedChars = useMemo(() => new Set(game?.hints ?? []), [game?.hints]);
 
   function submit() {
@@ -207,48 +212,60 @@ export function EndlessScreen() {
                 ) : null}
               </View>
 
-              <PlayPanel
-                game={game}
-                answer={answer}
-                onChangeAnswer={setAnswer}
-                onSubmit={submit}
-                onPass={() => {
-                  if (!busy && !actionInFlight.current)
-                    setGame(passEndless(game));
-                }}
-                onOpen={(char) =>
-                  !busy &&
-                  !actionInFlight.current &&
-                  setGame((current) =>
-                    current ? openEndless(current, char) : current,
-                  )
-                }
-                mineChars={mineChars}
-                hintedChars={hintedChars}
-                busy={busy}
-                gemBalance={wallet.balance}
-                onHint={() => void hint()}
-              />
-              <EndPanels
-                game={game}
-                busy={busy}
-                adsRemoved={adsRemoved}
-                onAdvance={advance}
-                onRevive={() => void revive()}
-                onPaidRevive={() => void paidRevive()}
-                gemBalance={wallet.balance}
-                onFinish={() => setGame(endEndless(game))}
-                onShare={() => void share()}
-                onRestart={() => {
-                  const question = pickRandomQuestion(filters);
-                  if (question) {
-                    setGame(startEndless(question));
-                    setRunId(
-                      `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
-                    );
-                  }
-                }}
-              />
+              {stinger && stinger.key !== seenStinger ? (
+                <Stinger
+                  game={game}
+                  kind={stinger.kind}
+                  mineChars={mineChars}
+                  hintedChars={hintedChars}
+                  onContinue={() => setSeenStinger(stinger.key)}
+                />
+              ) : (
+                <>
+                  <PlayPanel
+                    game={game}
+                    answer={answer}
+                    onChangeAnswer={setAnswer}
+                    onSubmit={submit}
+                    onPass={() => {
+                      if (!busy && !actionInFlight.current)
+                        setGame(passEndless(game));
+                    }}
+                    onOpen={(char) =>
+                      !busy &&
+                      !actionInFlight.current &&
+                      setGame((current) =>
+                        current ? openEndless(current, char) : current,
+                      )
+                    }
+                    mineChars={mineChars}
+                    hintedChars={hintedChars}
+                    busy={busy}
+                    gemBalance={wallet.balance}
+                    onHint={() => void hint()}
+                  />
+                  <EndPanels
+                    game={game}
+                    busy={busy}
+                    adsRemoved={adsRemoved}
+                    onAdvance={advance}
+                    onRevive={() => void revive()}
+                    onPaidRevive={() => void paidRevive()}
+                    gemBalance={wallet.balance}
+                    onFinish={() => setGame(endEndless(game))}
+                    onShare={() => void share()}
+                    onRestart={() => {
+                      const question = pickRandomQuestion(filters);
+                      if (question) {
+                        setGame(startEndless(question));
+                        setRunId(
+                          `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
+                        );
+                      }
+                    }}
+                  />
+                </>
+              )}
 
               {error ? <Text style={styles.error}>{error}</Text> : null}
             </>
