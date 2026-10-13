@@ -36,6 +36,7 @@ import { styles } from "./styles";
 import { parseFilters } from "./filters";
 import { useGemWallet } from "../wallet/useGemWallet";
 import { EndlessHud } from "./Hud";
+import { noteWinForReview } from "../review/askForReview";
 
 export function EndlessScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
@@ -72,6 +73,7 @@ export function EndlessScreen() {
   function advance() {
     if (!game || busy || actionInFlight.current || game.phase !== "cleared")
       return;
+    void noteWinForReview();
     const question = pickRandomQuestion(filters, game.question.id);
     if (!question) {
       setGame({

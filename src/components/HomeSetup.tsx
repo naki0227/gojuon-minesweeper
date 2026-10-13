@@ -30,6 +30,7 @@ import type {
 } from "../data/types";
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
 import { colors } from "../theme/colors";
+import { HomeFooter } from "./HomeFooter";
 
 const MUTED = "#536875";
 const LINE = "#cfdce4";
@@ -369,15 +370,7 @@ export function HomeSetup({
           <BannerAd placement="setup" />
           <RemoveAdsOptions />
         </View>
-        <View style={styles.footerLinks}>
-          <Link href="/privacy" style={styles.footerLink}>
-            プライバシーポリシー
-          </Link>
-          <Text style={styles.footerSeparator}>/</Text>
-          <Link href="/support" style={styles.footerLink}>
-            サポート
-          </Link>
-        </View>
+        <HomeFooter />
       </ScrollView>
       <Modal
         visible={detailOpen}
@@ -719,22 +712,6 @@ const styles = StyleSheet.create({
   adArea: {
     gap: 10,
     marginTop: 8,
-  },
-  footerLinks: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-  },
-  footerLink: {
-    color: colors.ink,
-    fontSize: 12,
-    fontWeight: "700",
-    paddingVertical: 6,
-  },
-  footerSeparator: {
-    color: MUTED,
-    fontSize: 12,
   },
   detailHeader: {
     width: "100%",
