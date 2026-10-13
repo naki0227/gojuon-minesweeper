@@ -3,9 +3,10 @@ name: Deploy Web
 on:
   push:
     branches: ["main"]
-  # 00:05 Japan time: put the new day of 今日の一問 online.
+  # 7:00 Japan time (22:00 UTC): put the new day of 今日の一問 online.
+  # Scheduled runs can start a few minutes late, never early.
   schedule:
-    - cron: "5 15 * * *"
+    - cron: "0 22 * * *"
   workflow_dispatch:
 
 permissions:

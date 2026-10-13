@@ -1,6 +1,6 @@
 /// <reference types="node" />
-// Writes the 今日の一問 site into the web export, for days up to today
-// (Japan time) only: images, each day's page, the list and the posting kit.
+// Writes the 今日の一問 site into the web export, for puzzles already
+// released (7:00 Japan time) only: images, each day's page, the list and the posting kit.
 // Answers appear on a day's page from the next day on.
 //   npx tsx scripts/daily/publish.ts [outDir=dist/daily]
 // DAILY_TODAY=YYYY-MM-DD overrides today (for checking a build locally).
@@ -11,13 +11,13 @@ import { join } from "node:path";
 
 import { chromium } from "playwright-core";
 
-import { DAILY_SCHEDULE, japanDate } from "../../src/daily/schedule";
+import { currentPuzzleDate, DAILY_SCHEDULE } from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
 import { dayPage, kitPage, listPage } from "./pages";
 
 async function main() {
   const outDir = process.argv[2] ?? "dist/daily";
-  const today = process.env.DAILY_TODAY ?? japanDate(new Date());
+  const today = process.env.DAILY_TODAY ?? currentPuzzleDate(new Date());
   const released = DAILY_SCHEDULE.filter((entry) => entry.date <= today);
   const current = released.at(-1);
 

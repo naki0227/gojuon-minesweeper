@@ -22,6 +22,16 @@ export function japanDate(now: Date): string {
   return new Date(now.getTime() + JAPAN_OFFSET_MS).toISOString().slice(0, 10);
 }
 
+// A new puzzle goes online every morning at 7:00 Japan time; until then
+// the previous day's puzzle is still "today".
+export const DAILY_RELEASE_HOUR = 7;
+
+export function currentPuzzleDate(now: Date): string {
+  return japanDate(
+    new Date(now.getTime() - DAILY_RELEASE_HOUR * 60 * 60 * 1000),
+  );
+}
+
 export function addDays(date: string, days: number): string {
   const time = Date.parse(`${date}T00:00:00Z`) + days * 24 * 60 * 60 * 1000;
   return new Date(time).toISOString().slice(0, 10);
@@ -59,7 +69,7 @@ export function dailyPostTexts(entry: DailyEntry): {
       "開いたマスの数字（周りにある答えの文字の数）とオレンジの文字（答えに入っている文字）から、答えを推理してコメントしてね！",
       "#五十音マインスイーパー #今日の一問",
     ].join("\n"),
-    reply: `答えは明日このページで公開！\n${dailyUrl(entry.date)}`,
+    reply: `答えは明日の朝7時にこのページで公開！\n${dailyUrl(entry.date)}`,
   };
 }
 

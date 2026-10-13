@@ -10,6 +10,7 @@ import {
 import { seededRandom } from "../src/daily/random";
 import {
   addDays,
+  currentPuzzleDate,
   DAILY_SCHEDULE,
   dailyPostTexts,
   dailyQuestion,
@@ -62,6 +63,13 @@ describe("daily helpers", () => {
     expect(japanDate(new Date("2026-10-13T14:59:00Z"))).toBe("2026-10-13");
     expect(japanDate(new Date("2026-10-13T15:00:00Z"))).toBe("2026-10-14");
     expect(addDays("2026-12-31", 1)).toBe("2027-01-01");
+    // 6:59 and 7:00 on Oct 14 in Japan (21:59 / 22:00 UTC on Oct 13).
+    expect(currentPuzzleDate(new Date("2026-10-13T21:59:00Z"))).toBe(
+      "2026-10-13",
+    );
+    expect(currentPuzzleDate(new Date("2026-10-13T22:00:00Z"))).toBe(
+      "2026-10-14",
+    );
     expect(shortDate("2026-01-05")).toBe("1/5");
   });
 

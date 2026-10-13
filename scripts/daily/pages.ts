@@ -56,7 +56,7 @@ export function dayPage(entry: DailyEntry, revealed: boolean): string {
     ? `<div class="card"><div class="label">答え</div><div class="answer">${escapeHtml(dailyAnswer(entry))}</div>${
         entry.trivia ? `<p>${escapeHtml(entry.trivia)}</p>` : ""
       }</div>`
-    : `<div class="card"><p>開いたマスの数字は、周り8マスにある答えの文字の数。オレンジのマスは答えに入っている文字です。答えは明日このページで公開します。</p></div>`;
+    : `<div class="card"><p>開いたマスの数字は、周り8マスにある答えの文字の数。オレンジのマスは答えに入っている文字です。答えは明日の朝7時にこのページで公開します。</p></div>`;
   const head = `<title>${title} | 五十音マインスイーパー</title>
 <meta name="description" content="お題「${prompt}」。開いたマスの数字から答えを推理しよう。">
 <link rel="canonical" href="${dailyUrl(entry.date)}">
@@ -85,7 +85,7 @@ export function listPage(entries: readonly DailyEntry[]): string {
   return layout(
     `<title>今日の一問 | 五十音マインスイーパー</title>
 <meta name="description" content="毎日1問、盤面の数字から答えを推理する「今日の一問」。">`,
-    `<h1>今日の一問</h1><p>毎日0時に新しい問題。開いたマスの数字から答えを推理しよう。</p>${rows}`,
+    `<h1>今日の一問</h1><p>毎朝7時に新しい問題。開いたマスの数字から答えを推理しよう。</p>${rows}`,
   );
 }
 
