@@ -11,6 +11,7 @@ import { canRequestAds } from "./consent";
 import { mobileAds, type MobileAdsModule } from "./mobileAdsModule";
 import { selectBannerUnitId } from "./selectBannerUnitId";
 import type { BannerAdProps } from "./types";
+import { startAds } from "./startAds";
 
 let initialization: Promise<boolean> | null = null;
 
@@ -24,7 +25,7 @@ function initializeAds(sdk: MobileAdsModule): Promise<boolean> {
       }
 
       try {
-        await sdk.default().initialize();
+        await startAds(sdk);
         return true;
       } catch {
         return false;
@@ -43,7 +44,7 @@ function resolveUnitId(sdk: MobileAdsModule): string | null {
   );
 }
 
-export function BannerAd({ placement }: BannerAdProps) {
+export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
   const { resolved, adFree } = useAdFree();
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -81,7 +82,10 @@ export function BannerAd({ placement }: BannerAdProps) {
   // No fixed height: the container is 0px until an ad loads and collapses
   // again on failure, so no empty box or error UI is ever shown.
   return (
-    <View style={styles.container} testID={`banner-ad-${placement}`}>
+    <View
+      style={[styles.container, duringPlay ? styles.duringPlay : null]}
+      testID={`banner-ad-${placement}`}
+    >
       <AdMobBanner
         unitId={unitId}
         size={BannerAdSize.LARGE_ANCHORED_ADAPTIVE_BANNER}
@@ -96,5 +100,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     width: "100%",
+  },
+  // A light divider under the game, then space before the ad, against
+  // mistaps.
+  duringPlay: {
+    paddingTop: 150,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "#d5dee4",
   },
 });

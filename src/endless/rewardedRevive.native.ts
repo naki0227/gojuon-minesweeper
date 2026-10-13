@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 import { AD_REQUEST_OPTIONS, shouldUseTestAds } from "../ads/config";
 import { canRequestAds } from "../ads/consent";
 import { mobileAds } from "../ads/mobileAdsModule";
+import { startAds } from "../ads/startAds";
 
 // No rewards without actually earning them from the native SDK.
 // Web uses an explicitly labelled free-preview revival until a web reward
@@ -20,7 +21,7 @@ export async function requestRewardedRevive(): Promise<boolean> {
     // Production must never request an example ad.
     if (!shouldUseTestAds()) return false;
   }
-  await sdk.default().initialize();
+  await startAds(sdk);
 
   return new Promise<boolean>((resolve) => {
     const ad = sdk.RewardedAd.createForAdRequest(unitId!, AD_REQUEST_OPTIONS);

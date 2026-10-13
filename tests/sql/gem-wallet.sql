@@ -169,3 +169,54 @@ begin
   if (select count(*) from public.gem_apple_purchases where user_id is null) <> 4 then
     raise exception 'purchase records lost on account deletion'; end if;
 end $$;
+
+-- The welcome bonus is once per Apple ID, even across account deletion.
+\i supabase/migrations/20261013015000_gem_service_role_grants.sql
+\i supabase/migrations/20261013020000_signin_bonus_per_apple_id.sql
+do $$
+declare
+  first_account uuid := '33333333-3333-4333-8333-333333333333';
+  recreated uuid := '44444444-4444-4444-8444-444444444444';
+  gems integer;
+begin
+  insert into auth.users (id) values (first_account), (recreated);
+  gems := public.gem_credit_apple_signin_bonus(first_account, 'apple-sub-A');
+  if gems <> 3 then raise exception 'first Apple ID bonus was %', gems; end if;
+  gems := public.gem_credit_apple_signin_bonus(first_account, 'apple-sub-A');
+  if gems <> 3 then raise exception 'bonus repeated for the same account'; end if;
+
+  delete from auth.users where id = first_account;
+  gems := public.gem_credit_apple_signin_bonus(recreated, 'apple-sub-A');
+  if gems <> 0 then raise exception 'recreated account got the bonus again'; end if;
+  gems := public.gem_credit_apple_signin_bonus(recreated, null);
+  if gems <> 0 then raise exception 'bonus granted without an Apple ID'; end if;
+  gems := public.gem_credit_apple_signin_bonus(recreated, 'apple-sub-B');
+  if gems <> 3 then raise exception 'a different Apple ID should get the bonus'; end if;
+
+  if exists (select 1 from public.gem_signin_bonus_claims
+             where apple_sub_hash like '%apple-sub%') then
+    raise exception 'raw Apple ID stored'; end if;
+  if has_function_privilege('authenticated',
+       'public.gem_credit_apple_signin_bonus(uuid,text)', 'EXECUTE')
+     or has_table_privilege('authenticated',
+       'public.gem_signin_bonus_claims', 'SELECT')
+  then raise exception 'clients can reach bonus claims'; end if;
+end $$;
+
+-- Run as the Edge Function's role: the wallet RPCs need table access.
+do $$
+begin
+  if not has_table_privilege('service_role', 'public.gem_wallets', 'SELECT,INSERT,UPDATE')
+     or not has_table_privilege('service_role', 'public.gem_ledger', 'SELECT,INSERT')
+     or not has_table_privilege('service_role', 'public.gem_apple_purchases', 'SELECT,INSERT,UPDATE')
+     or not has_table_privilege('service_role', 'public.gem_signin_bonus_claims', 'SELECT,INSERT')
+  then raise exception 'service role cannot use wallet tables'; end if;
+end $$;
+insert into auth.users (id) values ('66666666-6666-4666-8666-666666666666');
+-- Supabase's service_role bypasses RLS; mirror that here.
+alter role service_role bypassrls;
+set role service_role;
+select public.gem_credit_apple_signin_bonus('66666666-6666-4666-8666-666666666666', 'apple-sub-C');
+select public.gem_spend('66666666-6666-4666-8666-666666666666', 'ffffffff-ffff-4fff-8fff-ffffffffffff', 'safe_hint');
+select public.gem_support_grant('66666666-6666-4666-8666-666666666666', 1, 'role-check');
+reset role;

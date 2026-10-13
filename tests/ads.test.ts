@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { selectBannerUnitId } from "../src/ads/selectBannerUnitId";
 import { canRequestAds } from "../src/ads/consent";
+import { matchBanner } from "../src/ads/types";
 import { isOwnershipResolved } from "../src/entitlements/adAccess";
 
 describe("native ad access", () => {
@@ -49,5 +50,22 @@ describe("native ad access", () => {
         },
       }),
     ).toBe(false);
+  });
+});
+
+describe("matchBanner", () => {
+  it("spaces the banner away from the game only while it is played", () => {
+    expect(matchBanner("answer")).toEqual({
+      placement: "setup",
+      duringPlay: true,
+    });
+    expect(matchBanner("finished", "finished")).toEqual({
+      placement: "result",
+      duringPlay: false,
+    });
+    expect(matchBanner(undefined, "waiting")).toEqual({
+      placement: "setup",
+      duringPlay: false,
+    });
   });
 });

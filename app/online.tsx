@@ -2,7 +2,6 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   ActivityIndicator,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -12,8 +11,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
 import { router, useLocalSearchParams } from "expo-router";
 
-import { BannerAd } from "../src/ads/BannerAd";
+import { PinnedBannerScreen } from "../src/ads/PinnedBannerScreen";
+import { matchBanner } from "../src/ads/types";
 import { CharacterBoard } from "../src/components/CharacterBoard";
+import { RuleHelp } from "../src/components/RuleHelp";
 import type { QuestionFilters } from "../src/data/types";
 import { isOnlineConfigured } from "../src/online/client";
 import {
@@ -92,37 +93,35 @@ export default function OnlineScreen() {
       <Head>
         <title>オンライン対戦 | 五十音マインスイーパー</title>
       </Head>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={styles.page}
+      <PinnedBannerScreen
+        banner={
+          room &&
+          (room.status === "waiting" ||
+            room.status === "playing" ||
+            room.public_state?.phase === "finished")
+            ? matchBanner(room.public_state?.phase, room.status)
+            : null
+        }
+        layoutKey={`${room?.id}:${room?.status}:${room?.public_state?.prompt}`}
+        contentStyle={styles.page}
       >
-        <View style={styles.topBar}>
-          <Text style={styles.eyebrow}>オンライン対戦</Text>
-          {!room || room.status === "closed" ? (
-            <Pressable onPress={goHome} style={styles.smallButton}>
-              <Text style={styles.smallButtonText}>ホームへ</Text>
-            </Pressable>
-          ) : null}
-        </View>
+        {room?.status !== "playing" ? (
+          <View style={styles.topBar}>
+            <Text style={styles.eyebrow}>オンライン対戦</Text>
+            {!room || room.status === "closed" ? (
+              <Pressable onPress={goHome} style={styles.smallButton}>
+                <Text style={styles.smallButtonText}>ホームへ</Text>
+              </Pressable>
+            ) : null}
+          </View>
+        ) : null}
         {body}
         {online.error ? (
           <Pressable onPress={online.clearError} style={styles.errorPanel}>
             <Text style={styles.errorText}>{online.error}</Text>
           </Pressable>
         ) : null}
-        {room &&
-        (room.status === "waiting" ||
-          room.status === "playing" ||
-          room.public_state?.phase === "finished") ? (
-          <View style={styles.adArea}>
-            <BannerAd
-              placement={
-                room.public_state?.phase === "finished" ? "result" : "setup"
-              }
-            />
-          </View>
-        ) : null}
-      </ScrollView>
+      </PinnedBannerScreen>
     </SafeAreaView>
   );
 }
@@ -288,12 +287,13 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
     <>
       <View style={styles.header}>
         <Text style={styles.prompt}>{state.prompt}</Text>
+        <RuleHelp kana={state.language === "ja"} />
       </View>
 
       {!finished ? (
         <View style={[styles.turnPanel, myTurn && styles.turnPanelMine]}>
-          <View>
-            <Text style={styles.turnCaption}>現在の手番</Text>
+          <View style={styles.turnWho}>
+            <Text style={styles.turnCaption}>手番</Text>
             <Text style={styles.turnPlayer}>{myTurn ? "あなた" : "相手"}</Text>
           </View>
           <View style={styles.phaseBadge}>
@@ -454,14 +454,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingHorizontal: 16,
     paddingTop: 12,
-    paddingBottom: 36,
-    gap: 16,
-  },
-  adArea: {
-    marginTop: "auto",
-    borderTopColor: "#d5dee4",
-    borderTopWidth: 1,
-    paddingTop: 16,
+    paddingBottom: 20,
+    gap: 10,
   },
   topBar: {
     flexDirection: "row",
@@ -512,17 +506,17 @@ const styles = StyleSheet.create({
   },
   prompt: {
     color: "#102433",
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "900",
-    lineHeight: 38,
+    lineHeight: 30,
   },
   turnPanel: {
     backgroundColor: "#f1f4f6",
     borderColor: "#d5dee4",
     borderWidth: 1,
     borderRadius: 14,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -531,16 +525,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#eaf6fb",
     borderColor: "#bcddea",
   },
+  turnWho: { flexDirection: "row", alignItems: "baseline", gap: 8 },
   turnCaption: {
     color: "#637b89",
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "700",
   },
   turnPlayer: {
     color: "#173f55",
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: "900",
-    marginTop: 2,
   },
   phaseBadge: {
     backgroundColor: "#ffffff",
@@ -555,7 +549,7 @@ const styles = StyleSheet.create({
     fontVariant: ["tabular-nums"],
   },
   messagePanel: {
-    minHeight: 46,
+    minHeight: 36,
     justifyContent: "center",
     borderLeftColor: "#e98a2f",
     borderLeftWidth: 3,

@@ -3,7 +3,6 @@ import {
   Animated,
   Platform,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -13,9 +12,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
 import { router } from "expo-router";
 
-import { BannerAd } from "../src/ads/BannerAd";
+import { PinnedBannerScreen } from "../src/ads/PinnedBannerScreen";
+import { matchBanner } from "../src/ads/types";
 import { trackEvent } from "../src/analytics/events";
 import { CharacterBoard } from "../src/components/CharacterBoard";
+import { RuleHelp } from "../src/components/RuleHelp";
 import { Confetti } from "../src/components/Confetti";
 import { PopIn } from "../src/components/PopIn";
 import { USE_NATIVE_DRIVER, useReducedMotion } from "../src/components/motion";
@@ -185,32 +186,32 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={styles.page}
+      <PinnedBannerScreen
+        banner={matchBanner(game.phase)}
+        layoutKey={game.question.id}
+        contentStyle={styles.page}
       >
         <View style={styles.gameTopBar}>
-          <Text style={styles.eyebrow}>
-            {game.question.language === "ja"
-              ? "五十音マインスイーパー"
-              : "ALPHABET MINESWEEPER"}
-          </Text>
+          <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
           <Pressable onPress={() => setGame(null)} style={styles.changeButton}>
             <Text style={styles.changeButtonText}>条件を変える</Text>
           </Pressable>
         </View>
+        <RuleHelp kana={game.question.language === "ja"} />
 
-        <View style={styles.header}>
-          <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
-          <Text style={styles.rule}>
-            回答してから1文字開く。セーフなら周囲8マスの答え文字数（重複込み）を表示。0なら安全地帯が連鎖して開きます。地雷なら次の自分のターンは回答権なし。
-          </Text>
-        </View>
-
-        <View style={styles.turnPanel}>
-          <View>
-            <Text style={styles.turnCaption}>現在の手番</Text>
-            <Text style={styles.turnPlayer}>{currentPlayerLabel}</Text>
+        <View
+          style={[styles.turnPanel, game.currentPlayer === 1 && styles.turnP2]}
+        >
+          <View style={styles.turnWho}>
+            <Text style={styles.turnCaption}>手番</Text>
+            <Text
+              style={[
+                styles.turnPlayer,
+                game.currentPlayer === 1 && styles.turnPlayerP2,
+              ]}
+            >
+              {currentPlayerLabel}
+            </Text>
           </View>
           <View style={styles.phaseBadge}>
             <Text style={styles.phaseText}>
@@ -338,29 +339,12 @@ export default function HomeScreen() {
           </>
         )}
 
-        <View style={styles.legend}>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendSwatch, styles.safeSwatch]} />
-            <Text style={styles.legendText}>セーフ + 周囲の答え文字数</Text>
-          </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendSwatch, styles.mineSwatch]} />
-            <Text style={styles.legendText}>地雷</Text>
-          </View>
-          {game.question.language === "ja" ? (
-            <Text style={styles.legendNote}>「ー」は「ん」の下</Text>
-          ) : null}
-        </View>
-
         {Platform.OS === "web" ? (
           <Text style={styles.webNote}>
             Web版も同じコードで動作します。オンライン対戦では答えと判定をサーバー側に置き、端末には配りません。
           </Text>
         ) : null}
-
-        {/* Ads only once the game is decided; never during play. */}
-        {game.phase === "finished" ? <BannerAd placement="result" /> : null}
-      </ScrollView>
+      </PinnedBannerScreen>
       {game.winner !== null && !reducedMotion ? (
         <Confetti key={game.question.id} />
       ) : null}
@@ -379,28 +363,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingHorizontal: 16,
     paddingTop: 12,
-    paddingBottom: 36,
-    gap: 16,
-  },
-  header: {
-    gap: 6,
-  },
-  eyebrow: {
-    color: "#4285a8",
-    fontSize: 13,
-    fontWeight: "800",
-    letterSpacing: 1,
+    paddingBottom: 20,
+    gap: 10,
   },
   prompt: {
+    flex: 1,
     color: "#102433",
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: "900",
-    lineHeight: 38,
-  },
-  rule: {
-    color: "#627481",
-    fontSize: 14,
-    lineHeight: 21,
+    lineHeight: 30,
   },
   helperText: {
     color: "#7b8992",
@@ -432,22 +403,25 @@ const styles = StyleSheet.create({
     borderColor: "#bcddea",
     borderWidth: 1,
     borderRadius: 14,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
+  // Player 2's turn is orange so passing the phone is easy to notice.
+  turnP2: { backgroundColor: "#fff1e4", borderColor: "#f2c9a0" },
+  turnPlayerP2: { color: "#8a3f10" },
+  turnWho: { flexDirection: "row", alignItems: "baseline", gap: 8 },
   turnCaption: {
     color: "#637b89",
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "700",
   },
   turnPlayer: {
     color: "#173f55",
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: "900",
-    marginTop: 2,
   },
   phaseBadge: {
     backgroundColor: "#ffffff",
@@ -461,7 +435,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
   messagePanel: {
-    minHeight: 46,
+    minHeight: 36,
     justifyContent: "center",
     borderLeftColor: "#e98a2f",
     borderLeftWidth: 3,
@@ -546,39 +520,6 @@ const styles = StyleSheet.create({
     color: "#596d79",
     fontSize: 16,
     marginBottom: 4,
-  },
-  legend: {
-    flexDirection: "row",
-    alignItems: "center",
-    flexWrap: "wrap",
-    gap: 10,
-  },
-  legendItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-  },
-  legendSwatch: {
-    width: 14,
-    height: 14,
-    borderRadius: 4,
-    borderWidth: 1,
-  },
-  safeSwatch: {
-    backgroundColor: "#eef2f5",
-    borderColor: "#d8e0e6",
-  },
-  mineSwatch: {
-    backgroundColor: "#fff0df",
-    borderColor: "#e98a2f",
-  },
-  legendText: {
-    color: "#677985",
-    fontSize: 12,
-  },
-  legendNote: {
-    color: "#677985",
-    fontSize: 12,
   },
   webNote: {
     color: "#88959d",

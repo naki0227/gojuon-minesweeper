@@ -96,7 +96,7 @@ function AdSenseUnitView({ unit }: { unit: AdSenseUnit }) {
   );
 }
 
-export function BannerAd({ placement }: BannerAdProps) {
+export function BannerAd({ placement, duringPlay = false }: BannerAdProps) {
   const { resolved, adFree } = useAdFree();
   // Static export renders on the server first; ad markup is client-only.
   const mounted = useSyncExternalStore(
@@ -111,11 +111,22 @@ export function BannerAd({ placement }: BannerAdProps) {
     return null;
   }
 
-  return <AdSenseUnitView key={placement} unit={unit} />;
+  return (
+    <View style={duringPlay ? styles.duringPlay : undefined}>
+      <AdSenseUnitView key={placement} unit={unit} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+  },
+  // A light divider under the game, then space (CSS px) before the ad,
+  // against mistaps.
+  duringPlay: {
+    paddingTop: 150,
+    borderTopWidth: 1,
+    borderTopColor: "#d5dee4",
   },
 });

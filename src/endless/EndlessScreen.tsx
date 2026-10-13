@@ -1,5 +1,12 @@
 import { useMemo, useRef, useState } from "react";
-import { Linking, Platform, ScrollView, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Linking,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Head from "expo-router/head";
 import { Link, useLocalSearchParams } from "expo-router";
@@ -26,7 +33,7 @@ import { EndPanels } from "./EndPanels";
 import { styles } from "./styles";
 import { parseFilters } from "./filters";
 import { useGemWallet } from "../wallet/useGemWallet";
-import { GemWalletPanel } from "../wallet/GemWalletPanel";
+import { EndlessHud } from "./Hud";
 
 export function EndlessScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
@@ -176,113 +183,87 @@ export function EndlessScreen() {
           content="ライフ3つで言葉を解き続けるソロモード。少ない手数で高得点を目指そう。"
         />
       </Head>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={styles.page}
+      <KeyboardAvoidingView
+        style={styles.fill}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <View style={styles.top}>
-          <View>
-            <Text style={styles.eyebrow}>SOLO / ENDLESS</Text>
-            <Text style={styles.title}>推理サバイバル</Text>
-          </View>
-          <Link href="/" style={styles.exit}>
-            ホームへ
-          </Link>
-        </View>
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={styles.page}
+        >
+          <EndlessHud game={game} wallet={wallet} />
 
-        {game ? (
-          <>
-            <View style={styles.stats}>
-              <View style={styles.stat}>
-                <Text style={styles.statCaption}>スコア</Text>
-                <Text style={styles.statValue}>
-                  {game.score.toLocaleString()}
+          {game ? (
+            <>
+              <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
+              <View style={styles.message}>
+                <Text style={styles.messageText} numberOfLines={2}>
+                  {game.message}
                 </Text>
+                {game.lastChainBonus > 0 && game.phase === "answer" ? (
+                  <Text style={styles.chain}>
+                    CHAIN +{game.lastChainBonus}点
+                  </Text>
+                ) : null}
               </View>
-              <View style={styles.stat}>
-                <Text style={styles.statCaption}>クリア</Text>
-                <Text style={styles.statValue}>{game.solved}問</Text>
-              </View>
-              <View style={styles.stat}>
-                <Text style={styles.statCaption}>ライフ</Text>
-                <Text style={styles.statValue}>
-                  {"♥".repeat(game.lives)}
-                  {"♡".repeat(3 - game.lives)}
-                </Text>
-              </View>
-            </View>
-            <GemWalletPanel wallet={wallet} />
-            <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
-            <Text style={styles.help}>
-              少ない手数・少ない被弾で正解しよう。安全な0マスの連鎖はボーナス！
-            </Text>
-            <View style={styles.message}>
-              <Text style={styles.messageText}>{game.message}</Text>
-              {game.lastChainBonus > 0 && game.phase === "answer" ? (
-                <Text style={styles.chain}>CHAIN +{game.lastChainBonus}点</Text>
-              ) : null}
-            </View>
 
-            <PlayPanel
-              game={game}
-              answer={answer}
-              onChangeAnswer={setAnswer}
-              onSubmit={submit}
-              onPass={() => {
-                if (!busy && !actionInFlight.current)
-                  setGame(passEndless(game));
-              }}
-              onOpen={(char) =>
-                !busy &&
-                !actionInFlight.current &&
-                setGame((current) =>
-                  current ? openEndless(current, char) : current,
-                )
-              }
-              mineChars={mineChars}
-              hintedChars={hintedChars}
-              busy={busy}
-              gemBalance={wallet.balance}
-              onHint={() => void hint()}
-            />
-            <EndPanels
-              game={game}
-              busy={busy}
-              adsRemoved={adsRemoved}
-              onAdvance={advance}
-              onRevive={() => void revive()}
-              onPaidRevive={() => void paidRevive()}
-              gemBalance={wallet.balance}
-              onFinish={() => setGame(endEndless(game))}
-              onShare={() => void share()}
-              onRestart={() => {
-                const question = pickRandomQuestion(filters);
-                if (question) {
-                  setGame(startEndless(question));
-                  setRunId(
-                    `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
-                  );
+              <PlayPanel
+                game={game}
+                answer={answer}
+                onChangeAnswer={setAnswer}
+                onSubmit={submit}
+                onPass={() => {
+                  if (!busy && !actionInFlight.current)
+                    setGame(passEndless(game));
+                }}
+                onOpen={(char) =>
+                  !busy &&
+                  !actionInFlight.current &&
+                  setGame((current) =>
+                    current ? openEndless(current, char) : current,
+                  )
                 }
-              }}
-            />
+                mineChars={mineChars}
+                hintedChars={hintedChars}
+                busy={busy}
+                gemBalance={wallet.balance}
+                onHint={() => void hint()}
+              />
+              <EndPanels
+                game={game}
+                busy={busy}
+                adsRemoved={adsRemoved}
+                onAdvance={advance}
+                onRevive={() => void revive()}
+                onPaidRevive={() => void paidRevive()}
+                gemBalance={wallet.balance}
+                onFinish={() => setGame(endEndless(game))}
+                onShare={() => void share()}
+                onRestart={() => {
+                  const question = pickRandomQuestion(filters);
+                  if (question) {
+                    setGame(startEndless(question));
+                    setRunId(
+                      `run_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`,
+                    );
+                  }
+                }}
+              />
 
-            {error ? <Text style={styles.error}>{error}</Text> : null}
-            <Text style={styles.micro}>
-              開いたマス {game.totalOpenedMoves} / 地雷 {game.totalMineHits} /
-              復活 {game.revives}
-            </Text>
-          </>
-        ) : (
-          <View style={styles.panel}>
-            <Text style={styles.panelTitle}>
-              この条件では問題が見つかりませんでした。
-            </Text>
-            <Link href="/" style={styles.exit}>
-              条件を選び直す
-            </Link>
-          </View>
-        )}
-      </ScrollView>
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+            </>
+          ) : (
+            <View style={styles.panel}>
+              <Text style={styles.panelTitle}>
+                この条件では問題が見つかりませんでした。
+              </Text>
+              <Link href="/" style={styles.panelLink}>
+                条件を選び直す
+              </Link>
+            </View>
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
