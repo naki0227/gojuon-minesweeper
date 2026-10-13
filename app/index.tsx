@@ -1,12 +1,5 @@
 import { useMemo, useState } from "react";
-import {
-  Animated,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Animated, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
@@ -41,6 +34,7 @@ import { noteWinForReview } from "../src/review/askForReview";
 import { localSnapshot } from "../src/sound/snapshots";
 import { playSound } from "../src/sound/sounds";
 import { transitionSound } from "../src/sound/transitions";
+import { Pressable } from "../src/components/TapPressable";
 
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
@@ -301,6 +295,7 @@ export default function HomeScreen() {
               />
               <View style={styles.answerActions}>
                 <Pressable
+                  silent
                   disabled={!canAnswer || !answer.trim()}
                   onPress={handleSubmitAnswer}
                   style={({ pressed }) => [

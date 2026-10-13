@@ -1,7 +1,8 @@
-import { Platform, Pressable, Text, View } from "react-native";
+import { Platform, Text, View } from "react-native";
 
 import { FREE_REVIVE_LIMIT, type EndlessState } from "./engine";
 import { styles } from "./styles";
+import { Pressable } from "../components/TapPressable";
 
 type Props = {
   game: EndlessState;

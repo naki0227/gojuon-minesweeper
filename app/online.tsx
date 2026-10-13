@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   ActivityIndicator,
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -25,14 +24,8 @@ import { useOnlineRoom } from "../src/online/useOnlineRoom";
 import { colors } from "../src/theme/colors";
 import { noteWinForReview } from "../src/review/askForReview";
 import { onlineSnapshot, useTransitionSounds } from "../src/sound/snapshots";
-
-// The server writes "Player 1" / "Player 2"; each device reads them as
-// "あなた" / "相手".
-function personalize(text: string, seat: number | null): string {
-  return text.replace(/Player ([12])\s?/g, (_match, number: string) =>
-    Number(number) - 1 === seat ? "あなた" : "相手",
-  );
-}
+import { Pressable } from "../src/components/TapPressable";
+import { personalize } from "../src/online/personalize";
 
 export default function OnlineScreen() {
   const params = useLocalSearchParams<{ filters?: string; join?: string }>();
@@ -273,6 +266,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
             />
             <View style={styles.row}>
               <Pressable
+                silent
                 disabled={!canAnswer || !answer.trim()}
                 onPress={() => void sendAnswer()}
                 style={[

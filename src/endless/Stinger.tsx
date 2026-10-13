@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { PopIn } from "../components/PopIn";
 import { EndlessBoard } from "./EndlessBoard";
@@ -7,6 +7,7 @@ import type { EndlessState } from "./engine";
 import type { StingerKind } from "./pauses";
 import { playSound } from "../sound/sounds";
 import { colors } from "../theme/colors";
+import { Pressable } from "../components/TapPressable";
 
 const COPY: Record<StingerKind, { title: string; color: string }> = {
   start: { title: "START", color: colors.primary },

@@ -1,17 +1,11 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
-import {
-  Platform,
-  Pressable,
-  StyleSheet,
-  Switch,
-  Text,
-  View,
-} from "react-native";
+import { Platform, StyleSheet, Switch, Text, View } from "react-native";
 
 import { Popup } from "../components/Popup";
 import { colors } from "../theme/colors";
 import { setSoundSettings, useSoundSettings } from "./soundSettings";
+import { Pressable } from "../components/TapPressable";
 
 // A speaker icon that opens switches for sound effects and music.
 export function SoundButton() {

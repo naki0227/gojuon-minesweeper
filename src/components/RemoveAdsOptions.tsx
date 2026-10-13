@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
 import { colors } from "../theme/colors";
+import { Pressable } from "./TapPressable";
 
 // Remove-ads purchase, restore and offer-code entry shown under the setup
 // screen ad. Renders nothing where no store exists (web, Expo Go).

@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import {
   Modal,
   Platform,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -33,6 +32,7 @@ import { RemoveAdsOptions } from "./RemoveAdsOptions";
 import { colors } from "../theme/colors";
 import { HomeFooter } from "./HomeFooter";
 import { HomeTitle } from "./HomeTitle";
+import { Pressable } from "./TapPressable";
 
 const MUTED = "#536875";
 const LINE = "#cfdce4";
