@@ -160,7 +160,15 @@ Deno.serve(async (request: Request) => {
       return respond({ ok: false, error: error.message }, 400);
     }
     // Do not return Apple auth keys, transaction payloads, JWTs, or SQL errors.
-    console.error("gem-wallet action failed", error instanceof Error ? error.name : "unknown");
+    // Messages are ours, Apple's error codes or database errors; tokens,
+    // keys and transaction payloads never end up in them.
+    console.error(
+      "gem-wallet action failed",
+      error instanceof Error
+        ? `${error.name}: ${error.message}`
+        : (error as { message?: string; code?: string })?.message ??
+          (error as { code?: string })?.code ?? "unknown",
+    );
     return respond({ ok: false, error: "処理できませんでした。後ほど再試行してください。" }, 500);
   }
 });

@@ -93,7 +93,13 @@ export async function queryApple(transactionId: string): Promise<AppleTransactio
       { headers: { Authorization: "Bearer " + bearer } },
     );
     if (response.status === 404) continue;
-    if (!response.ok) throw new Error("Apple verification HTTP " + response.status);
+    if (!response.ok) {
+      // Apple's error body is a code and a short message, never a secret.
+      const detail = await response.text().catch(() => "");
+      throw new Error(
+        `Apple verification HTTP ${response.status} at ${host}: ${detail.slice(0, 200)}`,
+      );
+    }
     result = response;
     break;
   }
