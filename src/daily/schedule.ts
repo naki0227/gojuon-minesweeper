@@ -44,7 +44,7 @@ export function dailyQuestion(entry: DailyEntry): Question {
 }
 
 export function dailyUrl(date: string): string {
-  return `${SITE_URL}/daily/${date}`;
+  return `${SITE_URL}/daily/${date}/`;
 }
 
 // What goes on X: the post (with the image) and the reply under it.
