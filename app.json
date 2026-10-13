@@ -6,13 +6,18 @@
     "orientation": "portrait",
     "scheme": "gojuonminesweeper",
     "userInterfaceStyle": "light",
+    "locales": {
+      "ja": "./locales/ja.json"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.naki0227.gojuonminesweeper",
       "buildNumber": "1",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleDevelopmentRegion": "ja",
+        "CFBundleLocalizations": ["ja"]
       },
       "usesAppleSignIn": true,
       "associatedDomains": ["applinks:minesweeper.enludus.com"]
