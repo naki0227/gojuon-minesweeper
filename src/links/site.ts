@@ -4,7 +4,7 @@ export const APP_STORE_ID = "6819539119";
 
 // App Store Connect "provider token" for campaign links. Campaign links
 // (ct=...) show in App Analytics only with it; without it they still work.
-const APP_STORE_PROVIDER_TOKEN = "";
+const APP_STORE_PROVIDER_TOKEN = "128342444";
 
 // Where an App Store visit came from, as seen in App Analytics > Campaigns.
 export type AppStoreCampaign = "web_home" | "web_invite" | "web_daily";
