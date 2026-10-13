@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["X97ZJZ42VZ.com.naki0227.gojuonminesweeper"],
+        "components": [{ "/": "/online", "?": { "join": "*" } }]
+      }
+    ]
+  }
+}
