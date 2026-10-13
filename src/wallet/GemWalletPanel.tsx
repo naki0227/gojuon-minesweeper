@@ -1,11 +1,12 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Alert, Pressable, Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 
 import { AppleAccount } from "./AppleAccount";
 import { packDiscountPercent } from "./packs";
 import { walletStyles as styles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
 import { colors } from "../theme/colors";
+import { Pressable } from "../components/TapPressable";
 
 type Wallet = ReturnType<typeof useGemWallet>;
 

@@ -1,12 +1,13 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Link } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 import { SoundButton } from "../sound/SoundButton";
 import { GemChip } from "../wallet/GemSheet";
 import type { useGemWallet } from "../wallet/useGemWallet";
 import type { EndlessState } from "./engine";
 import { styles } from "./styles";
+import { Pressable } from "../components/TapPressable";
 
 type Props = {
   game: EndlessState | null;

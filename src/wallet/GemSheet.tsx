@@ -1,6 +1,6 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 import { Popup } from "../components/Popup";
 import { styles } from "../endless/styles";
@@ -8,6 +8,7 @@ import { GemWalletPanel } from "./GemWalletPanel";
 import { walletStyles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
 import { colors } from "../theme/colors";
+import { Pressable } from "../components/TapPressable";
 
 type Wallet = ReturnType<typeof useGemWallet>;
 

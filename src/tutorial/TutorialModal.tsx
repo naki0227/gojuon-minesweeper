@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState, type ComponentType } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useReducedMotion } from "../components/motion";
 import { Popup } from "../components/Popup";
@@ -14,6 +14,7 @@ import {
 import { HELP_STEP, RULE_STEPS } from "./rules";
 import { colors } from "../theme/colors";
 import { buttonStyles } from "../components/buttonStyles";
+import { Pressable } from "../components/TapPressable";
 
 type Page = {
   title: string;

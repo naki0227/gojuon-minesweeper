@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ActivityIndicator,
-  Pressable,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { ActivityIndicator, Text, TextInput, View } from "react-native";
 
 import type { QuestionFilters } from "../data/types";
 import { colors } from "../theme/colors";
@@ -18,6 +12,7 @@ import {
 } from "./protocol";
 import { shareInvite, type ShareResult } from "./shareInvite";
 import type { useOnlineRoom } from "./useOnlineRoom";
+import { Pressable } from "../components/TapPressable";
 
 type Online = ReturnType<typeof useOnlineRoom>;
 

@@ -1,10 +1,11 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { SoundButton } from "../sound/SoundButton";
 import { TutorialModal } from "../tutorial/TutorialModal";
 import { colors } from "../theme/colors";
+import { Pressable } from "./TapPressable";
 
 // A small "ルール" link that opens the animated tutorial, on every
 // platform, so the match stays on one screen; next to it the sound settings.

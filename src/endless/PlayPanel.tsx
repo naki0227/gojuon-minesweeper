@@ -1,5 +1,5 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Pressable, Text, TextInput, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
 
 import { maskedAnswer } from "../game/engine";
 import { EndlessBoard } from "./EndlessBoard";
@@ -11,6 +11,7 @@ import {
 } from "./engine";
 import { styles } from "./styles";
 import { colors } from "../theme/colors";
+import { Pressable } from "../components/TapPressable";
 
 type Props = {
   game: EndlessState;
@@ -88,6 +89,7 @@ export function PlayPanel({
             styles.answerButton,
             (!canAnswer || !answer.trim()) && styles.disabled,
           ]}
+          silent
           disabled={!canAnswer || !answer.trim()}
           onPress={onSubmit}
         >

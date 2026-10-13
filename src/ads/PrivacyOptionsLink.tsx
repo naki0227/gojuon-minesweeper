@@ -1,5 +1,6 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { colors } from "../theme/colors";
+import { Pressable } from "../components/TapPressable";
 
 // The link both platforms' AdPrivacyOptionsButton render; only what a
 // press opens differs.
