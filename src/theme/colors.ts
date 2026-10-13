@@ -18,3 +18,12 @@ export const colors = {
   success: "#2f9e6a",
   gem: "#4a63c9",
 } as const;
+
+// Colors for the number of mines around an opened cell.
+export const COUNT_COLORS = [
+  "#9aa7b0",
+  colors.primary,
+  colors.success,
+  colors.accentStrong,
+];
+export const COUNT_COLOR_MANY = colors.danger;

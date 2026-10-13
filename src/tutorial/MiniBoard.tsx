@@ -1,6 +1,6 @@
 import { Animated, StyleSheet, Text, View } from "react-native";
 
-import { COUNT_COLOR_MANY, COUNT_COLORS } from "../components/motion";
+import { COUNT_COLOR_MANY, COUNT_COLORS } from "../theme/colors";
 import { tileStyles } from "../components/tileStyles";
 
 export type MiniCell = {

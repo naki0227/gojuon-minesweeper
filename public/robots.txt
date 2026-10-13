@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /daily/kit
 
 Sitemap: https://minesweeper.enludus.com/sitemap.xml

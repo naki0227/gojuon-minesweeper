@@ -3,6 +3,10 @@ name: Deploy Web
 on:
   push:
     branches: ["main"]
+  # 00:05 Japan time: render the images for the coming days of 今日の一問.
+  schedule:
+    - cron: "5 15 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -46,6 +50,13 @@ jobs:
           # Online play. Without these the online button stays hidden.
           EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_KEY }}
+
+      # Chrome comes with the runner; Japanese fonts do not.
+      - name: Install Japanese fonts
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+
+      - name: Render 今日の一問 images
+        run: npm run daily:render -- dist/daily 100000 7
 
       - name: Publish gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
