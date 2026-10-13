@@ -63,8 +63,8 @@ display:flex;flex-direction:column;justify-content:center;gap:${tall > 1.5 ? 56 
 .badge{font-size:34px;font-weight:900;color:${colors.primary};letter-spacing:2px}
 .badge span{color:${colors.ink};margin-left:14px}
 .prompt{font-size:${tall > 1.5 ? 104 : 88}px;font-weight:900;line-height:1.1}
-.board{display:grid;grid-template-columns:repeat(10,1fr);gap:9px}
-.t{aspect-ratio:1;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:44px;position:relative}
+.board{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:9px}
+.t{aspect-ratio:1;min-width:0;overflow:hidden;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:44px;position:relative}
 .gap{visibility:hidden}
 .closed{background:#fff;border:2px solid #c9d5df;border-bottom:6px solid #bccbd6;color:#152534}
 .safe{background:#e6edf2;border:2px solid #d8e0e6}

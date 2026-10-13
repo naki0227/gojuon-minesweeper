@@ -1,0 +1,6 @@
+# Cloudflare Pages headers (ignored by GitHub Pages).
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
+/daily/*
+  Cache-Control: public, max-age=300
