@@ -171,6 +171,7 @@ begin
 end $$;
 
 -- The welcome bonus is once per Apple ID, even across account deletion.
+\i supabase/migrations/20261013015000_gem_service_role_grants.sql
 \i supabase/migrations/20261013020000_signin_bonus_per_apple_id.sql
 do $$
 declare
@@ -201,3 +202,21 @@ begin
        'public.gem_signin_bonus_claims', 'SELECT')
   then raise exception 'clients can reach bonus claims'; end if;
 end $$;
+
+-- Run as the Edge Function's role: the wallet RPCs need table access.
+do $$
+begin
+  if not has_table_privilege('service_role', 'public.gem_wallets', 'SELECT,INSERT,UPDATE')
+     or not has_table_privilege('service_role', 'public.gem_ledger', 'SELECT,INSERT')
+     or not has_table_privilege('service_role', 'public.gem_apple_purchases', 'SELECT,INSERT,UPDATE')
+     or not has_table_privilege('service_role', 'public.gem_signin_bonus_claims', 'SELECT,INSERT')
+  then raise exception 'service role cannot use wallet tables'; end if;
+end $$;
+insert into auth.users (id) values ('66666666-6666-4666-8666-666666666666');
+-- Supabase's service_role bypasses RLS; mirror that here.
+alter role service_role bypassrls;
+set role service_role;
+select public.gem_credit_apple_signin_bonus('66666666-6666-4666-8666-666666666666', 'apple-sub-C');
+select public.gem_spend('66666666-6666-4666-8666-666666666666', 'ffffffff-ffff-4fff-8fff-ffffffffffff', 'safe_hint');
+select public.gem_support_grant('66666666-6666-4666-8666-666666666666', 1, 'role-check');
+reset role;

@@ -9,6 +9,7 @@ create table public.gem_signin_bonus_claims (
 );
 alter table public.gem_signin_bonus_claims enable row level security;
 revoke all on public.gem_signin_bonus_claims from anon, authenticated;
+grant select, insert on public.gem_signin_bonus_claims to service_role;
 
 create function public.gem_apple_sub_hash(p_apple_sub text) returns text
 language sql immutable set search_path = ''
