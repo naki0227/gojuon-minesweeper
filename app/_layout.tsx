@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { RemoveAdsProvider } from "../src/purchases/RemoveAdsProvider";
+import { BackgroundMusic } from "../src/sound/BackgroundMusic";
 import {
   TutorialModal,
   useFirstRunTutorial,
@@ -14,6 +15,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <RemoveAdsProvider>
         <StatusBar style="dark" />
+        <BackgroundMusic />
         <Stack screenOptions={{ headerShown: false }} />
         <TutorialModal visible={tutorial.visible} onClose={tutorial.close} />
       </RemoveAdsProvider>

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
+import Head from "expo-router/head";
 
 import { BannerAd } from "../ads/BannerAd";
 import {
@@ -31,6 +32,7 @@ import type {
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
 import { colors } from "../theme/colors";
 import { HomeFooter } from "./HomeFooter";
+import { HomeTitle } from "./HomeTitle";
 
 const MUTED = "#536875";
 const LINE = "#cfdce4";
@@ -204,15 +206,15 @@ export function HomeSetup({
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <Head>
+        <title>五十音マインスイーパー | ことば当てゲーム</title>
+        <meta
+          name="description"
+          content="ことばを予想して文字を開く、2人で遊べるマインスイーパー。日本語と英語のカテゴリを選んで対戦できます。"
+        />
+      </Head>
       <ScrollView contentContainerStyle={styles.page}>
-        <View style={styles.titleRow} accessibilityRole="header">
-          <View style={styles.titleTiles}>
-            <Text style={styles.titleTile}>五</Text>
-            <Text style={styles.titleTile}>十</Text>
-            <Text style={[styles.titleTile, styles.titleTileAccent]}>音</Text>
-          </View>
-          <Text style={styles.titleText}>マインスイーパー</Text>
-        </View>
+        <HomeTitle />
         <View style={styles.tabs}>
           {LANGUAGE_TABS.map((tab) => {
             const selected = filters.language === tab.value;
@@ -476,37 +478,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 36,
     gap: 18,
-  },
-  titleRow: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 10,
-  },
-  titleTiles: {
-    flexDirection: "row",
-    gap: 3,
-  },
-  titleTile: {
-    width: 30,
-    height: 30,
-    backgroundColor: colors.ink,
-    color: colors.background,
-    fontSize: 17,
-    fontWeight: "900",
-    lineHeight: 30,
-    textAlign: "center",
-    overflow: "hidden",
-  },
-  titleTileAccent: {
-    backgroundColor: colors.primary,
-    color: colors.white,
-  },
-  titleText: {
-    color: colors.ink,
-    fontSize: 19,
-    fontWeight: "900",
-    letterSpacing: 0.8,
-    paddingBottom: 1,
   },
   tabs: {
     flexDirection: "row",

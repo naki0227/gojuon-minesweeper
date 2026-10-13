@@ -8,7 +8,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Head from "expo-router/head";
 import { router } from "expo-router";
 
 import { PinnedBannerScreen } from "../src/ads/PinnedBannerScreen";
@@ -39,6 +38,9 @@ import { matchStyles } from "../src/components/matchStyles";
 import { colors } from "../src/theme/colors";
 import { buttonStyles } from "../src/components/buttonStyles";
 import { noteWinForReview } from "../src/review/askForReview";
+import { localSnapshot } from "../src/sound/snapshots";
+import { playSound } from "../src/sound/sounds";
+import { transitionSound } from "../src/sound/transitions";
 
 const INITIAL_FILTERS: QuestionFilters = {
   language: "ja",
@@ -80,13 +82,6 @@ export default function HomeScreen() {
   if (!game) {
     return (
       <>
-        <Head>
-          <title>五十音マインスイーパー | ことば当てゲーム</title>
-          <meta
-            name="description"
-            content="ことばを予想して文字を開く、2人で遊べるマインスイーパー。日本語と英語のカテゴリを選んで対戦できます。"
-          />
-        </Head>
         <HomeSetup
           filters={filters}
           onChangeFilters={setFilters}
@@ -117,6 +112,7 @@ export default function HomeScreen() {
       });
       if (next.winner !== null) void noteWinForReview();
     }
+    playSound(transitionSound(localSnapshot(previous), localSnapshot(next)));
     setGame(next);
   }
 

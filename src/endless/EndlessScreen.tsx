@@ -33,10 +33,11 @@ import { EndPanels } from "./EndPanels";
 import { stingerFor } from "./pauses";
 import { Stinger } from "./Stinger";
 import { styles } from "./styles";
-import { parseFilters } from "./filters";
+import { parseFilters } from "../data/filters";
 import { useGemWallet } from "../wallet/useGemWallet";
 import { EndlessHud } from "./Hud";
 import { noteWinForReview } from "../review/askForReview";
+import { endlessSnapshot, useTransitionSounds } from "../sound/snapshots";
 
 export function EndlessScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
@@ -62,6 +63,7 @@ export function EndlessScreen() {
   // The key of the last start/clear/game-over pause the player tapped away.
   const [seenStinger, setSeenStinger] = useState<string | null>(null);
   const stinger = game ? stingerFor(game) : null;
+  useTransitionSounds(endlessSnapshot(game));
   const hintedChars = useMemo(() => new Set(game?.hints ?? []), [game?.hints]);
 
   function submit() {
