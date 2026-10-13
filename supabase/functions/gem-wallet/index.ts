@@ -86,9 +86,14 @@ Deno.serve(async (request: Request) => {
     const action = readString(body.action);
     if (action === "balance") {
       // The caller has a verified Apple identity. Grant three gems once per
-      // account on first wallet access; retries and reinstalls never re-credit.
+      // Apple ID on first wallet access; retries and reinstalls never re-credit.
+      // Keyed by Apple's stable user ID so a deleted and recreated account
+      // with the same Apple ID doesn't get the bonus again.
+      const appleIdentity = user.identities?.find((i) => i.provider === "apple");
+      const appleSub = appleIdentity?.identity_data?.sub ?? appleIdentity?.id ?? null;
       const { data, error } = await admin.rpc("gem_credit_apple_signin_bonus", {
         p_user_id: user.id,
+        p_apple_sub: typeof appleSub === "string" ? appleSub : null,
       });
       if (error) throw error;
       return respond({ ok: true, balance: data });
