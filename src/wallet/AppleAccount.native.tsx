@@ -49,3 +49,10 @@ export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
     </>
   );
 }
+
+export async function appleAuthorizationCode(): Promise<string | null> {
+  const credential = await AppleAuthentication.signInAsync({
+    requestedScopes: [],
+  });
+  return credential.authorizationCode ?? null;
+}

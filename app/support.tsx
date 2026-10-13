@@ -37,6 +37,9 @@ export default function SupportScreen() {
               利用環境（Web / iOS /
               Android）、発生した画面、再現手順、表示されていたジャンルや文字数を添えてください。
             </Text>
+            <Text style={styles.body}>
+              ジェムが減ったのにヒントや復活が届かなかった場合は、ジェム画面の「お問い合わせID」とおおよその日時をメールでお知らせください。履歴を確認して、該当分のジェムをお戻しします。
+            </Text>
           </View>
 
           <Link

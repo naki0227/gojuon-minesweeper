@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "../online/client";
+import { appleAuthorizationCode } from "./AppleAccount";
 import {
   currentAppleAccount,
+  deleteAppleAccount,
   isGemWalletConfigured,
   loadGemBalance,
   spendGems,
@@ -89,6 +91,26 @@ export function useGemWallet() {
     setBalance(updated);
   };
 
+  const deleteAccount = async () => {
+    if (!userId) return;
+    setMessage(null);
+    try {
+      // Without a code (e.g. the Apple sheet was closed) the account is
+      // still deleted; only the Apple token revocation is skipped.
+      const code = await appleAuthorizationCode().catch(() => null);
+      await deleteAppleAccount(code);
+      setUserId(null);
+      setBalance(null);
+      setMessage("アカウントとジェム残高を削除しました。");
+    } catch (cause) {
+      setMessage(
+        cause instanceof Error
+          ? cause.message
+          : "アカウントを削除できませんでした。",
+      );
+    }
+  };
+
   return {
     userId,
     balance,
@@ -99,6 +121,7 @@ export function useGemWallet() {
     refresh,
     purchase,
     spend,
+    deleteAccount,
     enabled: isGemWalletConfigured && gemStore.isSupported,
   };
 }

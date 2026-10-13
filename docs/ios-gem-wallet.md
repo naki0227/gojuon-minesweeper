@@ -45,12 +45,27 @@ PRs #23 and #24 have been merged into `main`. The wallet database migration and 
 ## Release blockers / limitations
 
 - This PR's CI and SQL tests don't exercise real Apple Sandbox or real iPhone credentials.
-- App Store Server Notifications V2 / reconciliation for **refunds and revocations after fulfillment** must be added before production; a past successful payment is not proof that it was never later refunded.
-- App Store account-deletion compliance: Apple sign-in creates a server account, so provide a user-initiated deletion flow and a clear policy for wallet balance, purchase audit records and outstanding transactions.
+- **Refunds (implemented, needs setup):** set App Store Connect → App → App Information → App Store Server Notifications (Version 2, Production and Sandbox) to `https://<project-ref>.supabase.co/functions/v1/gem-wallet`. The function re-reads the transaction from Apple and calls `gem_revoke_apple_purchase`: up to 10 gems are taken back, never below zero; already-spent gems are written off. Test with App Store Server API "Request a Test Notification" and a Sandbox refund.
+- **Account deletion (implemented):** the wallet panel's "アカウントを削除" deletes the Supabase user (wallet and ledger cascade; `gem_apple_purchases` rows stay with `user_id = null`). It asks Apple for a fresh authorization code and revokes the Sign in with Apple token when `APPLE_SIGNIN_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`, `APPLE_SIGNIN_PRIVATE_KEY` (a key with "Sign in with Apple" enabled) are set as Edge Function secrets; without them deletion still works but the token is not revoked, which Apple's guidelines require.
 - The game state is still client-local. A debit that succeeds while the response is lost is idempotent for the same action ID, but crash recovery of a partially fulfilled **hint/revive** should be tested and hardened before production.
 - Verify Expo IAP's unfinished consumable replay on a real iPhone (network interruption, force quit and app update). Do not claim that finished consumables are automatically restored by StoreKit.
 - Need actual iOS build and Apple capability check; the code is not remotely enabling purchases until the product and signing credentials are configured.
 - If the native Apple login does not return a credential, the wallet is intentionally unavailable; do not create a fallback guest wallet.
+
+## Support: gems spent but hint/revive not delivered
+
+Policy: no automatic recovery; support restores the gems on inquiry. The wallet panel shows an お問い合わせID (first 8 hex characters of the user UUID, upper-cased).
+
+```sql
+-- 1. Find the account
+select id, created_at from auth.users
+where upper(replace(id::text, '-', '')) like 'ABCD1234%';
+-- 2. Recent history (spends are safe_hint -1 / revive -3)
+select created_at, delta, reason, source_key from public.gem_ledger
+where user_id = '<uuid>' order by id desc limit 30;
+-- 3. Give back, once per ticket (1..30 gems)
+select public.gem_support_grant('<uuid>', 3, '20261013-01');
+```
 
 ## Test matrix
 
@@ -63,7 +78,9 @@ PRs #23 and #24 have been merged into `main`. The wallet database migration and 
 - [ ] Sign in with a different Apple Account → different wallet
 - [ ] Interrupted purchase network + retry → never lost or duplicated
 - [ ] Sandbox purchased consumable + restore via account, not StoreKit
-- [ ] Refund / revoke reconciliation implemented
+- [x] Refund / revoke reconciliation implemented (SQL-tested; Apple notification not yet tested)
+- [ ] Sandbox refund notification takes back gems, floor 0
+- [ ] Account deletion on device (with and without Sign in with Apple key)
 - [ ] No Endless or gem actions on mobile Web / Android
 
 The existing reward-video and remove-ads IAP behavior is intentionally left unchanged.
