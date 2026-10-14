@@ -11,10 +11,14 @@ import {
 } from "../../src/daily/schedule";
 import { appStoreUrl, SITE_URL } from "../../src/links/site";
 import { colors } from "../../src/theme/colors";
-
-export function escapeHtml(text: string): string {
-  return text.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);
-}
+import { escapeHtml } from "./html";
+import {
+  answerPostText,
+  videoPaths,
+  videoUrl,
+  weekPostText,
+  type VideoPlan,
+} from "./video/texts";
 
 function layout(head: string, body: string): string {
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8">
@@ -36,6 +40,8 @@ a{color:${colors.link};font-weight:700}
 .row span{color:${colors.primary};margin-right:10px}
 pre{white-space:pre-wrap;background:#fff;border:1px solid ${colors.line};border-radius:10px;padding:12px;font:inherit;font-size:14px;margin:0}
 button{border:0;background:${colors.primary};color:#fff;border-radius:10px;padding:13px;font-weight:800;font-size:15px}
+video{width:100%;border-radius:14px;background:#000}
+h2{margin:12px 0 0;font-size:20px}
 .thumbs{display:flex;gap:8px}.thumbs a{flex:1;font-size:12px;text-align:center;text-decoration:none}
 </style></head><body><main>${body}</main></body></html>`;
 }
@@ -89,8 +95,56 @@ export function listPage(entries: readonly DailyEntry[]): string {
   );
 }
 
+function copyBlock(id: string, text: string, label: string): string {
+  return `<pre id="${id}">${escapeHtml(text)}</pre><button onclick="navigator.clipboard.writeText(document.getElementById('${id}').textContent).then(()=>{this.textContent='コピーしました'})">${label}</button>`;
+}
+
+function videoBlock(title: string, path: string, note: string): string {
+  const url = videoUrl(path);
+  return `<h2>${title}</h2><p>${note}</p>
+<video src="${url}" controls playsinline preload="metadata"></video>
+<a class="cta" href="${url}" download>動画を保存</a>`;
+}
+
+// Today's question, yesterday's answer and last week's roundup.
+function videoSection(videos: VideoPlan): string {
+  const parts: string[] = [];
+  if (videos.question) {
+    parts.push(
+      videoBlock(
+        "問題ショート",
+        videoPaths.question(videos.question),
+        "TikTok・リール・YouTubeショート用。本文は上と同じでOK。",
+      ),
+    );
+  }
+  if (videos.answer) {
+    parts.push(
+      videoBlock(
+        `答え合わせショート（${shortDate(videos.answer.date)}の問題）`,
+        videoPaths.answer(videos.answer),
+        "前日の問題の答え。7時以降に投稿してね。",
+      ),
+      copyBlock("answer-post", answerPostText(videos.answer), "本文をコピー"),
+    );
+  }
+  if (videos.week.length > 0) {
+    const { title, description } = weekPostText(videos.week);
+    parts.push(
+      videoBlock(
+        "1週間まとめ（YouTube横動画）",
+        videoPaths.week(videos.week),
+        "月〜日の問題をまとめた横動画。月曜の朝に新しくなります。",
+      ),
+      copyBlock("week-title", title, "タイトルをコピー"),
+      copyBlock("week-description", description, "説明をコピー"),
+    );
+  }
+  return parts.join("");
+}
+
 // For posting by hand: today's images and the texts to paste.
-export function kitPage(entry: DailyEntry): string {
+export function kitPage(entry: DailyEntry, videos: VideoPlan): string {
   const { post, reply } = dailyPostTexts(entry);
   const thumbs = [
     ["square", "X"],
@@ -102,13 +156,12 @@ export function kitPage(entry: DailyEntry): string {
         `<a href="${imageUrl(entry, size)}"><img src="${imageUrl(entry, size)}" alt="">${label}</a>`,
     )
     .join("");
-  const copy = (id: string, text: string, label: string) =>
-    `<pre id="${id}">${escapeHtml(text)}</pre><button onclick="navigator.clipboard.writeText(document.getElementById('${id}').textContent).then(()=>{this.textContent='コピーしました'})">${label}</button>`;
   return layout(
     `<title>投稿キット | 今日の一問</title><meta name="robots" content="noindex">`,
     `<h1>投稿キット ${shortDate(entry.date)}</h1>
 <p>画像を長押しで保存 → 本文をコピーして投稿 → 返信をコピーして自分の投稿にリプ。</p>
-<div class="thumbs">${thumbs}</div>${copy("post", post, "本文をコピー")}${copy("reply", reply, "返信をコピー")}
-<details><summary>答えを表示</summary><div class="answer">${escapeHtml(dailyAnswer(entry))}</div></details>`,
+<div class="thumbs">${thumbs}</div>${copyBlock("post", post, "本文をコピー")}${copyBlock("reply", reply, "返信をコピー")}
+<details><summary>答えを表示</summary><div class="answer">${escapeHtml(dailyAnswer(entry))}</div></details>
+${videoSection(videos)}`,
   );
 }

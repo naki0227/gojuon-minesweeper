@@ -1,6 +1,7 @@
 /// <reference types="node" />
 // Writes the 今日の一問 site into the web export, for puzzles already
-// released (7:00 Japan time) only: images, each day's page, the list and the posting kit.
+// released (7:00 Japan time) only: images, each day's page, the list, the
+// posting kit and the day's videos (video/).
 // Answers appear on a day's page from the next day on.
 //   npx tsx scripts/daily/publish.ts [outDir=dist/daily]
 // DAILY_TODAY=YYYY-MM-DD overrides today (for checking a build locally).
@@ -14,6 +15,8 @@ import { chromium } from "playwright-core";
 import { currentPuzzleDate, DAILY_SCHEDULE } from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
 import { dayPage, kitPage, listPage } from "./pages";
+import { planVideos } from "./video/texts";
+import { renderDailyVideos } from "./video/videos";
 
 async function main() {
   const outDir = process.argv[2] ?? "dist/daily";
@@ -38,12 +41,17 @@ async function main() {
     }
     writeFileSync(join(dir, "index.html"), dayPage(entry, entry.date < today));
   }
+  // Needs ffmpeg. DAILY_VIDEOS=0 skips the videos for a quick local check.
+  const videos = planVideos(released, today);
+  if (process.env.DAILY_VIDEOS !== "0") {
+    await renderDailyVideos(browser, outDir, videos);
+  }
   await browser.close();
 
   writeFileSync(join(outDir, "index.html"), listPage(released));
   if (current) {
     mkdirSync(join(outDir, "kit"), { recursive: true });
-    writeFileSync(join(outDir, "kit", "index.html"), kitPage(current));
+    writeFileSync(join(outDir, "kit", "index.html"), kitPage(current, videos));
   }
   console.log(`published ${released.length} days up to ${today}`);
 }
