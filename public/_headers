@@ -1,4 +1,4 @@
-# Cloudflare Pages headers (ignored by GitHub Pages).
+# Cloudflare Pages headers.
 /.well-known/apple-app-site-association
   Content-Type: application/json
 
