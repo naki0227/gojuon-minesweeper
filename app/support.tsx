@@ -43,12 +43,6 @@ export default function SupportScreen() {
             </Text>
           </View>
 
-          <Link
-            href="https://github.com/naki0227/gojuon-minesweeper/issues"
-            style={styles.link}
-          >
-            GitHub Issuesを開く
-          </Link>
           <Link href="/privacy" style={styles.link}>
             プライバシーポリシー
           </Link>
