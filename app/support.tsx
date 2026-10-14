@@ -19,7 +19,7 @@ export default function SupportScreen() {
         <ScrollView contentContainerStyle={styles.page}>
           <Text style={styles.title}>サポート</Text>
           <Text style={styles.intro}>
-            不具合、問題データの誤り、改善要望はGitHub Issuesから報告できます。
+            不具合、問題データの誤り、改善要望は下のメールアドレスまでお送りください。
           </Text>
 
           <View style={styles.section}>
