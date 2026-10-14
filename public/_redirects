@@ -1,0 +1,7 @@
+# Short links for social profiles and posts. Each one opens the App Store
+# page with its own campaign (ct=), so App Analytics shows where people
+# came from.
+/app https://apps.apple.com/app/id6819539119?pt=128342444&ct=link&mt=8 302
+/x https://apps.apple.com/app/id6819539119?pt=128342444&ct=x&mt=8 302
+/ig https://apps.apple.com/app/id6819539119?pt=128342444&ct=instagram&mt=8 302
+/tt https://apps.apple.com/app/id6819539119?pt=128342444&ct=tiktok&mt=8 302
