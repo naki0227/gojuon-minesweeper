@@ -12,7 +12,8 @@ import Head from "expo-router/head";
 import { Link, useLocalSearchParams } from "expo-router";
 
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
-import { pickRandomQuestion, questionPrompt } from "../data/questions";
+import { pickRandomQuestion } from "../data/questions";
+import { promptText } from "../i18n/text";
 import { questionMineCharacters } from "../game/engine";
 import {
   endEndless,
@@ -33,6 +34,7 @@ import { EndPanels } from "./EndPanels";
 import { stingerFor } from "./pauses";
 import { Stinger } from "./Stinger";
 import { styles } from "./styles";
+import { ENDLESS_SCREEN_TEXT as S } from "./EndlessScreen.strings";
 import { parseFilters } from "../data/filters";
 import { useGemWallet } from "../wallet/useGemWallet";
 import { EndlessHud } from "./Hud";
@@ -81,7 +83,7 @@ export function EndlessScreen() {
       setGame({
         ...game,
         phase: "finished",
-        message: "出題できる問題がありません。",
+        message: S.noQuestions,
       });
       return;
     }
@@ -103,9 +105,9 @@ export function EndlessScreen() {
         adsRemoved || Platform.OS === "web" || (await requestRewardedRevive());
       if (granted)
         setGame((current) => (current ? reviveEndless(current) : current));
-      else setError("広告を視聴できませんでした。時間をおいて試してください。");
+      else setError(S.adNotWatched);
     } catch {
-      setError("広告の読み込みに失敗しました。もう一度お試しください。");
+      setError(S.adFailed);
     } finally {
       actionInFlight.current = false;
       setBusy(false);
@@ -128,9 +130,7 @@ export function EndlessScreen() {
       await wallet.spend("revive", `${runId}:revive:${game.revives}`);
       setGame((current) => (current ? reviveEndless(current) : current));
     } catch (cause) {
-      setError(
-        cause instanceof Error ? cause.message : "復活できませんでした。",
-      );
+      setError(cause instanceof Error ? cause.message : S.reviveFailed);
     } finally {
       actionInFlight.current = false;
       setBusy(false);
@@ -156,11 +156,7 @@ export function EndlessScreen() {
           : current,
       );
     } catch (cause) {
-      setError(
-        cause instanceof Error
-          ? cause.message
-          : "ヒントを取得できませんでした。",
-      );
+      setError(cause instanceof Error ? cause.message : S.hintFailed);
     } finally {
       actionInFlight.current = false;
       setBusy(false);
@@ -169,28 +165,20 @@ export function EndlessScreen() {
 
   async function share() {
     if (!game) return;
-    const message = [
-      "五十音マインスイーパー ENDLESS",
-      `${game.score}点 / ${game.solved}問正解`,
-      `開いた数 ${game.totalOpenedMoves}・地雷 ${game.totalMineHits}・復活 ${game.revives}回`,
-      "#五十音マインスイーパー",
-    ].join("\n");
+    const message = S.shareLines(game).join("\n");
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent("https://minesweeper.enludus.com/")}`;
     try {
       await Linking.openURL(url);
     } catch {
-      setError("Xの投稿画面を開けませんでした。");
+      setError(S.shareFailed);
     }
   }
 
   return (
     <SafeAreaView style={styles.safe}>
       <Head>
-        <title>エンドレスモード | 五十音マインスイーパー</title>
-        <meta
-          name="description"
-          content="ライフ3つで言葉を解き続けるソロモード。少ない手数で高得点を目指そう。"
-        />
+        <title>{S.pageTitle}</title>
+        <meta name="description" content={S.pageDescription} />
       </Head>
       <KeyboardAvoidingView
         style={styles.fill}
@@ -204,14 +192,14 @@ export function EndlessScreen() {
 
           {game ? (
             <>
-              <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
+              <Text style={styles.prompt}>{promptText(game.question)}</Text>
               <View style={styles.message}>
                 <Text style={styles.messageText} numberOfLines={2}>
                   {game.message}
                 </Text>
                 {game.lastChainBonus > 0 && game.phase === "answer" ? (
                   <Text style={styles.chain}>
-                    CHAIN +{game.lastChainBonus}点
+                    {S.chain(game.lastChainBonus)}
                   </Text>
                 ) : null}
               </View>
@@ -275,11 +263,9 @@ export function EndlessScreen() {
             </>
           ) : (
             <View style={styles.panel}>
-              <Text style={styles.panelTitle}>
-                この条件では問題が見つかりませんでした。
-              </Text>
+              <Text style={styles.panelTitle}>{S.noMatch}</Text>
               <Link href="/" style={styles.panelLink}>
-                条件を選び直す
+                {S.changeFilters}
               </Link>
             </View>
           )}

@@ -9,6 +9,20 @@ import { walletStyles } from "./styles";
 import type { useGemWallet } from "./useGemWallet";
 import { colors } from "../theme/colors";
 import { Pressable } from "../components/TapPressable";
+import { tr } from "../i18n";
+
+const S = tr({
+  ja: {
+    chipLabel: (label: string) => `ジェム ${label}。タップで購入・ログイン`,
+    title: "ジェム",
+    close: "閉じる",
+  },
+  en: {
+    chipLabel: (label: string) => `Gems: ${label}. Tap to buy or sign in`,
+    title: "Gems",
+    close: "Close",
+  },
+});
 
 type Wallet = ReturnType<typeof useGemWallet>;
 
@@ -28,7 +42,7 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
     <>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`ジェム ${label}。タップで購入・ログイン`}
+        accessibilityLabel={S.chipLabel(label)}
         style={styles.gemChip}
         onPress={() => setOpen(true)}
       >
@@ -40,10 +54,10 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
       </Pressable>
       <Popup visible={open} onDismiss={close}>
         <View style={walletStyles.header}>
-          <Text style={walletStyles.title}>ジェム</Text>
+          <Text style={walletStyles.title}>{S.title}</Text>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="閉じる"
+            accessibilityLabel={S.close}
             onPress={close}
             hitSlop={12}
           >

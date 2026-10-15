@@ -7,7 +7,30 @@ import { GemChip } from "../wallet/GemSheet";
 import type { useGemWallet } from "../wallet/useGemWallet";
 import type { EndlessState } from "./engine";
 import { styles } from "./styles";
+import { tr } from "../i18n";
 import { Pressable } from "../components/TapPressable";
+
+const S = tr({
+  ja: {
+    backHome: "ホームへ戻る",
+    home: "ホーム",
+    score: "スコア",
+    cleared: "クリア",
+    solved: (count: number) => `${count}問`,
+    lives: "ライフ",
+    livesLabel: (lives: number) => `ライフ ${lives}`,
+  },
+  en: {
+    backHome: "Back to home",
+    home: "Home",
+    score: "Score",
+    cleared: "Solved",
+    solved: (count: number) => `${count}`,
+    lives: "Lives",
+    livesLabel: (lives: number) =>
+      `${lives} ${lives === 1 ? "life" : "lives"} left`,
+  },
+});
 
 type Props = {
   game: EndlessState | null;
@@ -22,12 +45,12 @@ export function EndlessHud({ game, wallet }: Props) {
         <Link href="/" asChild>
           <Pressable
             accessibilityRole="link"
-            accessibilityLabel="ホームへ戻る"
+            accessibilityLabel={S.backHome}
             style={styles.exit}
             hitSlop={8}
           >
             <MaterialIcons name="arrow-back-ios" size={16} color="#546d7a" />
-            <Text style={styles.exitText}>ホーム</Text>
+            <Text style={styles.exitText}>{S.home}</Text>
           </Pressable>
         </Link>
         <Text style={styles.eyebrow}>ENDLESS</Text>
@@ -39,21 +62,21 @@ export function EndlessHud({ game, wallet }: Props) {
       {game ? (
         <View style={styles.stats}>
           <View style={styles.stat}>
-            <Text style={styles.statCaption}>スコア</Text>
+            <Text style={styles.statCaption}>{S.score}</Text>
             <Text style={styles.statValue}>{game.score.toLocaleString()}</Text>
           </View>
           <View style={styles.statDivider} />
           <View style={styles.stat}>
-            <Text style={styles.statCaption}>クリア</Text>
-            <Text style={styles.statValue}>{game.solved}問</Text>
+            <Text style={styles.statCaption}>{S.cleared}</Text>
+            <Text style={styles.statValue}>{S.solved(game.solved)}</Text>
           </View>
           <View style={styles.statDivider} />
           <View style={styles.stat}>
-            <Text style={styles.statCaption}>ライフ</Text>
+            <Text style={styles.statCaption}>{S.lives}</Text>
             <View
               style={styles.lives}
               accessible
-              accessibilityLabel={`ライフ ${game.lives}`}
+              accessibilityLabel={S.livesLabel(game.lives)}
             >
               {[0, 1, 2].map((i) => (
                 <MaterialIcons

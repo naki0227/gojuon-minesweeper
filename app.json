@@ -7,7 +7,8 @@
     "scheme": "gojuonminesweeper",
     "userInterfaceStyle": "light",
     "locales": {
-      "ja": "./locales/ja.json"
+      "ja": "./locales/ja.json",
+      "en": "./locales/en.json"
     },
     "newArchEnabled": true,
     "ios": {
@@ -17,7 +18,7 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleDevelopmentRegion": "ja",
-        "CFBundleLocalizations": ["ja"]
+        "CFBundleLocalizations": ["ja", "en"]
       },
       "usesAppleSignIn": true,
       "associatedDomains": ["applinks:minesweeper.enludus.com"]

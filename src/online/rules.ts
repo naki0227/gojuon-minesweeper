@@ -7,6 +7,7 @@ import {
   pickRandomQuestion,
   QUESTIONS,
   questionPrompt,
+  questionPromptEn,
 } from "../data/questions";
 import type {
   LengthFilter,
@@ -153,6 +154,7 @@ export function toPublicState(state: GameState): OnlinePublicState {
   return {
     language: state.question.language,
     prompt: questionPrompt(state.question),
+    promptEn: questionPromptEn(state.question),
     phase: state.phase,
     currentPlayer: state.currentPlayer,
     openedChars: state.openedChars,
@@ -163,6 +165,8 @@ export function toPublicState(state: GameState): OnlinePublicState {
     hint: state.revealedAnswerChars > 0 && !finished ? answerHint(state) : null,
     winner: state.winner,
     lastMessage: state.lastMessage,
+    // Games stored before English support have no English message.
+    lastMessageEn: state.lastMessageEn ?? state.lastMessage,
     answers: finished
       ? state.question.answers.map((answer) => answer.display)
       : null,
@@ -226,10 +230,18 @@ export function concedeGame(
   reason: "timeout" | "forfeit",
 ): GameState {
   const winner: PlayerIndex = loser === 0 ? 1 : 0;
+  const lose = `Player ${loser + 1}`;
+  const win = `Player ${winner + 1}`;
   const message =
     reason === "timeout"
-      ? `Player ${loser + 1} の持ち時間が切れました。Player ${winner + 1} の勝ち！`
-      : `Player ${loser + 1} が退出しました。Player ${winner + 1} の勝ち！`;
+      ? {
+          lastMessage: `${lose} の持ち時間が切れました。${win} の勝ち！`,
+          lastMessageEn: `${lose} ran out of time. ${win} wins!`,
+        }
+      : {
+          lastMessage: `${lose} が退出しました。${win} の勝ち！`,
+          lastMessageEn: `${lose} left the game. ${win} wins!`,
+        };
 
-  return { ...state, phase: "finished", winner, lastMessage: message };
+  return { ...state, phase: "finished", winner, ...message };
 }

@@ -11,6 +11,7 @@ import type { Question } from "../data/types";
 import { adjacentMineCount, questionMineMultiplicity } from "../game/engine";
 import { GOJUON_GRID } from "../game/gojuon";
 import { colors } from "../theme/colors";
+import { BOARD_LABELS } from "./boardLabels";
 
 type Props = {
   question: Question;
@@ -61,8 +62,8 @@ export function GojuonBoard({
             const stateLabel = !isOpened
               ? ""
               : isMine
-                ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
-                : ` セーフ 周囲の答え文字${mineCount}個`;
+                ? BOARD_LABELS.mine(multiplicity)
+                : BOARD_LABELS.safe(mineCount);
 
             return (
               <Pressable

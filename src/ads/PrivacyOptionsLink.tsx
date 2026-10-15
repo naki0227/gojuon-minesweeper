@@ -1,6 +1,12 @@
 import { StyleSheet, Text } from "react-native";
 import { colors } from "../theme/colors";
 import { Pressable } from "../components/TapPressable";
+import { tr } from "../i18n";
+
+const S = tr({
+  ja: { label: "広告のプライバシー設定を変更する" },
+  en: { label: "Change ad privacy settings" },
+});
 
 // The link both platforms' AdPrivacyOptionsButton render; only what a
 // press opens differs.
@@ -11,7 +17,7 @@ export function PrivacyOptionsLink({ onPress }: { onPress: () => void }) {
       onPress={onPress}
       style={({ pressed }) => [styles.button, pressed ? styles.pressed : null]}
     >
-      <Text style={styles.text}>広告のプライバシー設定を変更する</Text>
+      <Text style={styles.text}>{S.label}</Text>
     </Pressable>
   );
 }

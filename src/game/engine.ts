@@ -2,6 +2,7 @@ import type { Question } from "../data/types";
 import { primaryAnswer } from "../data/questions";
 import { adjacentCharacters, getBoardOrder } from "./board";
 import { normalizeValue } from "./normalize";
+import { joined, MSG, say, type Said } from "./messages";
 import {
   createCountMap,
   createSignatureKey,
@@ -20,12 +21,10 @@ export type GameState = {
   finalAnswerAttempts: readonly [boolean, boolean];
   revealedAnswerChars: number;
   winner: PlayerIndex | null;
+  // The latest event (see messages.ts); 1.0.1 apps read only lastMessage.
   lastMessage: string;
+  lastMessageEn: string;
 };
-
-function playerName(player: PlayerIndex): string {
-  return `Player ${player + 1}`;
-}
 
 function rawComparable(value: string): string {
   return value.normalize("NFKC").trim().toLocaleLowerCase();
@@ -41,7 +40,7 @@ export function createInitialState(question: Question): GameState {
     finalAnswerAttempts: [false, false],
     revealedAnswerChars: 0,
     winner: null,
-    lastMessage: "Player 1 からスタート。まず答えを予想してください。",
+    ...say(MSG.start),
   };
 }
 
@@ -141,7 +140,7 @@ export function answerHint(state: GameState): string {
   return maskedAnswer(state.question, state.revealedAnswerChars);
 }
 
-function finishHintTurn(state: GameState, message: string): GameState {
+function finishHintTurn(state: GameState, message: Said): GameState {
   const attempted: [boolean, boolean] = [...state.finalAnswerAttempts];
   attempted[state.currentPlayer] = true;
   const other: PlayerIndex = state.currentPlayer === 0 ? 1 : 0;
@@ -151,7 +150,7 @@ function finishHintTurn(state: GameState, message: string): GameState {
       ...state,
       currentPlayer: other,
       finalAnswerAttempts: attempted,
-      lastMessage: `${message} ${playerName(other)} の回答です。`,
+      ...say(joined(message, MSG.toAnswer(other))),
     };
   }
 
@@ -169,7 +168,7 @@ function finishHintTurn(state: GameState, message: string): GameState {
       finalAnswerAttempts: attempted,
       revealedAnswerChars: nextRevealed,
       openedChars,
-      lastMessage: `${message} 答えの全文字が開いたため引き分けです。`,
+      ...say(joined(message, MSG.draw)),
     };
   }
 
@@ -179,7 +178,7 @@ function finishHintTurn(state: GameState, message: string): GameState {
     finalAnswerAttempts: [false, false],
     revealedAnswerChars: nextRevealed,
     openedChars,
-    lastMessage: `${message} 答えの次の1文字が開きました。${playerName(other)} の回答です。`,
+    ...say(joined(message, MSG.nextLetter(other))),
   };
 }
 
@@ -216,18 +215,18 @@ export function submitAnswer(state: GameState, input: string): GameState {
       ...state,
       phase: "finished",
       winner: state.currentPlayer,
-      lastMessage: `${playerName(state.currentPlayer)} 正解！`,
+      ...say(MSG.correct(state.currentPlayer)),
     };
   }
 
   if (allSafeCellsOpen(state.question, state.openedChars)) {
-    return finishHintTurn(state, "不正解。");
+    return finishHintTurn(state, MSG.wrong);
   }
 
   return {
     ...state,
     phase: "open",
-    lastMessage: "不正解。盤面から1文字開けてください。",
+    ...say(MSG.wrongOpen),
   };
 }
 
@@ -237,13 +236,13 @@ export function passAnswer(state: GameState): GameState {
   }
 
   if (allSafeCellsOpen(state.question, state.openedChars)) {
-    return finishHintTurn(state, "回答をパスしました。");
+    return finishHintTurn(state, MSG.passed);
   }
 
   return {
     ...state,
     phase: "open",
-    lastMessage: "回答をパスしました。盤面から1文字開けてください。",
+    ...say(MSG.passedOpen),
   };
 }
 
@@ -255,7 +254,7 @@ export function openCharacter(state: GameState, char: string): GameState {
   if (state.openedChars.includes(char)) {
     return {
       ...state,
-      lastMessage: "その文字はすでに開いています。",
+      ...say(MSG.alreadyOpen),
     };
   }
 
@@ -278,25 +277,26 @@ export function openCharacter(state: GameState, char: string): GameState {
   const nextPlayer: PlayerIndex = state.currentPlayer === 0 ? 1 : 0;
   const nextPlayerBlocked = blocked[nextPlayer];
 
-  let resultMessage: string;
+  let resultMessage: Said;
 
   if (hitMine) {
     const multiplicity = questionMineMultiplicity(state.question, char);
-    const repeated = multiplicity > 1 ? `（答えに${multiplicity}回）` : "";
-    resultMessage = `「${char}」は地雷${repeated}！ ${playerName(state.currentPlayer)} は次回の回答権なし。`;
+    resultMessage = MSG.mine(char, multiplicity, state.currentPlayer);
   } else {
     const count = adjacentMineCount(state.question, char);
     const chainCount = Math.max(0, newlyOpened.length - 1);
 
     resultMessage =
       count === 0 && chainCount > 0
-        ? `「${char}」の周囲に答えの文字なし。周辺${chainCount}マスも開きました。`
-        : `「${char}」はセーフ。周囲の答え文字は${count}個。`;
+        ? MSG.chain(char, chainCount)
+        : MSG.safe(char, count);
   }
 
   const boardComplete = allSafeCellsOpen(state.question, openedChars);
   if (boardComplete) {
     const answerChars = answerCharacters(state.question);
+    const ending =
+      answerChars.length <= 1 ? MSG.draw : MSG.firstLetter(nextPlayer);
     const firstChar = answerChars[0];
     const revealedBoard =
       firstChar && !openedChars.includes(firstChar)
@@ -310,10 +310,7 @@ export function openCharacter(state: GameState, char: string): GameState {
       answerBlocked: [false, false],
       finalAnswerAttempts: [false, false],
       revealedAnswerChars: 1,
-      lastMessage:
-        answerChars.length <= 1
-          ? `${resultMessage} 答えの全文字が開いたため引き分けです。`
-          : `${resultMessage} 安全なマスがすべて開き、答えの先頭1文字を表示しました。${playerName(nextPlayer)} の回答です。`,
+      ...say(joined(resultMessage, ending)),
     };
   }
 
@@ -327,8 +324,6 @@ export function openCharacter(state: GameState, char: string): GameState {
     phase: nextPlayerBlocked ? "open" : "answer",
     openedChars,
     answerBlocked: blocked,
-    lastMessage: nextPlayerBlocked
-      ? `${resultMessage} ${playerName(nextPlayer)} は回答なしで1文字開けてください。`
-      : `${resultMessage} ${playerName(nextPlayer)} のターンです。`,
+    ...say(joined(resultMessage, MSG.nextTurn(nextPlayer, nextPlayerBlocked))),
   };
 }

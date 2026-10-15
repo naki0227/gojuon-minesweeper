@@ -2,7 +2,19 @@ import { useEffect, useState } from "react";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { Platform, Text } from "react-native";
 
+import { tr } from "../i18n";
 import { getSupabase } from "../online/client";
+
+const S = tr({
+  ja: {
+    noToken: "Appleの認証情報を受け取れませんでした。",
+    failed: "Appleでログインできませんでした。設定を確認してください。",
+  },
+  en: {
+    noToken: "Didn't receive sign-in details from Apple.",
+    failed: "Couldn't sign in with Apple. Check your settings.",
+  },
+});
 
 export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
   const [available, setAvailable] = useState(false);
@@ -21,8 +33,7 @@ export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
       });
-      if (!credential.identityToken)
-        throw new Error("Appleの認証情報を受け取れませんでした。");
+      if (!credential.identityToken) throw new Error(S.noToken);
       const { error: authError } = await getSupabase().auth.signInWithIdToken({
         provider: "apple",
         token: credential.identityToken,
@@ -31,7 +42,7 @@ export function AppleAccount({ onSignedIn }: { onSignedIn: () => void }) {
       onSignedIn();
     } catch (cause) {
       if ((cause as { code?: string }).code === "ERR_REQUEST_CANCELED") return;
-      setError("Appleでログインできませんでした。設定を確認してください。");
+      setError(S.failed);
     }
   };
 

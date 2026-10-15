@@ -15,6 +15,12 @@ import { HELP_STEP, RULE_STEPS } from "./rules";
 import { colors } from "../theme/colors";
 import { buttonStyles } from "../components/buttonStyles";
 import { Pressable } from "../components/TapPressable";
+import { tr } from "../i18n";
+
+const S = tr({
+  ja: { skip: "スキップ", start: "はじめる", next: "次へ" },
+  en: { skip: "Skip", start: "Let's play", next: "Next" },
+});
 
 type Page = {
   title: string;
@@ -118,14 +124,14 @@ export function TutorialModal({
           hitSlop={8}
           style={styles.skip}
         >
-          <Text style={styles.skipText}>{last ? "" : "スキップ"}</Text>
+          <Text style={styles.skipText}>{last ? "" : S.skip}</Text>
         </Pressable>
         <Pressable
           accessibilityRole="button"
           onPress={() => (last ? close() : goTo(page + 1))}
           style={styles.next}
         >
-          <Text style={styles.nextText}>{last ? "はじめる" : "次へ"}</Text>
+          <Text style={styles.nextText}>{last ? S.start : S.next}</Text>
         </Pressable>
       </View>
     </Popup>

@@ -4,6 +4,7 @@ import { Animated, StyleSheet, View } from "react-native";
 import type { QuestionLanguage } from "../data/types";
 import { getBoardGrid } from "../game/board";
 import { BoardTile } from "./BoardTile";
+import { BOARD_LABELS } from "./boardLabels";
 import { shakeTranslateX, USE_NATIVE_DRIVER, useReducedMotion } from "./motion";
 
 type Props = {
@@ -130,11 +131,11 @@ export function CharacterBoard({
                 const multiplicity = isMine ? mineMultiplicity(char) : 0;
                 const stateLabel = !isOpened
                   ? hintedChars?.has(char)
-                    ? " 安全ヒント"
+                    ? BOARD_LABELS.hinted
                     : ""
                   : isMine
-                    ? ` 地雷${multiplicity > 1 ? ` 答えに${multiplicity}回登場` : ""}`
-                    : ` セーフ 周囲の答え文字${mineCount}個`;
+                    ? BOARD_LABELS.mine(multiplicity)
+                    : BOARD_LABELS.safe(mineCount);
 
                 return (
                   <BoardTile

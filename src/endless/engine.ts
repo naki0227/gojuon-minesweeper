@@ -8,6 +8,7 @@ import {
   isMineCharacter,
   questionMineCharacters,
 } from "../game/engine";
+import { ENDLESS_MESSAGES as M } from "./engine.strings";
 
 // Points taken from the question for each answer letter shown.
 export const LETTER_HINT_PENALTY = 25;
@@ -72,7 +73,7 @@ export function startEndless(question: Question): EndlessState {
     chainBonus: 0,
     lastChainBonus: 0,
     revives: 0,
-    message: "答えを予想するか、回答をパスしてマスを開こう。",
+    message: M.start,
   };
 }
 
@@ -112,8 +113,8 @@ function revealLetter(state: EndlessState, lead: string): EndlessState {
     phase: "answer",
     revealedLetters,
     message: !shown
-      ? `${lead}答えはすべて表示中。入力して次へ進もう。`
-      : `${lead}答えの${revealedLetters}文字目を表示（-${LETTER_HINT_PENALTY}点）。`,
+      ? M.allShown(lead)
+      : M.letterShown(lead, revealedLetters, LETTER_HINT_PENALTY),
   };
 }
 
@@ -128,24 +129,24 @@ export function guessEndless(state: EndlessState, input: string): EndlessState {
     const bonus = difficultyBonus(state.question);
     const bonusNote =
       bonus > 0
-        ? `（難易度ボーナス +${bonus}）`
+        ? M.difficultyBonus(bonus)
         : bonus < 0
-          ? `（易しめ ${bonus}）`
+          ? M.easyPenalty(bonus)
           : "";
     return {
       ...state,
       score: state.score + earned,
       solved: state.solved + 1,
       phase: "cleared",
-      message: `正解！ +${earned}点${bonusNote}。次の問題に進もう。`,
+      message: M.correct(earned, bonusNote),
     };
   }
   const wrong = { ...state, wrongGuesses: state.wrongGuesses + 1 };
-  if (isExhausted(state)) return revealLetter(wrong, "不正解。");
+  if (isExhausted(state)) return revealLetter(wrong, M.wrong);
   return {
     ...wrong,
     phase: "open",
-    message: "不正解。1文字開けてヒントを探そう。",
+    message: M.wrongOpen,
   };
 }
 
@@ -155,7 +156,7 @@ export function passEndless(state: EndlessState): EndlessState {
   return {
     ...state,
     phase: "open",
-    message: "安全だと思うマスを1つ開けよう。",
+    message: M.pass,
   };
 }
 
@@ -184,14 +185,14 @@ export function openEndless(state: EndlessState, char: string): EndlessState {
     phase: lives === 0 ? "revive" : "answer",
     message:
       lives === 0
-        ? "ライフがなくなった！ 復活するか記録を確定しよう。"
+        ? M.outOfLives
         : mine
-          ? "地雷！ ライフが1つ減った。"
+          ? M.mine
           : exhausted
-            ? `安全なマスはすべて開いた！ ここからは回答を外すかパスするたびに、答えの文字が1つずつ出る（1文字-${LETTER_HINT_PENALTY}点）。`
+            ? M.exhausted(LETTER_HINT_PENALTY)
             : expanded.length > 1
-              ? `CHAIN +${chainBonus}点！ 周囲の${expanded.length - 1}マスも開いた。`
-              : "安全！ 数字を手掛かりに次の答えを考えよう。",
+              ? M.chain(chainBonus, expanded.length - 1)
+              : M.safe,
   };
 }
 
@@ -214,7 +215,7 @@ export function grantHint(state: EndlessState): EndlessState {
     ...state,
     hints: [...state.hints, char],
     hintUses: state.hintUses + 1,
-    message: `「${char}」は安全。開くと数字が確認できるよ。`,
+    message: M.hint(char),
   };
 }
 
@@ -225,7 +226,7 @@ export function reviveEndless(state: EndlessState): EndlessState {
     lives: 2,
     revives: state.revives + 1,
     phase: "answer" as const,
-    message: "復活！ ライフ2つと安全マスのヒントを獲得。",
+    message: M.revived,
   };
   const hint = safeHintCandidate(resumed);
   return hint ? { ...resumed, hints: [...resumed.hints, hint] } : resumed;
@@ -248,12 +249,12 @@ export function nextEndlessQuestion(
     hintUses: 0,
     revealedLetters: 0,
     lastChainBonus: 0,
-    message: "次の問題！ 少ない手数・被弾で正解を目指そう。",
+    message: M.next,
   };
 }
 
 export function endEndless(state: EndlessState): EndlessState {
   return state.phase === "revive"
-    ? { ...state, phase: "finished", message: "ゲームオーバー！" }
+    ? { ...state, phase: "finished", message: M.gameOver }
     : state;
 }

@@ -1,3 +1,4 @@
+import { tr } from "../i18n";
 import { SITE_URL } from "../links/site";
 import { normalizeRoomCode } from "./protocol";
 
@@ -19,8 +20,13 @@ export function inviteUrl(code: string): string {
   return `${SITE_URL}/online?join=${encodeURIComponent(code)}`;
 }
 
+const S = tr({
+  ja: { invite: "五十音マインスイーパーで対戦しよう！" },
+  en: { invite: "Let's play Gojuon Minesweeper!" },
+});
+
 export function inviteMessage(code: string): string {
-  return `五十音マインスイーパーで対戦しよう！\n${inviteUrl(code)}`;
+  return `${S.invite}\n${inviteUrl(code)}`;
 }
 
 // The room code from an invite link's `join` parameter, or null.

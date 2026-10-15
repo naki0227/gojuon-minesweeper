@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { SoundButton } from "../sound/SoundButton";
+import { tr } from "../i18n";
 import { colors } from "../theme/colors";
+
+const S = tr({
+  ja: { title: "マインスイーパー" },
+  en: { title: "Minesweeper" },
+});
 
 // The 五十音 tiles and title at the top of the home screen, with the sound
 // settings on the right.
@@ -14,7 +20,7 @@ export function HomeTitle() {
           <Text style={styles.tile}>十</Text>
           <Text style={[styles.tile, styles.accent]}>音</Text>
         </View>
-        <Text style={styles.text}>マインスイーパー</Text>
+        <Text style={styles.text}>{S.title}</Text>
       </View>
       <SoundButton />
     </View>

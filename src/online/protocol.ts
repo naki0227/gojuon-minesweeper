@@ -33,6 +33,9 @@ export type OnlinePublicState = {
   hint: string | null;
   winner: PlayerIndex | null;
   lastMessage: string;
+  // English versions. Optional for older deployed servers.
+  promptEn?: string;
+  lastMessageEn?: string;
   answers: readonly string[] | null;
 };
 

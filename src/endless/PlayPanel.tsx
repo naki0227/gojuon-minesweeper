@@ -10,8 +10,32 @@ import {
   type EndlessState,
 } from "./engine";
 import { styles } from "./styles";
+import { tr } from "../i18n";
 import { colors } from "../theme/colors";
 import { Pressable } from "../components/TapPressable";
+
+const S = tr({
+  ja: {
+    answerLetters: "答えの文字",
+    answerLabel: "答えを入力",
+    openOne: "マスを1つ開こう",
+    submit: "回答",
+    showLetter: (penalty: number) => `1文字見る（-${penalty}）`,
+    pass: "回答せず開く",
+    hintLabel: "1ジェムで安全なマスを緑色で表示",
+    safeCell: "安全マス",
+  },
+  en: {
+    answerLetters: "Answer",
+    answerLabel: "Type your answer",
+    openOne: "Open a cell",
+    submit: "Answer",
+    showLetter: (penalty: number) => `Show a letter (-${penalty})`,
+    pass: "Pass and open",
+    hintLabel: "Show a safe cell in green for 1 gem",
+    safeCell: "Safe cell",
+  },
+});
 
 type Props = {
   game: EndlessState;
@@ -60,7 +84,7 @@ export function PlayPanel({
       />
       {exhausted ? (
         <View style={styles.letterHint}>
-          <Text style={styles.letterHintCaption}>答えの文字</Text>
+          <Text style={styles.letterHintCaption}>{S.answerLetters}</Text>
           <Text
             style={[
               styles.letterHintText,
@@ -75,9 +99,9 @@ export function PlayPanel({
       ) : null}
       <View style={styles.answerRow}>
         <TextInput
-          accessibilityLabel="答えを入力"
+          accessibilityLabel={S.answerLabel}
           style={[styles.input, !canAnswer && styles.disabled]}
-          placeholder={canAnswer ? "答えを入力" : "マスを1つ開こう"}
+          placeholder={canAnswer ? S.answerLabel : S.openOne}
           value={answer}
           editable={canAnswer}
           onChangeText={onChangeAnswer}
@@ -93,7 +117,7 @@ export function PlayPanel({
           disabled={!canAnswer || !answer.trim()}
           onPress={onSubmit}
         >
-          <Text style={styles.primaryText}>回答</Text>
+          <Text style={styles.primaryText}>{S.submit}</Text>
         </Pressable>
       </View>
       <View style={styles.actions}>
@@ -103,13 +127,11 @@ export function PlayPanel({
           onPress={onPass}
         >
           <Text style={styles.secondaryText}>
-            {exhausted
-              ? `1文字見る（-${LETTER_HINT_PENALTY}）`
-              : "回答せず開く"}
+            {exhausted ? S.showLetter(LETTER_HINT_PENALTY) : S.pass}
           </Text>
         </Pressable>
         <Pressable
-          accessibilityLabel="1ジェムで安全なマスを緑色で表示"
+          accessibilityLabel={S.hintLabel}
           style={[styles.secondary, !canHint && styles.disabled]}
           disabled={!canHint}
           onPress={onHint}
@@ -117,7 +139,7 @@ export function PlayPanel({
           <View style={styles.iconLabel}>
             <MaterialIcons name="diamond" size={15} color={colors.gem} />
             <Text style={styles.secondaryText}>1</Text>
-            <Text style={styles.secondaryText}>安全マス</Text>
+            <Text style={styles.secondaryText}>{S.safeCell}</Text>
           </View>
         </Pressable>
       </View>

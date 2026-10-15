@@ -29,6 +29,7 @@ import type {
   QuestionLanguage,
 } from "../data/types";
 import { RemoveAdsOptions } from "./RemoveAdsOptions";
+import { HOME_SETUP_TEXT as S } from "./HomeSetup.strings";
 import { colors } from "../theme/colors";
 import { HomeFooter } from "./HomeFooter";
 import { HomeTitle } from "./HomeTitle";
@@ -42,9 +43,9 @@ const LANGUAGE_TABS: readonly {
   value: QuestionLanguage | "any";
   label: string;
 }[] = [
-  { value: "ja", label: "日本語" },
-  { value: "en", label: "English" },
-  { value: "any", label: "まぜる" },
+  { value: "ja", label: S.languageJa },
+  { value: "en", label: S.languageEn },
+  { value: "any", label: S.languageAny },
 ];
 
 function sameLength(left: LengthFilter, right: LengthFilter): boolean {
@@ -54,8 +55,8 @@ function sameLength(left: LengthFilter, right: LengthFilter): boolean {
   return left === right;
 }
 function categorySummary(categories: readonly string[]): string {
-  const shown = categories.slice(0, 4).join("、");
-  return categories.length > 4 ? `${shown} など` : shown;
+  const shown = categories.slice(0, 4).join(S.summaryJoin);
+  return categories.length > 4 ? S.summaryMore(shown) : shown;
 }
 function SampleTiles({ word }: { word: string }) {
   return (
@@ -104,7 +105,7 @@ function GroupRow({
         </Text>
       </View>
       {selected && sampleWord ? <SampleTiles word={sampleWord} /> : null}
-      <Text style={styles.groupCount}>{count}問</Text>
+      <Text style={styles.groupCount}>{S.count(count)}</Text>
     </Pressable>
   );
 }
@@ -207,11 +208,8 @@ export function HomeSetup({
   return (
     <SafeAreaView style={styles.safeArea}>
       <Head>
-        <title>五十音マインスイーパー | ことば当てゲーム</title>
-        <meta
-          name="description"
-          content="ことばを予想して文字を開く、2人で遊べるマインスイーパー。日本語と英語のカテゴリを選んで対戦できます。"
-        />
+        <title>{S.pageTitle}</title>
+        <meta name="description" content={S.pageDescription} />
       </Head>
       <ScrollView contentContainerStyle={styles.page}>
         <HomeTitle />
@@ -235,8 +233,8 @@ export function HomeSetup({
         </View>
         <View>
           <GroupRow
-            label="おまかせ向けジャンル"
-            summary="専門的なIT用語を除いて出題"
+            label={S.anyGroup}
+            summary={S.anyGroupSummary}
             count={countQuestions({ ...filters, categories: [] })}
             selected={filters.categories.length === 0}
             sampleWord={null}
@@ -255,12 +253,12 @@ export function HomeSetup({
           ))}
           {customCategories ? (
             <Text style={styles.customNote}>
-              細かく選択中：{categorySummary(filters.categories)}
+              {S.custom(categorySummary(filters.categories))}
             </Text>
           ) : null}
         </View>
         <View style={styles.lengthSection}>
-          <Text style={styles.sectionLabel}>ことばの長さ</Text>
+          <Text style={styles.sectionLabel}>{S.lengthLabel}</Text>
           <View style={styles.segment}>
             {LENGTH_PRESETS.map((preset, index) => {
               const selected = sameLength(filters.length, preset.range);
@@ -299,13 +297,15 @@ export function HomeSetup({
             })}
           </View>
           {exactLength !== null ? (
-            <Text style={styles.customNote}>細かく選択中：{exactLength}字</Text>
+            <Text style={styles.customNote}>
+              {S.custom(S.chars(exactLength))}
+            </Text>
           ) : null}
           <Pressable
             onPress={() => setDetailOpen(true)}
             accessibilityRole="button"
           >
-            <Text style={styles.textLink}>ジャンルと文字数を細かく選ぶ</Text>
+            <Text style={styles.textLink}>{S.openDetail}</Text>
           </Pressable>
         </View>
         <View style={styles.startArea}>
@@ -319,11 +319,9 @@ export function HomeSetup({
               pressed && styles.startPressed,
             ]}
           >
-            <Text style={styles.startText}>対戦をはじめる</Text>
+            <Text style={styles.startText}>{S.start}</Text>
           </Pressable>
-          <Text style={styles.countText}>
-            現在の条件：候補 {candidateCount} 問
-          </Text>
+          <Text style={styles.countText}>{S.candidates(candidateCount)}</Text>
           <View style={styles.startMeta}>
             <Pressable
               onPress={() =>
@@ -335,7 +333,7 @@ export function HomeSetup({
               }
               accessibilityRole="button"
             >
-              <Text style={styles.textLink}>おまかせで遊ぶ</Text>
+              <Text style={styles.textLink}>{S.quickPlay}</Text>
             </Pressable>
           </View>
           {Platform.OS === "ios" ? (
@@ -347,8 +345,8 @@ export function HomeSetup({
               asChild
             >
               <Pressable accessibilityRole="button" style={styles.onlineButton}>
-                <Text style={styles.onlineText}>エンドレス（ソロ）</Text>
-                <Text style={styles.onlineNote}>ライフ3つで何問解ける？</Text>
+                <Text style={styles.onlineText}>{S.endless}</Text>
+                <Text style={styles.onlineNote}>{S.endlessNote}</Text>
               </Pressable>
             </Link>
           ) : null}
@@ -363,8 +361,8 @@ export function HomeSetup({
                 pressed && styles.pressed,
               ]}
             >
-              <Text style={styles.onlineText}>オンラインで対戦</Text>
-              <Text style={styles.onlineNote}>合言葉・ランダムマッチ</Text>
+              <Text style={styles.onlineText}>{S.online}</Text>
+              <Text style={styles.onlineNote}>{S.onlineNote}</Text>
             </Pressable>
           ) : null}
         </View>
@@ -382,7 +380,7 @@ export function HomeSetup({
       >
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.detailHeader}>
-            <Text style={styles.detailTitle}>ジャンルと文字数</Text>
+            <Text style={styles.detailTitle}>{S.detailTitle}</Text>
             <Pressable
               onPress={() => setDetailOpen(false)}
               accessibilityRole="button"
@@ -392,15 +390,15 @@ export function HomeSetup({
                 pressed && styles.pressed,
               ]}
             >
-              <Text style={styles.closeText}>閉じる</Text>
+              <Text style={styles.closeText}>{S.close}</Text>
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={styles.page}>
             <View style={styles.detailSection}>
-              <Text style={styles.sectionLabel}>ジャンル（複数選べます）</Text>
+              <Text style={styles.sectionLabel}>{S.genres}</Text>
               <View style={styles.chipWrap}>
                 <SquareChip
-                  label="おまかせ"
+                  label={S.anyChip}
                   selected={filters.categories.length === 0}
                   onPress={() =>
                     onChangeFilters((current) => ({
@@ -427,25 +425,23 @@ export function HomeSetup({
               ))}
             </View>
             <View style={styles.detailSection}>
-              <Text style={styles.sectionLabel}>文字数</Text>
+              <Text style={styles.sectionLabel}>{S.lengthDetail}</Text>
               <View style={styles.chipWrap}>
                 <SquareChip
-                  label="ぜんぶ"
+                  label={S.allLengths}
                   selected={filters.length === "any"}
                   onPress={() => setLength("any")}
                 />
                 {lengths.map((length) => (
                   <SquareChip
                     key={length}
-                    label={`${length}字`}
+                    label={S.chars(length)}
                     selected={filters.length === length}
                     onPress={() => setLength(length)}
                   />
                 ))}
               </View>
-              <Text style={styles.helperText}>
-                日本語は小文字・濁音・半濁音を同じ文字として扱い、長音「ー」は1文字。英語はスペースや記号を数えません。
-              </Text>
+              <Text style={styles.helperText}>{S.lengthHelp}</Text>
             </View>
             <Pressable
               onPress={() => setDetailOpen(false)}
@@ -455,9 +451,7 @@ export function HomeSetup({
                 pressed && styles.startPressed,
               ]}
             >
-              <Text style={styles.startText}>
-                決定（候補 {candidateCount} 問）
-              </Text>
+              <Text style={styles.startText}>{S.done(candidateCount)}</Text>
             </Pressable>
           </ScrollView>
         </SafeAreaView>
@@ -537,7 +531,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   groupCount: {
-    width: 52,
+    minWidth: 52,
     color: MUTED,
     fontSize: 12,
     textAlign: "right",

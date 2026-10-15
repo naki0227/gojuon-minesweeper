@@ -1,8 +1,28 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { tr } from "../i18n";
 import { useRemoveAds } from "../purchases/RemoveAdsProvider";
 import { colors } from "../theme/colors";
 import { Pressable } from "./TapPressable";
+
+const S = tr({
+  ja: {
+    codeCaption: "プレゼントのコードをお持ちの方",
+    redeem: "コードを使う",
+    owned: "広告は非表示になっています",
+    removeAds: "広告を非表示にする",
+    price: (price: string) => `（${price}）`,
+    restore: "購入を復元",
+  },
+  en: {
+    codeCaption: "Have a gift code?",
+    redeem: "Redeem code",
+    owned: "Ads are removed",
+    removeAds: "Remove ads",
+    price: (price: string) => ` (${price})`,
+    restore: "Restore purchase",
+  },
+});
 
 // Remove-ads purchase, restore and offer-code entry shown under the setup
 // screen ad. Renders nothing where no store exists (web, Expo Go).
@@ -28,7 +48,7 @@ export function RemoveAdsOptions() {
   // after ads are removed.
   const codeRow = canRedeemCode ? (
     <View style={styles.row}>
-      <Text style={styles.caption}>プレゼントのコードをお持ちの方</Text>
+      <Text style={styles.caption}>{S.codeCaption}</Text>
       <Pressable
         accessibilityRole="button"
         disabled={busy}
@@ -39,7 +59,7 @@ export function RemoveAdsOptions() {
           pressed ? styles.pressed : null,
         ]}
       >
-        <Text style={styles.linkText}>コードを使う</Text>
+        <Text style={styles.linkText}>{S.redeem}</Text>
       </Pressable>
     </View>
   ) : null;
@@ -47,7 +67,7 @@ export function RemoveAdsOptions() {
   if (owned) {
     return (
       <View style={styles.panel}>
-        <Text style={styles.ownedText}>広告は非表示になっています</Text>
+        <Text style={styles.ownedText}>{S.owned}</Text>
         {codeRow}
         {message ? <Text style={styles.message}>{message}</Text> : null}
       </View>
@@ -68,8 +88,8 @@ export function RemoveAdsOptions() {
           ]}
         >
           <Text style={styles.buttonText}>
-            広告を非表示にする
-            {product ? `（${product.displayPrice}）` : ""}
+            {S.removeAds}
+            {product ? S.price(product.displayPrice) : ""}
           </Text>
         </Pressable>
         <Pressable
@@ -82,7 +102,7 @@ export function RemoveAdsOptions() {
             pressed ? styles.pressed : null,
           ]}
         >
-          <Text style={styles.linkText}>購入を復元</Text>
+          <Text style={styles.linkText}>{S.restore}</Text>
         </Pressable>
       </View>
 

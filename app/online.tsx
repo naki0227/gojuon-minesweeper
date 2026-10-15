@@ -26,6 +26,9 @@ import { noteWinForReview } from "../src/review/askForReview";
 import { onlineSnapshot, useTransitionSounds } from "../src/sound/snapshots";
 import { Pressable } from "../src/components/TapPressable";
 import { personalize } from "../src/online/personalize";
+import { ONLINE_TEXT as S } from "../src/online/onlineScreen.strings";
+import { tr } from "../src/i18n";
+import { gameMessage } from "../src/i18n/text";
 
 export default function OnlineScreen() {
   const params = useLocalSearchParams<{ filters?: string; join?: string }>();
@@ -55,10 +58,8 @@ export default function OnlineScreen() {
   if (!isOnlineConfigured) {
     body = (
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>オンライン対戦は準備中です</Text>
-        <Text style={styles.helperText}>
-          このビルドにはサーバーの設定が入っていません。
-        </Text>
+        <Text style={styles.panelTitle}>{S.notReadyTitle}</Text>
+        <Text style={styles.helperText}>{S.notReadyHelp}</Text>
       </View>
     );
   } else if (!room || (room.status === "closed" && !room.public_state)) {
@@ -72,7 +73,7 @@ export default function OnlineScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Head>
-        <title>オンライン対戦 | 五十音マインスイーパー</title>
+        <title>{S.pageTitle}</title>
       </Head>
       <PinnedBannerScreen
         banner={
@@ -88,10 +89,10 @@ export default function OnlineScreen() {
       >
         {room?.status !== "playing" ? (
           <View style={styles.topBar}>
-            <Text style={styles.eyebrow}>オンライン対戦</Text>
+            <Text style={styles.eyebrow}>{S.eyebrow}</Text>
             {!room || room.status === "closed" ? (
               <Pressable onPress={goHome} style={styles.smallButton}>
-                <Text style={styles.smallButtonText}>ホームへ</Text>
+                <Text style={styles.smallButtonText}>{S.home}</Text>
               </Pressable>
             ) : null}
           </View>
@@ -127,7 +128,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
     return (
       <View style={styles.panel}>
         <ActivityIndicator color={colors.primary} />
-        <Text style={styles.panelTitle}>対戦を準備しています…</Text>
+        <Text style={styles.panelTitle}>{S.preparing}</Text>
       </View>
     );
   }
@@ -158,29 +159,31 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
 
   const resultTitle =
     state.winner === null
-      ? "引き分け！"
+      ? S.draw
       : state.winner === seat
-        ? "あなたの勝ち！"
-        : "相手の勝ち";
+        ? S.youWin
+        : S.youLose;
 
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.prompt}>{state.prompt}</Text>
+        <Text style={styles.prompt}>
+          {tr({ ja: state.prompt, en: state.promptEn ?? state.prompt })}
+        </Text>
         <RuleHelp />
       </View>
 
       {!finished ? (
         <View style={[styles.turnPanel, myTurn && styles.turnPanelMine]}>
           <View style={styles.turnWho}>
-            <Text style={styles.turnCaption}>手番</Text>
-            <Text style={styles.turnPlayer}>{myTurn ? "あなた" : "相手"}</Text>
+            <Text style={styles.turnCaption}>{S.turn}</Text>
+            <Text style={styles.turnPlayer}>{myTurn ? S.you : S.opponent}</Text>
           </View>
           <View style={styles.phaseBadge}>
             <Text style={styles.phaseText}>
-              {state.phase === "answer" ? "回答" : "1文字開く"}
+              {state.phase === "answer" ? S.answerPhase : S.openPhase}
               {online.secondsLeft !== null
-                ? `・残り${online.secondsLeft}秒`
+                ? S.secondsLeft(online.secondsLeft)
                 : ""}
             </Text>
           </View>
@@ -189,13 +192,13 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
 
       <View style={styles.messagePanel}>
         <Text style={styles.message}>
-          {personalize(state.lastMessage, seat)}
+          {personalize(gameMessage(state), seat)}
         </Text>
       </View>
 
       {state.hint ? (
         <View style={styles.messagePanel}>
-          <Text style={styles.message}>答えの文字：{state.hint}</Text>
+          <Text style={styles.message}>{S.hint(state.hint)}</Text>
         </View>
       ) : null}
 
@@ -204,7 +207,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
           <Text style={styles.resultTitle}>{resultTitle}</Text>
           {state.answers ? (
             <Text style={styles.resultAnswer}>
-              答え：{state.answers.join(" / ")}
+              {S.answers(state.answers.join(" / "))}
             </Text>
           ) : null}
           {room.status === "finished" ? (
@@ -220,30 +223,28 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
                 ]}
               >
                 <Text style={styles.primaryButtonText}>
-                  {iRequestedRematch ? "相手を待っています…" : "もう一戦"}
+                  {iRequestedRematch ? S.waitingRematch : S.rematch}
                 </Text>
               </Pressable>
               {opponentRequestedRematch && !iRequestedRematch ? (
-                <Text style={styles.helperText}>
-                  相手がもう一戦を希望しています。
-                </Text>
+                <Text style={styles.helperText}>{S.opponentWantsRematch}</Text>
               ) : null}
             </>
           ) : (
-            <Text style={styles.helperText}>相手が退出しました。</Text>
+            <Text style={styles.helperText}>{S.opponentLeft}</Text>
           )}
           <Pressable
             onPress={() => void leave()}
             style={styles.secondaryButton}
           >
-            <Text style={styles.secondaryButtonText}>部屋を出る</Text>
+            <Text style={styles.secondaryButtonText}>{S.leaveRoom}</Text>
           </Pressable>
         </View>
       ) : (
         <>
           <View style={styles.answerArea}>
             <TextInput
-              accessibilityLabel="回答"
+              accessibilityLabel={S.answerLabel}
               autoCapitalize="none"
               autoCorrect={false}
               editable={canAnswer}
@@ -254,11 +255,11 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
               placeholder={
                 canAnswer
                   ? state.language === "ja"
-                    ? "漢字・ひらがな・カタカナで回答"
-                    : "英単語を入力"
+                    ? S.answerJa
+                    : S.answerEn
                   : myTurn
-                    ? "このターンは回答できません"
-                    : "相手の手番です"
+                    ? S.cannotAnswer
+                    : S.opponentsTurn
               }
               returnKeyType="done"
               style={[styles.input, !canAnswer && styles.inputDisabled]}
@@ -275,7 +276,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
                   (!canAnswer || !answer.trim()) && styles.disabledButton,
                 ]}
               >
-                <Text style={styles.primaryButtonText}>回答する</Text>
+                <Text style={styles.primaryButtonText}>{S.submit}</Text>
               </Pressable>
               <Pressable
                 disabled={!canAnswer}
@@ -291,7 +292,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
                   !canAnswer && styles.disabledButton,
                 ]}
               >
-                <Text style={styles.secondaryButtonText}>回答しない</Text>
+                <Text style={styles.secondaryButtonText}>{S.pass}</Text>
               </Pressable>
             </View>
           </View>
@@ -313,9 +314,7 @@ function OnlineGame({ room, online }: { room: OnlineRoom; online: Online }) {
           />
 
           <Pressable onPress={() => void leave()} style={styles.textButton}>
-            <Text style={styles.textButtonText}>
-              降参して部屋を出る（相手の勝ちになります）
-            </Text>
+            <Text style={styles.textButtonText}>{S.forfeit}</Text>
           </Pressable>
         </>
       )}
