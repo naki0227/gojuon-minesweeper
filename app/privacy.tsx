@@ -21,7 +21,7 @@ export default function PrivacyScreen() {
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.page}>
           <Text style={styles.title}>プライバシーポリシー</Text>
-          <Text style={styles.updated}>最終更新: 2026年10月7日</Text>
+          <Text style={styles.updated}>最終更新: 2026年10月15日</Text>
 
           <View style={styles.section}>
             <Text style={styles.heading}>取得する情報</Text>
@@ -121,6 +121,13 @@ export default function PrivacyScreen() {
             </Text>
             <Text style={styles.body}>
               対戦相手に見えるのは盤面と回答の結果だけで、あなたの識別子は表示しません。対戦の記録は対戦の進行と不正防止のためだけに使い、終了した部屋の記録はおよそ1週間で削除します。
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.heading}>今日の一問 プレゼント</Text>
+            <Text style={styles.body}>
+              今日の一問のページで答えて応募すると、重複応募の防止と抽選のために、ブラウザごとに自動で発行するランダムな識別子とIPアドレスを、そのままでは復元できない形（鍵付きのハッシュ値）にして、受け取り番号・応募日・当選結果とともにSupabaseのサーバーに保存します。氏名やメールアドレス、SNSのアカウントはいただきません。識別子とIPアドレスのハッシュ値はおよそ30日後に削除し、受け取り番号と当選結果はコードを二重に渡さないために保存します。回答の内容は正解かどうかの判定にだけ使い、保存しません。受け取り番号と識別子はお使いのブラウザにも保存されます。
             </Text>
           </View>
 

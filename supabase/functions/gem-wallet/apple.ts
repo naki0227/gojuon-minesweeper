@@ -78,6 +78,8 @@ export type AppleTransaction = {
   productId?: string;
   bundleId?: string;
   appAccountToken?: string;
+  // 3 = redeemed with an offer code (今日の一問 プレゼント).
+  offerType?: number;
   environment?: string;
   type?: string;
   purchaseDate?: number;

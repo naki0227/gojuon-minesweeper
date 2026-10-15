@@ -1,7 +1,7 @@
 name: Deploy Supabase
 
-# Manual only. Applies DB migrations, then deploys the online-game Edge
-# Function, in that order. Ship the app (TestFlight) after this succeeds.
+# Manual only. Applies DB migrations, then deploys the Edge Functions, in
+# that order. Ship the app (TestFlight) after this succeeds.
 on:
   workflow_dispatch:
     inputs:
@@ -68,3 +68,4 @@ jobs:
         run: |
           supabase functions deploy online-game --project-ref "$SUPABASE_PROJECT_ID"
           supabase functions deploy gem-wallet --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy daily-lottery --project-ref "$SUPABASE_PROJECT_ID"

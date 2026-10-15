@@ -124,9 +124,16 @@ Deno.serve(async (request: Request) => {
         throw new ClientError("購入情報が正しくありません。");
       }
       const signed = await queryApple(transactionId);
+      // Purchases made in the app carry the account's ID. Offer-code
+      // redemptions happen in the App Store and carry none; they go to the
+      // signed-in account whose device reports the transaction first (the
+      // transaction ID is used once).
+      const owned = signed.appAccountToken
+        ? signed.appAccountToken.toLowerCase() === user.id.toLowerCase()
+        : signed.offerType === 3;
       if (signed.transactionId !== transactionId ||
         signed.bundleId !== BUNDLE_ID || !GEM_PRODUCT_IDS.includes(signed.productId ?? "") ||
-        signed.appAccountToken?.toLowerCase() !== user.id.toLowerCase() ||
+        !owned ||
         signed.type !== "Consumable" ||
         !Number.isSafeInteger(signed.purchaseDate) ||
         signed.revocationDate !== undefined) {

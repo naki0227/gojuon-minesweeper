@@ -69,7 +69,11 @@ export function dailyPostTexts(entry: DailyEntry): {
       "開いたマスの数字（周りにある答えの文字の数）とオレンジの文字（答えに入っている文字）から、答えを推理してコメントしてね！",
       "#五十音マインスイーパー #今日の一問",
     ].join("\n"),
-    reply: `答えは明日の朝7時にこのページで公開！\n${dailyUrl(entry.date)}`,
+    reply: [
+      "このページで答えると、ジェム10個のコードが当たるかも🎁",
+      "答えは明日の朝7時に公開！",
+      dailyUrl(entry.date),
+    ].join("\n"),
   };
 }
 
