@@ -24,10 +24,32 @@ export function RemoveAdsOptions() {
     return null;
   }
 
+  // Offer codes also give gems (今日の一問 プレゼント), so the entry stays
+  // after ads are removed.
+  const codeRow = canRedeemCode ? (
+    <View style={styles.row}>
+      <Text style={styles.caption}>プレゼントのコードをお持ちの方</Text>
+      <Pressable
+        accessibilityRole="button"
+        disabled={busy}
+        onPress={redeemCode}
+        style={({ pressed }) => [
+          styles.linkButton,
+          busy ? styles.disabled : null,
+          pressed ? styles.pressed : null,
+        ]}
+      >
+        <Text style={styles.linkText}>コードを使う</Text>
+      </Pressable>
+    </View>
+  ) : null;
+
   if (owned) {
     return (
       <View style={styles.panel}>
         <Text style={styles.ownedText}>広告は非表示になっています</Text>
+        {codeRow}
+        {message ? <Text style={styles.message}>{message}</Text> : null}
       </View>
     );
   }
@@ -64,23 +86,7 @@ export function RemoveAdsOptions() {
         </Pressable>
       </View>
 
-      {canRedeemCode ? (
-        <View style={styles.row}>
-          <Text style={styles.caption}>招待コードをお持ちの方</Text>
-          <Pressable
-            accessibilityRole="button"
-            disabled={busy}
-            onPress={redeemCode}
-            style={({ pressed }) => [
-              styles.linkButton,
-              busy ? styles.disabled : null,
-              pressed ? styles.pressed : null,
-            ]}
-          >
-            <Text style={styles.linkText}>コードを使う</Text>
-          </Pressable>
-        </View>
-      ) : null}
+      {codeRow}
 
       {message ? <Text style={styles.message}>{message}</Text> : null}
     </View>
