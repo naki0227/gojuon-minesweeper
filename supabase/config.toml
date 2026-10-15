@@ -424,3 +424,7 @@ verify_jwt = false
 # The handler authenticates the bearer with Supabase Auth (asymmetric JWTs supported).
 [functions.gem-wallet]
 verify_jwt = false
+
+# Called by the static 今日の一問 pages without a login.
+[functions.daily-lottery]
+verify_jwt = false

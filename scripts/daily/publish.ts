@@ -1,7 +1,8 @@
 /// <reference types="node" />
 // Writes the 今日の一問 site into the web export, for puzzles already
-// released (7:00 Japan time) only: images, each day's page, the list, the
-// posting kit and the day's videos (video/).
+// released (7:00 Japan time) only: images, each day's page, puzzle.json
+// (answer hashes for the プレゼント), the list, the posting kit and the
+// day's videos (video/).
 // Answers appear on a day's page from the next day on.
 //   npx tsx scripts/daily/publish.ts [outDir=dist/daily]
 // DAILY_TODAY=YYYY-MM-DD overrides today (for checking a build locally).
@@ -14,6 +15,7 @@ import { chromium } from "playwright-core";
 
 import { currentPuzzleDate, DAILY_SCHEDULE } from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
+import { puzzleJson } from "./lottery";
 import { dayPage, kitPage, listPage } from "./pages";
 import { planVideos } from "./video/texts";
 import { renderDailyVideos } from "./video/videos";
@@ -23,6 +25,11 @@ async function main() {
   const today = process.env.DAILY_TODAY ?? currentPuzzleDate(new Date());
   const released = DAILY_SCHEDULE.filter((entry) => entry.date <= today);
   const current = released.at(-1);
+  // The プレゼント box needs the project's Edge Functions.
+  const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
+  const lotteryEndpoint = supabaseUrl
+    ? `${supabaseUrl.replace(/\/$/, "")}/functions/v1/daily-lottery`
+    : undefined;
 
   const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH;
   const browser = await chromium.launch(
@@ -39,7 +46,11 @@ async function main() {
       await page.screenshot({ path: join(dir, `${size.name}.png`) });
       await page.close();
     }
-    writeFileSync(join(dir, "index.html"), dayPage(entry, entry.date < today));
+    writeFileSync(
+      join(dir, "index.html"),
+      dayPage(entry, entry.date < today, lotteryEndpoint),
+    );
+    writeFileSync(join(dir, "puzzle.json"), puzzleJson(entry));
   }
   // Needs ffmpeg. DAILY_VIDEOS=0 skips the videos for a quick local check.
   const videos = planVideos(released, today);

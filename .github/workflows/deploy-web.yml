@@ -60,6 +60,9 @@ jobs:
       # Only days up to today (Japan time) go online.
       - name: Publish 今日の一問
         run: npm run daily:publish -- dist/daily
+        env:
+          # The プレゼント box calls the daily-lottery Edge Function.
+          EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
 
       # Cloudflare Pages serves minesweeper.enludus.com (custom headers in
       # public/_headers). Needs the CLOUDFLARE_API_TOKEN and
