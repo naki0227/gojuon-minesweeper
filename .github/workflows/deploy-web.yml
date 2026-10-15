@@ -4,9 +4,15 @@ on:
   push:
     branches: ["main"]
   # 7:00 Japan time (22:00 UTC): put the new day of 今日の一問 online.
-  # Scheduled runs can start a few minutes late, never early.
+  # GitHub starts scheduled runs late, sometimes by hours (worst on the
+  # hour), never early. So it tries several times; once the day is
+  # online, the later tries stop at the first step.
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "2 22 * * *"
+    - cron: "17 22 * * *"
+    - cron: "37 22 * * *"
+    - cron: "7 23 * * *"
+    - cron: "7 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -14,10 +20,30 @@ permissions:
 
 concurrency:
   group: deploy-web
-  cancel-in-progress: true
+  # A push cancels an older run. Scheduled tries wait instead, so a late
+  # try never cuts off the one that is publishing.
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
+  # Scheduled tries after the first successful one have nothing to do.
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      online: ${{ steps.today.outputs.online }}
+    steps:
+      - name: Is today's puzzle already online?
+        id: today
+        if: github.event_name == 'schedule'
+        run: |
+          today=$(TZ=Asia/Tokyo date -d '-7 hours' +%F)
+          if curl -sfo /dev/null "https://minesweeper.enludus.com/daily/$today/puzzle.json"; then
+            echo "$today is already online."
+            echo "online=true" >> "$GITHUB_OUTPUT"
+          fi
+
   deploy:
+    needs: check
+    if: needs.check.outputs.online != 'true'
     runs-on: ubuntu-latest
 
     steps:

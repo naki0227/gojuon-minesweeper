@@ -10,7 +10,7 @@ import { SCENE_TEXT as S } from "./scenes.strings";
 
 type SceneProps = { active: boolean; reduced: boolean };
 
-const KANA = ["か", "き", "く", "さ", "し", "す", "た", "ち", "つ"];
+const BOARD = S.board;
 
 function timing(value: Animated.Value, toValue: number, duration = 320) {
   return Animated.timing(value, {
@@ -95,7 +95,7 @@ function Finger({ tap, style }: { tap: Animated.Value; style?: object }) {
 }
 
 export function AnswerScene(props: SceneProps) {
-  const [typed, setTyped] = useState(props.reduced ? "うさぎ" : "");
+  const [typed, setTyped] = useState(props.reduced ? S.typed : "");
   const press = useMemo(() => new Animated.Value(0), []);
   const win = useMemo(() => new Animated.Value(0), []);
   useEffect(() => {
@@ -103,7 +103,7 @@ export function AnswerScene(props: SceneProps) {
     let step = 0;
     const timer = setInterval(() => {
       step = (step + 1) % 9;
-      setTyped("うさぎ".slice(0, Math.min(step, 3)));
+      setTyped([...S.typed].slice(0, Math.min(step, 3)).join(""));
     }, 380);
     return () => clearInterval(timer);
   }, [props.active, props.reduced]);
@@ -144,7 +144,7 @@ export function AnswerScene(props: SceneProps) {
 }
 
 export function OpenScene(props: SceneProps) {
-  const cells = useCells(KANA.map((char) => ({ char, count: 2 })));
+  const cells = useCells(BOARD.map((char) => ({ char, count: 2 })));
   const tap = useMemo(() => new Animated.Value(0), []);
   const center = cells[4]!.open;
   useLoop(
@@ -173,7 +173,7 @@ export function OpenScene(props: SceneProps) {
 }
 
 export function ChainScene(props: SceneProps) {
-  const cells = useCells(KANA.map((char) => ({ char, count: 0 })));
+  const cells = useCells(BOARD.map((char) => ({ char, count: 0 })));
   const tap = useMemo(() => new Animated.Value(0), []);
   const ring = [0, 1, 2, 5, 8, 7, 6, 3];
   useLoop(
@@ -207,7 +207,7 @@ export function ChainScene(props: SceneProps) {
 
 export function MineScene(props: SceneProps) {
   const cells = useCells(
-    KANA.map((char, i) => ({ char, mine: i === 4, count: 1 })),
+    BOARD.map((char, i) => ({ char, mine: i === 4, count: 1 })),
   );
   const tap = useMemo(() => new Animated.Value(0), []);
   const shake = useMemo(() => new Animated.Value(0), []);

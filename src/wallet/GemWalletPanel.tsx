@@ -39,7 +39,7 @@ const S = tr({
     signInNote:
       "Sign in with Apple to get 3 free gems (first time only). Your balance stays even if you reinstall.",
     unit: "gems",
-    costs: "Safe tile: 1 gem / Revive (4th and later): 3 gems",
+    costs: "Safe cell: 1 gem / Revive (4th and later): 3 gems",
     loadingProducts: "Loading gem packs…",
     noProducts: "Couldn't load gem packs",
     buyLabel: (gems: number, price: string) => `Buy ${gems} gems for ${price}`,

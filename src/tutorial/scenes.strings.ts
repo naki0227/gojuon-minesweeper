@@ -2,6 +2,9 @@ import { tr } from "../i18n";
 
 export const SCENE_TEXT = tr({
   ja: {
+    // A 3x3 piece of the board, and the answer typed in the first scene.
+    board: ["か", "き", "く", "さ", "し", "す", "た", "ち", "つ"],
+    typed: "うさぎ",
     prompt: "3文字の動物",
     answer: "回答する",
     win: "正解なら勝ち！",
@@ -21,17 +24,19 @@ export const SCENE_TEXT = tr({
     },
   },
   en: {
-    prompt: "3-kana word · Animal",
+    board: ["B", "C", "D", "H", "I", "J", "N", "O", "P"],
+    typed: "CAT",
+    prompt: "3-letter word · Animals",
     answer: "Guess",
     win: "Right answer wins!",
-    promptSmall: "5-kana word · Animal",
+    promptSmall: "5-letter word · Animals",
     change: "Change settings",
     rules: "Rules",
-    openCaption: { pre: "", em: "2", post: " answer letters around 「し」" },
+    openCaption: { pre: "", em: "2", post: " answer letters around “I”" },
     chainCaption: {
       pre: "",
       em: "0",
-      post: " opens all the safe tiles around it",
+      post: " opens all the safe cells around it",
     },
     mineCaption: {
       pre: "Answer letters are ",

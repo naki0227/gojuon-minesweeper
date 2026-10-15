@@ -29,12 +29,12 @@ export const RULE_STEPS: readonly Step[] = tr({
       body: "Type your guess for the hidden word. Get it right and you win. Not sure? You can skip guessing.",
     },
     {
-      title: "Open a tile for a hint",
-      body: "After guessing, open one tile. Its number counts the answer's letters in the 8 tiles around it (repeats included).",
+      title: "Open a cell for a hint",
+      body: "After guessing, open one cell. Its number counts the answer's letters in the 8 cells around it (repeats included).",
     },
     {
       title: "0 opens a chain",
-      body: "If none of the answer's letters are nearby, the safe tiles around it open all at once.",
+      body: "If none of the answer's letters are nearby, the safe cells around it open all at once.",
     },
     {
       title: "Watch out for mines",
