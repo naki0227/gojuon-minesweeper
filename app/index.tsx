@@ -12,8 +12,11 @@ import { Confetti } from "../src/components/Confetti";
 import { PopIn } from "../src/components/PopIn";
 import { USE_NATIVE_DRIVER, useReducedMotion } from "../src/components/motion";
 import { HomeSetup } from "../src/components/HomeSetup";
+import { LOCAL_MATCH_TEXT as S } from "../src/components/LocalMatch.strings";
+import { LOCALE } from "../src/i18n";
+import { gameMessage, promptText } from "../src/i18n/text";
 import { isOnlineConfigured } from "../src/online/client";
-import { pickRandomQuestion, questionPrompt } from "../src/data/questions";
+import { pickRandomQuestion } from "../src/data/questions";
 import type { QuestionFilters } from "../src/data/types";
 import {
   adjacentMineCount,
@@ -37,7 +40,7 @@ import { transitionSound } from "../src/sound/transitions";
 import { Pressable } from "../src/components/TapPressable";
 
 const INITIAL_FILTERS: QuestionFilters = {
-  language: "ja",
+  language: LOCALE === "en" ? "en" : "ja",
   categories: [],
   length: "any",
 };
@@ -173,10 +176,7 @@ export default function HomeScreen() {
     updateGame(game, openCharacter(game, char));
   }
 
-  const answerPlaceholder =
-    game.question.language === "ja"
-      ? "漢字・ひらがな・カタカナで回答"
-      : "英単語を入力";
+  const answerPlaceholder = S.placeholder(game.question.language);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -186,9 +186,9 @@ export default function HomeScreen() {
         contentStyle={styles.page}
       >
         <View style={styles.gameTopBar}>
-          <Text style={styles.prompt}>{questionPrompt(game.question)}</Text>
+          <Text style={styles.prompt}>{promptText(game.question)}</Text>
           <Pressable onPress={() => setGame(null)} style={styles.changeButton}>
-            <Text style={styles.changeButtonText}>条件を変える</Text>
+            <Text style={styles.changeButtonText}>{S.changeSettings}</Text>
           </Pressable>
         </View>
         <RuleHelp />
@@ -197,7 +197,7 @@ export default function HomeScreen() {
           style={[styles.turnPanel, game.currentPlayer === 1 && styles.turnP2]}
         >
           <View style={styles.turnWho}>
-            <Text style={styles.turnCaption}>手番</Text>
+            <Text style={styles.turnCaption}>{S.turn}</Text>
             <Text
               style={[
                 styles.turnPlayer,
@@ -210,52 +210,51 @@ export default function HomeScreen() {
           <View style={styles.phaseBadge}>
             <Text style={styles.phaseText}>
               {game.phase === "finished"
-                ? "決着"
+                ? S.phaseFinished
                 : canAnswer
-                  ? "回答"
-                  : "1文字開く"}
+                  ? S.phaseAnswer
+                  : S.phaseOpen}
             </Text>
           </View>
         </View>
 
         <View style={styles.messagePanel}>
-          <Text style={styles.message}>{game.lastMessage}</Text>
+          <Text style={styles.message}>{gameMessage(game)}</Text>
         </View>
 
         {game.revealedAnswerChars > 0 && game.phase !== "finished" ? (
           <View style={styles.messagePanel}>
-            <Text style={styles.message}>答えの文字：{answerHint(game)}</Text>
+            <Text style={styles.message}>{S.answerHint(answerHint(game))}</Text>
           </View>
         ) : null}
 
         {game.phase === "finished" ? (
           <PopIn style={styles.resultPanel}>
             <Text style={styles.resultTitle}>
-              {game.winner === null
-                ? "引き分け！"
-                : `Player ${game.winner + 1} の勝ち！`}
+              {game.winner === null ? S.draw : S.win(game.winner + 1)}
             </Text>
             <Text style={styles.resultAnswer}>
-              答え：
-              {game.question.answers.map((item) => item.display).join(" / ")}
+              {S.answer(
+                game.question.answers.map((item) => item.display).join(" / "),
+              )}
             </Text>
             {game.question.answers.length > 1 ? (
-              <Text style={styles.helperText}>
-                同じ文字構成のため、どれも正解として扱います。
-              </Text>
+              <Text style={styles.helperText}>{S.sameLetters}</Text>
             ) : null}
             <View style={styles.answerActions}>
               <Pressable
                 style={styles.primaryButton}
                 onPress={() => startGame(filters, game.question.id)}
               >
-                <Text style={styles.primaryButtonText}>同じ条件でもう一戦</Text>
+                <Text style={styles.primaryButtonText}>{S.rematch}</Text>
               </Pressable>
               <Pressable
                 style={styles.secondaryButton}
                 onPress={() => setGame(null)}
               >
-                <Text style={styles.secondaryButtonText}>条件を変える</Text>
+                <Text style={styles.secondaryButtonText}>
+                  {S.changeSettings}
+                </Text>
               </Pressable>
             </View>
           </PopIn>
@@ -277,7 +276,7 @@ export default function HomeScreen() {
               ]}
             >
               <TextInput
-                accessibilityLabel="回答"
+                accessibilityLabel={S.answerLabel}
                 autoCapitalize="none"
                 autoCorrect={false}
                 editable={canAnswer}
@@ -286,9 +285,7 @@ export default function HomeScreen() {
                 onSubmitEditing={
                   canAnswer && answer.trim() ? handleSubmitAnswer : undefined
                 }
-                placeholder={
-                  canAnswer ? answerPlaceholder : "このターンは回答できません"
-                }
+                placeholder={canAnswer ? answerPlaceholder : S.cannotAnswer}
                 returnKeyType="done"
                 style={[styles.input, !canAnswer ? styles.inputDisabled : null]}
                 value={answer}
@@ -304,7 +301,7 @@ export default function HomeScreen() {
                     pressed ? styles.pressedButton : null,
                   ]}
                 >
-                  <Text style={styles.primaryButtonText}>回答する</Text>
+                  <Text style={styles.primaryButtonText}>{S.submit}</Text>
                 </Pressable>
                 <Pressable
                   disabled={!canAnswer}
@@ -315,7 +312,7 @@ export default function HomeScreen() {
                     pressed ? styles.pressedButton : null,
                   ]}
                 >
-                  <Text style={styles.secondaryButtonText}>回答しない</Text>
+                  <Text style={styles.secondaryButtonText}>{S.pass}</Text>
                 </Pressable>
               </View>
             </Animated.View>

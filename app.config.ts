@@ -125,6 +125,28 @@ function requireBannerUnitId(
   }
 }
 
+// Firebase Analytics (iOS). GoogleService-Info.plist is not in the repo:
+// EAS provides its path in the GOOGLE_SERVICE_INFO_PLIST file variable
+// (production and preview). Builds without it (local dev, Expo Go, the
+// web export) leave Firebase out; a production iOS build without it fails.
+function firebasePlugins(): ExpoConfig["plugins"] {
+  const plist = process.env.GOOGLE_SERVICE_INFO_PLIST?.trim();
+  if (!plist) {
+    if (isBuildingProduction && (!targetPlatform || targetPlatform === "ios")) {
+      throw new Error(
+        "GOOGLE_SERVICE_INFO_PLIST must be set (EAS file variable) for iOS builds.",
+      );
+    }
+    return [];
+  }
+  return [
+    // CocoaPods, not Swift Package Manager: the Google Mobile Ads pod
+    // shares Google's utility pods with Firebase, and SPM would add a
+    // second copy of them.
+    ["@react-native-firebase/app", { ios: { disableSPM: true } }],
+  ];
+}
+
 export default ({ config }: ConfigContext): ExpoConfig => {
   const iosAppId = resolveAdMobAppId(
     "ADMOB_IOS_APP_ID",
@@ -139,8 +161,15 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   requireBannerUnitId("EXPO_PUBLIC_ADMOB_IOS_BANNER_ID", "ios");
   requireBannerUnitId("EXPO_PUBLIC_ADMOB_ANDROID_BANNER_ID", "android");
 
+  const firebase = firebasePlugins() ?? [];
+  const plist = process.env.GOOGLE_SERVICE_INFO_PLIST?.trim();
+
   return {
     ...(config as ExpoConfig),
+    ios: {
+      ...config.ios,
+      ...(plist ? { googleServicesFile: plist } : {}),
+    },
     plugins: [
       ...(config.plugins ?? []),
       [
@@ -153,9 +182,20 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       ],
       "expo-iap",
       "expo-apple-authentication",
+      ...firebase,
       [
         "expo-build-properties",
         {
+          ios:
+            firebase.length > 0
+              ? {
+                  // React Native Firebase in CocoaPods mode. With the
+                  // prebuilt React Native core, every RNFB module must be
+                  // linked statically.
+                  useFrameworks: "static",
+                  forceStaticLinking: ["RNFBApp", "RNFBAnalytics"],
+                }
+              : {},
           android: {
             // Keeps Google's UMP consent SDK classes in release builds, as
             // react-native-google-mobile-ads' consent guide requires.

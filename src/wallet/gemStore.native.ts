@@ -1,6 +1,24 @@
 import Constants, { ExecutionEnvironment } from "expo-constants";
+import { tr } from "../i18n";
 import { currentAppleAccount, verifyGemPurchase } from "./client";
 import { GEM_PACKS, isGemProduct, type GemPack } from "./packs";
+
+const S = tr({
+  ja: {
+    wrongAccount: "購入時のAppleアカウントでログインしてください。",
+    unverified: "購入を確認できませんでした。",
+    noProduct: "商品が見つかりません。",
+    unsupported: "この端末では購入できません。",
+    signIn: "Appleアカウントでログインしてください。",
+  },
+  en: {
+    wrongAccount: "Sign in with the Apple account you used to buy.",
+    unverified: "Couldn't confirm your purchase.",
+    noProduct: "Item not found.",
+    unsupported: "Purchases aren't available on this device.",
+    signIn: "Please sign in with Apple.",
+  },
+});
 
 export type GemProduct = GemPack & { displayPrice: string };
 
@@ -40,8 +58,7 @@ export async function handleGemPurchase(purchase: Purchase): Promise<void> {
   }
   try {
     const owner = await currentAppleAccount();
-    if (!owner)
-      throw new Error("購入時のAppleアカウントでログインしてください。");
+    if (!owner) throw new Error(S.wrongAccount);
     const balance = await verifyGemPurchase(purchase.id);
     await iap.finishTransaction({ purchase, isConsumable: true });
     emit({ type: "credited", balance });
@@ -49,8 +66,7 @@ export async function handleGemPurchase(purchase: Purchase): Promise<void> {
     // Keep unfinished purchases for retry. The ledger is idempotent.
     emit({
       type: "error",
-      message:
-        error instanceof Error ? error.message : "購入を確認できませんでした。",
+      message: error instanceof Error ? error.message : S.unverified,
     });
   }
 }
@@ -84,10 +100,10 @@ export const gemStore = {
     });
   },
   async buy(userId: string, productId: string): Promise<void> {
-    if (!isGemProduct(productId)) throw new Error("商品が見つかりません。");
-    if (!iap) throw new Error("この端末では購入できません。");
+    if (!isGemProduct(productId)) throw new Error(S.noProduct);
+    if (!iap) throw new Error(S.unsupported);
     if (userId !== (await currentAppleAccount())) {
-      throw new Error("Appleアカウントでログインしてください。");
+      throw new Error(S.signIn);
     }
     awaitingPurchase = true;
     try {

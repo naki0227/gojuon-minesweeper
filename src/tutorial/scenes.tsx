@@ -6,10 +6,11 @@ import { shakeTranslateX, USE_NATIVE_DRIVER } from "../components/motion";
 import { MiniBoard, type MiniCell } from "./MiniBoard";
 import { sceneStyles as styles } from "./sceneStyles";
 import { colors } from "../theme/colors";
+import { SCENE_TEXT as S } from "./scenes.strings";
 
 type SceneProps = { active: boolean; reduced: boolean };
 
-const KANA = ["か", "き", "く", "さ", "し", "す", "た", "ち", "つ"];
+const BOARD = S.board;
 
 function timing(value: Animated.Value, toValue: number, duration = 320) {
   return Animated.timing(value, {
@@ -52,6 +53,27 @@ function useCells(spec: Omit<MiniCell, "open">[]): MiniCell[] {
   );
 }
 
+// A caption with one highlighted word.
+function Caption({
+  pre,
+  em,
+  post,
+  emStyle,
+}: {
+  pre: string;
+  em: string;
+  post: string;
+  emStyle: object;
+}) {
+  return (
+    <Text style={styles.caption}>
+      {pre}
+      <Text style={emStyle}>{em}</Text>
+      {post}
+    </Text>
+  );
+}
+
 // A finger that moves onto the target and taps.
 function Finger({ tap, style }: { tap: Animated.Value; style?: object }) {
   const translateY = tap.interpolate({
@@ -73,7 +95,7 @@ function Finger({ tap, style }: { tap: Animated.Value; style?: object }) {
 }
 
 export function AnswerScene(props: SceneProps) {
-  const [typed, setTyped] = useState(props.reduced ? "うさぎ" : "");
+  const [typed, setTyped] = useState(props.reduced ? S.typed : "");
   const press = useMemo(() => new Animated.Value(0), []);
   const win = useMemo(() => new Animated.Value(0), []);
   useEffect(() => {
@@ -81,7 +103,7 @@ export function AnswerScene(props: SceneProps) {
     let step = 0;
     const timer = setInterval(() => {
       step = (step + 1) % 9;
-      setTyped("うさぎ".slice(0, Math.min(step, 3)));
+      setTyped([...S.typed].slice(0, Math.min(step, 3)).join(""));
     }, 380);
     return () => clearInterval(timer);
   }, [props.active, props.reduced]);
@@ -106,23 +128,23 @@ export function AnswerScene(props: SceneProps) {
   });
   return (
     <View style={styles.scene}>
-      <Text style={styles.mockPrompt}>3文字の動物</Text>
+      <Text style={styles.mockPrompt}>{S.prompt}</Text>
       <View style={styles.mockInput}>
         <Text style={styles.mockInputText}>{typed}</Text>
         <View style={styles.caret} />
       </View>
       <Animated.View style={[styles.mockButton, { transform: [{ scale }] }]}>
-        <Text style={styles.mockButtonText}>回答する</Text>
+        <Text style={styles.mockButtonText}>{S.answer}</Text>
       </Animated.View>
       <Animated.View style={[styles.badge, { opacity: win }]}>
-        <Text style={styles.badgeText}>正解なら勝ち！</Text>
+        <Text style={styles.badgeText}>{S.win}</Text>
       </Animated.View>
     </View>
   );
 }
 
 export function OpenScene(props: SceneProps) {
-  const cells = useCells(KANA.map((char) => ({ char, count: 2 })));
+  const cells = useCells(BOARD.map((char) => ({ char, count: 2 })));
   const tap = useMemo(() => new Animated.Value(0), []);
   const center = cells[4]!.open;
   useLoop(
@@ -145,15 +167,13 @@ export function OpenScene(props: SceneProps) {
         <MiniBoard cells={cells} />
         <Finger tap={tap} style={styles.fingerCenter} />
       </View>
-      <Text style={styles.caption}>
-        「し」の周りに答えの文字が <Text style={styles.em}>2</Text> 個
-      </Text>
+      <Caption {...S.openCaption} emStyle={styles.em} />
     </View>
   );
 }
 
 export function ChainScene(props: SceneProps) {
-  const cells = useCells(KANA.map((char) => ({ char, count: 0 })));
+  const cells = useCells(BOARD.map((char) => ({ char, count: 0 })));
   const tap = useMemo(() => new Animated.Value(0), []);
   const ring = [0, 1, 2, 5, 8, 7, 6, 3];
   useLoop(
@@ -180,16 +200,14 @@ export function ChainScene(props: SceneProps) {
         <MiniBoard cells={cells} />
         <Finger tap={tap} style={styles.fingerCenter} />
       </View>
-      <Text style={styles.caption}>
-        <Text style={styles.em}>0</Text> なら周りの安全なマスが一気に開く
-      </Text>
+      <Caption {...S.chainCaption} emStyle={styles.em} />
     </View>
   );
 }
 
 export function MineScene(props: SceneProps) {
   const cells = useCells(
-    KANA.map((char, i) => ({ char, mine: i === 4, count: 1 })),
+    BOARD.map((char, i) => ({ char, mine: i === 4, count: 1 })),
   );
   const tap = useMemo(() => new Animated.Value(0), []);
   const shake = useMemo(() => new Animated.Value(0), []);
@@ -217,10 +235,7 @@ export function MineScene(props: SceneProps) {
         <MiniBoard cells={cells} />
         <Finger tap={tap} style={styles.fingerCenter} />
       </Animated.View>
-      <Text style={styles.caption}>
-        答えの文字は<Text style={styles.mine}>地雷</Text>
-        。次の自分の番は回答できない
-      </Text>
+      <Caption {...S.mineCaption} emStyle={styles.mine} />
     </View>
   );
 }
@@ -250,15 +265,15 @@ export function HelpScene(props: SceneProps) {
   return (
     <View style={styles.scene}>
       <View style={styles.mockTop}>
-        <Text style={styles.mockPromptSmall}>5文字の動物</Text>
+        <Text style={styles.mockPromptSmall}>{S.promptSmall}</Text>
         <View style={styles.mockChange}>
-          <Text style={styles.mockChangeText}>条件を変える</Text>
+          <Text style={styles.mockChangeText}>{S.change}</Text>
         </View>
       </View>
       <View style={styles.mockHelpRow}>
         <Animated.View style={[styles.mockHelp, { transform: [{ scale }] }]}>
           <MaterialIcons name="help-outline" size={16} color={colors.help} />
-          <Text style={styles.mockHelpText}>ルール</Text>
+          <Text style={styles.mockHelpText}>{S.rules}</Text>
         </Animated.View>
         <Finger tap={tap} style={styles.fingerHelp} />
       </View>

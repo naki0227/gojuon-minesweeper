@@ -24,7 +24,8 @@ export function transitionSound(
   if (!prev.finished && next.finished) return "over";
   if (added.length > 1) return "chain";
   if (added.length === 1) return "open";
-  if (next.message !== prev.message && next.message.startsWith("不正解")) {
+  // Messages may be in either language (Endless shows the device's).
+  if (next.message !== prev.message && /^(不正解|Wrong)/.test(next.message)) {
     return "wrong";
   }
   return null;

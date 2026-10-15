@@ -113,6 +113,11 @@ export function questionPrompt(question: Question): string {
   return `${question.length}文字の${question.category}`;
 }
 
+export function questionPromptEn(question: Question): string {
+  const unit = question.language === "en" ? "letter" : "kana";
+  return `${question.length}-${unit} word · ${question.category}`;
+}
+
 export function matchesLength(length: number, filter: LengthFilter): boolean {
   if (filter === "any") {
     return true;

@@ -9,8 +9,33 @@ import {
 } from "react";
 import { AppState } from "react-native";
 
+import { tr } from "../i18n";
 import { removeAdsStore } from "./removeAdsStore";
 import type { RemoveAdsProduct } from "./types";
+
+const S = tr({
+  ja: {
+    owned: "広告を非表示にしました。",
+    pending: "購入の承認待ちです。承認されると広告が非表示になります。",
+    failed: "購入を完了できませんでした。",
+    startFailed: "購入を開始できませんでした。",
+    restored: "購入を復元しました。",
+    nothingToRestore: "復元できる購入が見つかりませんでした。",
+    restoreFailed: "購入を復元できませんでした。",
+    codeFailed: "コード入力画面を開けませんでした。",
+  },
+  en: {
+    owned: "Ads removed.",
+    pending:
+      "Your purchase is waiting for approval. Ads will be removed once it's approved.",
+    failed: "Couldn't complete the purchase.",
+    startFailed: "Couldn't start the purchase.",
+    restored: "Purchases restored.",
+    nothingToRestore: "No purchases to restore.",
+    restoreFailed: "Couldn't restore purchases.",
+    codeFailed: "Couldn't open the code screen.",
+  },
+});
 
 // "checking": the store has not answered yet (ads stay hidden meanwhile so a
 // buyer never sees an ad flash on launch).
@@ -51,13 +76,13 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
       if (event.type === "owned") {
         setOwned(true);
         setBusy(false);
-        setMessage("広告を非表示にしました。");
+        setMessage(S.owned);
       } else if (event.type === "pending") {
         setBusy(false);
-        setMessage("購入の承認待ちです。承認されると広告が非表示になります。");
+        setMessage(S.pending);
       } else {
         setBusy(false);
-        setMessage(event.cancelled ? null : "購入を完了できませんでした。");
+        setMessage(event.cancelled ? null : S.failed);
       }
     });
 
@@ -121,7 +146,7 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
     setMessage(null);
     removeAdsStore.purchase().catch(() => {
       setBusy(false);
-      setMessage("購入を開始できませんでした。");
+      setMessage(S.startFailed);
     });
   }, []);
 
@@ -134,20 +159,16 @@ export function RemoveAdsProvider({ children }: { children: ReactNode }) {
         if (restored) {
           setOwned(true);
         }
-        setMessage(
-          restored
-            ? "購入を復元しました。"
-            : "復元できる購入が見つかりませんでした。",
-        );
+        setMessage(restored ? S.restored : S.nothingToRestore);
       })
-      .catch(() => setMessage("購入を復元できませんでした。"))
+      .catch(() => setMessage(S.restoreFailed))
       .finally(() => setBusy(false));
   }, []);
 
   const redeemCode = useCallback(() => {
     setMessage(null);
     removeAdsStore.redeemCode().catch(() => {
-      setMessage("コード入力画面を開けませんでした。");
+      setMessage(S.codeFailed);
     });
   }, []);
 

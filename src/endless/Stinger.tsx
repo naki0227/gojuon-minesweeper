@@ -7,6 +7,7 @@ import type { EndlessState } from "./engine";
 import type { StingerKind } from "./pauses";
 import { playSound } from "../sound/sounds";
 import { colors } from "../theme/colors";
+import { tr } from "../i18n";
 import { Pressable } from "../components/TapPressable";
 
 const COPY: Record<StingerKind, { title: string; color: string }> = {
@@ -14,6 +15,24 @@ const COPY: Record<StingerKind, { title: string; color: string }> = {
   clear: { title: "CLEAR!", color: colors.success },
   over: { title: "GAME OVER", color: colors.danger },
 };
+
+const S = tr({
+  ja: {
+    question: (number: number) => `第${number}問`,
+    // The engine's clear message ends with this; the card leaves it out.
+    nextSuffix: /。次の問題に進もう。$/,
+    outOfLives: "ライフがなくなった",
+    label: (title: string) => `${title}。タップして次へ`,
+    tap: "タップして次へ",
+  },
+  en: {
+    question: (number: number) => `Question ${number}`,
+    nextSuffix: /\. On to the next question\.$/,
+    outOfLives: "Out of lives",
+    label: (title: string) => `${title}. Tap to continue`,
+    tap: "Tap to continue",
+  },
+});
 
 type Props = {
   game: EndlessState;
@@ -43,14 +62,14 @@ export function Stinger({
   }, [kind]);
   const detail =
     kind === "start"
-      ? `第${game.solved + 1}問`
+      ? S.question(game.solved + 1)
       : kind === "clear"
-        ? game.message.replace(/。次の問題に進もう。$/, "")
-        : "ライフがなくなった";
+        ? game.message.replace(S.nextSuffix, "")
+        : S.outOfLives;
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${title}。タップして次へ`}
+      accessibilityLabel={S.label(title)}
       onPress={onContinue}
       style={styles.wrap}
     >
@@ -65,7 +84,7 @@ export function Stinger({
         <PopIn style={styles.card}>
           <Text style={[styles.title, { color }]}>{title}</Text>
           <Text style={styles.detail}>{detail}</Text>
-          <Text style={styles.tap}>タップして次へ</Text>
+          <Text style={styles.tap}>{S.tap}</Text>
         </PopIn>
       </View>
     </Pressable>

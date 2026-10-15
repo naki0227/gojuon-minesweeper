@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { tr } from "../i18n";
 import { getSupabase } from "../online/client";
 import { appleAuthorizationCode } from "./AppleAccount";
 import {
@@ -10,6 +11,28 @@ import {
 } from "./client";
 import { gemStore } from "./gemStore";
 import type { GemProduct } from "./gemStore.native";
+
+const S = tr({
+  ja: {
+    noBalance: "ジェム残高を取得できませんでした。",
+    credited: "購入したジェムを反映しました。",
+    pending: "購入の承認待ちです。",
+    buyFailed: "購入を開始できませんでした。",
+    spendNeedsSync: "ジェムの使用にはAppleログインと残高同期が必要です。",
+    deleted: "アカウントとジェム残高を削除しました。",
+    deleteFailed: "アカウントを削除できませんでした。",
+  },
+  en: {
+    noBalance: "Couldn't load your gem balance.",
+    credited: "Your gems have been added.",
+    pending: "Your purchase is waiting for approval.",
+    buyFailed: "Couldn't start the purchase.",
+    spendNeedsSync:
+      "To use gems, sign in with Apple and wait for your balance to sync.",
+    deleted: "Your account and gem balance have been deleted.",
+    deleteFailed: "Couldn't delete your account.",
+  },
+});
 
 export function useGemWallet() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -39,7 +62,7 @@ export function useGemWallet() {
       setBalance(account ? await loadGemBalance() : null);
     } catch {
       setBalance(null);
-      setMessage("ジェム残高を取得できませんでした。");
+      setMessage(S.noBalance);
     } finally {
       setLoading(false);
     }
@@ -56,9 +79,9 @@ export function useGemWallet() {
       setBuying(false);
       if (event.type === "credited") {
         setBalance(event.balance);
-        setMessage("購入したジェムを反映しました。");
+        setMessage(S.credited);
       } else if (event.type === "pending") {
-        setMessage("購入の承認待ちです。");
+        setMessage(S.pending);
       } else {
         setMessage(event.message);
       }
@@ -84,13 +107,13 @@ export function useGemWallet() {
       await gemStore.buy(userId, productId);
     } catch {
       setBuying(false);
-      setMessage("購入を開始できませんでした。");
+      setMessage(S.buyFailed);
     }
   };
 
   const spend = async (reason: "hint" | "revive", actionId: string) => {
     if (!userId || balance === null) {
-      throw new Error("ジェムの使用にはAppleログインと残高同期が必要です。");
+      throw new Error(S.spendNeedsSync);
     }
     const updated = await spendGems(reason, actionId);
     setBalance(updated);
@@ -106,13 +129,9 @@ export function useGemWallet() {
       await deleteAppleAccount(code);
       setUserId(null);
       setBalance(null);
-      setMessage("アカウントとジェム残高を削除しました。");
+      setMessage(S.deleted);
     } catch (cause) {
-      setMessage(
-        cause instanceof Error
-          ? cause.message
-          : "アカウントを削除できませんでした。",
-      );
+      setMessage(cause instanceof Error ? cause.message : S.deleteFailed);
     }
   };
 

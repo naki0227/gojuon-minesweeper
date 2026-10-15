@@ -1,3 +1,5 @@
+import { sendEvent } from "./send";
+
 export type AnalyticsEventName =
   | "game_start"
   | "answer_submit"
@@ -12,13 +14,11 @@ export type AnalyticsParams = Readonly<
   Record<string, string | number | boolean>
 >;
 
-/**
- * GA4 / Firebase Analytics 接続前の共通窓口。
- * Web と Native で送信先を分けても、ゲーム側のイベント名は変えない。
- */
+// The one entry point for analytics events (Firebase Analytics on iOS,
+// nothing on the web). Event names stay the same whatever the backend.
 export function trackEvent(
-  _name: AnalyticsEventName,
-  _params: AnalyticsParams = {},
+  name: AnalyticsEventName,
+  params: AnalyticsParams = {},
 ): void {
-  // Adapter will be wired when GA4/Firebase project IDs are available.
+  sendEvent(name, params);
 }

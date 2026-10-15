@@ -5,151 +5,87 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AdPrivacyOptionsButton } from "../src/ads/AdPrivacyOptionsButton";
 import { docPageStyles } from "../src/components/docPageStyles";
+import { PRIVACY_TEXT as S } from "../src/legal/privacy.strings";
 import { colors } from "../src/theme/colors";
+
+function Section({ heading, body }: { heading: string; body: string }) {
+  return (
+    <View style={styles.section}>
+      <Text style={styles.heading}>{heading}</Text>
+      <Text style={styles.body}>{body}</Text>
+    </View>
+  );
+}
 
 export default function PrivacyScreen() {
   return (
     <>
       <Head>
-        <title>プライバシーポリシー | 五十音マインスイーパー</title>
-        <meta
-          name="description"
-          content="五十音マインスイーパーのプライバシーポリシー"
-        />
+        <title>{S.headTitle}</title>
+        <meta name="description" content={S.headDescription} />
         <link rel="canonical" href="https://minesweeper.enludus.com/privacy" />
       </Head>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.page}>
-          <Text style={styles.title}>プライバシーポリシー</Text>
-          <Text style={styles.updated}>最終更新: 2026年10月15日</Text>
+          <Text style={styles.title}>{S.title}</Text>
+          <Text style={styles.updated}>{S.updated}</Text>
+
+          <Section {...S.collected} />
+          <Section {...S.usage} />
 
           <View style={styles.section}>
-            <Text style={styles.heading}>取得する情報</Text>
-            <Text style={styles.body}>
-              現在、本サービスはアカウント登録を必要とせず、氏名、住所、電話番号などの個人情報をゲーム利用のために要求しません。
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={styles.heading}>利用状況データ</Text>
-            <Text style={styles.body}>
-              サービス品質の改善を目的として、ゲーム開始・終了、回答、盤面操作、利用環境などの匿名化された利用状況データを分析する場合があります。分析機能を導入した場合は、利用するサービスと取得内容を本ページで明示します。
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={styles.heading}>広告</Text>
-            <Text style={styles.body}>
-              本サービスは広告配信サービスとしてGoogleを利用しています（iOS・Android版はGoogle
-              AdMob、Web版はGoogle
-              AdSense）。広告はゲーム設定画面と結果画面にのみ表示し、対局中には表示しません。
-            </Text>
-            <Text style={styles.body}>
-              広告の配信、効果測定、不正防止のために、Googleが次の情報を収集・処理することがあります。
-            </Text>
-            <Text style={styles.body}>
-              ・IPアドレスと、そこから推定されるおおよその位置{"\n"}
-              ・端末の識別子（iOSのベンダー識別子、Androidの広告ID、Web版のCookieなど）
-              {"\n"}
-              ・広告の表示やタップなどの広告データ{"\n"}
-              ・アプリやページの操作情報{"\n"}
-              ・クラッシュやパフォーマンスの情報{"\n"}
-              ・端末、OS、ブラウザの種類
-            </Text>
-            <Text style={styles.body}>
-              iOS・Android版では「Appのトラッキング」の許可を求めず、AdMobには非パーソナライズ広告のみをリクエストしています。Web版では、Googleの同意管理の結果に応じて、Cookieを使ったパーソナライズ広告が表示される場合があります。
-            </Text>
-            <Link
-              href="https://policies.google.com/technologies/partner-sites?hl=ja"
-              style={styles.inlineLink}
-            >
-              Googleのパートナーサイトでのデータ利用について
+            <Text style={styles.heading}>{S.ads.heading}</Text>
+            <Text style={styles.body}>{S.ads.intro}</Text>
+            <Text style={styles.body}>{S.ads.collects}</Text>
+            <Text style={styles.body}>{S.ads.items.join("\n")}</Text>
+            <Text style={styles.body}>{S.ads.tracking}</Text>
+            <Link href={S.ads.partnerSitesHref} style={styles.inlineLink}>
+              {S.ads.partnerSites}
             </Link>
-            <Link
-              href="https://policies.google.com/technologies/ads?hl=ja"
-              style={styles.inlineLink}
-            >
-              Googleの広告に関するポリシー
+            <Link href={S.ads.adsPolicyHref} style={styles.inlineLink}>
+              {S.ads.adsPolicy}
             </Link>
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.heading}>広告に関する同意の変更・撤回</Text>
-            <Text style={styles.body}>
-              欧州経済領域・英国など同意が必要な地域では、初回に広告に関する同意を確認します。同意の内容は、下の「広告のプライバシー設定を変更する」からいつでも変更・撤回できます（同意が必要な地域でのみ表示されます）。
-            </Text>
+            <Text style={styles.heading}>{S.consent.heading}</Text>
+            <Text style={styles.body}>{S.consent.body}</Text>
             <AdPrivacyOptionsButton />
-            <Text style={styles.body}>
-              ほかに、Androidでは端末の設定から広告IDを削除またはリセットでき、Web版ではブラウザのCookieを削除するか、Googleの広告設定でパーソナライズ広告を無効にできます。
-            </Text>
+            <Text style={styles.body}>{S.consent.other}</Text>
             <Link
               href="https://myadcenter.google.com/"
               style={styles.inlineLink}
             >
-              Googleのマイ アド センター
+              {S.consent.adCenter}
             </Link>
           </View>
 
-          <View style={styles.section}>
-            <Text style={styles.heading}>広告の非表示（アプリ内課金）</Text>
-            <Text style={styles.body}>
-              アプリ版では、広告を非表示にするアプリ内課金を提供します。決済はApple（App
-              Store）またはGoogle（Google
-              Play）が行い、本サービスがクレジットカード番号などの決済情報を取得することはありません。購入状態は端末上で各ストアに照会して確認します。購入はWeb版には引き継がれません。
-            </Text>
-          </View>
+          <Section {...S.removeAds} />
 
           <View style={styles.section}>
-            <Text style={styles.heading}>保存期間と削除</Text>
-            <Text style={styles.body}>
-              ひとりの端末で遊ぶゲームの状態は端末内だけで扱い、アプリを削除すると消えます。オンライン対戦のデータは下記「オンライン対戦」のとおりです。購入履歴はAppleまたはGoogleが管理します。iOS版でAppleでログインしてジェムを使う場合、サーバーにアカウントID、Appleから受け取るメールアドレス（「メールを非公開」を選んだ場合はAppleの転送用アドレス）、ジェム残高と増減の履歴、ジェム購入の取引番号を保存します。メールアドレスはアカウントの管理とお問い合わせへの対応にだけ使い、広告や第三者への提供には使いません。アプリの「アカウントを削除」から、アカウント・残高・履歴を削除できます（残っているジェムは失われます）。取引番号は同じ購入の重複付与を防ぐため、アカウントと切り離して保存します。また、初回特典を同じApple
-              IDに二度付与しないよう、AppleのユーザーIDを復元できない形（ハッシュ値）にして保存します。返金されたジェム購入は、そのパックのジェム数を上限に残高から差し引きます（残高は0未満になりません）。Googleが広告のために処理する情報の保存期間と削除方法は、上記のGoogleのポリシーに従います。
-            </Text>
-            <Text style={styles.body}>
-              情報の取り扱いに関するお問い合わせや削除のご相談は、下記のメールアドレスまでご連絡ください。
-            </Text>
+            <Text style={styles.heading}>{S.retention.heading}</Text>
+            <Text style={styles.body}>{S.retention.body}</Text>
+            <Text style={styles.body}>{S.retention.contact}</Text>
             <Link href="mailto:contact@enludus.com" style={styles.inlineLink}>
               contact@enludus.com
             </Link>
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.heading}>オンライン対戦</Text>
-            <Text style={styles.body}>
-              オンライン対戦では、対戦を成立させるために、端末ごとに自動で発行するランダムな識別子（匿名ログイン。氏名やメールアドレスは使いません）、入力した合言葉、出題内容、回答や開いた文字などの対戦の記録を、Supabase（Supabase,
-              Inc.）のサーバーに保存します。通信の過程でIPアドレスが処理されます。
-            </Text>
-            <Text style={styles.body}>
-              対戦相手に見えるのは盤面と回答の結果だけで、あなたの識別子は表示しません。対戦の記録は対戦の進行と不正防止のためだけに使い、終了した部屋の記録はおよそ1週間で削除します。
-            </Text>
+            <Text style={styles.heading}>{S.online.heading}</Text>
+            <Text style={styles.body}>{S.online.body}</Text>
+            <Text style={styles.body}>{S.online.visibility}</Text>
           </View>
 
-          <View style={styles.section}>
-            <Text style={styles.heading}>今日の一問 プレゼント</Text>
-            <Text style={styles.body}>
-              今日の一問のページで答えて応募すると、重複応募の防止と抽選のために、ブラウザごとに自動で発行するランダムな識別子とIPアドレスを、そのままでは復元できない形（鍵付きのハッシュ値）にして、受け取り番号・応募日・当選結果とともにSupabaseのサーバーに保存します。氏名やメールアドレス、SNSのアカウントはいただきません。識別子とIPアドレスのハッシュ値はおよそ30日後に削除し、受け取り番号と当選結果はコードを二重に渡さないために保存します。回答の内容は正解かどうかの判定にだけ使い、保存しません。受け取り番号と識別子はお使いのブラウザにも保存されます。
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={styles.heading}>第三者提供</Text>
-            <Text style={styles.body}>
-              法令に基づく場合を除き、取得した情報を第三者へ販売しません。外部サービスを利用する場合は、サービス提供に必要な範囲で情報が処理されることがあります。
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={styles.heading}>変更</Text>
-            <Text style={styles.body}>
-              機能追加や利用サービスの変更に伴い、本ポリシーを更新することがあります。重要な変更は本ページ上で告知します。
-            </Text>
-          </View>
+          <Section {...S.daily} />
+          <Section {...S.thirdParties} />
+          <Section {...S.changes} />
 
           <Link href="/support" style={styles.link}>
-            サポート
+            {S.support}
           </Link>
           <Link href="/" style={styles.link}>
-            ゲームへ戻る
+            {S.back}
           </Link>
         </ScrollView>
       </SafeAreaView>

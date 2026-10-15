@@ -1,4 +1,40 @@
+import { tr } from "../i18n";
 import type { LengthRange, QuestionLanguage } from "./types";
+
+const S = tr({
+  ja: {
+    daily: "くらし",
+    study: "勉強",
+    words: "ことば",
+    geography: "地理",
+    people: "芸能・人物",
+    hobby: "趣味",
+    work: "仕事・テクノロジー",
+    all: "ぜんぶ",
+    short: "短い",
+    shortNote: "2〜4字",
+    normal: "ふつう",
+    normalNote: "5〜7字",
+    long: "長い",
+    longNote: "8字〜",
+  },
+  en: {
+    daily: "Everyday",
+    study: "Study",
+    words: "Words",
+    geography: "Geography",
+    people: "Celebrities",
+    hobby: "Hobbies",
+    work: "Work & Tech",
+    all: "All",
+    short: "Short",
+    shortNote: "2–4 letters",
+    normal: "Medium",
+    normalNote: "5–7 letters",
+    long: "Long",
+    longNote: "8+ letters",
+  },
+});
 
 // The home screen offers these broad groups instead of every category.
 // Every category in the question banks must belong to exactly one group
@@ -14,7 +50,7 @@ export type CategoryGroup = {
 export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   {
     id: "daily",
-    label: "くらし",
+    label: S.daily,
     sample: { ja: "はさみ", en: "CUP" },
     categories: [
       "文房具",
@@ -76,7 +112,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "study",
-    label: "勉強",
+    label: S.study,
     sample: { ja: "ちそう", en: "ATOM" },
     categories: [
       "理科・生物",
@@ -111,7 +147,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "words",
-    label: "ことば",
+    label: S.words,
     sample: { ja: "ことわざ", en: "WORD" },
     categories: [
       "ことば",
@@ -129,7 +165,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "geography",
-    label: "地理",
+    label: S.geography,
     sample: { ja: "ながの", en: "PERU" },
     categories: [
       "都道府県",
@@ -145,7 +181,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "people",
-    label: "芸能・人物",
+    label: S.people,
     sample: { ja: "せいゆう", en: "STAR" },
     categories: [
       "俳優",
@@ -159,7 +195,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "hobby",
-    label: "趣味",
+    label: S.hobby,
     sample: { ja: "やきゅう", en: "GAME" },
     categories: [
       "アニメ・漫画",
@@ -185,7 +221,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
   },
   {
     id: "work",
-    label: "仕事・テクノロジー",
+    label: S.work,
     sample: { ja: "さーば", en: "CODE" },
     categories: [
       "IT用語",
@@ -248,8 +284,13 @@ export type LengthPreset = {
 };
 
 export const LENGTH_PRESETS: readonly LengthPreset[] = [
-  { id: "any", label: "ぜんぶ", note: null, range: "any" },
-  { id: "short", label: "短い", note: "2〜4字", range: { min: 2, max: 4 } },
-  { id: "normal", label: "ふつう", note: "5〜7字", range: { min: 5, max: 7 } },
-  { id: "long", label: "長い", note: "8字〜", range: { min: 8, max: null } },
+  { id: "any", label: S.all, note: null, range: "any" },
+  { id: "short", label: S.short, note: S.shortNote, range: { min: 2, max: 4 } },
+  {
+    id: "normal",
+    label: S.normal,
+    note: S.normalNote,
+    range: { min: 5, max: 7 },
+  },
+  { id: "long", label: S.long, note: S.longNote, range: { min: 8, max: null } },
 ];

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AppState } from "react-native";
 
 import { callOnline, ensureSignedIn, fetchRoom, subscribeRoom } from "./client";
+import { errorText } from "./errors";
 import { seatOf, type OnlineRequest, type OnlineRoom } from "./protocol";
 
 // Keep a waiting room alive while its screen is active. The server excludes
@@ -59,7 +60,11 @@ export function useOnlineRoom() {
       } catch (caught) {
         if (!quiet) {
           setError(
-            caught instanceof Error ? caught.message : "通信できませんでした。",
+            errorText(
+              caught instanceof Error
+                ? caught.message
+                : "通信できませんでした。",
+            ),
           );
         }
         return null;
