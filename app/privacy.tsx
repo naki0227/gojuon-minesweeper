@@ -1,9 +1,9 @@
 import { Link } from "expo-router";
-import Head from "expo-router/head";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AdPrivacyOptionsButton } from "../src/ads/AdPrivacyOptionsButton";
+import { DocHead } from "../src/components/DocHead";
 import { docPageStyles } from "../src/components/docPageStyles";
 import { PRIVACY_TEXT as S } from "../src/legal/privacy.strings";
 import { colors } from "../src/theme/colors";
@@ -20,11 +20,11 @@ function Section({ heading, body }: { heading: string; body: string }) {
 export default function PrivacyScreen() {
   return (
     <>
-      <Head>
-        <title>{S.headTitle}</title>
-        <meta name="description" content={S.headDescription} />
-        <link rel="canonical" href="https://minesweeper.enludus.com/privacy" />
-      </Head>
+      <DocHead
+        title={S.headTitle}
+        description={S.headDescription}
+        path="/privacy"
+      />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.page}>
           <Text style={styles.title}>{S.title}</Text>

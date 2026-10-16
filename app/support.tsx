@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
-import Head from "expo-router/head";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { DocHead } from "../src/components/DocHead";
 import { docPageStyles } from "../src/components/docPageStyles";
 import { tr } from "../src/i18n";
 
@@ -45,11 +45,11 @@ const S = tr({
 export default function SupportScreen() {
   return (
     <>
-      <Head>
-        <title>{S.headTitle}</title>
-        <meta name="description" content={S.headDescription} />
-        <link rel="canonical" href="https://minesweeper.enludus.com/support" />
-      </Head>
+      <DocHead
+        title={S.headTitle}
+        description={S.headDescription}
+        path="/support"
+      />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.page}>
           <Text style={styles.title}>{S.title}</Text>
