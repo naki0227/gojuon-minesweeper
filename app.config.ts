@@ -164,8 +164,15 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const firebase = firebasePlugins() ?? [];
   const plist = process.env.GOOGLE_SERVICE_INFO_PLIST?.trim();
 
+  // The English web build is served from /en/ (see deploy-web.yml).
+  const webBaseUrl =
+    process.env.EXPO_PUBLIC_LOCALE === "en" ? "/en" : undefined;
+
   return {
     ...(config as ExpoConfig),
+    ...(webBaseUrl
+      ? { experiments: { ...config.experiments, baseUrl: webBaseUrl } }
+      : {}),
     ios: {
       ...config.ios,
       ...(plist ? { googleServicesFile: plist } : {}),

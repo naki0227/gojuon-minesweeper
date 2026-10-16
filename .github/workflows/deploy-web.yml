@@ -78,6 +78,24 @@ jobs:
           EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_KEY }}
 
+      # The same app in English at /en/ (functions/index.ts sends browsers
+      # that prefer another language there). Public files such as the
+      # Cloudflare headers live at the root only.
+      - name: Export English web
+        run: |
+          npx expo export -p web --output-dir dist-en
+          rm -rf dist-en/_headers dist-en/_redirects dist-en/.well-known \
+            dist-en/robots.txt dist-en/sitemap.xml
+          mkdir -p dist/en
+          cp -R dist-en/. dist/en/
+        env:
+          EXPO_PUBLIC_LOCALE: en
+          EXPO_PUBLIC_ADSENSE_CLIENT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_CLIENT_ID }}
+          EXPO_PUBLIC_ADSENSE_SETUP_SLOT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_SETUP_SLOT_ID }}
+          EXPO_PUBLIC_ADSENSE_RESULT_SLOT_ID: ${{ vars.EXPO_PUBLIC_ADSENSE_RESULT_SLOT_ID }}
+          EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_KEY }}
+
       # Chrome comes with the runner; Japanese fonts and ffmpeg (for the
       # 今日の一問 videos) are installed here.
       - name: Install Japanese fonts and ffmpeg
@@ -91,7 +109,8 @@ jobs:
           EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
 
       # Cloudflare Pages serves minesweeper.enludus.com (custom headers in
-      # public/_headers). Needs the CLOUDFLARE_API_TOKEN and
+      # public/_headers; the functions/ folder next to dist is deployed as
+      # Pages Functions). Needs the CLOUDFLARE_API_TOKEN and
       # CLOUDFLARE_ACCOUNT_ID repository secrets.
       - name: Publish to Cloudflare Pages
         env:

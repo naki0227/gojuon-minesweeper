@@ -1,7 +1,9 @@
 import { Link } from "expo-router";
+import Head from "expo-router/head";
 import { Platform, StyleSheet, Text, View } from "react-native";
 
-import { tr } from "../i18n";
+import { LOCALE, tr } from "../i18n";
+import { switchWebLanguage, WEB_ROOTS } from "../i18n/web";
 import { appStoreUrl } from "../links/site";
 import { colors } from "../theme/colors";
 
@@ -15,10 +17,29 @@ const S = tr({
 });
 
 // Links under the home screen. The web version also points to the iPhone
-// app (tagged so App Analytics shows visits that came from the website).
+// app (tagged so App Analytics shows visits that came from the website)
+// and to the other language's build.
 export function HomeFooter() {
+  const other = LOCALE === "ja" ? "en" : "ja";
   return (
     <View style={styles.links}>
+      {Platform.OS === "web" ? (
+        <>
+          <Head>
+            <link rel="alternate" hrefLang="ja" href={WEB_ROOTS.ja} />
+            <link rel="alternate" hrefLang="en" href={WEB_ROOTS.en} />
+            <link rel="alternate" hrefLang="x-default" href={WEB_ROOTS.ja} />
+          </Head>
+          <Text
+            accessibilityRole="link"
+            style={styles.link}
+            onPress={() => switchWebLanguage(other)}
+          >
+            {other === "en" ? "English" : "日本語"}
+          </Text>
+          <Text style={styles.separator}>/</Text>
+        </>
+      ) : null}
       {Platform.OS === "web" ? (
         <>
           <Link href={appStoreUrl("web_home")} style={styles.link}>
