@@ -5,8 +5,11 @@ on:
     branches: ["main"]
   # 7:00 Japan time (22:00 UTC): put the new day of 今日の一問 online.
   # GitHub starts scheduled runs late, sometimes by hours (worst on the
-  # hour), never early. So it tries several times; once the day is
-  # online, the later tries stop at the first step.
+  # hour), never early, so the database starts it on time instead (pg_cron
+  # at 7:01 and 7:20 with only_if_missing, see
+  # supabase/migrations/20261017000000_daily_deploy_cron.sql). These
+  # schedules are the fallback; once the day is online, later tries stop
+  # after a quick check.
   schedule:
     - cron: "2 22 * * *"
     - cron: "17 22 * * *"
@@ -14,18 +17,23 @@ on:
     - cron: "7 23 * * *"
     - cron: "7 0 * * *"
   workflow_dispatch:
+    inputs:
+      only_if_missing:
+        description: "Skip if today's puzzle is already online"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 concurrency:
   group: deploy-web
-  # A push cancels an older run. Scheduled tries wait instead, so a late
-  # try never cuts off the one that is publishing.
+  # A push cancels an older run. Scheduled and dispatched tries wait
+  # instead, so a late try never cuts off the one that is publishing.
   cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
-  # Scheduled tries after the first successful one have nothing to do.
+  # Daily tries after the first successful one have nothing to do.
   check:
     runs-on: ubuntu-latest
     outputs:
@@ -33,7 +41,7 @@ jobs:
     steps:
       - name: Is today's puzzle already online?
         id: today
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.only_if_missing
         run: |
           today=$(TZ=Asia/Tokyo date -d '-7 hours' +%F)
           if curl -sfo /dev/null "https://minesweeper.enludus.com/daily/$today/puzzle.json"; then
