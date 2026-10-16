@@ -63,7 +63,7 @@ export const PRIVACY_TEXT = tr({
     },
     daily: {
       heading: "今日の一問 プレゼント",
-      body: "今日の一問のページで答えて応募すると、重複応募の防止と抽選のために、ブラウザごとに自動で発行するランダムな識別子とIPアドレスを、そのままでは復元できない形（鍵付きのハッシュ値）にして、受け取り番号・応募日・当選結果とともにSupabaseのサーバーに保存します。氏名やメールアドレス、SNSのアカウントはいただきません。識別子とIPアドレスのハッシュ値はおよそ30日後に削除し、受け取り番号と当選結果はコードを二重に渡さないために保存します。回答の内容は正解かどうかの判定にだけ使い、保存しません。受け取り番号と識別子はお使いのブラウザにも保存されます。",
+      body: "今日の一問のページまたはアプリで応募すると、重複応募の防止と抽選のために、ブラウザやアプリごとに自動で発行するランダムな識別子とIPアドレスを、そのままでは復元できない形（鍵付きのハッシュ値）にして、受け取り番号・応募日・当選結果とともにSupabaseのサーバーに保存します。氏名やメールアドレス、SNSのアカウントはいただきません。識別子とIPアドレスのハッシュ値はおよそ30日後に削除し、受け取り番号と当選結果はコードを二重に渡さないために保存します。回答の内容は正解かどうかの判定にだけ使い、保存しません。受け取り番号と識別子はお使いのブラウザや端末にも保存されます。アプリの今日の一問の進み具合と連続正解の記録は端末の中だけに保存し、毎朝のお知らせは端末の中で予約する通知で、サーバーからは送りません。",
     },
     thirdParties: {
       heading: "第三者提供",
@@ -137,7 +137,7 @@ export const PRIVACY_TEXT = tr({
     },
     daily: {
       heading: "Daily Question (今日の一問) giveaway",
-      body: "When you answer and enter on the Daily Question page, we store a random identifier issued automatically for each browser and your IP address, both converted into a form that cannot be restored as is (a keyed hash), together with your claim number, entry date and draw result, on Supabase's servers in order to prevent duplicate entries and run the draw. We do not ask for your name, email address or social media accounts. The hashes of the identifier and IP address are deleted after about 30 days; the claim number and draw result are kept so that a code is never given out twice. Your answer is used only to check whether it is correct and is not stored. The claim number and identifier are also stored in your browser.",
+      body: "When you enter on the Daily Question page or in the app, we store a random identifier issued automatically for each browser or app installation and your IP address, both converted into a form that cannot be restored as is (a keyed hash), together with your claim number, entry date and draw result, on Supabase's servers in order to prevent duplicate entries and run the draw. We do not ask for your name, email address or social media accounts. The hashes of the identifier and IP address are deleted after about 30 days; the claim number and draw result are kept so that a code is never given out twice. Your answer is used only to check whether it is correct and is not stored. The claim number and identifier are also stored in your browser or on your device. Your progress and streak in the app's Daily Question stay on your device only, and the morning reminder is a notification scheduled on the device, not sent from our servers.",
     },
     thirdParties: {
       heading: "Sharing with third parties",

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { DailyCard } from "../daily/DailyCard";
 import { SoundButton } from "../sound/SoundButton";
 import { tr } from "../i18n";
 import { colors } from "../theme/colors";
@@ -10,24 +11,28 @@ const S = tr({
 });
 
 // The 五十音 tiles and title at the top of the home screen, with the sound
-// settings on the right.
+// settings on the right, and the way into 今日の一問 below.
 export function HomeTitle() {
   return (
-    <View style={styles.row}>
-      <View style={styles.titleRow} accessibilityRole="header">
-        <View style={styles.tiles}>
-          <Text style={styles.tile}>五</Text>
-          <Text style={styles.tile}>十</Text>
-          <Text style={[styles.tile, styles.accent]}>音</Text>
+    <View style={styles.column}>
+      <View style={styles.row}>
+        <View style={styles.titleRow} accessibilityRole="header">
+          <View style={styles.tiles}>
+            <Text style={styles.tile}>五</Text>
+            <Text style={styles.tile}>十</Text>
+            <Text style={[styles.tile, styles.accent]}>音</Text>
+          </View>
+          <Text style={styles.text}>{S.title}</Text>
         </View>
-        <Text style={styles.text}>{S.title}</Text>
+        <SoundButton />
       </View>
-      <SoundButton />
+      <DailyCard />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  column: { gap: 12 },
   row: {
     flexDirection: "row",
     alignItems: "center",

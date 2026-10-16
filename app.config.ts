@@ -182,6 +182,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       ],
       "expo-iap",
       "expo-apple-authentication",
+      // The 今日の一問 morning reminder is a local notification; the
+      // plugin also adds the push entitlement, which must match the
+      // build's provisioning profile.
+      [
+        "expo-notifications",
+        { mode: isProduction ? "production" : "development" },
+      ],
       ...firebase,
       [
         "expo-build-properties",
