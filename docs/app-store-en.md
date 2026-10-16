@@ -9,7 +9,7 @@ Gojuon Minesweeper
 Find the hidden word by logic
 
 ## Promotional text (170)
-A fresh puzzle every day! Open cells, read the numbers and guess the hidden word before your rival. 7,000+ English words to play.
+Open cells, read the numbers and guess the hidden word before your rival. 7,000+ English words to play.
 
 ## Keywords (100)
 word,puzzle,minesweeper,guess,logic,brain,vocabulary,daily,quiz,japanese,kana,hiragana,two player
@@ -29,7 +29,6 @@ MODES
 • Two players on one device
 • Online: play a friend with a room code, or get a random match
 • Endless: solve word after word and chase a high score
-• Daily puzzle: a new one every morning (only once the in-app daily puzzle ships)
 
 FEATURES
 • 7,000+ English words and 14,000+ Japanese words, in genres from animals and food to science and geography

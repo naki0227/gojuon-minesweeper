@@ -2,7 +2,7 @@
   "expo": {
     "name": "五十音マインスイーパー",
     "slug": "gojuon-minesweeper",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "scheme": "gojuonminesweeper",
     "userInterfaceStyle": "light",

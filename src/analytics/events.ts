@@ -8,7 +8,8 @@ export type AnalyticsEventName =
   | "cell_open"
   | "mine_hit"
   | "game_finish"
-  | "rematch";
+  | "rematch"
+  | "daily_finish";
 
 export type AnalyticsParams = Readonly<
   Record<string, string | number | boolean>
