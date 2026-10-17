@@ -151,7 +151,10 @@ describe("Firebase Analytics", () => {
       (plugin) =>
         Array.isArray(plugin) && plugin[0] === "expo-build-properties",
     ) as [string, { ios: Record<string, unknown> }];
-    expect(build[1].ios).toMatchObject({ useFrameworks: "static" });
+    expect(build[1].ios).toMatchObject({
+      useFrameworks: "static",
+      enableSceneSupport: true,
+    });
   });
 
   it("leaves Firebase out of local builds without the plist", async () => {
