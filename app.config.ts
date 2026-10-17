@@ -200,8 +200,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         "expo-build-properties",
         {
-          ios:
-            firebase.length > 0
+          ios: {
+            // Apps built with the iOS 27 SDK (Xcode 27) crash at launch
+            // unless they use the UIKit scene life cycle.
+            enableSceneSupport: true,
+            ...(firebase.length > 0
               ? {
                   // React Native Firebase in CocoaPods mode. With the
                   // prebuilt React Native core, every RNFB module must be
@@ -209,7 +212,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
                   useFrameworks: "static",
                   forceStaticLinking: ["RNFBApp", "RNFBAnalytics"],
                 }
-              : {},
+              : {}),
+          },
           android: {
             // Keeps Google's UMP consent SDK classes in release builds, as
             // react-native-google-mobile-ads' consent guide requires.
