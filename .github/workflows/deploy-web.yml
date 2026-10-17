@@ -92,6 +92,7 @@ jobs:
       - name: Export English web
         run: |
           npx expo export -p web --output-dir dist-en
+          node scripts/move-vendor-assets.mjs dist-en
           rm -rf dist-en/_headers dist-en/_redirects dist-en/.well-known \
             dist-en/robots.txt dist-en/sitemap.xml
           mkdir -p dist/en
