@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:web": "expo export -p web && node scripts/write-ads-txt.mjs",
+    "build:web": "expo export -p web && node scripts/move-vendor-assets.mjs dist && node scripts/write-ads-txt.mjs",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check 'app/**/*.{ts,tsx}' 'src/**/*.{ts,tsx}' 'functions/**/*.ts' 'scripts/**/*.mjs' 'tests/**/*.{ts,tsx}' eslint.config.js package.json",
     "lint": "eslint app src functions scripts tests eslint.config.js --max-warnings 0",
