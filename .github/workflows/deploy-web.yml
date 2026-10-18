@@ -44,7 +44,10 @@ jobs:
         if: github.event_name == 'schedule' || inputs.only_if_missing
         run: |
           today=$(TZ=Asia/Tokyo date -d '-7 hours' +%F)
-          if curl -sfo /dev/null "https://minesweeper.enludus.com/daily/$today/puzzle.json"; then
+          # A missing file falls back to the app page (200 text/html), so
+          # only a JSON answer counts.
+          type=$(curl -s -o /dev/null -w '%{content_type}' "https://minesweeper.enludus.com/daily/$today/puzzle.json" || true)
+          if [[ "$type" == application/json* ]]; then
             echo "$today is already online."
             echo "online=true" >> "$GITHUB_OUTPUT"
           fi
