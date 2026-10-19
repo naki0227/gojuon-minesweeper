@@ -36,6 +36,7 @@ main{position:absolute;inset:150px 70px 380px 70px;display:flex;flex-direction:c
 .badge{font-size:40px;font-weight:900;color:${colors.primary};letter-spacing:2px}
 .badge span{color:${colors.ink};margin-left:14px}
 .prompt{font-size:100px;font-weight:900;line-height:1.1}
+.prompt em{display:block;font-style:normal;font-size:72px;color:${colors.accentStrong}}
 .legend{font-size:30px;color:#3e4c56;font-weight:700;line-height:1.6}
 .legend b{color:${colors.accent}}
 .cta{background:${colors.ink};color:#fff;border-radius:28px;padding:34px 40px;display:flex;flex-direction:column;gap:10px;transform-origin:center}
@@ -65,9 +66,9 @@ export function questionVideoHtml(
     VERTICAL_CSS,
     `<main>
 <div class="head">${logoHtml()}<div class="badge">今日の一問<span>${dayLabel(entry.date)}</span></div></div>
-<div class="prompt"${at(timeline.promptAt)}>${prompt(entry)}</div>
+<div class="prompt">${prompt(entry)}<em>わかる？🤔</em></div>
 ${boardHtml(entry, (char) => openAt.get(char) ?? null)}
-<div class="legend"${at(1.4, { fx: "fade" })}>数字＝周りにある答えの文字の数<br><b>オレンジ</b>＝答えに入っている文字</div>
+<div class="legend"${at(0.5, { fx: "fade" })}>数字＝周りにある答えの文字の数<br><b>オレンジ</b>＝答えに入っている文字</div>
 <div class="cta"${at(timeline.ctaAt)}><strong>答えは？🤔</strong><span>コメントで教えてね／正解は明日7時に公開</span><em${at(timeline.followAt, { fx: "fade" })}>🔔 チャンネル登録で毎朝7時にお届け</em></div>
 </main>${footer()}`,
   );

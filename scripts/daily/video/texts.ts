@@ -46,9 +46,20 @@ function promptOf(entry: DailyEntry): string {
   return questionPrompt(dailyQuestion(entry));
 }
 
+// The first line is what the feed shows as the title, so it asks the
+// question and leaves the date for after it.
+export function questionPostText(entry: DailyEntry): string {
+  return [
+    `${promptOf(entry)}、わかる？【今日の一問 ${shortDate(entry.date)}】`,
+    "開いたマスの数字は、周りにある答えの文字の数。オレンジは答えに入っている文字。答えをコメントしてね！",
+    "正解は明日の朝7時に公開🧩",
+    "#五十音マインスイーパー #今日の一問 #shorts",
+  ].join("\n");
+}
+
 export function answerPostText(entry: DailyEntry): string {
   return [
-    `【答え合わせ ${shortDate(entry.date)}】お題：${promptOf(entry)}`,
+    `${promptOf(entry)}の答えは…？【答え合わせ ${shortDate(entry.date)}】`,
     `正解は「${dailyAnswer(entry)}」でした！ 当たった？`,
     "今日の一問は毎朝7時に出題中🧩",
     "#五十音マインスイーパー #今日の一問",
