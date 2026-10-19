@@ -31,7 +31,8 @@ describe("daily video timelines", () => {
     expect(mines.indexOf(true)).toBeGreaterThan(mines.lastIndexOf(false));
     expect(timeline.opens.map((open) => open.char)).toEqual(order);
     expect(timeline.ctaAt).toBeGreaterThan(timeline.opens.at(-1)!.at);
-    expect(timeline.duration).toBeGreaterThan(timeline.ctaAt + 3);
+    expect(timeline.followAt).toBeGreaterThan(timeline.ctaAt);
+    expect(timeline.duration).toBeGreaterThan(timeline.followAt + 3);
     expect(timeline.cues).toHaveLength(order.length + 2);
   });
 
@@ -46,6 +47,8 @@ describe("daily video timelines", () => {
     expect(timeline.reveals.map((reveal) => reveal.char)).toEqual(hidden);
     expect(timeline.answerAt).toBeGreaterThan(timeline.reveals.at(-1)!.at);
     expect(timeline.cues.at(-1)?.sound).toBe("correct");
+    expect(timeline.followAt).toBeGreaterThan(timeline.answerAt + 2);
+    expect(timeline.duration).toBeGreaterThanOrEqual(timeline.followAt + 3);
   });
 
   it("lays a week out back to back, thinking time before each answer", () => {

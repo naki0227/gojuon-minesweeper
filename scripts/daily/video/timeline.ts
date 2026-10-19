@@ -55,21 +55,24 @@ export type QuestionTimeline = {
   promptAt: number;
   opens: Reveal[];
   ctaAt: number;
+  followAt: number;
   cues: Cue[];
 };
 
 // Today's puzzle: the prompt, then its cells open one by one, then
-// "comment your answer".
+// "comment your answer", then "subscribe".
 export function questionTimeline(entry: DailyEntry): QuestionTimeline {
   const promptAt = 0.3;
   const opens = reveals(openingOrder(entry), 1.4, 0.32);
   const ctaAt = round((opens.at(-1)?.at ?? 1.4) + 0.9);
+  const followAt = round(ctaAt + 1.5);
   const mines = questionMineCharacters(dailyQuestion(entry));
   return {
-    duration: round(ctaAt + 4.5),
+    duration: round(followAt + 3.5),
     promptAt,
     opens,
     ctaAt,
+    followAt,
     cues: [
       cue(promptAt, "start"),
       ...opens.map((open) =>
@@ -84,6 +87,8 @@ export type AnswerTimeline = {
   duration: number;
   reveals: Reveal[];
   answerAt: number;
+  // The answer short's "subscribe" card; the week video does not use it.
+  followAt: number;
   cues: Cue[];
 };
 
@@ -91,10 +96,12 @@ export type AnswerTimeline = {
 export function answerTimeline(entry: DailyEntry, start = 0): AnswerTimeline {
   const shown = reveals(hiddenAnswerLetters(entry), start + 2, 0.55);
   const answerAt = round((shown.at(-1)?.at ?? start + 2) + 1);
+  const followAt = round(answerAt + (entry.trivia ? 4 : 2.5));
   return {
-    duration: round(answerAt - start + (entry.trivia ? 6 : 4)),
+    duration: round(followAt - start + 3),
     reveals: shown,
     answerAt,
+    followAt,
     cues: [
       cue(start + 0.3, "start"),
       ...shown.map((reveal) => cue(reveal.at, "mine")),
