@@ -35,6 +35,8 @@ export const videoPaths = {
   question: (entry: DailyEntry) => `${entry.date}/question.mp4`,
   answer: (entry: DailyEntry) => `${entry.date}/answer.mp4`,
   week: (entries: readonly DailyEntry[]) => `week/${entries[0]!.date}.mp4`,
+  weekThumbnail: (entries: readonly DailyEntry[]) =>
+    `week/${entries[0]!.date}.jpg`,
 };
 
 export function videoUrl(path: string): string {

@@ -7,8 +7,13 @@ import { join } from "node:path";
 
 import type { Browser } from "playwright-core";
 
-import { renderVideo } from "./render";
-import { answerVideoHtml, questionVideoHtml, weekVideoHtml } from "./slides";
+import { renderStill, renderVideo } from "./render";
+import {
+  answerVideoHtml,
+  questionVideoHtml,
+  weekThumbnailHtml,
+  weekVideoHtml,
+} from "./slides";
 import { videoPaths, type VideoPlan } from "./texts";
 import { answerTimeline, questionTimeline, weekTimeline } from "./timeline";
 
@@ -53,6 +58,12 @@ export async function renderDailyVideos(
       duration: timeline.duration,
       cues: timeline.cues,
       out: target(videoPaths.week(plan.week)),
+    });
+    await renderStill(browser, {
+      html: weekThumbnailHtml(plan.week),
+      width: 1280,
+      height: 720,
+      out: target(videoPaths.weekThumbnail(plan.week)),
     });
   }
 }

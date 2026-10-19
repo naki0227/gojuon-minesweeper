@@ -72,3 +72,21 @@ export async function renderVideo(browser: Browser, job: VideoJob) {
     rmSync(dir, { recursive: true, force: true });
   }
 }
+
+// One frame of a page, long after every element has popped in.
+export async function renderStill(
+  browser: Browser,
+  job: { html: string; width: number; height: number; out: string },
+) {
+  const page = await browser.newPage({
+    viewport: { width: job.width, height: job.height },
+  });
+  try {
+    await page.setContent(job.html);
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => window.renderAt(3600));
+    await page.screenshot({ path: job.out, type: "jpeg", quality: 92 });
+  } finally {
+    await page.close();
+  }
+}
