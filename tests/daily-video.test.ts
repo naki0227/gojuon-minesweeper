@@ -95,6 +95,8 @@ describe("which videos are made", () => {
   it("writes YouTube chapters starting at 0:00", () => {
     const week = lastFullWeek(DAILY_SCHEDULE, "2026-10-19");
     const { description } = weekPostText(week);
+    expect(description.split("\n")[0]).toContain("/daily/");
+    expect(description.split("\n")[1]).toContain("/yt");
     expect(description).toContain("0:00 オープニング");
     expect(description).toContain(`第1問 10/13`);
     expect(clock(75.4)).toBe("1:15");

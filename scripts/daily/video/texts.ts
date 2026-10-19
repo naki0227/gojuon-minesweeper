@@ -4,7 +4,6 @@ import { questionPrompt } from "../../../src/data/questions";
 import {
   dailyAnswer,
   dailyQuestion,
-  dailyUrl,
   shortDate,
   type DailyEntry,
 } from "../../../src/daily/schedule";
@@ -74,17 +73,17 @@ export function weekPostText(entries: readonly DailyEntry[]): {
   ];
   return {
     title: `今日の一問 1週間まとめ（${first}〜${last}）全${entries.length}問、何問わかる？`,
+    // The first lines show without "more", so the links come first.
     description: [
+      `🧩 今日の一問（毎朝7時に新しい問題）${SITE_URL}/daily/`,
+      `📱 iPhoneアプリ（無料）${SITE_URL}/yt`,
+      "",
       "五十音の盤面で「ことば」を推理する、五十音マインスイーパーの「今日の一問」。",
       "開いたマスの数字は、周りにある答えの文字の数。答えを推理してみてね。",
       "",
       ...chapters,
       "",
-      "📱 iPhoneアプリ（無料）",
-      `${SITE_URL}/app`,
-      "🌐 ブラウザで遊ぶ",
-      SITE_URL,
-      `🧩 問題のページ ${dailyUrl(entries[0]!.date)}`,
+      `🌐 ブラウザで遊ぶ ${SITE_URL}`,
       `X ${HANDLE}`,
       "",
       "#五十音マインスイーパー #今日の一問 #パズル",
