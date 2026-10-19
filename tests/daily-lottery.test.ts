@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { normalizeValue } from "../src/game/normalize";
 import {
   DAILY_SCHEDULE,
+  GIFT_RULES_URL,
   dailyAnswer,
   dailyQuestion,
 } from "../src/daily/schedule";
@@ -10,7 +11,9 @@ import {
   answerHash,
   lotterySection,
   puzzleJson,
+  rulesList,
 } from "../scripts/daily/lottery";
+import { rulesPage } from "../scripts/daily/pages";
 
 const entry = DAILY_SCHEDULE[0]!;
 
@@ -60,5 +63,15 @@ describe("the プレゼント box", () => {
     expect(lotterySection(entry, true, endpoint)).not.toContain(
       dailyAnswer(entry),
     );
+  });
+});
+
+describe("the プレゼント rules page", () => {
+  it("has the rules the app links to, and says Apple is not a sponsor", () => {
+    const page = rulesPage();
+    expect(page).toContain(rulesList());
+    expect(page).toContain("Appleが提供・協賛するものではありません");
+    expect(page).toContain("購入は必要ありません");
+    expect(GIFT_RULES_URL).toBe("https://minesweeper.enludus.com/daily/rules/");
   });
 });

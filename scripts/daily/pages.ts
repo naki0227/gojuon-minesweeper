@@ -12,7 +12,7 @@ import {
 import { appStoreUrl, SITE_URL } from "../../src/links/site";
 import { colors } from "../../src/theme/colors";
 import { escapeHtml } from "./html";
-import { LOTTERY_CSS, lotterySection } from "./lottery";
+import { LOTTERY_CSS, lotterySection, rulesList } from "./lottery";
 import {
   answerPostText,
   videoPaths,
@@ -100,6 +100,17 @@ export function listPage(entries: readonly DailyEntry[]): string {
     `<title>今日の一問 | 五十音マインスイーパー</title>
 <meta name="description" content="毎日1問、盤面の数字から答えを推理する「今日の一問」。">`,
     `<h1>今日の一問</h1><p>毎朝7時に新しい問題。開いたマスの数字から答えを推理しよう。</p>${rows}`,
+  );
+}
+
+// /daily/rules/: the プレゼント rules on their own, linked from the app.
+export function rulesPage(): string {
+  return layout(
+    `<title>今日の一問 プレゼントのルール | 五十音マインスイーパー</title>
+<meta name="description" content="今日の一問に正解すると応募できるプレゼントのルール。">`,
+    `<div class="eyebrow">今日の一問</div><h1>プレゼントのルール</h1>
+<div class="card gift">${rulesList()}</div>
+<a class="row" href="${SITE_URL}/daily/">今日の一問へ</a>`,
   );
 }
 

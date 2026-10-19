@@ -15,7 +15,7 @@ import {
 } from "./gift";
 import { dailyShareText, movesLine, type DailyPlay } from "./play";
 import { remindersSupported, setMorningReminder } from "./reminder";
-import { dailyUrl, shortDate } from "./schedule";
+import { dailyUrl, GIFT_RULES_URL, shortDate } from "./schedule";
 import type { DailyMemory } from "./storage";
 import { currentStreak } from "./streak";
 
@@ -145,8 +145,16 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
             </View>
           ))}
           {giftError ? <Text style={styles.error}>{giftError}</Text> : null}
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => void Linking.openURL(GIFT_RULES_URL)}
+          >
+            <Text style={[styles.micro, styles.link]}>
+              プレゼントのルールを見る
+            </Text>
+          </Pressable>
           <Text style={styles.micro}>
-            ルールはサイトの今日の一問ページをご覧ください。このプレゼントはAppleが提供・協賛するものではありません。
+            このプレゼントは五十音マインスイーパーの開発者が行うもので、Appleが提供・協賛するものではありません。
           </Text>
         </View>
       ) : null}

@@ -46,17 +46,23 @@ export const LOTTERY_CSS = `
 .gift details{font-size:13px;color:#536875;line-height:1.7}
 .gift[hidden],.gift [hidden]{display:none}`;
 
-function rules(): string {
-  return `<details><summary>プレゼントのルール</summary><ul>
+// The プレゼント rules: in each day's page and on /daily/rules/, which the
+// app links to.
+export function rulesList(): string {
+  return `<ul>
 <li>今日の一問に正解した人の中から、毎日${CAMPAIGN.dailyWinners}名にiPhoneアプリ「五十音マインスイーパー」のジェム10個のコードをプレゼントします。</li>
 <li>リリース記念として、最初の${CAMPAIGN.instant}名は正解したその場でプレゼント（1台につき1回）。なくなり次第、毎日の抽選になります。</li>
-<li>応募できるのは問題が出ている間（朝7時〜翌朝7時）だけ。1台につき1日1回です。</li>
-<li>抽選は翌朝7時の答え発表のあと。このページか、ほかの日の問題のページを開くと結果が出ます。当選から${CAMPAIGN.claimDays}日以内に開かないと、コードはほかの人に回ります。</li>
-<li>受け取り番号はこのブラウザに保存されます。消えたときのためにスクショしておいてね。</li>
+<li>応募できるのは問題が出ている間（朝7時〜翌朝7時）だけ。1台につき1日1回です。応募は無料で、購入は必要ありません。</li>
+<li>抽選は翌朝7時の答え発表のあと。サイトでは問題のページを、アプリでは今日の一問の画面を開くと結果が出ます。当選から${CAMPAIGN.claimDays}日以内に開かないと、コードはほかの人に回ります。</li>
+<li>受け取り番号は応募したブラウザかアプリに保存されます。消えたときのためにスクショしておいてね。</li>
 <li>コードはiPhone・iPadのApp Storeで使えます（有効期限 ${CAMPAIGN.codesExpire}）。ジェムを受け取るにはアプリでAppleでログインしてください。</li>
 <li>コードがなくなったら終了します。内容は予告なく変わることがあります。</li>
-<li>このプレゼントはAppleが提供・協賛するものではありません。</li>
-</ul></details>`;
+<li>このプレゼントは五十音マインスイーパーの開発者が行うもので、Appleが提供・協賛するものではありません。</li>
+</ul>`;
+}
+
+function rules(): string {
+  return `<details><summary>プレゼントのルール</summary>${rulesList()}</details>`;
 }
 
 // `open` is today's puzzle (entries allowed); other pages only show

@@ -129,6 +129,11 @@ export const styles = StyleSheet.create({
   secondaryText: buttonStyles.secondaryButtonText,
   disabled: buttonStyles.disabledButton,
   micro: { color: colors.muted, fontSize: 12, lineHeight: 18 },
+  link: {
+    color: colors.link,
+    fontWeight: "700",
+    textDecorationLine: "underline",
+  },
   panel: {
     borderWidth: 1,
     borderColor: colors.line,
