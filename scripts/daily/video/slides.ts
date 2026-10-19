@@ -145,3 +145,28 @@ ${slides.join("\n")}
 <div class="links">iPhoneアプリ（無料）・ブラウザで遊べる<br>minesweeper.enludus.com　${HANDLE}</div></div>`,
   );
 }
+
+// The roundup's YouTube thumbnail (1280x720): the first puzzle's board as
+// it starts, with the title. Rendered as one frame of the page.
+export function weekThumbnailHtml(entries: readonly DailyEntry[]): string {
+  const first = entries[0]!;
+  const opened = new Set(first.opened);
+  const board = boardHtml(first, (char) => (opened.has(char) ? 0 : null));
+  return pageHtml(
+    1280,
+    720,
+    0.62,
+    `.thumb{position:absolute;inset:0;padding:44px 56px;display:flex;gap:44px;align-items:center}
+.thumb .board{width:560px;flex:none}
+.copy{flex:1;display:flex;flex-direction:column;gap:22px}
+.kicker{font-size:34px;font-weight:900;color:${colors.primary}}
+.title{font-size:84px;font-weight:900;line-height:1.08}
+.q{font-size:52px;font-weight:900;color:${colors.accentStrong}}
+.range{font-size:30px;font-weight:800;color:#3e4c56}`,
+    `<div class="thumb">${board}<div class="copy">${logoHtml()}
+<div class="kicker">今日の一問</div>
+<div class="title">1週間<br>まとめ</div>
+<div class="q">全${entries.length}問、<br>何問わかる？</div>
+<div class="range">${shortDate(first.date)}〜${shortDate(entries.at(-1)!.date)}</div></div></div>`,
+  );
+}

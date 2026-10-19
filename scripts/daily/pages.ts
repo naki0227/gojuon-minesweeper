@@ -118,6 +118,10 @@ function copyBlock(id: string, text: string, label: string): string {
   return `<pre id="${id}">${escapeHtml(text)}</pre><button onclick="navigator.clipboard.writeText(document.getElementById('${id}').textContent).then(()=>{this.textContent='コピーしました'})">${label}</button>`;
 }
 
+function thumbnailBlock(url: string): string {
+  return `<img src="${url}" alt="サムネイル"><a class="cta" href="${url}" download>サムネイルを保存</a>`;
+}
+
 function videoBlock(title: string, path: string, note: string): string {
   const url = videoUrl(path);
   return `<h2>${title}</h2><p>${note}</p>
@@ -155,6 +159,7 @@ function videoSection(videos: VideoPlan): string {
         videoPaths.week(videos.week),
         "月〜日の問題をまとめた横動画。月曜の朝に新しくなります。",
       ),
+      thumbnailBlock(videoUrl(videoPaths.weekThumbnail(videos.week))),
       copyBlock("week-title", title, "タイトルをコピー"),
       copyBlock("week-description", description, "説明をコピー"),
     );
