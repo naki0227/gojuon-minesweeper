@@ -15,6 +15,7 @@ import {
   tick,
   type Session,
 } from "./session";
+import { followLiveChat, readToken } from "./youtube";
 
 const PORT = Number(process.env.LIVE_PORT ?? 4173);
 const USE_CLAUDE = process.env.LIVE_HOST !== "off";
@@ -126,3 +127,15 @@ export function startServer() {
 }
 
 startServer();
+
+// With a token from `npm run live:auth`, comments come from the YouTube
+// live chat; without one, only from /dev.
+const youtube = readToken();
+if (youtube) {
+  console.log("YouTube のライブを待っています…");
+  void followLiveChat(youtube, (comment) =>
+    handleComment(comment.name, comment.text),
+  );
+} else {
+  console.log("YouTube 未連携（npm run live:auth で連携できます）");
+}
