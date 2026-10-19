@@ -16,7 +16,7 @@ import { chromium } from "playwright-core";
 import { currentPuzzleDate, DAILY_SCHEDULE } from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
 import { puzzleJson } from "./lottery";
-import { dayPage, kitPage, listPage } from "./pages";
+import { dayPage, kitPage, listPage, rulesPage } from "./pages";
 import { planVideos } from "./video/texts";
 import { renderDailyVideos } from "./video/videos";
 
@@ -70,6 +70,8 @@ async function main() {
   await browser.close();
 
   writeFileSync(join(outDir, "index.html"), listPage(released));
+  mkdirSync(join(outDir, "rules"), { recursive: true });
+  writeFileSync(join(outDir, "rules", "index.html"), rulesPage());
   if (current) {
     mkdirSync(join(outDir, "kit"), { recursive: true });
     writeFileSync(join(outDir, "kit", "index.html"), kitPage(current, videos));

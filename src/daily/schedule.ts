@@ -57,6 +57,9 @@ export function dailyUrl(date: string): string {
   return `${SITE_URL}/daily/${date}/`;
 }
 
+// The プレゼント rules (scripts/daily/publish.ts writes the page).
+export const GIFT_RULES_URL = `${SITE_URL}/daily/rules/`;
+
 // What goes on X: the post (with the image) and the reply under it.
 export function dailyPostTexts(entry: DailyEntry): {
   post: string;
