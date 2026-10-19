@@ -59,12 +59,13 @@ export type QuestionTimeline = {
   cues: Cue[];
 };
 
-// Today's puzzle: the prompt, then its cells open one by one, then
+// Today's puzzle: the prompt is up from the first frame, since most
+// viewers decide to swipe on it; its cells start opening right away, then
 // "comment your answer", then "subscribe".
 export function questionTimeline(entry: DailyEntry): QuestionTimeline {
-  const promptAt = 0.3;
-  const opens = reveals(openingOrder(entry), 1.4, 0.32);
-  const ctaAt = round((opens.at(-1)?.at ?? 1.4) + 0.9);
+  const promptAt = 0;
+  const opens = reveals(openingOrder(entry), 0.5, 0.32);
+  const ctaAt = round((opens.at(-1)?.at ?? 0.5) + 0.9);
   const followAt = round(ctaAt + 1.5);
   const mines = questionMineCharacters(dailyQuestion(entry));
   return {

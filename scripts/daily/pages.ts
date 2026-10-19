@@ -15,6 +15,7 @@ import { escapeHtml } from "./html";
 import { LOTTERY_CSS, lotterySection, rulesList } from "./lottery";
 import {
   answerPostText,
+  questionPostText,
   videoPaths,
   videoUrl,
   weekPostText,
@@ -137,7 +138,12 @@ function videoSection(videos: VideoPlan): string {
       videoBlock(
         "問題ショート",
         videoPaths.question(videos.question),
-        "TikTok・リール・YouTubeショート用。本文は上と同じでOK。",
+        "TikTok・リール・YouTubeショート用。1行目がタイトルになるよ。",
+      ),
+      copyBlock(
+        "question-post",
+        questionPostText(videos.question),
+        "本文をコピー",
       ),
     );
   }

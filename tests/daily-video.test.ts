@@ -1,13 +1,20 @@
 import { describe, expect, it } from "vitest";
 
+import { questionPrompt } from "../src/data/questions";
 import {
   DAILY_SCHEDULE,
+  dailyAnswer,
   dailyEntry,
   dailyQuestion,
 } from "../src/daily/schedule";
 import { isMineCharacter } from "../src/game/engine";
 import { ffmpegArgs } from "../scripts/daily/video/encode";
-import { planVideos, weekPostText } from "../scripts/daily/video/texts";
+import {
+  answerPostText,
+  planVideos,
+  questionPostText,
+  weekPostText,
+} from "../scripts/daily/video/texts";
 import {
   answerTimeline,
   clock,
@@ -103,6 +110,16 @@ describe("which videos are made", () => {
     expect(description).toContain("0:00 オープニング");
     expect(description).toContain(`第1問 10/13`);
     expect(clock(75.4)).toBe("1:15");
+  });
+
+  it("opens the shorts' titles with the question, not the date", () => {
+    const prompt = questionPrompt(dailyQuestion(entry));
+    expect(questionPostText(entry).startsWith(`${prompt}、わかる？`)).toBe(
+      true,
+    );
+    const answerTitle = answerPostText(entry).split("\n")[0]!;
+    expect(answerTitle.startsWith(prompt)).toBe(true);
+    expect(answerTitle).not.toContain(dailyAnswer(entry));
   });
 });
 
