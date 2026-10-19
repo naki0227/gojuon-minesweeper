@@ -21,7 +21,8 @@
     "quality": "npm run quality:lines && npm run quality:duplicates",
     "prepare": "node scripts/install-git-hooks.mjs",
     "daily:plan": "tsx scripts/daily/plan.ts",
-    "daily:publish": "tsx scripts/daily/publish.ts"
+    "daily:publish": "tsx scripts/daily/publish.ts",
+    "live": "tsx scripts/live/server.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
