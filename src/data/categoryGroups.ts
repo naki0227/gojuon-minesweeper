@@ -1,5 +1,5 @@
 import { tr } from "../i18n";
-import type { LengthRange, QuestionLanguage } from "./types";
+import type { QuestionLanguage } from "./types";
 
 const S = tr({
   ja: {
@@ -10,13 +10,6 @@ const S = tr({
     people: "芸能・人物",
     hobby: "趣味",
     work: "仕事・テクノロジー",
-    all: "ぜんぶ",
-    short: "短い",
-    shortNote: "2〜4字",
-    normal: "ふつう",
-    normalNote: "5〜7字",
-    long: "長い",
-    longNote: "8字〜",
   },
   en: {
     daily: "Everyday",
@@ -26,13 +19,6 @@ const S = tr({
     people: "Celebrities",
     hobby: "Hobbies",
     work: "Work & Tech",
-    all: "All",
-    short: "Short",
-    shortNote: "2–4 letters",
-    normal: "Medium",
-    normalNote: "5–7 letters",
-    long: "Long",
-    longNote: "8+ letters",
   },
 });
 
@@ -54,15 +40,23 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
     sample: { ja: "はさみ", en: "CUP" },
     categories: [
       "文房具",
-      "生活用品",
       "衣服",
       "乗り物",
       "天気",
       "植物",
       "楽器",
       "季節・行事",
-      "食べ物",
+      "料理",
+      "お菓子",
+      "果物",
+      "野菜",
+      "食材",
+      "調味料",
+      "飲み物",
       "動物",
+      "鳥",
+      "魚・海の生き物",
+      "虫",
       "職業",
       "Body",
       "Transport",
@@ -100,7 +94,18 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
       "Automobiles",
       "Car Parts",
       "Ghosts",
-      "体",
+      "体の部位",
+      "健康・病気",
+      "人・家族",
+      "日用品",
+      "台所用品",
+      "掃除・洗濯",
+      "家具・家電",
+      "工具",
+      "家のつくり",
+      "建物・施設",
+      "交通・道路",
+      "時間・こよみ",
       "色",
       "遊び・おもちゃ",
       "Kitchen",
@@ -150,9 +155,11 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
     label: S.words,
     sample: { ja: "ことわざ", en: "WORD" },
     categories: [
-      "ことば",
-      "動き",
-      "ようす",
+      "動詞",
+      "形容詞",
+      "様子を表す言葉",
+      "気持ち",
+      "性格",
       "擬音語",
       "国語",
       "四字熟語",
@@ -173,6 +180,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
       "日本の名所",
       "世界の国",
       "世界の都市",
+      "自然・風景",
       "Countries",
       "Cities",
       "US States",
@@ -216,6 +224,9 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
       "Dances",
       "昔話・童話",
       "伝統・文化",
+      "趣味・アウトドア",
+      "舞台・芸能",
+      "音楽",
       "Mythology",
     ],
   },
@@ -225,6 +236,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
     sample: { ja: "さーば", en: "CODE" },
     categories: [
       "IT用語",
+      "仕事・会社",
       "Programming",
       "Coding",
       "Algorithms",
@@ -275,22 +287,3 @@ export function findSelectedGroup(
     }) ?? null
   );
 }
-
-export type LengthPreset = {
-  id: string;
-  label: string;
-  note: string | null;
-  range: "any" | LengthRange;
-};
-
-export const LENGTH_PRESETS: readonly LengthPreset[] = [
-  { id: "any", label: S.all, note: null, range: "any" },
-  { id: "short", label: S.short, note: S.shortNote, range: { min: 2, max: 4 } },
-  {
-    id: "normal",
-    label: S.normal,
-    note: S.normalNote,
-    range: { min: 5, max: 7 },
-  },
-  { id: "long", label: S.long, note: S.longNote, range: { min: 8, max: null } },
-];

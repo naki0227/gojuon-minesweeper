@@ -170,175 +170,175 @@
   {
     "id": "ja-0025",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "おにぎり",
     "value": "おにぎり"
   },
   {
     "id": "ja-0026",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "たこ焼き",
     "value": "たこやき"
   },
   {
     "id": "ja-0027",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "唐揚げ",
     "value": "からあげ"
   },
   {
     "id": "ja-0028",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "ハンバーグ",
     "value": "はんばーぐ"
   },
   {
     "id": "ja-0029",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "カレー",
     "value": "かれー"
   },
   {
     "id": "ja-0030",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "寿司",
     "value": "すし"
   },
   {
     "id": "ja-0031",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "天ぷら",
     "value": "てんぷら"
   },
   {
     "id": "ja-0032",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "うどん",
     "value": "うどん"
   },
   {
     "id": "ja-0033",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "そば",
     "value": "そば"
   },
   {
     "id": "ja-0034",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "ラーメン",
     "value": "らーめん"
   },
   {
     "id": "ja-0035",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "オムライス",
     "value": "おむらいす"
   },
   {
     "id": "ja-0036",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "餃子",
     "value": "ぎょうざ"
   },
   {
     "id": "ja-0037",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "焼きそば",
     "value": "やきそば"
   },
   {
     "id": "ja-0038",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "お好み焼き",
     "value": "おこのみやき"
   },
   {
     "id": "ja-0039",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "親子丼",
     "value": "おやこどん"
   },
   {
     "id": "ja-0040",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "牛丼",
     "value": "ぎゅうどん"
   },
   {
     "id": "ja-0041",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "カツ丼",
     "value": "かつどん"
   },
   {
     "id": "ja-0042",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "茶碗蒸し",
     "value": "ちゃわんむし"
   },
   {
     "id": "ja-0043",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "味噌汁",
     "value": "みそしる"
   },
   {
     "id": "ja-0044",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "肉じゃが",
     "value": "にくじゃが"
   },
   {
     "id": "ja-0045",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "コロッケ",
     "value": "ころっけ"
   },
   {
     "id": "ja-0046",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "とんかつ",
     "value": "とんかつ"
   },
   {
     "id": "ja-0047",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "ナポリタン",
     "value": "なぽりたん"
   },
   {
     "id": "ja-0048",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "グラタン",
     "value": "ぐらたん"
   },
   {
     "id": "ja-0049",
     "language": "ja",
-    "category": "食べ物",
+    "category": "料理",
     "display": "シチュー",
     "value": "しちゅー"
   },
@@ -352,7 +352,7 @@
   {
     "id": "ja-0051",
     "language": "ja",
-    "category": "動物",
+    "category": "鳥",
     "display": "ペンギン",
     "value": "ぺんぎん"
   },
@@ -443,35 +443,35 @@
   {
     "id": "ja-0064",
     "language": "ja",
-    "category": "動物",
+    "category": "魚・海の生き物",
     "display": "イルカ",
     "value": "いるか"
   },
   {
     "id": "ja-0065",
     "language": "ja",
-    "category": "動物",
+    "category": "魚・海の生き物",
     "display": "クジラ",
     "value": "くじら"
   },
   {
     "id": "ja-0066",
     "language": "ja",
-    "category": "動物",
+    "category": "魚・海の生き物",
     "display": "シャチ",
     "value": "しゃち"
   },
   {
     "id": "ja-0067",
     "language": "ja",
-    "category": "動物",
+    "category": "魚・海の生き物",
     "display": "ラッコ",
     "value": "らっこ"
   },
   {
     "id": "ja-0068",
     "language": "ja",
-    "category": "動物",
+    "category": "魚・海の生き物",
     "display": "アザラシ",
     "value": "あざらし"
   },
@@ -485,21 +485,21 @@
   {
     "id": "ja-0070",
     "language": "ja",
-    "category": "動物",
+    "category": "鳥",
     "display": "フクロウ",
     "value": "ふくろう"
   },
   {
     "id": "ja-0071",
     "language": "ja",
-    "category": "動物",
+    "category": "鳥",
     "display": "ワシ",
     "value": "わし"
   },
   {
     "id": "ja-0072",
     "language": "ja",
-    "category": "動物",
+    "category": "鳥",
     "display": "タカ",
     "value": "たか"
   },
@@ -1801,7 +1801,7 @@
   {
     "id": "ja-0258",
     "language": "ja",
-    "category": "社会・地理",
+    "category": "天気",
     "display": "梅雨",
     "value": "つゆ"
   },

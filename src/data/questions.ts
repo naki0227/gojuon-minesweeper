@@ -21,6 +21,7 @@ import type {
 } from "./types";
 import { normalizedLength } from "../game/normalize";
 import { createSignatureKey } from "../game/signature";
+import { expandLegacyCategories } from "./legacyCategories";
 import { isSpecialistItCategory } from "./specialistCategories";
 
 const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
@@ -129,6 +130,7 @@ export function matchesLength(length: number, filter: LengthFilter): boolean {
 }
 
 export function filterQuestions(filters: QuestionFilters): readonly Question[] {
+  const categories = expandLegacyCategories(filters.categories);
   return QUESTIONS.filter((question) => {
     if (filters.language !== "any" && question.language !== filters.language) {
       return false;
@@ -143,10 +145,7 @@ export function filterQuestions(filters: QuestionFilters): readonly Question[] {
       return false;
     }
 
-    if (
-      filters.categories.length > 0 &&
-      !filters.categories.includes(question.category)
-    ) {
+    if (categories.length > 0 && !categories.includes(question.category)) {
       return false;
     }
 
