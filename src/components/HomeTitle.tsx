@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { DailyCard } from "../daily/DailyCard";
+import { japanDate } from "../daily/schedule";
 import { SoundButton } from "../sound/SoundButton";
 import { tr } from "../i18n";
 import { colors } from "../theme/colors";
+import { HALLOWEEN, seasonOf } from "../theme/season";
 
 const S = tr({
   ja: { title: "マインスイーパー" },
@@ -13,16 +15,26 @@ const S = tr({
 // The 五十音 tiles and title at the top of the home screen, with the sound
 // settings on the right, and the way into 今日の一問 below.
 export function HomeTitle() {
+  const halloween = seasonOf(japanDate(new Date())) === "halloween";
   return (
     <View style={styles.column}>
       <View style={styles.row}>
         <View style={styles.titleRow} accessibilityRole="header">
           <View style={styles.tiles}>
-            <Text style={styles.tile}>五</Text>
-            <Text style={styles.tile}>十</Text>
-            <Text style={[styles.tile, styles.accent]}>音</Text>
+            <Text style={[styles.tile, halloween && styles.nightTile]}>五</Text>
+            <Text style={[styles.tile, halloween && styles.nightTile]}>十</Text>
+            <Text
+              style={[styles.tile, styles.accent, halloween && styles.pumpkin]}
+            >
+              音
+            </Text>
           </View>
           <Text style={styles.text}>{S.title}</Text>
+          {halloween ? (
+            <Text style={styles.season} accessibilityElementsHidden>
+              🎃
+            </Text>
+          ) : null}
         </View>
         <SoundButton />
       </View>
@@ -52,6 +64,10 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   accent: { backgroundColor: colors.primary, color: colors.white },
+  nightTile: { backgroundColor: HALLOWEEN.tile },
+  pumpkin: { backgroundColor: HALLOWEEN.pumpkin },
+  // One small seasonal mark; the sound button keeps its place.
+  season: { fontSize: 18, lineHeight: 22 },
   text: {
     color: colors.ink,
     fontSize: 19,

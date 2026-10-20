@@ -13,6 +13,7 @@ import { appStoreUrl, SITE_URL } from "../../src/links/site";
 import { colors } from "../../src/theme/colors";
 import { escapeHtml } from "./html";
 import { LOTTERY_CSS, lotterySection, rulesList } from "./lottery";
+import { seasonBand, seasonPageCss } from "./season";
 import {
   answerPostText,
   questionPostText,
@@ -22,7 +23,8 @@ import {
   type VideoPlan,
 } from "./video/texts";
 
-function layout(head: string, body: string): string {
+// `date` picks the seasonal look (season.ts), if any.
+function layout(head: string, body: string, date = ""): string {
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">${head}
 <style>
@@ -44,7 +46,7 @@ pre{white-space:pre-wrap;background:#fff;border:1px solid ${colors.line};border-
 button{border:0;background:${colors.primary};color:#fff;border-radius:10px;padding:13px;font-weight:800;font-size:15px}
 video{width:100%;border-radius:14px;background:#000}
 h2{margin:12px 0 0;font-size:20px}
-.thumbs{display:flex;gap:8px}.thumbs a{flex:1;font-size:12px;text-align:center;text-decoration:none}${LOTTERY_CSS}
+.thumbs{display:flex;gap:8px}.thumbs a{flex:1;font-size:12px;text-align:center;text-decoration:none}${LOTTERY_CSS}${seasonPageCss(date)}
 </style></head><body><main>${body}</main></body></html>`;
 }
 
@@ -78,18 +80,20 @@ export function dayPage(
 <meta name="twitter:image" content="${imageUrl(entry)}">`;
   return layout(
     head,
-    `<div class="eyebrow">今日の一問 ${shortDate(entry.date)}</div><h1>${prompt}</h1>
+    `${seasonBand(entry.date, `<div class="eyebrow">今日の一問 ${shortDate(entry.date)}</div><h1>${prompt}</h1>`)}
 <img src="${imageUrl(entry)}" alt="${prompt}の盤面">${answer}${
       lotteryEndpoint ? lotterySection(entry, !revealed, lotteryEndpoint) : ""
     }
 <a class="cta" href="${SITE_URL}/">ブラウザで遊ぶ</a>
 <a class="cta" href="${escapeHtml(appStoreUrl("web_daily"))}">iPhoneアプリで遊ぶ</a>
 <a href="${SITE_URL}/daily/">ほかの日の問題</a>`,
+    entry.date,
   );
 }
 
 // Released puzzles, newest first.
 export function listPage(entries: readonly DailyEntry[]): string {
+  const latest = entries.at(-1)?.date ?? "";
   const rows = [...entries]
     .reverse()
     .map(
@@ -100,7 +104,8 @@ export function listPage(entries: readonly DailyEntry[]): string {
   return layout(
     `<title>今日の一問 | 五十音マインスイーパー</title>
 <meta name="description" content="毎日1問、盤面の数字から答えを推理する「今日の一問」。">`,
-    `<h1>今日の一問</h1><p>毎朝7時に新しい問題。開いたマスの数字から答えを推理しよう。</p>${rows}`,
+    `${seasonBand(latest, "<h1>今日の一問</h1>")}<p>毎朝7時に新しい問題。開いたマスの数字から答えを推理しよう。</p>${rows}`,
+    latest,
   );
 }
 

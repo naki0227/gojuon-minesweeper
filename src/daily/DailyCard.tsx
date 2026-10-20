@@ -5,6 +5,7 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import { Pressable } from "../components/TapPressable";
 import { LOCALE } from "../i18n";
 import { colors } from "../theme/colors";
+import { HALLOWEEN, seasonOf } from "../theme/season";
 import { currentPuzzleDate } from "./schedule";
 import { readDailyMemory } from "./storage";
 import { currentStreak } from "./streak";
@@ -28,15 +29,18 @@ export function DailyCard() {
     }, []),
   );
   if (Platform.OS === "web" || LOCALE !== "ja") return null;
+  const halloween = seasonOf(currentPuzzleDate(new Date())) === "halloween";
   return (
     <Pressable
       accessibilityRole="button"
-      style={styles.card}
+      style={[styles.card, halloween && styles.nightCard]}
       onPress={() => router.push("/today")}
     >
       <View style={styles.text}>
-        <Text style={styles.title}>今日の一問</Text>
-        <Text style={styles.sub}>
+        <Text style={[styles.title, halloween && styles.nightTitle]}>
+          {halloween ? "🎃 ハロウィン週の一問" : "今日の一問"}
+        </Text>
+        <Text style={[styles.sub, halloween && styles.nightSub]}>
           {state.done ? "今日はクリア済み。また明日！" : "毎朝7時に新しい問題"}
         </Text>
       </View>
@@ -65,4 +69,16 @@ const styles = StyleSheet.create({
   sub: { color: "#536875", fontSize: 12, fontWeight: "700" },
   streak: { color: colors.accent, fontSize: 15, fontWeight: "900" },
   go: { color: colors.primary, fontSize: 24, fontWeight: "900" },
+  // Halloween week: the night sky with a flat pumpkin shadow.
+  nightCard: {
+    backgroundColor: HALLOWEEN.night,
+    borderColor: HALLOWEEN.night,
+    shadowColor: HALLOWEEN.pumpkin,
+    shadowOffset: { width: -4, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    elevation: 0,
+  },
+  nightTitle: { color: HALLOWEEN.text },
+  nightSub: { color: HALLOWEEN.sub },
 });

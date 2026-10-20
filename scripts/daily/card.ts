@@ -15,6 +15,7 @@ import {
   type DailyEntry,
 } from "../../src/daily/schedule";
 import { escapeHtml } from "./html";
+import { seasonCss, seasonDecor } from "./season";
 
 export type CardSize = { name: string; width: number; height: number };
 
@@ -76,7 +77,7 @@ export function cardHtml(entry: DailyEntry, size: CardSize): string {
 *{box-sizing:border-box;margin:0}
 body{width:${size.width}px;height:${size.height}px;background:linear-gradient(170deg,${colors.primarySoft},${colors.background} 45%);
 font-family:"Hiragino Sans","Noto Sans CJK JP","Noto Sans JP",sans-serif;color:${colors.ink};
-display:flex;flex-direction:column;justify-content:center;gap:${tall > 1.5 ? 56 : 34}px;padding:64px 60px}
+display:flex;flex-direction:column;justify-content:center;gap:${tall > 1.5 ? 56 : 34}px;padding:64px 60px;position:relative}
 .head{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;gap:6px}.logo div{width:58px;height:58px;background:${colors.ink};color:#fff;font-weight:900;font-size:34px;display:flex;align-items:center;justify-content:center}
 .logo div:last-child{background:${colors.primary}}
@@ -89,8 +90,8 @@ ${tileCss()}
 .legend span{display:inline-flex;align-items:center;gap:10px}
 .sw{width:34px;height:34px;border-radius:8px;display:inline-block}
 .cta{font-size:${tall > 1.5 ? 50 : 42}px;font-weight:900;color:${colors.ink};border-left:10px solid ${colors.accent};padding-left:22px}
-.foot{display:flex;justify-content:space-between;font-size:26px;color:#627481;font-weight:700}
-</style></head><body>
+.foot{display:flex;justify-content:space-between;font-size:26px;color:#627481;font-weight:700}${seasonCss(entry.date)}
+</style></head><body>${seasonDecor(entry.date, 1, tall)}
 <div class="head"><div class="logo"><div>五</div><div>十</div><div>音</div></div>
 <div class="badge">今日の一問<span>${shortDate(entry.date)}（${WEEKDAYS[day]}）</span></div></div>
 <div class="prompt">${escapeHtml(questionPrompt(question))}</div>

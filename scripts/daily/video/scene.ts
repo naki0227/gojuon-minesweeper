@@ -5,6 +5,7 @@ import { getBoardGrid } from "../../../src/game/board";
 import { dailyQuestion, type DailyEntry } from "../../../src/daily/schedule";
 import { colors } from "../../../src/theme/colors";
 import { tileCss, tileHtml } from "../card";
+import { seasonCss, seasonDecor } from "../season";
 
 // fx: "pop" scales in, "fade" fades up, "bar" shrinks over data-dur seconds.
 // Progress is quantized so frames that look alike return the same
@@ -87,6 +88,8 @@ export function pageHtml(
   unit: number,
   css: string,
   body: string,
+  // The puzzle date, for the seasonal look (season.ts).
+  date = "",
 ): string {
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>
 *{box-sizing:border-box;margin:0}
@@ -105,8 +108,8 @@ ${tileCss(unit)}
 .answer span{width:${120 * unit}px;height:${120 * unit}px;border-radius:${20 * unit}px;background:${colors.accent};color:#fff;font-weight:900;font-size:${72 * unit}px;display:flex;align-items:center;justify-content:center;border-bottom:${8 * unit}px solid ${colors.accentStrong}}
 .trivia{font-size:${32 * unit}px;line-height:1.6;color:#3e4c56;font-weight:700}
 .bar{height:${14 * unit}px;border-radius:99px;background:${colors.primary}}
-${css}
-</style></head><body>${body}<script>${RUNTIME}</script></body></html>`;
+${css}${seasonCss(date)}
+</style></head><body>${seasonDecor(date, width / 1080, height / width)}${body}<script>${RUNTIME}</script></body></html>`;
 }
 
 // The answer as orange tiles, shrinking so long answers fit `width`.
