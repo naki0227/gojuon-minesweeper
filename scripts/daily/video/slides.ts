@@ -15,6 +15,7 @@ import {
   type QuestionTimeline,
   type WeekTimeline,
 } from "./timeline";
+import { isHalloween } from "../season";
 import { answerTiles, at, boardHtml, logoHtml, pageHtml } from "./scene";
 
 export const HANDLE = "@gojuonmine";
@@ -28,6 +29,14 @@ function prompt(entry: DailyEntry): string {
   return escapeHtml(questionPrompt(dailyQuestion(entry)));
 }
 
+// Long prompts (「6文字の遊び・おもちゃ」) wrap at full size, so they get a
+// smaller line.
+function promptClass(entry: DailyEntry): string {
+  return Array.from(questionPrompt(dailyQuestion(entry))).length > 9
+    ? "prompt long"
+    : "prompt";
+}
+
 // Shorts and Reels cover the bottom and the right edge with buttons, so the
 // vertical layouts keep their content in the middle.
 const VERTICAL_CSS = `
@@ -36,6 +45,7 @@ main{position:absolute;inset:150px 70px 380px 70px;display:flex;flex-direction:c
 .badge{font-size:40px;font-weight:900;color:${colors.primary};letter-spacing:2px}
 .badge span{color:${colors.ink};margin-left:14px}
 .prompt{font-size:100px;font-weight:900;line-height:1.1}
+.prompt.long{font-size:80px}
 .prompt em{display:block;font-style:normal;font-size:72px;color:${colors.accentStrong}}
 .legend{font-size:30px;color:#3e4c56;font-weight:700;line-height:1.6}
 .legend b{color:${colors.accent}}
@@ -66,11 +76,12 @@ export function questionVideoHtml(
     VERTICAL_CSS,
     `<main>
 <div class="head">${logoHtml()}<div class="badge">今日の一問<span>${dayLabel(entry.date)}</span></div></div>
-<div class="prompt">${prompt(entry)}<em>わかる？🤔</em></div>
+<div class="${promptClass(entry)}">${prompt(entry)}<em>わかる？🤔</em></div>
 ${boardHtml(entry, (char) => openAt.get(char) ?? null)}
 <div class="legend"${at(0.5, { fx: "fade" })}>数字＝周りにある答えの文字の数<br><b>オレンジ</b>＝答えに入っている文字</div>
 <div class="cta"${at(timeline.ctaAt)}><strong>答えは？🤔</strong><span>コメントで教えてね／正解は明日7時に公開</span><em${at(timeline.followAt, { fx: "fade" })}>🔔 チャンネル登録で毎朝7時にお届け</em></div>
 </main>${footer()}`,
+    entry.date,
   );
 }
 
@@ -96,12 +107,13 @@ export function answerVideoHtml(entry: DailyEntry): string {
     VERTICAL_CSS,
     `<main class="tight">
 <div class="head">${logoHtml()}<div class="badge">答え合わせ<span>${dayLabel(entry.date)}</span></div></div>
-<div class="prompt">${prompt(entry)}</div>
+<div class="${promptClass(entry)}">${prompt(entry)}</div>
 ${board}
 <div class="lead"${at(1, { fx: "fade", until: timeline.answerAt })}>答えは……</div>
 ${answer}${trivia}
 <div class="cta mini"${at(timeline.followAt)}><strong>明日の一問もお楽しみに</strong><span>🔔 チャンネル登録で毎朝7時にお届け</span></div>
 </main>${footer()}`,
+    entry.date,
   );
 }
 
@@ -150,6 +162,7 @@ ${slides.join("\n")}
 <div class="center"${at(timeline.outroAt, { fx: "fade" })}>${logoHtml()}
 <div class="big">毎朝7時に新しい一問</div>
 <div class="links">iPhoneアプリ（無料）・ブラウザで遊べる<br>minesweeper.enludus.com　${HANDLE}</div></div>`,
+    first,
   );
 }
 
@@ -171,9 +184,10 @@ export function weekThumbnailHtml(entries: readonly DailyEntry[]): string {
 .q{font-size:52px;font-weight:900;color:${colors.accentStrong}}
 .range{font-size:30px;font-weight:800;color:#3e4c56}`,
     `<div class="thumb">${board}<div class="copy">${logoHtml()}
-<div class="kicker">今日の一問</div>
+<div class="kicker">${isHalloween(first.date) ? "🎃 ハロウィン週の一問" : "今日の一問"}</div>
 <div class="title">1週間<br>まとめ</div>
 <div class="q">全${entries.length}問、<br>何問わかる？</div>
 <div class="range">${shortDate(first.date)}〜${shortDate(entries.at(-1)!.date)}</div></div></div>`,
+    first.date,
   );
 }

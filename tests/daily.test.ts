@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { QUESTIONS } from "../src/data/questions";
+import { seasonOf } from "../src/theme/season";
 import {
   buildPuzzle,
   consistentCandidates,
@@ -79,5 +80,15 @@ describe("daily helpers", () => {
     const a = buildPuzzle(question, pool, seededRandom("x"));
     const b = buildPuzzle(question, pool, seededRandom("x"));
     expect(a).toEqual(b);
+  });
+});
+
+describe("seasons", () => {
+  it("marks the Halloween week and its puzzle week's last day", () => {
+    expect(seasonOf("2026-10-23")).toBeNull();
+    expect(seasonOf("2026-10-24")).toBe("halloween");
+    expect(seasonOf("2026-10-31")).toBe("halloween");
+    expect(seasonOf("2026-11-01")).toBe("halloween");
+    expect(seasonOf("2026-11-02")).toBeNull();
   });
 });
