@@ -128,126 +128,126 @@
   {
     "id": "daily-ja-02-01",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "タオル",
     "value": "たおる"
   },
   {
     "id": "daily-ja-02-02",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "石けん",
     "value": "せっけん"
   },
   {
     "id": "daily-ja-02-03",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "歯ブラシ",
     "value": "はぶらし"
   },
   {
     "id": "daily-ja-02-04",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "鏡",
     "value": "かがみ"
   },
   {
     "id": "daily-ja-02-05",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "時計",
     "value": "とけい"
   },
   {
     "id": "daily-ja-02-06",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "傘",
     "value": "かさ"
   },
   {
     "id": "daily-ja-02-07",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "かばん",
     "value": "かばん"
   },
   {
     "id": "daily-ja-02-08",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "ハンカチ",
     "value": "はんかち"
   },
   {
     "id": "daily-ja-02-09",
     "language": "ja",
-    "category": "生活用品",
+    "category": "掃除・洗濯",
     "display": "洗剤",
     "value": "せんざい"
   },
   {
     "id": "daily-ja-02-10",
     "language": "ja",
-    "category": "生活用品",
+    "category": "掃除・洗濯",
     "display": "ほうき",
     "value": "ほうき"
   },
   {
     "id": "daily-ja-02-11",
     "language": "ja",
-    "category": "生活用品",
+    "category": "掃除・洗濯",
     "display": "ちりとり",
     "value": "ちりとり"
   },
   {
     "id": "daily-ja-02-12",
     "language": "ja",
-    "category": "生活用品",
+    "category": "掃除・洗濯",
     "display": "雑巾",
     "value": "ぞうきん"
   },
   {
     "id": "daily-ja-02-13",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "体温計",
     "value": "たいおんけい"
   },
   {
     "id": "daily-ja-02-14",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "懐中電灯",
     "value": "かいちゅうでんとう"
   },
   {
     "id": "daily-ja-02-15",
     "language": "ja",
-    "category": "生活用品",
+    "category": "家具・家電",
     "display": "まくら",
     "value": "まくら"
   },
   {
     "id": "daily-ja-02-16",
     "language": "ja",
-    "category": "生活用品",
+    "category": "家具・家電",
     "display": "布団",
     "value": "ふとん"
   },
   {
     "id": "daily-ja-02-17",
     "language": "ja",
-    "category": "生活用品",
+    "category": "家具・家電",
     "display": "カーテン",
     "value": "かーてん"
   },
   {
     "id": "daily-ja-02-18",
     "language": "ja",
-    "category": "生活用品",
+    "category": "日用品",
     "display": "花瓶",
     "value": "かびん"
   },
@@ -940,14 +940,14 @@
   {
     "id": "daily-ja-08-09",
     "language": "ja",
-    "category": "季節・行事",
+    "category": "学校",
     "display": "運動会",
     "value": "うんどうかい"
   },
   {
     "id": "daily-ja-08-10",
     "language": "ja",
-    "category": "季節・行事",
+    "category": "学校",
     "display": "文化祭",
     "value": "ぶんかさい"
   },
@@ -975,14 +975,14 @@
   {
     "id": "daily-ja-08-14",
     "language": "ja",
-    "category": "季節・行事",
+    "category": "学校",
     "display": "入学式",
     "value": "にゅうがくしき"
   },
   {
     "id": "daily-ja-08-15",
     "language": "ja",
-    "category": "季節・行事",
+    "category": "学校",
     "display": "卒業式",
     "value": "そつぎょうしき"
   },

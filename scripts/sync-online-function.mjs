@@ -29,6 +29,7 @@ const SOURCES = [
       name === "types.ts" ||
       name === "questions.ts" ||
       name === "specialistCategories.ts" ||
+      name === "legacyCategories.ts" ||
       /^question-bank-.*\.json$/.test(name),
   },
   {

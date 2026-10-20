@@ -5,6 +5,7 @@ import {
   findSelectedGroup,
   groupCategoriesIn,
 } from "../src/data/categoryGroups";
+import { LEGACY_CATEGORIES } from "../src/data/legacyCategories";
 import {
   countQuestions,
   getCategories,
@@ -34,6 +35,20 @@ describe("category groups", () => {
     expect(findSelectedGroup(selected, available)?.id).toBe("geography");
     expect(findSelectedGroup(selected.slice(0, 1), available)).toBeNull();
     expect(findSelectedGroup([], available)).toBeNull();
+  });
+});
+
+describe("split categories", () => {
+  it("still finds questions for old category names", () => {
+    const current = getCategories("ja");
+    for (const [old, successors] of Object.entries(LEGACY_CATEGORIES)) {
+      expect(current, old).not.toContain(old);
+      for (const category of successors) expect(current).toContain(category);
+      const filters = { language: "ja", length: "any" } as const;
+      expect(countQuestions({ ...filters, categories: [old] }), old).toBe(
+        countQuestions({ ...filters, categories: successors }),
+      );
+    }
   });
 });
 

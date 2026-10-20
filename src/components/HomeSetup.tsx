@@ -16,8 +16,8 @@ import {
   CATEGORY_GROUPS,
   findSelectedGroup,
   groupCategoriesIn,
-  LENGTH_PRESETS,
 } from "../data/categoryGroups";
+import { LENGTH_PRESETS } from "../data/lengthPresets";
 import {
   countQuestions,
   getAvailableLengths,
