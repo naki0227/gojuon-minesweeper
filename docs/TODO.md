@@ -26,7 +26,7 @@
 - [ ] `store-assets/ios/ipad/submission-ready/` の5枚を13インチiPad枠にアップロードし、受け付け結果を確認する。
 - [ ] ゲームロジックのunit testを整備する。
 - [ ] 変更後の設定画面でiPhone・iPad提出用スクリーンショットを撮り直す。既存画像には削除したカテゴリが含まれる。
-- [ ] npm auditが報告した本番依存の既知の脆弱性を、Expoとの互換性を確認して解消する。`npm audit fix --force`は破壊的なExpo変更を提示するため未実施。
+- [ ] npm auditの残り3件を解消する（2026-10-21時点、詳細は `docs/reports/2026-10-21-dependency-vulnerability-report.md`）。decode-uri-component（GHSA-vcc3-ghjq-m6fr）はExpo SDK 58（expo-router 58）への更新で解消する。node-forge（GHSA-86w9-cpqp-85rv）とexpo経由のbraces（GHSA-vfj7-8cjw-p6xm）は修正版が出ていないので、出たら取り込む。`npm audit fix --force`は破壊的なExpo変更を提示するため使わない。
 - [ ] 必要なら未購入状態の実機でTestFlight 1.0.1の本番広告を確認する。Simulatorで確認したのはテスト広告。
 - [ ] オンライン対局中のバナーについて、実機の操作感とAdMobの誤タップ指標を公開後に確認する。盤面操作画面への広告はGoogleのガイダンス上、特に注意が必要。
 
