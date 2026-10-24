@@ -11,6 +11,7 @@ import englishTopicEntries5 from "./question-bank-en-topics-5.json";
 import englishTopicEntries6 from "./question-bank-en-topics-6.json";
 import japaneseMoreEntries from "./question-bank-ja-more.json";
 import englishMoreEntries from "./question-bank-en-more.json";
+import japaneseTopicEntries from "./question-bank-ja-topics.json";
 import type {
   AnswerOption,
   Question,
@@ -38,6 +39,7 @@ const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(englishTopicEntries6 as RawQuestionEntry[]),
   ...(japaneseMoreEntries as RawQuestionEntry[]),
   ...(englishMoreEntries as RawQuestionEntry[]),
+  ...(japaneseTopicEntries as RawQuestionEntry[]),
 ];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
