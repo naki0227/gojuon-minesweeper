@@ -2,6 +2,8 @@
 // static pages on minesweeper.enludus.com/daily/ without a login.
 //   {action: "enter", date, answer, device} -> {correct, ticket, status, url?}
 //   {action: "status", tickets}             -> {results: [{ticket, date, status, url?}]}
+//   {action: "result", date, device, solved, moves} -> {stats}  (the app's 正解率)
+//   {action: "stats", date}                 -> {stats}
 // The answer is checked against /daily/<date>/puzzle.json, which the daily
 // publish writes with hashes of the accepted answers (scripts/daily/lottery.ts).
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -152,6 +154,49 @@ async function status(body: Record<string, unknown>) {
   return respond({ ok: true, results });
 }
 
+function addDays(date: string, days: number): string {
+  const day = new Date(`${date}T00:00:00Z`);
+  day.setUTCDate(day.getUTCDate() + days);
+  return day.toISOString().slice(0, 10);
+}
+
+type Stats = { players: number; solved: number; avgMoves: number | null };
+
+// A finished game from the app, for today's or yesterday's puzzle (the app
+// shows yesterday's until today's is online).
+async function result(body: Record<string, unknown>, request: Request) {
+  const date = readString(body.date, 10);
+  const device = readString(body.device, 64);
+  const moves = typeof body.moves === "number" ? Math.floor(body.moves) : -1;
+  const today = currentPuzzleDate(new Date());
+  if (
+    !/^[A-Za-z0-9-]{16,64}$/.test(device) ||
+    typeof body.solved !== "boolean" || moves < 0 || moves > 200 ||
+    (date !== today && date !== addDays(today, -1))
+  ) {
+    throw new ClientError("送信内容が正しくありません。");
+  }
+  const { data, error } = await admin.rpc("daily_result_record", {
+    p_date: date,
+    p_device_hash: await hmac("device:" + device),
+    p_ip_hash: await hmac("ip:" + clientIp(request)),
+    p_solved: body.solved,
+    p_moves: moves,
+  });
+  if (error) throw error;
+  return respond({ ok: true, stats: data as Stats });
+}
+
+async function stats(body: Record<string, unknown>) {
+  const date = readString(body.date, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date > currentPuzzleDate(new Date())) {
+    throw new ClientError("送信内容が正しくありません。");
+  }
+  const { data, error } = await admin.rpc("daily_result_stats", { p_date: date });
+  if (error) throw error;
+  return respond({ ok: true, stats: data as Stats });
+}
+
 Deno.serve(async (request: Request) => {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
   if (request.method !== "POST") return respond({ ok: false, error: "Method not allowed" }, 405);
@@ -160,6 +205,8 @@ Deno.serve(async (request: Request) => {
     const action = readString(body.action, 16);
     if (action === "enter") return await enter(body, request);
     if (action === "status") return await status(body);
+    if (action === "result") return await result(body, request);
+    if (action === "stats") return await stats(body);
     throw new ClientError("不明な操作です。");
   } catch (error) {
     if (error instanceof ClientError || error instanceof SyntaxError) {

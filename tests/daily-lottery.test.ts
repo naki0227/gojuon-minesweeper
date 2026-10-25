@@ -75,3 +75,16 @@ describe("the プレゼント rules page", () => {
     expect(GIFT_RULES_URL).toBe("https://minesweeper.enludus.com/daily/rules/");
   });
 });
+
+describe("solve rate line", () => {
+  it("waits for 5 players, then shows the rate and the solvers' moves", async () => {
+    const { solveRateLine } = await import("../src/daily/gift");
+    expect(solveRateLine({ players: 4, solved: 4, avgMoves: 3 })).toBeNull();
+    expect(solveRateLine({ players: 120, solved: 28, avgMoves: 4.2 })).toBe(
+      "正解率 23%（120人中）・正解した人は平均4.2手",
+    );
+    expect(solveRateLine({ players: 10, solved: 0, avgMoves: null })).toBe(
+      "正解率 0%（10人中）",
+    );
+  });
+});

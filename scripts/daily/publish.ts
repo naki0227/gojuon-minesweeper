@@ -13,10 +13,15 @@ import { join } from "node:path";
 
 import { chromium } from "playwright-core";
 
-import { currentPuzzleDate, DAILY_SCHEDULE } from "../../src/daily/schedule";
+import {
+  addDays,
+  currentPuzzleDate,
+  DAILY_SCHEDULE,
+} from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
 import { puzzleJson } from "./lottery";
 import { dayPage, kitPage, listPage, rulesPage } from "./pages";
+import { fetchSolveRate } from "./stats";
 import { planVideos } from "./video/texts";
 import { renderDailyVideos } from "./video/videos";
 
@@ -32,6 +37,7 @@ async function main() {
     : undefined;
 
   const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH;
+  const rates = new Map<string, string>();
   const browser = await chromium.launch(
     executablePath ? { executablePath } : { channel: "chrome" },
   );
@@ -46,9 +52,17 @@ async function main() {
       await page.screenshot({ path: join(dir, `${size.name}.png`) });
       await page.close();
     }
+    const revealed = entry.date < today;
+    // The 正解率 of the last two weeks' answers (older pages keep theirs
+    // out, so the publish stays quick).
+    const rate =
+      revealed && entry.date >= addDays(today, -14)
+        ? await fetchSolveRate(lotteryEndpoint, entry.date)
+        : null;
+    if (rate) rates.set(entry.date, rate);
     writeFileSync(
       join(dir, "index.html"),
-      dayPage(entry, entry.date < today, lotteryEndpoint),
+      dayPage(entry, revealed, lotteryEndpoint, rate),
     );
     writeFileSync(join(dir, "puzzle.json"), puzzleJson(entry));
     // For the app's 今日の一問 (src/daily/remote.ts).
@@ -74,7 +88,10 @@ async function main() {
   writeFileSync(join(outDir, "rules", "index.html"), rulesPage());
   if (current) {
     mkdirSync(join(outDir, "kit"), { recursive: true });
-    writeFileSync(join(outDir, "kit", "index.html"), kitPage(current, videos));
+    writeFileSync(
+      join(outDir, "kit", "index.html"),
+      kitPage(current, videos, rates),
+    );
   }
   console.log(`published ${released.length} days up to ${today}`);
 }
