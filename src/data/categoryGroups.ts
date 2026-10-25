@@ -164,6 +164,7 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
       "国語",
       "四字熟語",
       "ことわざ",
+      "流行語",
       "慣用句",
       "Actions",
       "Describing Words",
@@ -199,6 +200,8 @@ export const CATEGORY_GROUPS: readonly CategoryGroup[] = [
       "アイドル・グループ",
       "音楽アーティスト",
       "お笑い",
+      "野球選手",
+      "サッカー選手",
     ],
   },
   {

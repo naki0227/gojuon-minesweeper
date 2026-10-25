@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "jan-00001",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "イチロー",
+    "value": "いちろー"
+  },
+  {
+    "id": "jan-00002",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "大谷翔平",
+    "value": "おおたにしょうへい"
+  },
+  {
+    "id": "jan-00003",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "松井秀喜",
+    "value": "まついひでき"
+  },
+  {
+    "id": "jan-00004",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "野茂英雄",
+    "value": "のもひでお"
+  },
+  {
+    "id": "jan-00005",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "田中将大",
+    "value": "たなかまさひろ"
+  },
+  {
+    "id": "jan-00006",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "ダルビッシュ有",
+    "value": "だるびっしゅゆう"
+  },
+  {
+    "id": "jan-00007",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "村上宗隆",
+    "value": "むらかみむねたか"
+  },
+  {
+    "id": "jan-00008",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "佐々木朗希",
+    "value": "ささきろうき"
+  },
+  {
+    "id": "jan-00009",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "山本由伸",
+    "value": "やまもとよしのぶ"
+  },
+  {
+    "id": "jan-00010",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "鈴木誠也",
+    "value": "すずきせいや"
+  },
+  {
+    "id": "jan-00011",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "落合博満",
+    "value": "おちあいひろみつ"
+  },
+  {
+    "id": "jan-00012",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "松坂大輔",
+    "value": "まつざかだいすけ"
+  },
+  {
+    "id": "jan-00013",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "上原浩治",
+    "value": "うえはらこうじ"
+  },
+  {
+    "id": "jan-00014",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "黒田博樹",
+    "value": "くろだひろき"
+  },
+  {
+    "id": "jan-00015",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "前田健太",
+    "value": "まえだけんた"
+  },
+  {
+    "id": "jan-00016",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "坂本勇人",
+    "value": "さかもとはやと"
+  },
+  {
+    "id": "jan-00017",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "山田哲人",
+    "value": "やまだてつと"
+  },
+  {
+    "id": "jan-00018",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "柳田悠岐",
+    "value": "やなぎたゆうき"
+  },
+  {
+    "id": "jan-00019",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "古田敦也",
+    "value": "ふるたあつや"
+  },
+  {
+    "id": "jan-00020",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "金田正一",
+    "value": "かねだまさいち"
+  },
+  {
+    "id": "jan-00021",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "ベーブ・ルース",
+    "value": "べーぶるーす"
+  },
+  {
+    "id": "jan-00022",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "新庄剛志",
+    "value": "しんじょうつよし"
+  },
+  {
+    "id": "jan-00023",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "三浦知良",
+    "value": "みうらかずよし"
+  },
+  {
+    "id": "jan-00024",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "中田英寿",
+    "value": "なかたひでとし"
+  },
+  {
+    "id": "jan-00025",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "本田圭佑",
+    "value": "ほんだけいすけ"
+  },
+  {
+    "id": "jan-00026",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "香川真司",
+    "value": "かがわしんじ"
+  },
+  {
+    "id": "jan-00027",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "長友佑都",
+    "value": "ながともゆうと"
+  },
+  {
+    "id": "jan-00028",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "三笘薫",
+    "value": "みとまかおる"
+  },
+  {
+    "id": "jan-00029",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "久保建英",
+    "value": "くぼたけふさ"
+  },
+  {
+    "id": "jan-00030",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "遠藤航",
+    "value": "えんどうわたる"
+  },
+  {
+    "id": "jan-00031",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "南野拓実",
+    "value": "みなみのたくみ"
+  },
+  {
+    "id": "jan-00032",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "中村俊輔",
+    "value": "なかむらしゅんすけ"
+  },
+  {
+    "id": "jan-00033",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "澤穂希",
+    "value": "さわほまれ"
+  },
+  {
+    "id": "jan-00034",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "川島永嗣",
+    "value": "かわしまえいじ"
+  },
+  {
+    "id": "jan-00035",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "吉田麻也",
+    "value": "よしだまや"
+  },
+  {
+    "id": "jan-00036",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "岡崎慎司",
+    "value": "おかざきしんじ"
+  },
+  {
+    "id": "jan-00037",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "内田篤人",
+    "value": "うちだあつと"
+  },
+  {
+    "id": "jan-00038",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "冨安健洋",
+    "value": "とみやすたけひろ"
+  },
+  {
+    "id": "jan-00039",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "堂安律",
+    "value": "どうあんりつ"
+  },
+  {
+    "id": "jan-00040",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "メッシ",
+    "value": "めっし"
+  },
+  {
+    "id": "jan-00041",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ロナウド",
+    "value": "ろなうど"
+  },
+  {
+    "id": "jan-00042",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ネイマール",
+    "value": "ねいまーる"
+  },
+  {
+    "id": "jan-00043",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ペレ",
+    "value": "ぺれ"
+  },
+  {
+    "id": "jan-00044",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "マラドーナ",
+    "value": "まらどーな"
+  },
+  {
+    "id": "jan-00045",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ベッカム",
+    "value": "べっかむ"
+  },
+  {
+    "id": "jan-00046",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ジダン",
+    "value": "じだん"
+  },
+  {
+    "id": "jan-00047",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ハーランド",
+    "value": "はーらんど"
+  },
+  {
+    "id": "jan-00048",
+    "language": "ja",
+    "category": "流行語",
+    "display": "今でしょ",
+    "value": "いまでしょ"
+  },
+  {
+    "id": "jan-00049",
+    "language": "ja",
+    "category": "流行語",
+    "display": "おもてなし",
+    "value": "おもてなし"
+  },
+  {
+    "id": "jan-00050",
+    "language": "ja",
+    "category": "流行語",
+    "display": "倍返し",
+    "value": "ばいがえし"
+  },
+  {
+    "id": "jan-00051",
+    "language": "ja",
+    "category": "流行語",
+    "display": "じぇじぇじぇ",
+    "value": "じぇじぇじぇ"
+  },
+  {
+    "id": "jan-00052",
+    "language": "ja",
+    "category": "流行語",
+    "display": "神ってる",
+    "value": "かみってる"
+  },
+  {
+    "id": "jan-00053",
+    "language": "ja",
+    "category": "流行語",
+    "display": "爆買い",
+    "value": "ばくがい"
+  },
+  {
+    "id": "jan-00054",
+    "language": "ja",
+    "category": "流行語",
+    "display": "インスタ映え",
+    "value": "いんすたばえ"
+  },
+  {
+    "id": "jan-00055",
+    "language": "ja",
+    "category": "流行語",
+    "display": "忖度",
+    "value": "そんたく"
+  },
+  {
+    "id": "jan-00056",
+    "language": "ja",
+    "category": "流行語",
+    "display": "そだねー",
+    "value": "そだねー"
+  },
+  {
+    "id": "jan-00057",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ワンチーム",
+    "value": "わんちーむ"
+  },
+  {
+    "id": "jan-00058",
+    "language": "ja",
+    "category": "流行語",
+    "display": "三密",
+    "value": "さんみつ"
+  },
+  {
+    "id": "jan-00059",
+    "language": "ja",
+    "category": "流行語",
+    "display": "リアル二刀流",
+    "value": "りあるにとうりゅう"
+  },
+  {
+    "id": "jan-00060",
+    "language": "ja",
+    "category": "流行語",
+    "display": "村神様",
+    "value": "むらかみさま"
+  },
+  {
+    "id": "jan-00061",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ぴえん",
+    "value": "ぴえん"
+  },
+  {
+    "id": "jan-00062",
+    "language": "ja",
+    "category": "流行語",
+    "display": "エモい",
+    "value": "えもい"
+  },
+  {
+    "id": "jan-00063",
+    "language": "ja",
+    "category": "流行語",
+    "display": "バズる",
+    "value": "ばずる"
+  },
+  {
+    "id": "jan-00064",
+    "language": "ja",
+    "category": "流行語",
+    "display": "映える",
+    "value": "ばえる"
+  },
+  {
+    "id": "jan-00065",
+    "language": "ja",
+    "category": "流行語",
+    "display": "推し活",
+    "value": "おしかつ"
+  },
+  {
+    "id": "jan-00066",
+    "language": "ja",
+    "category": "流行語",
+    "display": "親ガチャ",
+    "value": "おやがちゃ"
+  },
+  {
+    "id": "jan-00067",
+    "language": "ja",
+    "category": "流行語",
+    "display": "蛙化現象",
+    "value": "かえるかげんしょう"
+  },
+  {
+    "id": "jan-00068",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ふてほど",
+    "value": "ふてほど"
+  },
+  {
+    "id": "jan-00069",
+    "language": "ja",
+    "category": "流行語",
+    "display": "タピる",
+    "value": "たぴる"
+  },
+  {
+    "id": "jan-00070",
+    "language": "ja",
+    "category": "流行語",
+    "display": "チョベリバ",
+    "value": "ちょべりば"
+  },
+  {
+    "id": "jan-00071",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "福本豊",
+    "value": "ふくもとゆたか"
+  },
+  {
+    "id": "jan-00072",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "野村克也",
+    "value": "のむらかつや"
+  },
+  {
+    "id": "jan-00073",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "江夏豊",
+    "value": "えなつゆたか"
+  },
+  {
+    "id": "jan-00074",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "衣笠祥雄",
+    "value": "きぬがささちお"
+  },
+  {
+    "id": "jan-00075",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "山本浩二",
+    "value": "やまもとこうじ"
+  },
+  {
+    "id": "jan-00076",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "掛布雅之",
+    "value": "かけふまさゆき"
+  },
+  {
+    "id": "jan-00077",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "原辰徳",
+    "value": "はらたつのり"
+  },
+  {
+    "id": "jan-00078",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "桑田真澄",
+    "value": "くわたますみ"
+  },
+  {
+    "id": "jan-00079",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "斎藤雅樹",
+    "value": "さいとうまさき"
+  },
+  {
+    "id": "jan-00080",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "秋山幸二",
+    "value": "あきやまこうじ"
+  },
+  {
+    "id": "jan-00081",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "工藤公康",
+    "value": "くどうきみやす"
+  },
+  {
+    "id": "jan-00082",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "佐々木主浩",
+    "value": "ささきかずひろ"
+  },
+  {
+    "id": "jan-00083",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "阿部慎之助",
+    "value": "あべしんのすけ"
+  },
+  {
+    "id": "jan-00084",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "高橋由伸",
+    "value": "たかはしよしのぶ"
+  },
+  {
+    "id": "jan-00085",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "岩隈久志",
+    "value": "いわくまひさし"
+  },
+  {
+    "id": "jan-00086",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "斎藤佑樹",
+    "value": "さいとうゆうき"
+  },
+  {
+    "id": "jan-00087",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "菅野智之",
+    "value": "すがのともゆき"
+  },
+  {
+    "id": "jan-00088",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "吉田正尚",
+    "value": "よしだまさたか"
+  },
+  {
+    "id": "jan-00089",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "近藤健介",
+    "value": "こんどうけんすけ"
+  },
+  {
+    "id": "jan-00090",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "千賀滉大",
+    "value": "せんがこうだい"
+  },
+  {
+    "id": "jan-00091",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "今永昇太",
+    "value": "いまながしょうた"
+  },
+  {
+    "id": "jan-00092",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "岡本和真",
+    "value": "おかもとかずま"
+  },
+  {
+    "id": "jan-00093",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "稲尾和久",
+    "value": "いなおかずひさ"
+  },
+  {
+    "id": "jan-00094",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "川上哲治",
+    "value": "かわかみてつはる"
+  },
+  {
+    "id": "jan-00095",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "沢村栄治",
+    "value": "さわむらえいじ"
+  },
+  {
+    "id": "jan-00096",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "金本知憲",
+    "value": "かねもとともあき"
+  },
+  {
+    "id": "jan-00097",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "福留孝介",
+    "value": "ふくどめこうすけ"
+  },
+  {
+    "id": "jan-00098",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "青木宣親",
+    "value": "あおきのりちか"
+  },
+  {
+    "id": "jan-00099",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "筒香嘉智",
+    "value": "つつごうよしとも"
+  },
+  {
+    "id": "jan-00100",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "釜本邦茂",
+    "value": "かまもとくにしげ"
+  },
+  {
+    "id": "jan-00101",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "奥寺康彦",
+    "value": "おくでらやすひこ"
+  },
+  {
+    "id": "jan-00102",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ラモス瑠偉",
+    "value": "らもするい"
+  },
+  {
+    "id": "jan-00103",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "中山雅史",
+    "value": "なかやままさし"
+  },
+  {
+    "id": "jan-00104",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "井原正巳",
+    "value": "いはらまさみ"
+  },
+  {
+    "id": "jan-00105",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "中澤佑二",
+    "value": "なかざわゆうじ"
+  },
+  {
+    "id": "jan-00106",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "宮本恒靖",
+    "value": "みやもとつねやす"
+  },
+  {
+    "id": "jan-00107",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "小野伸二",
+    "value": "おのしんじ"
+  },
+  {
+    "id": "jan-00108",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "稲本潤一",
+    "value": "いなもとじゅんいち"
+  },
+  {
+    "id": "jan-00109",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "遠藤保仁",
+    "value": "えんどうやすひと"
+  },
+  {
+    "id": "jan-00110",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "大久保嘉人",
+    "value": "おおくぼよしと"
+  },
+  {
+    "id": "jan-00111",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "長谷部誠",
+    "value": "はせべまこと"
+  },
+  {
+    "id": "jan-00112",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "大迫勇也",
+    "value": "おおさこゆうや"
+  },
+  {
+    "id": "jan-00113",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "鎌田大地",
+    "value": "かまだだいち"
+  },
+  {
+    "id": "jan-00114",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "守田英正",
+    "value": "もりたひでまさ"
+  },
+  {
+    "id": "jan-00115",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "上田綺世",
+    "value": "うえだあやせ"
+  },
+  {
+    "id": "jan-00116",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "浅野拓磨",
+    "value": "あさのたくま"
+  },
+  {
+    "id": "jan-00117",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "熊谷紗希",
+    "value": "くまがいさき"
+  },
+  {
+    "id": "jan-00118",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "宮間あや",
+    "value": "みやまあや"
+  },
+  {
+    "id": "jan-00119",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ジーコ",
+    "value": "じーこ"
+  },
+  {
+    "id": "jan-00120",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ロナウジーニョ",
+    "value": "ろなうじーにょ"
+  },
+  {
+    "id": "jan-00121",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ベッケンバウアー",
+    "value": "べっけんばうあー"
+  },
+  {
+    "id": "jan-00122",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "クライフ",
+    "value": "くらいふ"
+  },
+  {
+    "id": "jan-00123",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "モドリッチ",
+    "value": "もどりっち"
+  },
+  {
+    "id": "jan-00124",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "サラー",
+    "value": "さらー"
+  },
+  {
+    "id": "jan-00125",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ルーニー",
+    "value": "るーにー"
+  },
+  {
+    "id": "jan-00126",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "イニエスタ",
+    "value": "いにえすた"
+  },
+  {
+    "id": "jan-00127",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "ポドルスキ",
+    "value": "ぽどるすき"
+  },
+  {
+    "id": "jan-00128",
+    "language": "ja",
+    "category": "流行語",
+    "display": "チョー気持ちいい",
+    "value": "ちょーきもちいい"
+  },
+  {
+    "id": "jan-00129",
+    "language": "ja",
+    "category": "流行語",
+    "display": "なんでだろう",
+    "value": "なんでだろう"
+  },
+  {
+    "id": "jan-00130",
+    "language": "ja",
+    "category": "流行語",
+    "display": "想定内",
+    "value": "そうていない"
+  },
+  {
+    "id": "jan-00131",
+    "language": "ja",
+    "category": "流行語",
+    "display": "イナバウアー",
+    "value": "いなばうあー"
+  },
+  {
+    "id": "jan-00132",
+    "language": "ja",
+    "category": "流行語",
+    "display": "アラフォー",
+    "value": "あらふぉー"
+  },
+  {
+    "id": "jan-00133",
+    "language": "ja",
+    "category": "流行語",
+    "display": "なでしこジャパン",
+    "value": "なでしこじゃぱん"
+  },
+  {
+    "id": "jan-00134",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ワイルドだろぉ",
+    "value": "わいるどだろぉ"
+  },
+  {
+    "id": "jan-00135",
+    "language": "ja",
+    "category": "流行語",
+    "display": "イクメン",
+    "value": "いくめん"
+  },
+  {
+    "id": "jan-00136",
+    "language": "ja",
+    "category": "流行語",
+    "display": "女子会",
+    "value": "じょしかい"
+  },
+  {
+    "id": "jan-00137",
+    "language": "ja",
+    "category": "流行語",
+    "display": "婚活",
+    "value": "こんかつ"
+  },
+  {
+    "id": "jan-00138",
+    "language": "ja",
+    "category": "流行語",
+    "display": "草食男子",
+    "value": "そうしょくだんし"
+  },
+  {
+    "id": "jan-00139",
+    "language": "ja",
+    "category": "流行語",
+    "display": "断捨離",
+    "value": "だんしゃり"
+  },
+  {
+    "id": "jan-00140",
+    "language": "ja",
+    "category": "流行語",
+    "display": "壁ドン",
+    "value": "かべどん"
+  },
+  {
+    "id": "jan-00141",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ゆるキャラ",
+    "value": "ゆるきゃら"
+  },
+  {
+    "id": "jan-00142",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ラッスンゴレライ",
+    "value": "らっすんごれらい"
+  },
+  {
+    "id": "jan-00143",
+    "language": "ja",
+    "category": "流行語",
+    "display": "時を戻そう",
+    "value": "ときをもどそう"
+  },
+  {
+    "id": "jan-00144",
+    "language": "ja",
+    "category": "流行語",
+    "display": "きつねダンス",
+    "value": "きつねだんす"
+  },
+  {
+    "id": "jan-00145",
+    "language": "ja",
+    "category": "流行語",
+    "display": "地球沸騰化",
+    "value": "ちきゅうふっとうか"
+  },
+  {
+    "id": "jan-00146",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ググる",
+    "value": "ぐぐる"
+  },
+  {
+    "id": "jan-00147",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ディスる",
+    "value": "でぃする"
+  },
+  {
+    "id": "jan-00148",
+    "language": "ja",
+    "category": "流行語",
+    "display": "神対応",
+    "value": "かみたいおう"
+  },
+  {
+    "id": "jan-00149",
+    "language": "ja",
+    "category": "流行語",
+    "display": "沼る",
+    "value": "ぬまる"
+  },
+  {
+    "id": "jan-00150",
+    "language": "ja",
+    "category": "流行語",
+    "display": "激おこ",
+    "value": "げきおこ"
+  },
+  {
+    "id": "jan-00151",
+    "language": "ja",
+    "category": "流行語",
+    "display": "それな",
+    "value": "それな"
+  },
+  {
+    "id": "jan-00152",
+    "language": "ja",
+    "category": "流行語",
+    "display": "黒歴史",
+    "value": "くろれきし"
+  },
+  {
+    "id": "jan-00153",
+    "language": "ja",
+    "category": "流行語",
+    "display": "既読スルー",
+    "value": "きどくするー"
+  },
+  {
+    "id": "jan-00154",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ステマ",
+    "value": "すてま"
+  },
+  {
+    "id": "jan-00155",
+    "language": "ja",
+    "category": "流行語",
+    "display": "リア充",
+    "value": "りあじゅう"
+  },
+  {
+    "id": "jan-00156",
+    "language": "ja",
+    "category": "流行語",
+    "display": "爆上げ",
+    "value": "ばくあげ"
+  }
+]

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { SPECIALIST_IT_CATEGORIES } from "../src/data/specialistCategories";
+import { SPECIALIST_CATEGORIES } from "../src/data/specialistCategories";
 
 import {
   countQuestions,
@@ -107,7 +107,7 @@ describe("curated category pool", () => {
     expect(second?.category).toBe("文房具");
   });
 
-  it("excludes advanced IT from all no-category picks while allowing opt-in", () => {
+  it("excludes specialist categories from all no-category picks while allowing opt-in", () => {
     for (const language of ["ja", "en"] as const) {
       const general = filterQuestions({
         language,
@@ -117,12 +117,12 @@ describe("curated category pool", () => {
       expect(general.length).toBeGreaterThan(0);
       expect(
         general.some((question) =>
-          SPECIALIST_IT_CATEGORIES.has(question.category),
+          SPECIALIST_CATEGORIES.has(question.category),
         ),
       ).toBe(false);
 
-      const specialistCategory = [...SPECIALIST_IT_CATEGORIES].find(
-        (category) => getCategories(language).includes(category),
+      const specialistCategory = [...SPECIALIST_CATEGORIES].find((category) =>
+        getCategories(language).includes(category),
       );
       expect(specialistCategory).toBeDefined();
       const explicit = filterQuestions({
