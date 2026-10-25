@@ -1,7 +1,8 @@
 // After 今日の一問: the answer, the streak, sharing, the morning reminder
 // and the プレゼント (entry and results for this device's tickets).
-import { useEffect, useState } from "react";
-import { Linking, Share, Switch, Text, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Linking, Platform, Share, Switch, Text, View } from "react-native";
+import { captureRef } from "react-native-view-shot";
 
 import { Pressable } from "../components/TapPressable";
 import { primaryAnswer } from "../data/questions";
@@ -15,6 +16,7 @@ import {
   solveRateLine,
   type GiftResult,
 } from "./gift";
+import { DailyShareCard } from "./DailyShareCard";
 import { dailyShareText, movesLine, type DailyPlay } from "./play";
 import { remindersSupported, setMorningReminder } from "./reminder";
 import { dailyUrl, GIFT_RULES_URL, shortDate } from "./schedule";
@@ -44,6 +46,7 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
   const [entering, setEntering] = useState(false);
   const entered = memory.tickets.some((t) => t.date === play.date);
   const [rate, setRate] = useState<string | null>(null);
+  const cardRef = useRef<View>(null);
 
   // The day's 正解率, after adding this game (once per device, server-side).
   useEffect(() => {
@@ -88,6 +91,19 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
     });
   }
 
+  // The result line with the board picture; just the line where the
+  // picture can't be made (the web).
+  async function share() {
+    const message = dailyShareText(play, streak, dailyUrl(play.date));
+    try {
+      if (Platform.OS === "web" || !cardRef.current) throw new Error("text");
+      const url = await captureRef(cardRef, { format: "png", width: 1200 });
+      await Share.share({ message, url });
+    } catch {
+      await Share.share({ message }).catch(() => {});
+    }
+  }
+
   async function toggleReminder(on: boolean) {
     const result = await setMorningReminder(on);
     onMemory({ ...memory, reminder: result });
@@ -108,14 +124,10 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
           {streak > 0 ? `　🔥${streak}日連続` : ""}
         </Text>
         {rate ? <Text style={styles.panelText}>📊 {rate}</Text> : null}
-        <Pressable
-          style={styles.primary}
-          onPress={() =>
-            void Share.share({
-              message: dailyShareText(play, streak, dailyUrl(play.date)),
-            })
-          }
-        >
+        {Platform.OS === "web" ? null : (
+          <DailyShareCard ref={cardRef} play={play} streak={streak} />
+        )}
+        <Pressable style={styles.primary} onPress={() => void share()}>
           <Text style={styles.primaryText}>結果をシェア</Text>
         </Pressable>
       </View>
