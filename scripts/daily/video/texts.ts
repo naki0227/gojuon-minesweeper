@@ -57,10 +57,11 @@ export function questionPostText(entry: DailyEntry): string {
   ].join("\n");
 }
 
-export function answerPostText(entry: DailyEntry): string {
+export function answerPostText(entry: DailyEntry, rate?: string): string {
   return [
     `${promptOf(entry)}の答えは…？【答え合わせ ${shortDate(entry.date)}】`,
     `正解は「${dailyAnswer(entry)}」でした！ 当たった？`,
+    ...(rate ? [`📊 アプリで遊んだ人の${rate}`] : []),
     "今日の一問は毎朝7時に出題中🧩",
     "#五十音マインスイーパー #今日の一問",
   ].join("\n");

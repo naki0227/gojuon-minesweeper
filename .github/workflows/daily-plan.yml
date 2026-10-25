@@ -1,0 +1,75 @@
+name: Daily Plan
+
+# Every Wednesday, adds the next 7 days of 今日の一問 to
+# src/daily/schedule.json and opens a PR, so the schedule never runs out.
+# Skipped while the schedule already reaches 10 days ahead. The PR has no
+# trivia; add it there before merging if wanted.
+#
+# Needs "Allow GitHub Actions to create and approve pull requests" in the
+# repository's Settings → Actions → General.
+on:
+  schedule:
+    - cron: "17 0 * * 3" # Wednesday 9:17 Japan time
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-plan
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check how far the schedule reaches
+        id: reach
+        run: |
+          last=$(node -p 'require("./src/daily/schedule.json").at(-1).date')
+          limit=$(TZ=Asia/Tokyo date -d '+10 days' +%F)
+          echo "last=$last" >> "$GITHUB_OUTPUT"
+          if [[ "$last" > "$limit" || "$last" == "$limit" ]]; then
+            echo "Schedule reaches $last; nothing to add."
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Add the next 7 days
+        if: steps.reach.outputs.needed == 'true'
+        run: |
+          npm run daily:plan -- 7
+          npx prettier --write src/daily/schedule.json
+          npm test -- tests/daily.test.ts
+
+      - name: Open a PR
+        if: steps.reach.outputs.needed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          first=$(node -p 'const s=require("./src/daily/schedule.json"); s.find(e=>e.date>"${{ steps.reach.outputs.last }}").date')
+          last=$(node -p 'require("./src/daily/schedule.json").at(-1).date')
+          branch="daily-plan/$first"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add src/daily/schedule.json
+          git commit -m "Plan 今日の一問 for $first to $last"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Plan 今日の一問 for $first to $last" \
+            --body "Adds the next 7 days of 今日の一問, picked by \`scripts/daily/plan.ts\` and checked by \`tests/daily.test.ts\`. Trivia is empty; add it in this PR before merging if wanted."

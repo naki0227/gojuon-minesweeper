@@ -11,6 +11,8 @@ import {
   giftAvailable,
   giftResults,
   newDeviceId,
+  reportDaily,
+  solveRateLine,
   type GiftResult,
 } from "./gift";
 import { dailyShareText, movesLine, type DailyPlay } from "./play";
@@ -41,6 +43,24 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
   const [giftError, setGiftError] = useState<string | null>(null);
   const [entering, setEntering] = useState(false);
   const entered = memory.tickets.some((t) => t.date === play.date);
+  const [rate, setRate] = useState<string | null>(null);
+
+  // The day's 正解率, after adding this game (once per device, server-side).
+  useEffect(() => {
+    if (!giftAvailable) return;
+    const device = memory.device ?? newDeviceId();
+    void reportDaily(
+      play.date,
+      device,
+      play.phase === "solved",
+      play.moves.length,
+    ).then((res) => {
+      if (res.ok) setRate(solveRateLine(res.stats));
+    });
+    if (!memory.device) onMemory({ ...memory, device });
+    // Once per finished game; memory changes must not report again.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [play.date, play.phase]);
 
   useEffect(() => {
     if (!giftAvailable || memory.tickets.length === 0) return;
@@ -87,6 +107,7 @@ export function DailyDone({ play, trivia, canEnter, memory, onMemory }: Props) {
           {movesLine(play.moves)}
           {streak > 0 ? `　🔥${streak}日連続` : ""}
         </Text>
+        {rate ? <Text style={styles.panelText}>📊 {rate}</Text> : null}
         <Pressable
           style={styles.primary}
           onPress={() =>

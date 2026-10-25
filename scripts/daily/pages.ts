@@ -64,13 +64,15 @@ export function dayPage(
   entry: DailyEntry,
   revealed: boolean,
   lotteryEndpoint?: string,
+  // "正解率 23%（120人中）…", from the app players (stats.ts).
+  rate?: string | null,
 ): string {
   const prompt = escapeHtml(promptOf(entry));
   const title = `今日の一問 ${shortDate(entry.date)}「${prompt}」`;
   const answer = revealed
     ? `<div class="card"><div class="label">答え</div><div class="answer">${escapeHtml(dailyAnswer(entry))}</div>${
         entry.trivia ? `<p>${escapeHtml(entry.trivia)}</p>` : ""
-      }</div>`
+      }${rate ? `<p class="label">📊 アプリで遊んだ人の${escapeHtml(rate)}</p>` : ""}</div>`
     : `<div class="card"><p>開いたマスの数字は、周り8マスにある答えの文字の数。オレンジのマスは答えに入っている文字です。答えは明日の朝7時にこのページで公開します。</p></div>`;
   const head = `<title>${title} | 五十音マインスイーパー</title>
 <meta name="description" content="お題「${prompt}」。開いたマスの数字から答えを推理しよう。">
@@ -136,7 +138,10 @@ function videoBlock(title: string, path: string, note: string): string {
 }
 
 // Today's question, yesterday's answer and last week's roundup.
-function videoSection(videos: VideoPlan): string {
+function videoSection(
+  videos: VideoPlan,
+  rates: ReadonlyMap<string, string>,
+): string {
   const parts: string[] = [];
   if (videos.question) {
     parts.push(
@@ -159,7 +164,11 @@ function videoSection(videos: VideoPlan): string {
         videoPaths.answer(videos.answer),
         "前日の問題の答え。7時以降に投稿してね。",
       ),
-      copyBlock("answer-post", answerPostText(videos.answer), "本文をコピー"),
+      copyBlock(
+        "answer-post",
+        answerPostText(videos.answer, rates.get(videos.answer.date)),
+        "本文をコピー",
+      ),
     );
   }
   if (videos.week.length > 0) {
@@ -179,7 +188,11 @@ function videoSection(videos: VideoPlan): string {
 }
 
 // For posting by hand: today's images and the texts to paste.
-export function kitPage(entry: DailyEntry, videos: VideoPlan): string {
+export function kitPage(
+  entry: DailyEntry,
+  videos: VideoPlan,
+  rates: ReadonlyMap<string, string> = new Map(),
+): string {
   const { post, reply } = dailyPostTexts(entry);
   const thumbs = [
     ["square", "X"],
@@ -197,6 +210,6 @@ export function kitPage(entry: DailyEntry, videos: VideoPlan): string {
 <p>画像を長押しで保存 → 本文をコピーして投稿 → 返信をコピーして自分の投稿にリプ。</p>
 <div class="thumbs">${thumbs}</div>${copyBlock("post", post, "本文をコピー")}${copyBlock("reply", reply, "返信をコピー")}
 <details><summary>答えを表示</summary><div class="answer">${escapeHtml(dailyAnswer(entry))}</div></details>
-${videoSection(videos)}`,
+${videoSection(videos, rates)}`,
   );
 }
