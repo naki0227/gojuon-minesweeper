@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { Question } from "../src/data/types";
-import { SPECIALIST_IT_CATEGORIES } from "../src/data/specialistCategories";
+import { SPECIALIST_CATEGORIES } from "../src/data/specialistCategories";
 import { createInitialState } from "../src/game/engine";
 import { normalizeRoomCode, seatOf } from "../src/online/protocol";
 import {
@@ -69,8 +69,8 @@ describe("online matchmaking question pools", () => {
         const codeMatch = startOnlineGame(sanitizeFilters(filters));
         const quickCategory = quickMatch.question.category;
         const codeCategory = codeMatch.question.category;
-        expect(SPECIALIST_IT_CATEGORIES.has(quickCategory)).toBe(false);
-        expect(SPECIALIST_IT_CATEGORIES.has(codeCategory)).toBe(false);
+        expect(SPECIALIST_CATEGORIES.has(quickCategory)).toBe(false);
+        expect(SPECIALIST_CATEGORIES.has(codeCategory)).toBe(false);
       }
     }
   });

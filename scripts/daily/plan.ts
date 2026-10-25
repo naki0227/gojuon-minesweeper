@@ -7,7 +7,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { QUESTIONS } from "../../src/data/questions";
-import { isSpecialistItCategory } from "../../src/data/specialistCategories";
+import { isSpecialistCategory } from "../../src/data/specialistCategories";
 import { buildPuzzle, samePromptPool } from "../../src/daily/puzzle";
 import { seededRandom } from "../../src/daily/random";
 import {
@@ -29,7 +29,7 @@ const eligible = QUESTIONS.filter(
     question.language === "ja" &&
     question.length >= 4 &&
     question.length <= 6 &&
-    !isSpecialistItCategory(question.category),
+    !isSpecialistCategory(question.category),
 );
 
 for (let i = 0; i < days; i += 1, date = addDays(date, 1)) {
