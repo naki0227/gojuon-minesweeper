@@ -1,7 +1,17 @@
+/// <reference types="node" />
+import {
+  createCipheriv,
+  createDecipheriv,
+  createHmac,
+  randomBytes,
+} from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+
 import { QUESTIONS, primaryAnswer, questionPrompt } from "../data/questions";
 import type { Question } from "../data/types";
 import { dailyUrl, shortDate } from "./dates";
-import rawSchedule from "./schedule.json";
+import releasedSchedule from "./schedule.json";
 
 // The whole schedule names every coming day's answer, so only scripts and
 // tests may import this file. The app reads each day from the site
@@ -26,7 +36,92 @@ export type DailyEntry = {
   trivia?: string;
 };
 
-export const DAILY_SCHEDULE = rawSchedule as DailyEntry[];
+// The repository is public, so only days already online stay readable in
+// schedule.json. Coming days live in schedule.upcoming.enc, encrypted with
+// AES-256-GCM under DAILY_SCHEDULE_KEY (32 bytes, base64; an Actions secret).
+// Without the key only the released days load, which is enough for tests;
+// publishing and planning call requireFullSchedule() and stop instead.
+// Scripts and tests run from the repository root (npm run ...).
+const UPCOMING_FILE = join(process.cwd(), "src/daily/schedule.upcoming.enc");
+
+function scheduleKey(): Buffer | undefined {
+  const value = process.env.DAILY_SCHEDULE_KEY;
+  if (!value) return undefined;
+  const key = Buffer.from(value, "base64");
+  if (key.length !== 32) {
+    throw new Error("DAILY_SCHEDULE_KEY must be 32 bytes in base64");
+  }
+  return key;
+}
+
+// iv (12 bytes) + auth tag (16 bytes) + ciphertext, as base64.
+export function encryptSchedule(entries: DailyEntry[], key: Buffer): string {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv("aes-256-gcm", key, iv);
+  const body = Buffer.concat([
+    cipher.update(JSON.stringify(entries), "utf8"),
+    cipher.final(),
+  ]);
+  return `${Buffer.concat([iv, cipher.getAuthTag(), body]).toString("base64")}\n`;
+}
+
+export function decryptSchedule(text: string, key: Buffer): DailyEntry[] {
+  const data = Buffer.from(text.trim(), "base64");
+  const decipher = createDecipheriv("aes-256-gcm", key, data.subarray(0, 12));
+  decipher.setAuthTag(data.subarray(12, 28));
+  const body = Buffer.concat([
+    decipher.update(data.subarray(28)),
+    decipher.final(),
+  ]);
+  return JSON.parse(body.toString("utf8")) as DailyEntry[];
+}
+
+function loadUpcoming(): DailyEntry[] | undefined {
+  if (!existsSync(UPCOMING_FILE)) return [];
+  const key = scheduleKey();
+  return key
+    ? decryptSchedule(readFileSync(UPCOMING_FILE, "utf8"), key)
+    : undefined;
+}
+
+const upcoming = loadUpcoming();
+
+export const DAILY_SCHEDULE: DailyEntry[] = [
+  ...(releasedSchedule as DailyEntry[]),
+  ...(upcoming ?? []),
+];
+
+// For the publish and the planning, which must see every day.
+export function requireFullSchedule(): DailyEntry[] {
+  if (!upcoming) {
+    throw new Error(
+      "DAILY_SCHEDULE_KEY is not set, so the coming days of 今日の一問 cannot be read.",
+    );
+  }
+  return DAILY_SCHEDULE;
+}
+
+// Writes the days after schedule.json (encrypted).
+export function writeUpcoming(entries: DailyEntry[]): void {
+  const key = scheduleKey();
+  if (!key) throw new Error("DAILY_SCHEDULE_KEY is not set");
+  const last = (releasedSchedule as DailyEntry[]).at(-1)?.date ?? "";
+  writeFileSync(
+    UPCOMING_FILE,
+    encryptSchedule(
+      entries.filter((entry) => entry.date > last),
+      key,
+    ),
+  );
+}
+
+// Seeds the planning, so the public plan.ts cannot be rerun to learn which
+// question a coming day gets.
+export function planSeed(date: string): string {
+  const key = scheduleKey();
+  if (!key) throw new Error("DAILY_SCHEDULE_KEY is not set");
+  return createHmac("sha256", key).update(date).digest("hex");
+}
 
 export function dailyEntry(date: string): DailyEntry | undefined {
   return DAILY_SCHEDULE.find((entry) => entry.date === date);

@@ -117,6 +117,8 @@ jobs:
       - name: Publish 今日の一問
         run: npm run daily:publish -- dist/daily
         env:
+          # Decrypts the coming days (src/daily/schedule.upcoming.enc).
+          DAILY_SCHEDULE_KEY: ${{ secrets.DAILY_SCHEDULE_KEY }}
           # The プレゼント box calls the daily-lottery Edge Function.
           EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
 
