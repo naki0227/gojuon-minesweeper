@@ -32,7 +32,7 @@ import {
   type DailyPlay,
 } from "./play";
 import { loadDaily, type DailyLoad } from "./remote";
-import { shortDate } from "./schedule";
+import { shortDate } from "./dates";
 import { readDailyMemory, writeDailyMemory, type DailyMemory } from "./storage";
 import { recordSolve } from "./streak";
 

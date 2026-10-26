@@ -17,9 +17,11 @@
 - [x] 1.0.1のiOS Simulator用ReleaseビルドをiPhone 17 Pro Maxに入れ、設定画面下部のAdMobテスト広告を実画面で確認（2026-10-12）。記録は `docs/reports/2026-10-12-ios-simulator-ad-build-report.md`。
 - [x] オンライン対戦の待機中・対局中・決着後に画面下部の広告枠を追加し、iPhone 17 Pro Max Simulatorで3状態のテスト広告を確認（2026-10-12）。記録は `docs/reports/2026-10-12-online-banner-report.md`。
 - [x] Node.js 2026年10月セキュリティリリースに合わせ、CIのNode.jsを `.node-version`（22.23.4）に固定（2026-10-21）。記録は `docs/reports/2026-10-21-nodejs-security-release-report.md`。
+- [x] 今日の一問の先の日付の答えが Web 版バンドルに含まれていた問題を修正した（2026-10-27）。記録は `docs/reports/2026-10-27-daily-schedule-bundle-report.md`。
 
 ## 未着手
 
+- [ ] リポジトリを Public にする場合は、先に `src/daily/schedule.json`（先の答え）をリポジトリの外へ移す。
 - [ ] `store-assets/ios/submission-ready/` の5枚をApp Store Connectでプレビューし、受け付け結果を確認する。
 - [ ] 中型iPhone枠には `store-assets/ios/submission-ready-6.3/` の5枚をアップロードし、受け付け結果を確認する。
 - [ ] `store-assets/ios/promotional/` の2枚をApp Store Connectの「ヘッダ」「検索結果」にアップロードして受け付け結果を確認する。
