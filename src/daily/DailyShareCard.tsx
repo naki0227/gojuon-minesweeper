@@ -10,7 +10,7 @@ import { questionMineCharacters } from "../game/engine";
 import { colors } from "../theme/colors";
 import { HALLOWEEN, seasonOf } from "../theme/season";
 import type { DailyPlay } from "./play";
-import { shortDate } from "./schedule";
+import { shortDate } from "./dates";
 
 type Props = { play: DailyPlay; streak: number };
 

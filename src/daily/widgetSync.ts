@@ -3,7 +3,7 @@
 // App Group; these merge the two copies so a game started in one goes on
 // in the other and a solve in either counts for the streak.
 import type { SavedPlay } from "./play";
-import { addDays } from "./schedule";
+import { addDays } from "./dates";
 import type { Streak } from "./streak";
 
 export type WidgetShared = { play: SavedPlay | null; streak: Streak | null };
