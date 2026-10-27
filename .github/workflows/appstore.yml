@@ -40,6 +40,22 @@ jobs:
       - name: Install
         run: pip install "pyjwt[crypto]==2.15.1" "pyyaml==6.0.2" "requests==2.34.2"
 
+      # Without this a missing key only shows up as a PEM parse error in jwt.
+      - name: Check App Store Connect secrets
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          missing=""
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            [ -n "${!name}" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Set these repository secrets (App Store Connect API key):$missing"
+            exit 1
+          fi
+
       - name: Sync App Store Connect
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
