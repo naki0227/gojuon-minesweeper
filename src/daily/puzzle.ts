@@ -51,7 +51,7 @@ export function samePromptPool(
 
 // What an open cell shows: a number for a safe cell, the letter's count
 // in the answer for a mine.
-function cellView(question: Question, char: string): string {
+export function cellView(question: Question, char: string): string {
   return isMineCharacter(question, char)
     ? `m${questionMineMultiplicity(question, char)}`
     : `s${adjacentMineCount(question, char)}`;
@@ -69,7 +69,7 @@ export function consistentCandidates(
   );
 }
 
-function shuffled<T>(items: readonly T[], random: () => number): T[] {
+export function shuffled<T>(items: readonly T[], random: () => number): T[] {
   const result = [...items];
   for (let i = result.length - 1; i > 0; i -= 1) {
     const j = Math.floor(random() * (i + 1));

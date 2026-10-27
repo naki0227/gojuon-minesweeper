@@ -2,6 +2,7 @@
 // starts as in the day's image; open cells or guess until it's solved.
 import { useEffect, useMemo, useState } from "react";
 import {
+  AppState,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -55,6 +56,20 @@ export function DailyScreen() {
       },
     );
   }, []);
+
+  // Back from the Home Screen: take in what was played in the widget.
+  useEffect(() => {
+    if (load?.status !== "ok") return;
+    const { date, question, opened } = load.daily;
+    const subscription = AppState.addEventListener("change", (state) => {
+      if (state !== "active") return;
+      void readDailyMemory().then((saved) => {
+        setMemory(saved);
+        setPlay(startDaily(date, question, opened, saved.play));
+      });
+    });
+    return () => subscription.remove();
+  }, [load]);
 
   const mineChars = useMemo(
     () => (play ? questionMineCharacters(play.question) : new Set<string>()),

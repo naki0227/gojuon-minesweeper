@@ -2,7 +2,7 @@
   "expo": {
     "name": "五十音マインスイーパー",
     "slug": "gojuon-minesweeper",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "scheme": "gojuonminesweeper",
     "userInterfaceStyle": "light",
@@ -21,7 +21,12 @@
         "CFBundleLocalizations": ["ja", "en"]
       },
       "usesAppleSignIn": true,
-      "associatedDomains": ["applinks:minesweeper.enludus.com"]
+      "associatedDomains": ["applinks:minesweeper.enludus.com"],
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.naki0227.gojuonminesweeper"
+        ]
+      }
     },
     "android": {
       "package": "com.naki0227.gojuonminesweeper",
@@ -43,6 +48,7 @@
         }
       ],
       "expo-splash-screen",
+      "@bacons/apple-targets",
       [
         "expo-audio",
         {

@@ -1,8 +1,9 @@
 /// <reference types="node" />
 // Writes the 今日の一問 site into the web export, for puzzles already
 // released (7:00 Japan time) only: images, each day's page, puzzle.json
-// (answer hashes for the プレゼント), app.json (the app's 今日の一問), the
-// list, the posting kit and the day's videos (video/).
+// (answer hashes for the プレゼント), app.json (the app's 今日の一問),
+// widget.json (the iPhone widgets), the list, the posting kit and the
+// day's videos (video/).
 // Answers appear on a day's page from the next day on.
 //   npx tsx scripts/daily/publish.ts [outDir=dist/daily]
 // DAILY_TODAY=YYYY-MM-DD overrides today (for checking a build locally).
@@ -24,6 +25,7 @@ import { dayPage, kitPage, listPage, rulesPage } from "./pages";
 import { fetchSolveRate } from "./stats";
 import { planVideos } from "./video/texts";
 import { renderDailyVideos } from "./video/videos";
+import { widgetJson } from "./widget";
 
 async function main() {
   const outDir = process.argv[2] ?? "dist/daily";
@@ -77,6 +79,7 @@ async function main() {
         trivia: entry.trivia,
       }),
     );
+    writeFileSync(join(dir, "widget.json"), widgetJson(entry));
   }
   // Needs ffmpeg. DAILY_VIDEOS=0 skips the videos for a quick local check.
   const videos = planVideos(released, today);
