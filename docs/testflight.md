@@ -12,6 +12,22 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
    途中で Apple ID でログインし、「App Store Connect API Key を作るか」に Yes と答える。
 3. **ascAppId**: CI（非対話）での提出に使う `eas.json` の `submit.production.ios.ascAppId`。App Store Connect → アプリ → App情報 の「Apple ID」（数字）で、設定済み（6819539119）。
 
+## GitHub でビルドして審査に出す（2026-10-27〜）
+
+リポジトリを Public にしたので、GitHub Actions の macOS ランナーは無料で使える。TestFlight ワークフローは既定で GitHub 上でビルドし（`eas build --local`）、EAS の月間ビルド回数を使わない。
+
+1. Actions → TestFlight → Run workflow（`where: github`）。ビルドして App Store Connect にアップロードし、TestFlight に入るまで待つ。`where: eas` を選ぶと、これまでどおり EAS でビルドする。
+2. `appstore/release.yml` の `version`・`build`・`whats_new` などを書き換えて PR を出す。PR では App Store Connect を読むだけで、何が変わるかがログに出る（App Store ワークフロー）。
+3. マージすると反映し、`submit_for_review: true` なら審査に出す。`release: manual` のときは、承認後に App Store Connect で公開する。
+
+必要な Secrets（Settings → Secrets and variables → Actions）:
+
+- `EXPO_TOKEN`（既存）: ビルドと署名情報、App Store Connect へのアップロード
+- `GOOGLE_SERVICE_INFO_PLIST_BASE64`: `base64 -i GoogleService-Info.plist | pbcopy` で作る。ローカルビルドは EAS のファイル型の変数を受け取れず、無いと Firebase 抜きのアプリになるので、無ければビルドを止める
+- `ASC_KEY_ID` / `ASC_ISSUER_ID` / `ASC_KEY_P8`: App Store Connect API キー（StudyReel と同じチームのキーでよい）。`tools/appstore/asc.py` が使う
+
+`tools/appstore/asc.py` は StudyReel のものの写し。直すときは両方そろえる。
+
 ## 配るとき
 
 1. 新しいストアバージョンにするなら `app.json` の `expo.version` を上げてマージする（例: 1.0.1）。ビルド番号は EAS が自動で上げる。
