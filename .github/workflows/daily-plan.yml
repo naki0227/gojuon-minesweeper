@@ -17,6 +17,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  # To start CI on the PR branch (see the last step).
+  actions: write
 
 concurrency:
   group: daily-plan
@@ -76,3 +78,7 @@ jobs:
           gh pr create --base main --head "$branch" \
             --title "Plan 今日の一問 for $first to $last" \
             --body "Adds the next 7 days of 今日の一問 (encrypted), picked by \`scripts/daily/plan.ts\` and checked by \`tests/daily.test.ts\`. Trivia is empty; add it with \`npm run daily:schedule -- open\` and \`close\` (needs DAILY_SCHEDULE_KEY) before merging if wanted."
+          # The PR above comes from GITHUB_TOKEN, which starts no
+          # pull_request run, so the required "validate" check would never
+          # report. A dispatch is the one event it may start.
+          gh workflow run ci.yml --ref "$branch"
