@@ -48,6 +48,10 @@ jobs:
 
       - name: Unit tests
         run: npm test
+        env:
+          # Empty for pull requests from forks; the tests then check only
+          # the released days of 今日の一問.
+          DAILY_SCHEDULE_KEY: ${{ secrets.DAILY_SCHEDULE_KEY }}
 
       - name: File size and duplicate code
         run: npm run quality

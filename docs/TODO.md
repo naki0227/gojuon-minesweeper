@@ -20,12 +20,13 @@
 - [x] 今日の一問が未公開のとき「通信できませんでした」になる不具合を修正し、昨日の問題を出すようにした（2026-10-27）。記録は `docs/reports/2026-10-27-daily-offline-report.md`。
 - [x] 今日の一問の先の日付の答えが Web 版バンドルに含まれていた問題を修正した（2026-10-27）。記録は `docs/reports/2026-10-27-daily-schedule-bundle-report.md`。
 - [x] 2026-10-27 の今日の一問を公開した。Deploy Web がジョブ開始前に失敗していたが、リポジトリを Public にしたあとの手動実行で 8:53 に公開できた（2026-10-27）。
+- [x] Public 化に合わせ、今日の一問の先の出題を暗号化して持つようにした（2026-10-27）。記録は `docs/adr/2026-10-27-encrypted-daily-schedule.md`。
 
 ## 未着手
 
+- [ ] Actions secret `DAILY_SCHEDULE_KEY` を登録し、暗号化した出題表の変更を統合後、Daily Plan を手動実行して 10/28 以降を計画し直す（`docs/reports/2026-10-27-daily-schedule-encryption-report.md`）。
 - [ ] 2026-10-27 の Deploy Web がジョブ開始前に失敗した理由（GitHub Actions の利用枠・課金など）を確認する（Public 化で解消したが、原因は未確認）。
 - [ ] `src/daily/remote.ts` の修正を main へ統合後、EAS Update で配信し、未公開の時間帯に昨日の問題が出ることを実機で確認する。
-- [ ] リポジトリを Public にする場合は、先に `src/daily/schedule.json`（先の答え）をリポジトリの外へ移す。
 - [ ] `store-assets/ios/submission-ready/` の5枚をApp Store Connectでプレビューし、受け付け結果を確認する。
 - [ ] 中型iPhone枠には `store-assets/ios/submission-ready-6.3/` の5枚をアップロードし、受け付け結果を確認する。
 - [ ] `store-assets/ios/promotional/` の2枚をApp Store Connectの「ヘッダ」「検索結果」にアップロードして受け付け結果を確認する。
