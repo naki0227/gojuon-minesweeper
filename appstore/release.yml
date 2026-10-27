@@ -1,0 +1,27 @@
+# App Store に出す内容。main にマージされると .github/workflows/appstore.yml が App Store Connect に反映する。
+# PR の間は読むだけ（dry run）で、何が変わるかをログに出す。
+# 書いた項目だけを更新する。説明文・スクリーンショットなどは今の内容のまま。
+
+app: com.naki0227.gojuonminesweeper
+version: "1.0.3"
+build: 31             # "latest" にすると、このバージョンで最後に上げたビルド
+release: manual       # manual: 承認されたら自分で公開 / after_approval: 承認されたらすぐ公開
+submit_for_review: true    # true にしてマージすると、反映したあと審査に出す
+
+localizations:
+  ja:
+    whats_new: |
+      ・ホーム画面とロック画面のウィジェットで「今日の一問」が遊べるようになりました。ウィジェットで進めた続きはアプリでも遊べます。
+      ・「今日の一問」の結果を、盤面の画像でシェアできるようになりました（答えの文字は見えません）。
+      ・今日の問題が公開される前に「通信できませんでした」と表示されることがある問題を直しました。公開前は前日の問題を遊べます。
+  en-US:
+    whats_new: |
+      - Play the Daily Puzzle from Home Screen and Lock Screen widgets. A game started in a widget carries on in the app.
+      - Share your Daily Puzzle result as a picture of the board (the answer letters stay hidden).
+      - Fixed a "could not connect" message shown before the day's puzzle is online. Until then, yesterday's puzzle is shown.
+
+review:
+  notes: |
+    Version 1.0.3 adds widgets for the Daily Puzzle (今日の一問).
+    To add one: long-press the Home Screen, tap +, choose 五十音マインスイーパー, and pick the large (board) or small widget. On the Lock Screen, customize it and add the rectangular widget.
+    Tapping a cell in the large widget opens it; tapping the widget opens the Daily Puzzle in the app. No account or login is needed.

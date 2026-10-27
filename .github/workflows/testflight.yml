@@ -1,10 +1,21 @@
 name: TestFlight
 
-# Run by hand from the Actions tab ("Run workflow"). Builds the iOS app on
-# EAS with the production profile and uploads it to App Store Connect, where
-# it lands in TestFlight. Each run uses one EAS build.
+# Run by hand from the Actions tab ("Run workflow"). Builds the iOS app with
+# the production profile and uploads it to App Store Connect, where it lands
+# in TestFlight. To then send it for review, edit appstore/release.yml.
+#
+#   where: github  builds on a GitHub macOS runner (eas build --local), free
+#                  for this public repository and not counted against the
+#                  EAS plan's monthly builds; waits for the upload.
+#   where: eas     builds on EAS as before (uses one EAS build, --no-wait).
 on:
   workflow_dispatch:
+    inputs:
+      where:
+        description: "Where to build"
+        type: choice
+        options: [github, eas]
+        default: github
 
 concurrency:
   group: testflight
@@ -12,7 +23,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.where == 'eas' && 'ubuntu-latest' || 'macos-latest' }}
+    timeout-minutes: 120
 
     steps:
       - name: Checkout
@@ -44,5 +56,34 @@ jobs:
       # The build number goes up on EAS by itself (autoIncrement). The
       # version string comes from app.json, so raise it there for a new
       # App Store version.
-      - name: Build and submit to TestFlight
+      - name: Build and submit on EAS
+        if: inputs.where == 'eas'
         run: eas build --platform ios --profile production --auto-submit --non-interactive --no-wait
+
+      # A local build does not get EAS file variables, and app.config.ts only
+      # insists on GoogleService-Info.plist on EAS's own builders; without it
+      # the app would quietly ship without Firebase (and pod install fails on
+      # Firebase's SPM default). So it comes from a secret and is required.
+      - name: Write GoogleService-Info.plist
+        if: inputs.where != 'eas'
+        env:
+          PLIST_BASE64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64 }}
+        run: |
+          if [ -z "$PLIST_BASE64" ]; then
+            echo "::error::Set the GOOGLE_SERVICE_INFO_PLIST_BASE64 secret (base64 of GoogleService-Info.plist)."
+            exit 1
+          fi
+          echo "$PLIST_BASE64" | base64 --decode > "$RUNNER_TEMP/GoogleService-Info.plist"
+          echo "GOOGLE_SERVICE_INFO_PLIST=$RUNNER_TEMP/GoogleService-Info.plist" >> "$GITHUB_ENV"
+
+      - name: Build on GitHub
+        if: inputs.where != 'eas'
+        run: |
+          xcodebuild -version
+          eas build --platform ios --profile production --local --non-interactive \
+            --output "$RUNNER_TEMP/app.ipa"
+
+      # Uses the App Store Connect API key stored on EAS (as --auto-submit does).
+      - name: Upload to App Store Connect
+        if: inputs.where != 'eas'
+        run: eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait
