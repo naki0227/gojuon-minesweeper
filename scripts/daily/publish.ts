@@ -17,7 +17,7 @@ import { chromium } from "playwright-core";
 import {
   addDays,
   currentPuzzleDate,
-  DAILY_SCHEDULE,
+  requireFullSchedule,
 } from "../../src/daily/schedule";
 import { CARD_SIZES, cardHtml } from "./card";
 import { puzzleJson } from "./lottery";
@@ -30,7 +30,9 @@ import { widgetJson } from "./widget";
 async function main() {
   const outDir = process.argv[2] ?? "dist/daily";
   const today = process.env.DAILY_TODAY ?? currentPuzzleDate(new Date());
-  const released = DAILY_SCHEDULE.filter((entry) => entry.date <= today);
+  const released = requireFullSchedule().filter(
+    (entry) => entry.date <= today,
+  );
   const current = released.at(-1);
   // The プレゼント box needs the project's Edge Functions.
   const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;

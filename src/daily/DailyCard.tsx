@@ -6,7 +6,7 @@ import { Pressable } from "../components/TapPressable";
 import { LOCALE } from "../i18n";
 import { colors } from "../theme/colors";
 import { HALLOWEEN, seasonOf } from "../theme/season";
-import { currentPuzzleDate } from "./schedule";
+import { currentPuzzleDate } from "./dates";
 import { readDailyMemory } from "./storage";
 import { currentStreak } from "./streak";
 

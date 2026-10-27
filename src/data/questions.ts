@@ -12,6 +12,7 @@ import englishTopicEntries6 from "./question-bank-en-topics-6.json";
 import japaneseMoreEntries from "./question-bank-ja-more.json";
 import englishMoreEntries from "./question-bank-en-more.json";
 import japaneseTopicEntries from "./question-bank-ja-topics.json";
+import japaneseNicheEntries from "./question-bank-ja-niche.json";
 import type {
   AnswerOption,
   Question,
@@ -23,7 +24,7 @@ import type {
 import { normalizedLength } from "../game/normalize";
 import { createSignatureKey } from "../game/signature";
 import { expandLegacyCategories } from "./legacyCategories";
-import { isSpecialistItCategory } from "./specialistCategories";
+import { isSpecialistCategory } from "./specialistCategories";
 
 const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(japaneseEntries as RawQuestionEntry[]),
@@ -40,6 +41,7 @@ const RAW_QUESTION_ENTRIES: RawQuestionEntry[] = [
   ...(japaneseMoreEntries as RawQuestionEntry[]),
   ...(englishMoreEntries as RawQuestionEntry[]),
   ...(japaneseTopicEntries as RawQuestionEntry[]),
+  ...(japaneseNicheEntries as RawQuestionEntry[]),
 ];
 
 function uniqueAnswers(entries: readonly RawQuestionEntry[]): AnswerOption[] {
@@ -139,10 +141,11 @@ export function filterQuestions(filters: QuestionFilters): readonly Question[] {
     }
 
     // Category-free selections ("おまかせ", random matchmaking, default endless)
-    // exclude advanced IT topics. Explicit selections can still play them.
+    // exclude the specialist categories. Explicit selections can still play
+    // them.
     if (
       filters.categories.length === 0 &&
-      isSpecialistItCategory(question.category)
+      isSpecialistCategory(question.category)
     ) {
       return false;
     }

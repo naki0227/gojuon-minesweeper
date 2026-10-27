@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { DailyCard } from "../daily/DailyCard";
-import { japanDate } from "../daily/schedule";
+import { japanDate } from "../daily/dates";
 import { SoundButton } from "../sound/SoundButton";
 import { tr } from "../i18n";
 import { colors } from "../theme/colors";

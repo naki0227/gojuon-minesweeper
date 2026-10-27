@@ -1,7 +1,30 @@
+/// <reference types="node" />
+import {
+  createCipheriv,
+  createDecipheriv,
+  createHmac,
+  randomBytes,
+} from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+
 import { QUESTIONS, primaryAnswer, questionPrompt } from "../data/questions";
 import type { Question } from "../data/types";
-import { SITE_URL } from "../links/site";
-import rawSchedule from "./schedule.json";
+import { dailyUrl, shortDate } from "./dates";
+import releasedSchedule from "./schedule.json";
+
+// The whole schedule names every coming day's answer, so only scripts and
+// tests may import this file. The app reads each day from the site
+// (remote.ts) and takes its date helpers from ./dates.
+export {
+  addDays,
+  currentPuzzleDate,
+  DAILY_RELEASE_HOUR,
+  dailyUrl,
+  GIFT_RULES_URL,
+  japanDate,
+  shortDate,
+} from "./dates";
 
 // One day of 今日の一問: the question and the cells shown open in the image.
 // Written by scripts/daily/plan.ts; `trivia` is added by hand or by the
@@ -13,34 +36,91 @@ export type DailyEntry = {
   trivia?: string;
 };
 
-export const DAILY_SCHEDULE = rawSchedule as DailyEntry[];
+// The repository is public, so only days already online stay readable in
+// schedule.json. Coming days live in schedule.upcoming.enc, encrypted with
+// AES-256-GCM under DAILY_SCHEDULE_KEY (32 bytes, base64; an Actions secret).
+// Without the key only the released days load, which is enough for tests;
+// publishing and planning call requireFullSchedule() and stop instead.
+// Scripts and tests run from the repository root (npm run ...).
+const UPCOMING_FILE = join(process.cwd(), "src/daily/schedule.upcoming.enc");
 
-const JAPAN_OFFSET_MS = 9 * 60 * 60 * 1000;
-
-// The calendar date in Japan (UTC+9, no daylight saving).
-export function japanDate(now: Date): string {
-  return new Date(now.getTime() + JAPAN_OFFSET_MS).toISOString().slice(0, 10);
+function scheduleKey(): Buffer | undefined {
+  const value = process.env.DAILY_SCHEDULE_KEY;
+  if (!value) return undefined;
+  const key = Buffer.from(value, "base64");
+  if (key.length !== 32) {
+    throw new Error("DAILY_SCHEDULE_KEY must be 32 bytes in base64");
+  }
+  return key;
 }
 
-// A new puzzle goes online every morning at 7:00 Japan time; until then
-// the previous day's puzzle is still "today".
-export const DAILY_RELEASE_HOUR = 7;
+// iv (12 bytes) + auth tag (16 bytes) + ciphertext, as base64.
+export function encryptSchedule(entries: DailyEntry[], key: Buffer): string {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv("aes-256-gcm", key, iv);
+  const body = Buffer.concat([
+    cipher.update(JSON.stringify(entries), "utf8"),
+    cipher.final(),
+  ]);
+  return `${Buffer.concat([iv, cipher.getAuthTag(), body]).toString("base64")}\n`;
+}
 
-export function currentPuzzleDate(now: Date): string {
-  return japanDate(
-    new Date(now.getTime() - DAILY_RELEASE_HOUR * 60 * 60 * 1000),
+export function decryptSchedule(text: string, key: Buffer): DailyEntry[] {
+  const data = Buffer.from(text.trim(), "base64");
+  const decipher = createDecipheriv("aes-256-gcm", key, data.subarray(0, 12));
+  decipher.setAuthTag(data.subarray(12, 28));
+  const body = Buffer.concat([
+    decipher.update(data.subarray(28)),
+    decipher.final(),
+  ]);
+  return JSON.parse(body.toString("utf8")) as DailyEntry[];
+}
+
+function loadUpcoming(): DailyEntry[] | undefined {
+  if (!existsSync(UPCOMING_FILE)) return [];
+  const key = scheduleKey();
+  return key
+    ? decryptSchedule(readFileSync(UPCOMING_FILE, "utf8"), key)
+    : undefined;
+}
+
+const upcoming = loadUpcoming();
+
+export const DAILY_SCHEDULE: DailyEntry[] = [
+  ...(releasedSchedule as DailyEntry[]),
+  ...(upcoming ?? []),
+];
+
+// For the publish and the planning, which must see every day.
+export function requireFullSchedule(): DailyEntry[] {
+  if (!upcoming) {
+    throw new Error(
+      "DAILY_SCHEDULE_KEY is not set, so the coming days of 今日の一問 cannot be read.",
+    );
+  }
+  return DAILY_SCHEDULE;
+}
+
+// Writes the days after schedule.json (encrypted).
+export function writeUpcoming(entries: DailyEntry[]): void {
+  const key = scheduleKey();
+  if (!key) throw new Error("DAILY_SCHEDULE_KEY is not set");
+  const last = (releasedSchedule as DailyEntry[]).at(-1)?.date ?? "";
+  writeFileSync(
+    UPCOMING_FILE,
+    encryptSchedule(
+      entries.filter((entry) => entry.date > last),
+      key,
+    ),
   );
 }
 
-export function addDays(date: string, days: number): string {
-  const time = Date.parse(`${date}T00:00:00Z`) + days * 24 * 60 * 60 * 1000;
-  return new Date(time).toISOString().slice(0, 10);
-}
-
-// "2026-10-14" -> "10/14"
-export function shortDate(date: string): string {
-  const [, month, day] = date.split("-");
-  return `${Number(month)}/${Number(day)}`;
+// Seeds the planning, so the public plan.ts cannot be rerun to learn which
+// question a coming day gets.
+export function planSeed(date: string): string {
+  const key = scheduleKey();
+  if (!key) throw new Error("DAILY_SCHEDULE_KEY is not set");
+  return createHmac("sha256", key).update(date).digest("hex");
 }
 
 export function dailyEntry(date: string): DailyEntry | undefined {
@@ -52,13 +132,6 @@ export function dailyQuestion(entry: DailyEntry): Question {
   if (!question) throw new Error(`Unknown question ${entry.questionId}`);
   return question;
 }
-
-export function dailyUrl(date: string): string {
-  return `${SITE_URL}/daily/${date}/`;
-}
-
-// The プレゼント rules (scripts/daily/publish.ts writes the page).
-export const GIFT_RULES_URL = `${SITE_URL}/daily/rules/`;
 
 // What goes on X: the post (with the image) and the reply under it.
 export function dailyPostTexts(entry: DailyEntry): {

@@ -3,7 +3,7 @@
 import { QUESTIONS } from "../data/questions";
 import type { Question } from "../data/types";
 import { SITE_URL } from "../links/site";
-import { addDays, currentPuzzleDate } from "./schedule";
+import { addDays, currentPuzzleDate } from "./dates";
 
 export type RemoteDaily = {
   date: string;
@@ -29,6 +29,10 @@ type AppJson = {
 async function fetchDay(date: string): Promise<AppJson | null> {
   const response = await fetch(`${SITE_URL}/daily/${date}/app.json`);
   if (!response.ok) return null;
+  // A day that is not online yet is not a 404: the site answers a missing
+  // file with the app page (200 text/html), so only a JSON answer counts.
+  const type = response.headers.get("content-type") ?? "";
+  if (!type.startsWith("application/json")) return null;
   const json = (await response.json()) as AppJson;
   return json.date === date && Array.isArray(json.opened) ? json : null;
 }
