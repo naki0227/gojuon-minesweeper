@@ -17,7 +17,7 @@ import {
 } from "./gift";
 import { dailyShareText, movesLine, type DailyPlay } from "./play";
 import { remindersSupported, setMorningReminder } from "./reminder";
-import { dailyUrl, GIFT_RULES_URL, shortDate } from "./schedule";
+import { dailyUrl, GIFT_RULES_URL, shortDate } from "./dates";
 import type { DailyMemory } from "./storage";
 import { currentStreak } from "./streak";
 

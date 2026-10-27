@@ -7,7 +7,7 @@ import {
   isAcceptedAnswer,
   isMineCharacter,
 } from "../game/engine";
-import { shortDate } from "./schedule";
+import { shortDate } from "./dates";
 
 export type DailyMove = "safe" | "mine" | "wrong" | "correct";
 

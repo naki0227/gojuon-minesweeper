@@ -32,7 +32,7 @@ function respond(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), { status, headers: CORS });
 }
 
-// Same as currentPuzzleDate in src/daily/schedule.ts: Japan time, and the
+// Same as currentPuzzleDate in src/daily/dates.ts: Japan time, and the
 // day's puzzle runs from 7:00 to 7:00.
 function currentPuzzleDate(now: Date): string {
   return new Date(now.getTime() + (9 - 7) * 60 * 60 * 1000)

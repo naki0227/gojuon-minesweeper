@@ -1,4 +1,4 @@
-import { addDays } from "./schedule";
+import { addDays } from "./dates";
 
 // Days in a row with the day's puzzle solved. Only solving counts; giving
 // up or skipping a day starts over.

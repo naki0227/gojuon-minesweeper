@@ -3,7 +3,7 @@
 import { QUESTIONS } from "../data/questions";
 import type { Question } from "../data/types";
 import { SITE_URL } from "../links/site";
-import { addDays, currentPuzzleDate } from "./schedule";
+import { addDays, currentPuzzleDate } from "./dates";
 
 export type RemoteDaily = {
   date: string;
