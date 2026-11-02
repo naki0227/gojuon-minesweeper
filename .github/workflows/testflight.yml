@@ -6,7 +6,8 @@ name: TestFlight
 #
 #   where: github  builds on a GitHub macOS runner (eas build --local), free
 #                  for this public repository and not counted against the
-#                  EAS plan's monthly builds; waits for the upload.
+#                  EAS plan's monthly builds, and uploads with xcrun altool.
+#                  EAS is only used for the signing credentials it keeps.
 #   where: eas     builds on EAS as before (uses one EAS build, --no-wait).
 on:
   workflow_dispatch:
@@ -91,7 +92,32 @@ jobs:
           eas build --platform ios --profile production --local --non-interactive \
             --output "$RUNNER_TEMP/app.ipa"
 
-      # Uses the App Store Connect API key stored on EAS (as --auto-submit does).
+      # Apple's own uploader with the same App Store Connect API key the
+      # App Store workflow uses, so the upload does not depend on a key kept
+      # on EAS. altool reads the key from ~/.appstoreconnect/private_keys.
       - name: Upload to App Store Connect
         if: inputs.where != 'eas'
-        run: eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Set the $name secret (App Store Connect API key)."
+              exit 1
+            fi
+          done
+          keys="$HOME/.appstoreconnect/private_keys"
+          mkdir -p "$keys"
+          key="$keys/AuthKey_$ASC_KEY_ID.p8"
+          # Raw .p8 or base64, as tools/appstore/asc.py accepts.
+          if [[ "$ASC_KEY_P8" == *"BEGIN PRIVATE KEY"* ]]; then
+            printf '%s\n' "$ASC_KEY_P8" > "$key"
+          else
+            printf '%s' "$ASC_KEY_P8" | base64 --decode > "$key"
+          fi
+          chmod 600 "$key"
+          xcrun altool --upload-app -f "$RUNNER_TEMP/app.ipa" -t ios \
+            --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+          rm -f "$key"
