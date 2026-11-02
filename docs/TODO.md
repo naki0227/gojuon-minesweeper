@@ -24,6 +24,7 @@
 
 ## 未着手
 
+- [ ] Secrets `GOOGLE_SERVICE_INFO_PLIST_BASE64`・`ASC_KEY_ID`・`ASC_ISSUER_ID`・`ASC_KEY_P8` を登録し、TestFlight（`where: github`）と App Store ワークフローを一度通す（`docs/testflight.md`）。macOS ランナーの Xcode で SDK 57 がビルドできるかは未確認。
 - [ ] Actions secret `DAILY_SCHEDULE_KEY` を登録し、暗号化した出題表の変更を統合後、Daily Plan を手動実行して 10/28 以降を計画し直す（`docs/reports/2026-10-27-daily-schedule-encryption-report.md`）。
 - [ ] 2026-10-27 の Deploy Web がジョブ開始前に失敗した理由（GitHub Actions の利用枠・課金など）を確認する（Public 化で解消したが、原因は未確認）。
 - [ ] `src/daily/remote.ts` の修正を main へ統合後、EAS Update で配信し、未公開の時間帯に昨日の問題が出ることを実機で確認する。
