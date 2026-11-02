@@ -66,13 +66,15 @@ export const CUSTOM_TEXT = tr({
     start: "Start",
     prompt: (length: number, hint: string) =>
       `${length} letters${hint ? `: ${hint}` : ""}`,
-    moves: (moves: number) => `${moves} moves so far`,
-    solved: (moves: number) => `Got it in ${moves} moves!`,
+    moves: (moves: number) =>
+      `${moves} ${moves === 1 ? "move" : "moves"} so far`,
+    solved: (moves: number) =>
+      `Got it in ${moves} ${moves === 1 ? "move" : "moves"}!`,
     gaveUp: "Answer shown",
     answer: (word: string) => `Answer: ${word}`,
     share: "Share",
     shareText: (prompt: string, word: string, moves: number) =>
-      `I guessed "${prompt}" in ${moves} moves on Gojuon Minesweeper! (It was ${word})`,
+      `I guessed "${prompt}" in ${moves} ${moves === 1 ? "move" : "moves"} on Gojuon Minesweeper! (It was ${word})`,
     again: "Ask another",
     home: "Home",
   },

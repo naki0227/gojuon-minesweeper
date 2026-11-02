@@ -1,0 +1,1150 @@
+[
+  {
+    "id": "learn-001",
+    "reading": "ねこ",
+    "display": "猫",
+    "meaning": "cat",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-002",
+    "reading": "いぬ",
+    "display": "犬",
+    "meaning": "dog",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-003",
+    "reading": "とり",
+    "display": "鳥",
+    "meaning": "bird",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-004",
+    "reading": "さかな",
+    "display": "魚",
+    "meaning": "fish",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-005",
+    "reading": "うま",
+    "display": "馬",
+    "meaning": "horse",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-006",
+    "reading": "うし",
+    "display": "牛",
+    "meaning": "cow",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-007",
+    "reading": "ぶた",
+    "display": "豚",
+    "meaning": "pig",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-008",
+    "reading": "うさぎ",
+    "display": "うさぎ",
+    "meaning": "rabbit",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-009",
+    "reading": "さる",
+    "display": "猿",
+    "meaning": "monkey",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-010",
+    "reading": "くま",
+    "display": "熊",
+    "meaning": "bear",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-011",
+    "reading": "ぞう",
+    "display": "象",
+    "meaning": "elephant",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-012",
+    "reading": "きつね",
+    "display": "狐",
+    "meaning": "fox",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-013",
+    "reading": "かめ",
+    "display": "亀",
+    "meaning": "turtle",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-014",
+    "reading": "へび",
+    "display": "蛇",
+    "meaning": "snake",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-015",
+    "reading": "むし",
+    "display": "虫",
+    "meaning": "insect",
+    "topic": "animals"
+  },
+  {
+    "id": "learn-016",
+    "reading": "みず",
+    "display": "水",
+    "meaning": "water",
+    "topic": "food"
+  },
+  {
+    "id": "learn-017",
+    "reading": "おちゃ",
+    "display": "お茶",
+    "meaning": "green tea",
+    "topic": "food"
+  },
+  {
+    "id": "learn-018",
+    "reading": "ごはん",
+    "display": "ご飯",
+    "meaning": "cooked rice; a meal",
+    "topic": "food"
+  },
+  {
+    "id": "learn-019",
+    "reading": "パン",
+    "display": "パン",
+    "meaning": "bread",
+    "topic": "food"
+  },
+  {
+    "id": "learn-020",
+    "reading": "にく",
+    "display": "肉",
+    "meaning": "meat",
+    "topic": "food"
+  },
+  {
+    "id": "learn-021",
+    "reading": "たまご",
+    "display": "卵",
+    "meaning": "egg",
+    "topic": "food"
+  },
+  {
+    "id": "learn-022",
+    "reading": "やさい",
+    "display": "野菜",
+    "meaning": "vegetables",
+    "topic": "food"
+  },
+  {
+    "id": "learn-023",
+    "reading": "くだもの",
+    "display": "果物",
+    "meaning": "fruit",
+    "topic": "food"
+  },
+  {
+    "id": "learn-024",
+    "reading": "りんご",
+    "display": "りんご",
+    "meaning": "apple",
+    "topic": "food"
+  },
+  {
+    "id": "learn-025",
+    "reading": "みかん",
+    "display": "みかん",
+    "meaning": "mandarin orange",
+    "topic": "food"
+  },
+  {
+    "id": "learn-026",
+    "reading": "バナナ",
+    "display": "バナナ",
+    "meaning": "banana",
+    "topic": "food"
+  },
+  {
+    "id": "learn-027",
+    "reading": "すし",
+    "display": "寿司",
+    "meaning": "sushi",
+    "topic": "food"
+  },
+  {
+    "id": "learn-028",
+    "reading": "ラーメン",
+    "display": "ラーメン",
+    "meaning": "ramen",
+    "topic": "food"
+  },
+  {
+    "id": "learn-029",
+    "reading": "うどん",
+    "display": "うどん",
+    "meaning": "udon noodles",
+    "topic": "food"
+  },
+  {
+    "id": "learn-030",
+    "reading": "さとう",
+    "display": "砂糖",
+    "meaning": "sugar",
+    "topic": "food"
+  },
+  {
+    "id": "learn-031",
+    "reading": "しお",
+    "display": "塩",
+    "meaning": "salt",
+    "topic": "food"
+  },
+  {
+    "id": "learn-032",
+    "reading": "ぎゅうにゅう",
+    "display": "牛乳",
+    "meaning": "milk",
+    "topic": "food"
+  },
+  {
+    "id": "learn-033",
+    "reading": "おかし",
+    "display": "お菓子",
+    "meaning": "sweets, snacks",
+    "topic": "food"
+  },
+  {
+    "id": "learn-034",
+    "reading": "コーヒー",
+    "display": "コーヒー",
+    "meaning": "coffee",
+    "topic": "food"
+  },
+  {
+    "id": "learn-035",
+    "reading": "あし",
+    "display": "足",
+    "meaning": "foot, leg",
+    "topic": "body"
+  },
+  {
+    "id": "learn-036",
+    "reading": "みみ",
+    "display": "耳",
+    "meaning": "ear",
+    "topic": "body"
+  },
+  {
+    "id": "learn-037",
+    "reading": "くち",
+    "display": "口",
+    "meaning": "mouth",
+    "topic": "body"
+  },
+  {
+    "id": "learn-038",
+    "reading": "あたま",
+    "display": "頭",
+    "meaning": "head",
+    "topic": "body"
+  },
+  {
+    "id": "learn-039",
+    "reading": "かお",
+    "display": "顔",
+    "meaning": "face",
+    "topic": "body"
+  },
+  {
+    "id": "learn-040",
+    "reading": "せなか",
+    "display": "背中",
+    "meaning": "back (of the body)",
+    "topic": "body"
+  },
+  {
+    "id": "learn-041",
+    "reading": "おなか",
+    "display": "お腹",
+    "meaning": "stomach, belly",
+    "topic": "body"
+  },
+  {
+    "id": "learn-042",
+    "reading": "ゆび",
+    "display": "指",
+    "meaning": "finger",
+    "topic": "body"
+  },
+  {
+    "id": "learn-043",
+    "reading": "ちち",
+    "display": "父",
+    "meaning": "(my) father",
+    "topic": "people"
+  },
+  {
+    "id": "learn-044",
+    "reading": "はは",
+    "display": "母",
+    "meaning": "(my) mother",
+    "topic": "people"
+  },
+  {
+    "id": "learn-045",
+    "reading": "あに",
+    "display": "兄",
+    "meaning": "(my) older brother",
+    "topic": "people"
+  },
+  {
+    "id": "learn-046",
+    "reading": "あね",
+    "display": "姉",
+    "meaning": "(my) older sister",
+    "topic": "people"
+  },
+  {
+    "id": "learn-047",
+    "reading": "おとうと",
+    "display": "弟",
+    "meaning": "younger brother",
+    "topic": "people"
+  },
+  {
+    "id": "learn-048",
+    "reading": "いもうと",
+    "display": "妹",
+    "meaning": "younger sister",
+    "topic": "people"
+  },
+  {
+    "id": "learn-049",
+    "reading": "ともだち",
+    "display": "友達",
+    "meaning": "friend",
+    "topic": "people"
+  },
+  {
+    "id": "learn-050",
+    "reading": "せんせい",
+    "display": "先生",
+    "meaning": "teacher",
+    "topic": "people"
+  },
+  {
+    "id": "learn-051",
+    "reading": "がくせい",
+    "display": "学生",
+    "meaning": "student",
+    "topic": "people"
+  },
+  {
+    "id": "learn-052",
+    "reading": "こども",
+    "display": "子供",
+    "meaning": "child",
+    "topic": "people"
+  },
+  {
+    "id": "learn-053",
+    "reading": "おとな",
+    "display": "大人",
+    "meaning": "adult",
+    "topic": "people"
+  },
+  {
+    "id": "learn-054",
+    "reading": "ひと",
+    "display": "人",
+    "meaning": "person",
+    "topic": "people"
+  },
+  {
+    "id": "learn-055",
+    "reading": "おとこ",
+    "display": "男",
+    "meaning": "man",
+    "topic": "people"
+  },
+  {
+    "id": "learn-056",
+    "reading": "おんな",
+    "display": "女",
+    "meaning": "woman",
+    "topic": "people"
+  },
+  {
+    "id": "learn-057",
+    "reading": "いえ",
+    "display": "家",
+    "meaning": "house, home",
+    "topic": "places"
+  },
+  {
+    "id": "learn-058",
+    "reading": "がっこう",
+    "display": "学校",
+    "meaning": "school",
+    "topic": "places"
+  },
+  {
+    "id": "learn-059",
+    "reading": "えき",
+    "display": "駅",
+    "meaning": "station",
+    "topic": "places"
+  },
+  {
+    "id": "learn-060",
+    "reading": "みせ",
+    "display": "店",
+    "meaning": "shop",
+    "topic": "places"
+  },
+  {
+    "id": "learn-061",
+    "reading": "びょういん",
+    "display": "病院",
+    "meaning": "hospital",
+    "topic": "places"
+  },
+  {
+    "id": "learn-062",
+    "reading": "こうえん",
+    "display": "公園",
+    "meaning": "park",
+    "topic": "places"
+  },
+  {
+    "id": "learn-063",
+    "reading": "ぎんこう",
+    "display": "銀行",
+    "meaning": "bank",
+    "topic": "places"
+  },
+  {
+    "id": "learn-064",
+    "reading": "としょかん",
+    "display": "図書館",
+    "meaning": "library",
+    "topic": "places"
+  },
+  {
+    "id": "learn-065",
+    "reading": "くうこう",
+    "display": "空港",
+    "meaning": "airport",
+    "topic": "places"
+  },
+  {
+    "id": "learn-066",
+    "reading": "へや",
+    "display": "部屋",
+    "meaning": "room",
+    "topic": "places"
+  },
+  {
+    "id": "learn-067",
+    "reading": "にわ",
+    "display": "庭",
+    "meaning": "garden, yard",
+    "topic": "places"
+  },
+  {
+    "id": "learn-068",
+    "reading": "まち",
+    "display": "町",
+    "meaning": "town",
+    "topic": "places"
+  },
+  {
+    "id": "learn-069",
+    "reading": "やま",
+    "display": "山",
+    "meaning": "mountain",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-070",
+    "reading": "かわ",
+    "display": "川",
+    "meaning": "river",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-071",
+    "reading": "うみ",
+    "display": "海",
+    "meaning": "sea",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-072",
+    "reading": "そら",
+    "display": "空",
+    "meaning": "sky",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-073",
+    "reading": "もり",
+    "display": "森",
+    "meaning": "forest",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-074",
+    "reading": "しま",
+    "display": "島",
+    "meaning": "island",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-075",
+    "reading": "あめ",
+    "display": "雨",
+    "meaning": "rain",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-076",
+    "reading": "ゆき",
+    "display": "雪",
+    "meaning": "snow",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-077",
+    "reading": "かぜ",
+    "display": "風",
+    "meaning": "wind",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-078",
+    "reading": "くも",
+    "display": "雲",
+    "meaning": "cloud",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-079",
+    "reading": "ほし",
+    "display": "星",
+    "meaning": "star",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-080",
+    "reading": "つき",
+    "display": "月",
+    "meaning": "moon",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-081",
+    "reading": "たいよう",
+    "display": "太陽",
+    "meaning": "the sun",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-082",
+    "reading": "はな",
+    "display": "花",
+    "meaning": "flower",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-083",
+    "reading": "いし",
+    "display": "石",
+    "meaning": "stone",
+    "topic": "nature"
+  },
+  {
+    "id": "learn-084",
+    "reading": "あさ",
+    "display": "朝",
+    "meaning": "morning",
+    "topic": "time"
+  },
+  {
+    "id": "learn-085",
+    "reading": "ひる",
+    "display": "昼",
+    "meaning": "noon, daytime",
+    "topic": "time"
+  },
+  {
+    "id": "learn-086",
+    "reading": "よる",
+    "display": "夜",
+    "meaning": "night",
+    "topic": "time"
+  },
+  {
+    "id": "learn-087",
+    "reading": "きょう",
+    "display": "今日",
+    "meaning": "today",
+    "topic": "time"
+  },
+  {
+    "id": "learn-088",
+    "reading": "あした",
+    "display": "明日",
+    "meaning": "tomorrow",
+    "topic": "time"
+  },
+  {
+    "id": "learn-089",
+    "reading": "きのう",
+    "display": "昨日",
+    "meaning": "yesterday",
+    "topic": "time"
+  },
+  {
+    "id": "learn-090",
+    "reading": "いま",
+    "display": "今",
+    "meaning": "now",
+    "topic": "time"
+  },
+  {
+    "id": "learn-091",
+    "reading": "はる",
+    "display": "春",
+    "meaning": "spring (season)",
+    "topic": "time"
+  },
+  {
+    "id": "learn-092",
+    "reading": "なつ",
+    "display": "夏",
+    "meaning": "summer",
+    "topic": "time"
+  },
+  {
+    "id": "learn-093",
+    "reading": "あき",
+    "display": "秋",
+    "meaning": "autumn",
+    "topic": "time"
+  },
+  {
+    "id": "learn-094",
+    "reading": "ふゆ",
+    "display": "冬",
+    "meaning": "winter",
+    "topic": "time"
+  },
+  {
+    "id": "learn-095",
+    "reading": "しゅうまつ",
+    "display": "週末",
+    "meaning": "weekend",
+    "topic": "time"
+  },
+  {
+    "id": "learn-096",
+    "reading": "ほん",
+    "display": "本",
+    "meaning": "book",
+    "topic": "things"
+  },
+  {
+    "id": "learn-097",
+    "reading": "かばん",
+    "display": "鞄",
+    "meaning": "bag",
+    "topic": "things"
+  },
+  {
+    "id": "learn-098",
+    "reading": "くつ",
+    "display": "靴",
+    "meaning": "shoes",
+    "topic": "things"
+  },
+  {
+    "id": "learn-099",
+    "reading": "ふく",
+    "display": "服",
+    "meaning": "clothes",
+    "topic": "things"
+  },
+  {
+    "id": "learn-100",
+    "reading": "ぼうし",
+    "display": "帽子",
+    "meaning": "hat",
+    "topic": "things"
+  },
+  {
+    "id": "learn-101",
+    "reading": "かさ",
+    "display": "傘",
+    "meaning": "umbrella",
+    "topic": "things"
+  },
+  {
+    "id": "learn-102",
+    "reading": "とけい",
+    "display": "時計",
+    "meaning": "clock, watch",
+    "topic": "things"
+  },
+  {
+    "id": "learn-103",
+    "reading": "でんわ",
+    "display": "電話",
+    "meaning": "telephone",
+    "topic": "things"
+  },
+  {
+    "id": "learn-104",
+    "reading": "くるま",
+    "display": "車",
+    "meaning": "car",
+    "topic": "things"
+  },
+  {
+    "id": "learn-105",
+    "reading": "でんしゃ",
+    "display": "電車",
+    "meaning": "train",
+    "topic": "things"
+  },
+  {
+    "id": "learn-106",
+    "reading": "じてんしゃ",
+    "display": "自転車",
+    "meaning": "bicycle",
+    "topic": "things"
+  },
+  {
+    "id": "learn-107",
+    "reading": "ひこうき",
+    "display": "飛行機",
+    "meaning": "airplane",
+    "topic": "things"
+  },
+  {
+    "id": "learn-108",
+    "reading": "ふね",
+    "display": "船",
+    "meaning": "ship, boat",
+    "topic": "things"
+  },
+  {
+    "id": "learn-109",
+    "reading": "つくえ",
+    "display": "机",
+    "meaning": "desk",
+    "topic": "things"
+  },
+  {
+    "id": "learn-110",
+    "reading": "いす",
+    "display": "椅子",
+    "meaning": "chair",
+    "topic": "things"
+  },
+  {
+    "id": "learn-111",
+    "reading": "まど",
+    "display": "窓",
+    "meaning": "window",
+    "topic": "things"
+  },
+  {
+    "id": "learn-112",
+    "reading": "ドア",
+    "display": "ドア",
+    "meaning": "door",
+    "topic": "things"
+  },
+  {
+    "id": "learn-113",
+    "reading": "テレビ",
+    "display": "テレビ",
+    "meaning": "television",
+    "topic": "things"
+  },
+  {
+    "id": "learn-114",
+    "reading": "かぎ",
+    "display": "鍵",
+    "meaning": "key",
+    "topic": "things"
+  },
+  {
+    "id": "learn-115",
+    "reading": "かみ",
+    "display": "紙",
+    "meaning": "paper",
+    "topic": "things"
+  },
+  {
+    "id": "learn-116",
+    "reading": "えんぴつ",
+    "display": "鉛筆",
+    "meaning": "pencil",
+    "topic": "things"
+  },
+  {
+    "id": "learn-117",
+    "reading": "しんぶん",
+    "display": "新聞",
+    "meaning": "newspaper",
+    "topic": "things"
+  },
+  {
+    "id": "learn-118",
+    "reading": "しゃしん",
+    "display": "写真",
+    "meaning": "photograph",
+    "topic": "things"
+  },
+  {
+    "id": "learn-119",
+    "reading": "おかね",
+    "display": "お金",
+    "meaning": "money",
+    "topic": "things"
+  },
+  {
+    "id": "learn-120",
+    "reading": "きっぷ",
+    "display": "切符",
+    "meaning": "ticket",
+    "topic": "things"
+  },
+  {
+    "id": "learn-121",
+    "reading": "あか",
+    "display": "赤",
+    "meaning": "red",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-122",
+    "reading": "あお",
+    "display": "青",
+    "meaning": "blue",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-123",
+    "reading": "しろ",
+    "display": "白",
+    "meaning": "white",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-124",
+    "reading": "くろ",
+    "display": "黒",
+    "meaning": "black",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-125",
+    "reading": "きいろ",
+    "display": "黄色",
+    "meaning": "yellow",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-126",
+    "reading": "みどり",
+    "display": "緑",
+    "meaning": "green",
+    "topic": "colors"
+  },
+  {
+    "id": "learn-127",
+    "reading": "おおきい",
+    "display": "大きい",
+    "meaning": "big",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-128",
+    "reading": "ちいさい",
+    "display": "小さい",
+    "meaning": "small",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-129",
+    "reading": "たかい",
+    "display": "高い",
+    "meaning": "tall; expensive",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-130",
+    "reading": "やすい",
+    "display": "安い",
+    "meaning": "cheap",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-131",
+    "reading": "あつい",
+    "display": "暑い",
+    "meaning": "hot (weather)",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-132",
+    "reading": "さむい",
+    "display": "寒い",
+    "meaning": "cold (weather)",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-133",
+    "reading": "あたらしい",
+    "display": "新しい",
+    "meaning": "new",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-134",
+    "reading": "ふるい",
+    "display": "古い",
+    "meaning": "old (things)",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-135",
+    "reading": "おいしい",
+    "display": "美味しい",
+    "meaning": "delicious",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-136",
+    "reading": "たのしい",
+    "display": "楽しい",
+    "meaning": "fun, enjoyable",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-137",
+    "reading": "はやい",
+    "display": "速い",
+    "meaning": "fast",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-138",
+    "reading": "おそい",
+    "display": "遅い",
+    "meaning": "slow; late",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-139",
+    "reading": "ながい",
+    "display": "長い",
+    "meaning": "long",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-140",
+    "reading": "みじかい",
+    "display": "短い",
+    "meaning": "short (length)",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-141",
+    "reading": "あまい",
+    "display": "甘い",
+    "meaning": "sweet",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-142",
+    "reading": "からい",
+    "display": "辛い",
+    "meaning": "spicy",
+    "topic": "describing"
+  },
+  {
+    "id": "learn-143",
+    "reading": "たべる",
+    "display": "食べる",
+    "meaning": "to eat",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-144",
+    "reading": "のむ",
+    "display": "飲む",
+    "meaning": "to drink",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-145",
+    "reading": "みる",
+    "display": "見る",
+    "meaning": "to see, to watch",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-146",
+    "reading": "きく",
+    "display": "聞く",
+    "meaning": "to listen; to ask",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-147",
+    "reading": "よむ",
+    "display": "読む",
+    "meaning": "to read",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-148",
+    "reading": "かく",
+    "display": "書く",
+    "meaning": "to write",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-149",
+    "reading": "はなす",
+    "display": "話す",
+    "meaning": "to speak",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-150",
+    "reading": "あるく",
+    "display": "歩く",
+    "meaning": "to walk",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-151",
+    "reading": "はしる",
+    "display": "走る",
+    "meaning": "to run",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-152",
+    "reading": "およぐ",
+    "display": "泳ぐ",
+    "meaning": "to swim",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-153",
+    "reading": "ねる",
+    "display": "寝る",
+    "meaning": "to sleep",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-154",
+    "reading": "おきる",
+    "display": "起きる",
+    "meaning": "to wake up",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-155",
+    "reading": "いく",
+    "display": "行く",
+    "meaning": "to go",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-156",
+    "reading": "くる",
+    "display": "来る",
+    "meaning": "to come",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-157",
+    "reading": "かう",
+    "display": "買う",
+    "meaning": "to buy",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-158",
+    "reading": "あそぶ",
+    "display": "遊ぶ",
+    "meaning": "to play",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-159",
+    "reading": "うたう",
+    "display": "歌う",
+    "meaning": "to sing",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-160",
+    "reading": "わらう",
+    "display": "笑う",
+    "meaning": "to laugh",
+    "topic": "doing"
+  },
+  {
+    "id": "learn-161",
+    "reading": "おはよう",
+    "display": "おはよう",
+    "meaning": "good morning",
+    "topic": "greetings"
+  },
+  {
+    "id": "learn-162",
+    "reading": "こんにちは",
+    "display": "こんにちは",
+    "meaning": "hello",
+    "topic": "greetings"
+  },
+  {
+    "id": "learn-163",
+    "reading": "さようなら",
+    "display": "さようなら",
+    "meaning": "goodbye",
+    "topic": "greetings"
+  },
+  {
+    "id": "learn-164",
+    "reading": "ありがとう",
+    "display": "ありがとう",
+    "meaning": "thank you",
+    "topic": "greetings"
+  }
+]

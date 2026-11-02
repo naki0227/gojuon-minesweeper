@@ -16,6 +16,8 @@ type Props = {
   size: number;
   opened: boolean;
   hinted?: boolean;
+  // Small text under a closed cell's letter (romaji for learners).
+  caption?: string;
   mine: boolean;
   multiplicity: number;
   count: number | null;
@@ -34,6 +36,7 @@ export function BoardTile({
   size,
   opened,
   hinted = false,
+  caption,
   mine,
   multiplicity,
   count,
@@ -151,9 +154,19 @@ export function BoardTile({
             { opacity: closedOpacity },
           ]}
         >
-          <Text style={[styles.closedChar, { fontSize: size * 0.5 }]}>
+          <Text
+            style={[
+              styles.closedChar,
+              { fontSize: size * (caption ? 0.4 : 0.5) },
+            ]}
+          >
             {char}
           </Text>
+          {caption ? (
+            <Text style={[styles.caption, { fontSize: size * 0.26 }]}>
+              {caption}
+            </Text>
+          ) : null}
         </Animated.View>
         <Animated.View
           style={[

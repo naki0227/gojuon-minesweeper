@@ -28,6 +28,9 @@ export const HOME_SETUP_TEXT = tr({
     botNote: "推理するボットと対戦",
     customMode: "出題して遊ぶ",
     customModeNote: "決めた言葉を当ててもらう",
+    // English app only: the learner mode is for people learning Japanese.
+    learn: "ひらがなを学ぶ",
+    learnNote: "英語の意味から日本語を探す",
     puzzles: "詰め五十音",
     puzzlesNote: "最短の手数で答えを確定",
     endless: "エンドレス",
@@ -71,6 +74,8 @@ export const HOME_SETUP_TEXT = tr({
     // Japanese only: the tile shows only in the Japanese app.
     customMode: "Make a question",
     customModeNote: "A friend guesses your word",
+    learn: "Learn hiragana",
+    learnNote: "Find the Japanese for an English word",
     puzzles: "Word puzzles",
     puzzlesNote: "Settle the word in the fewest cells",
     endless: "Endless",
