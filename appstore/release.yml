@@ -4,24 +4,30 @@
 
 app: com.naki0227.gojuonminesweeper
 version: "1.0.3"
-build: 32             # "latest" にすると、このバージョンで最後に上げたビルド
+build: 33             # "latest" にすると、このバージョンで最後に上げたビルド
 release: manual       # manual: 承認されたら自分で公開 / after_approval: 承認されたらすぐ公開
 submit_for_review: true    # true にしてマージすると、反映したあと審査に出す
+withdraw_to_update: true   # 審査待ちのビルドを差し替えるときは、いったん取り下げてから出し直す
 
 localizations:
   ja:
     whats_new: |
+      ・ひとりでも遊べるようになりました。ボットと対戦する「ひとりで」（よわい・ふつう・つよい）、最短の手数で答えを確定させるパズル「詰め五十音」（30問）、自分で決めた言葉を目の前の相手に当ててもらう「出題して遊ぶ」を追加しました。
+      ・ホーム画面のいちばん上に遊び方を並べました。
       ・ホーム画面とロック画面のウィジェットで「今日の一問」が遊べるようになりました。ウィジェットで進めた続きはアプリでも遊べます。
       ・「今日の一問」の結果を、盤面の画像でシェアできるようになりました（答えの文字は見えません）。
       ・今日の問題が公開される前に「通信できませんでした」と表示されることがある問題を直しました。公開前は前日の問題を遊べます。
   en-US:
     whats_new: |
+      - New: Learn hiragana. Get a word in English and find it in Japanese on the kana board, with romaji under every cell.
+      - Solo: play a bot that reasons from the same board (easy, normal, hard). Make a question: pick a word for a friend next to you to guess.
+      - The ways to play now come first on the home screen.
       - Play the Daily Puzzle from Home Screen and Lock Screen widgets. A game started in a widget carries on in the app.
       - Share your Daily Puzzle result as a picture of the board (the answer letters stay hidden).
       - Fixed a "could not connect" message shown before the day's puzzle is online. Until then, yesterday's puzzle is shown.
 
 review:
   notes: |
-    Version 1.0.3 adds widgets for the Daily Puzzle (今日の一問).
+    Version 1.0.3 adds widgets for the Daily Puzzle (今日の一問) and new ways to play on one device, shown at the top of the home screen: a bot opponent, tsume puzzles (Japanese only), a word you choose for a friend nearby to guess, and Learn hiragana (English only). They need no network, account or login.
     To add one: long-press the Home Screen, tap +, choose 五十音マインスイーパー, and pick the large (board) or small widget. On the Lock Screen, customize it and add the rectangular widget.
     Tapping a cell in the large widget opens it; tapping the widget opens the Daily Puzzle in the app. No account or login is needed.
