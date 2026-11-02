@@ -4,7 +4,7 @@
 
 app: com.naki0227.gojuonminesweeper
 version: "1.0.3"
-build: 31             # "latest" にすると、このバージョンで最後に上げたビルド
+build: 32             # "latest" にすると、このバージョンで最後に上げたビルド
 release: manual       # manual: 承認されたら自分で公開 / after_approval: 承認されたらすぐ公開
 submit_for_review: true    # true にしてマージすると、反映したあと審査に出す
 
