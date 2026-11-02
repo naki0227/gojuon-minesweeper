@@ -4,13 +4,8 @@ import { primaryAnswer, QUESTIONS } from "../src/data/questions";
 import { getBoardOrder } from "../src/game/board";
 import { isMineCharacter } from "../src/game/engine";
 import { fittingWords, PUZZLE_PACK, puzzleQuestion } from "../src/puzzles/pack";
-import {
-  giveUpPuzzle,
-  guessPuzzle,
-  openPuzzleCell,
-  puzzleStars,
-  startPuzzle,
-} from "../src/puzzles/play";
+import { giveUpSolo, guessSolo, openSoloCell } from "../src/game/solo";
+import { puzzleStars, startPuzzle } from "../src/puzzles/play";
 import { bestFirstCells, createSolver, par } from "../src/puzzles/solver";
 
 const entry = PUZZLE_PACK[0]!;
@@ -71,22 +66,22 @@ describe("playing a puzzle", () => {
     const safe = getBoardOrder("ja").find(
       (c) => !play.opened.includes(c) && !isMineCharacter(question, c),
     )!;
-    play = openPuzzleCell(play, safe);
+    play = openSoloCell(play, safe);
     expect(play.moves).toBe(1);
     expect(play.opened.length).toBeGreaterThan(entry.opened.length);
-    expect(openPuzzleCell(play, safe).moves).toBe(1);
-    play = guessPuzzle(play, "まちがい");
+    expect(openSoloCell(play, safe).moves).toBe(1);
+    play = guessSolo(play, "まちがい");
     expect(play.moves).toBe(2);
     expect(play.wrong).toEqual(["まちがい"]);
   });
 
   it("gives stars against par when solved", () => {
     const answer = primaryAnswer(question).display;
-    const solved = guessPuzzle(startPuzzle(entry), answer);
+    const solved = guessSolo(startPuzzle(entry), answer);
     expect(solved.status).toBe("solved");
-    expect(puzzleStars(solved)).toBe(3);
-    expect(puzzleStars({ ...solved, moves: entry.par + 1 })).toBe(2);
-    expect(puzzleStars({ ...solved, moves: entry.par + 5 })).toBe(1);
-    expect(puzzleStars(giveUpPuzzle(startPuzzle(entry)))).toBe(0);
+    expect(puzzleStars(solved, entry.par)).toBe(3);
+    expect(puzzleStars({ ...solved, moves: entry.par + 1 }, entry.par)).toBe(2);
+    expect(puzzleStars({ ...solved, moves: entry.par + 5 }, entry.par)).toBe(1);
+    expect(puzzleStars(giveUpSolo(startPuzzle(entry)), entry.par)).toBe(0);
   });
 });

@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { router } from "expo-router";
 
 import { PUZZLE_PACK } from "./pack";
-import { puzzleStars, startPuzzle, type PuzzlePlay } from "./play";
+import type { SoloPlay } from "../game/solo";
+import { puzzleStars, startPuzzle } from "./play";
 import { PuzzleList } from "./PuzzleList";
 import { PuzzleView } from "./PuzzleView";
 import {
@@ -15,7 +16,7 @@ import {
 export function PuzzlesScreen() {
   const [records, setRecords] = useState<PuzzleRecords>({});
   const [index, setIndex] = useState<number | null>(null);
-  const [play, setPlay] = useState<PuzzlePlay | null>(null);
+  const [play, setPlay] = useState<SoloPlay | null>(null);
 
   useEffect(() => {
     void readPuzzleRecords().then(setRecords);
@@ -26,12 +27,12 @@ export function PuzzlesScreen() {
     setPlay(startPuzzle(PUZZLE_PACK[next]!));
   }, []);
 
-  function change(next: PuzzlePlay) {
+  function change(next: SoloPlay) {
     setPlay(next);
-    const got = puzzleStars(next);
-    if (next.status === "solved" && got > 0) {
-      void savePuzzleStars(next.entry.id, got).then(setRecords);
-    }
+    if (index === null) return;
+    const entry = PUZZLE_PACK[index]!;
+    const got = puzzleStars(next, entry.par);
+    if (got > 0) void savePuzzleStars(entry.id, got).then(setRecords);
   }
 
   if (index === null || !play) {
@@ -46,7 +47,8 @@ export function PuzzlesScreen() {
   }
   return (
     <PuzzleView
-      key={play.entry.id}
+      key={PUZZLE_PACK[index]!.id}
+      entry={PUZZLE_PACK[index]!}
       play={play}
       index={index}
       onChange={change}

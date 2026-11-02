@@ -39,6 +39,7 @@ export function HomeModes({
           note={S.botNote}
           disabled={disabled}
         />
+        <ModeTile href="/custom" title={S.customMode} note={S.customModeNote} />
         {LOCALE === "ja" ? (
           <ModeTile href="/puzzles" title={S.puzzles} note={S.puzzlesNote} />
         ) : null}
