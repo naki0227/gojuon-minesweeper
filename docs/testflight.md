@@ -23,7 +23,7 @@ GitHub の Actions タブにある「TestFlight」ワークフローを手で実
 必要な Secrets（Settings → Secrets and variables → Actions）:
 
 - `EXPO_TOKEN`（既存）: ビルドと署名情報、App Store Connect へのアップロード
-- `GOOGLE_SERVICE_INFO_PLIST_BASE64`: `base64 -i GoogleService-Info.plist | pbcopy` で作る。ローカルビルドは EAS のファイル型の変数を受け取れず、無いと Firebase 抜きのアプリになるので、無ければビルドを止める
+- `GOOGLE_SERVICE_INFO_PLIST_BASE64`: `GoogleService-Info.plist` の中身をそのまま貼るか、`base64 -i GoogleService-Info.plist | pbcopy` の結果を貼る（どちらでも読める）。ローカルビルドは EAS のファイル型の変数を受け取れず、無いと Firebase 抜きのアプリになるので、無ければビルドを止める
 - `ASC_KEY_ID` / `ASC_ISSUER_ID` / `ASC_KEY_P8`: App Store Connect API キー（StudyReel と同じチームのキーでよい）。`tools/appstore/asc.py` が使う
 
 `tools/appstore/asc.py` は StudyReel のものの写し。直すときは両方そろえる。

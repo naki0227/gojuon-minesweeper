@@ -70,11 +70,19 @@ jobs:
           PLIST_BASE64: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64 }}
         run: |
           if [ -z "$PLIST_BASE64" ]; then
-            echo "::error::Set the GOOGLE_SERVICE_INFO_PLIST_BASE64 secret (base64 of GoogleService-Info.plist)."
+            echo "::error::Set the GOOGLE_SERVICE_INFO_PLIST_BASE64 secret (GoogleService-Info.plist, as is or in base64)."
             exit 1
           fi
-          echo "$PLIST_BASE64" | base64 --decode > "$RUNNER_TEMP/GoogleService-Info.plist"
-          echo "GOOGLE_SERVICE_INFO_PLIST=$RUNNER_TEMP/GoogleService-Info.plist" >> "$GITHUB_ENV"
+          file="$RUNNER_TEMP/GoogleService-Info.plist"
+          # The plist pasted as is starts with "<"; anything else is base64.
+          if [[ "$(printf '%s' "$PLIST_BASE64" | tr -d '[:space:]' | head -c 1)" == "<" ]]; then
+            # Drop leading blank lines or spaces from pasting: XML must start at "<".
+            printf '%s\n' "${PLIST_BASE64#"${PLIST_BASE64%%[![:space:]]*}"}" > "$file"
+          else
+            printf '%s' "$PLIST_BASE64" | base64 --decode > "$file"
+          fi
+          plutil -lint "$file"
+          echo "GOOGLE_SERVICE_INFO_PLIST=$file" >> "$GITHUB_ENV"
 
       - name: Build on GitHub
         if: inputs.where != 'eas'
