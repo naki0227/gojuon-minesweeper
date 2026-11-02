@@ -2,6 +2,7 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import { Link, type Href } from "expo-router";
 
 import type { QuestionFilters } from "../data/types";
+import { LOCALE } from "../i18n";
 import { colors } from "../theme/colors";
 import { HOME_SETUP_TEXT as S } from "./HomeSetup.strings";
 import { Pressable } from "./TapPressable";
@@ -38,6 +39,9 @@ export function HomeModes({
           note={S.botNote}
           disabled={disabled}
         />
+        {LOCALE === "ja" ? (
+          <ModeTile href="/puzzles" title={S.puzzles} note={S.puzzlesNote} />
+        ) : null}
         {onOnline ? (
           <ModeTile
             title={S.online}

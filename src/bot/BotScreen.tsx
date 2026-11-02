@@ -6,6 +6,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { trackEvent } from "../analytics/events";
 import { buttonStyles } from "../components/buttonStyles";
 import { LocalMatch } from "../components/LocalMatch";
+import { menuStyles } from "../components/menuStyles";
 import { Pressable } from "../components/TapPressable";
 import { parseFilters } from "../data/filters";
 import { pickRandomQuestion } from "../data/questions";
@@ -118,7 +119,7 @@ export function BotScreen() {
           <Pressable
             accessibilityRole="button"
             onPress={() => router.back()}
-            style={styles.backButton}
+            style={styles.back}
           >
             <Text style={styles.backText}>{S.back}</Text>
           </Pressable>
@@ -169,35 +170,26 @@ export function BotScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: colors.background },
-  page: {
-    width: "100%",
-    maxWidth: 560,
-    alignSelf: "center",
-    padding: 20,
-    gap: 12,
-  },
-  title: { color: colors.ink, fontSize: 24, fontWeight: "900" },
-  lead: { color: colors.inkSoft, fontSize: 15, lineHeight: 22 },
-  levelButton: {
-    ...buttonStyles.secondaryButton,
-    alignItems: "flex-start",
-    paddingVertical: 12,
-    gap: 2,
-  },
-  levelName: { color: colors.ink, fontSize: 17, fontWeight: "900" },
-  levelNote: { color: colors.muted, fontSize: 13 },
-  pressed: { opacity: 0.7 },
-  backButton: { alignSelf: "center", padding: 12 },
-  backText: { color: colors.link, fontSize: 15, fontWeight: "700" },
-  thought: {
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "#f2c9a0",
-    backgroundColor: "#fff8f1",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-  },
-  thoughtText: { color: "#8a3f10", fontSize: 14, fontWeight: "700" },
-});
+const styles = {
+  ...menuStyles,
+  ...StyleSheet.create({
+    levelButton: {
+      ...buttonStyles.secondaryButton,
+      alignItems: "flex-start",
+      paddingVertical: 12,
+      gap: 2,
+    },
+    levelName: { color: colors.ink, fontSize: 17, fontWeight: "900" },
+    levelNote: { color: colors.muted, fontSize: 13 },
+    pressed: { opacity: 0.7 },
+    thought: {
+      borderRadius: 12,
+      borderWidth: 1,
+      borderColor: "#f2c9a0",
+      backgroundColor: "#fff8f1",
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+    },
+    thoughtText: { color: "#8a3f10", fontSize: 14, fontWeight: "700" },
+  }),
+};
