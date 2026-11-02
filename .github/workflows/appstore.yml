@@ -1,0 +1,69 @@
+name: App Store
+
+# appstore/release.yml の内容を App Store Connect に反映する。
+#   PR のとき:          読むだけ（dry run）。何が変わるかをログに出す
+#   main に入ったとき:  反映する。submit_for_review: true なら審査にも出す
+# Secrets: ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_P8（App Store Connect API キー。StudyReel と同じチームのキーでよい）
+on:
+  pull_request:
+    paths:
+      - "appstore/**"
+      - "tools/appstore/**"
+      - ".github/workflows/appstore.yml"
+  push:
+    branches: [main]
+    paths:
+      - "appstore/**"
+      - "tools/appstore/**"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "読むだけにする"
+        type: boolean
+        default: true
+
+concurrency:
+  group: appstore
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install "pyjwt[crypto]==2.15.1" "pyyaml==6.0.2" "requests==2.34.2"
+
+      # Without this a missing key only shows up as a PEM parse error in jwt.
+      - name: Check App Store Connect secrets
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          missing=""
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            [ -n "${!name}" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Set these repository secrets (App Store Connect API key):$missing"
+            exit 1
+          fi
+
+      - name: Sync App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          flag=""
+          if [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ inputs.dry_run }}" = "true" ]; then
+            flag="--dry-run"
+          fi
+          python3 tools/appstore/asc.py appstore/release.yml $flag
