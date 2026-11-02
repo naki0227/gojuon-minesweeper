@@ -1,14 +1,6 @@
 import { useMemo, useState } from "react";
-import {
-  Modal,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
 import Head from "expo-router/head";
 
 import { BannerAd } from "../ads/BannerAd";
@@ -32,6 +24,7 @@ import { RemoveAdsOptions } from "./RemoveAdsOptions";
 import { HOME_SETUP_TEXT as S } from "./HomeSetup.strings";
 import { colors } from "../theme/colors";
 import { HomeFooter } from "./HomeFooter";
+import { HomeModes } from "./HomeModes";
 import { HomeTitle } from "./HomeTitle";
 import { Pressable } from "./TapPressable";
 
@@ -336,35 +329,11 @@ export function HomeSetup({
               <Text style={styles.textLink}>{S.quickPlay}</Text>
             </Pressable>
           </View>
-          {Platform.OS === "ios" ? (
-            <Link
-              href={{
-                pathname: "/endless",
-                params: { filters: JSON.stringify(filters) },
-              }}
-              asChild
-            >
-              <Pressable accessibilityRole="button" style={styles.onlineButton}>
-                <Text style={styles.onlineText}>{S.endless}</Text>
-                <Text style={styles.onlineNote}>{S.endlessNote}</Text>
-              </Pressable>
-            </Link>
-          ) : null}
-          {onOnline ? (
-            <Pressable
-              disabled={candidateCount === 0}
-              onPress={() => onOnline(filters)}
-              accessibilityRole="button"
-              style={({ pressed }) => [
-                styles.onlineButton,
-                candidateCount === 0 && styles.disabled,
-                pressed && styles.pressed,
-              ]}
-            >
-              <Text style={styles.onlineText}>{S.online}</Text>
-              <Text style={styles.onlineNote}>{S.onlineNote}</Text>
-            </Pressable>
-          ) : null}
+          <HomeModes
+            filters={filters}
+            disabled={candidateCount === 0}
+            onOnline={onOnline}
+          />
         </View>
         <View style={styles.adArea}>
           <BannerAd placement="setup" />
@@ -637,27 +606,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 1,
-  },
-  onlineButton: {
-    minHeight: 52,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 2,
-    borderColor: colors.ink,
-    backgroundColor: colors.white,
-    marginRight: 4,
-    paddingVertical: 6,
-  },
-  onlineText: {
-    color: colors.ink,
-    fontSize: 16,
-    fontWeight: "900",
-    letterSpacing: 1,
-  },
-  onlineNote: {
-    color: MUTED,
-    fontSize: 11,
-    marginTop: 2,
   },
   startMeta: {
     alignItems: "center",
