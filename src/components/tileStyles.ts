@@ -36,6 +36,7 @@ export const tileStyles = StyleSheet.create({
     fontWeight: "800",
     marginTop: 1,
   },
+  caption: { color: "#6b7c87", fontWeight: "600", marginTop: -2 },
   safe: {
     backgroundColor: "#e6edf2",
     borderWidth: 1,

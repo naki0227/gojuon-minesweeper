@@ -42,12 +42,14 @@ export function SoloBoard({
   header,
   notes,
   result,
+  caption,
   onChange,
 }: {
   play: SoloPlay;
   header: ReactNode;
   notes?: ReactNode;
   result: ReactNode;
+  caption?: (char: string) => string;
   onChange: (play: SoloPlay) => void;
 }) {
   const [answer, setAnswer] = useState("");
@@ -106,6 +108,7 @@ export function SoloBoard({
           mineMultiplicity={(char) => questionMineMultiplicity(question, char)}
           onOpen={(char) => onChange(openSoloCell(play, char))}
           openedChars={play.opened}
+          caption={caption}
         />
         {playing ? (
           <Pressable

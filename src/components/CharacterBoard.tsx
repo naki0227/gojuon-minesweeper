@@ -11,6 +11,8 @@ type Props = {
   language: QuestionLanguage;
   openedChars: readonly string[];
   hintedChars?: ReadonlySet<string>;
+  // Small text under each closed cell (romaji for learners).
+  caption?: (char: string) => string;
   mineChars: ReadonlySet<string>;
   // Mines around an opened safe cell. Local play computes it from the
   // question; online play gets it from the server.
@@ -25,6 +27,7 @@ const GAP = 3;
 const WAVE_STEP_MS = 55;
 
 export function CharacterBoard({
+  caption,
   language,
   openedChars,
   hintedChars,
@@ -144,6 +147,7 @@ export function CharacterBoard({
                     size={tileSize}
                     opened={isOpened}
                     hinted={!!hintedChars?.has(char) && !isOpened}
+                    caption={caption?.(char)}
                     mine={isMine}
                     multiplicity={multiplicity}
                     count={mineCount}

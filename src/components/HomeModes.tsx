@@ -40,6 +40,9 @@ export function HomeModes({
           disabled={disabled}
         />
         <ModeTile href="/custom" title={S.customMode} note={S.customModeNote} />
+        {LOCALE === "en" ? (
+          <ModeTile href="/learn" title={S.learn} note={S.learnNote} />
+        ) : null}
         {LOCALE === "ja" ? (
           <ModeTile href="/puzzles" title={S.puzzles} note={S.puzzlesNote} />
         ) : null}
