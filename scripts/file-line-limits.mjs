@@ -6,7 +6,7 @@ export const DEFAULT_LIMIT = 300;
 /** @type {Readonly<Record<string, number>>} */
 export const LEGACY_LIMITS = {
   "app/online.tsx": 422,
-  "src/components/HomeSetup.tsx": 700,
+  "src/components/HomeSetup.tsx": 675,
   "src/game/engine.ts": 329,
   "supabase/functions/online-game/index.ts": 507,
 };

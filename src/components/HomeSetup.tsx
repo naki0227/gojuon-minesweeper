@@ -206,6 +206,16 @@ export function HomeSetup({
       </Head>
       <ScrollView contentContainerStyle={styles.page}>
         <HomeTitle />
+        <HomeModes
+          filters={filters}
+          disabled={candidateCount === 0}
+          onStart={onStart}
+          onOnline={onOnline}
+        />
+        <View style={styles.settingsHeader}>
+          <Text style={styles.settingsLabel}>{S.settingsLabel}</Text>
+          <Text style={styles.countText}>{S.candidates(candidateCount)}</Text>
+        </View>
         <View style={styles.tabs}>
           {LANGUAGE_TABS.map((tab) => {
             const selected = filters.language === tab.value;
@@ -300,40 +310,6 @@ export function HomeSetup({
           >
             <Text style={styles.textLink}>{S.openDetail}</Text>
           </Pressable>
-        </View>
-        <View style={styles.startArea}>
-          <Pressable
-            disabled={candidateCount === 0}
-            onPress={() => onStart(filters)}
-            accessibilityRole="button"
-            style={({ pressed }) => [
-              styles.startButton,
-              candidateCount === 0 && styles.disabled,
-              pressed && styles.startPressed,
-            ]}
-          >
-            <Text style={styles.startText}>{S.start}</Text>
-          </Pressable>
-          <Text style={styles.countText}>{S.candidates(candidateCount)}</Text>
-          <View style={styles.startMeta}>
-            <Pressable
-              onPress={() =>
-                onStart({
-                  language: filters.language,
-                  categories: [],
-                  length: "any",
-                })
-              }
-              accessibilityRole="button"
-            >
-              <Text style={styles.textLink}>{S.quickPlay}</Text>
-            </Pressable>
-          </View>
-          <HomeModes
-            filters={filters}
-            disabled={candidateCount === 0}
-            onOnline={onOnline}
-          />
         </View>
         <View style={styles.adArea}>
           <BannerAd placement="setup" />
@@ -579,10 +555,6 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     paddingVertical: 6,
   },
-  startArea: {
-    gap: 8,
-    marginTop: 6,
-  },
   startButton: {
     minHeight: 58,
     alignItems: "center",
@@ -607,11 +579,14 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     letterSpacing: 1,
   },
-  startMeta: {
-    alignItems: "center",
+  settingsHeader: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+    marginTop: 8,
   },
+  settingsLabel: { color: colors.ink, fontSize: 15, fontWeight: "900" },
   countText: {
-    textAlign: "center",
     color: MUTED,
     fontSize: 13,
     fontVariant: ["tabular-nums"],

@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, Text } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import { Link, type Href } from "expo-router";
 
 import type { QuestionFilters } from "../data/types";
@@ -6,101 +6,140 @@ import { colors } from "../theme/colors";
 import { HOME_SETUP_TEXT as S } from "./HomeSetup.strings";
 import { Pressable } from "./TapPressable";
 
-// The other ways to play, under the home screen's start button. Each takes
-// the filters chosen above it.
+// The ways to play, at the top of the home screen so they are seen first.
+// Each starts at once with the question settings below it.
 export function HomeModes({
   filters,
   disabled,
+  onStart,
   onOnline,
 }: {
   filters: QuestionFilters;
-  // No question matches the filters.
+  // No question matches the settings.
   disabled: boolean;
+  onStart: (filters: QuestionFilters) => void;
   onOnline?: (filters: QuestionFilters) => void;
 }) {
   const params = { filters: JSON.stringify(filters) };
   return (
-    <>
-      <ModeLink
-        href={{ pathname: "/bot", params }}
-        title={S.bot}
-        note={S.botNote}
-        disabled={disabled}
-      />
-      {Platform.OS === "ios" ? (
-        <ModeLink
-          href={{ pathname: "/endless", params }}
-          title={S.endless}
-          note={S.endlessNote}
-        />
-      ) : null}
-      {onOnline ? (
-        <Pressable
+    <View style={styles.section}>
+      <Text style={styles.heading}>{S.modesLabel}</Text>
+      <View style={styles.grid}>
+        <ModeTile
+          primary
+          title={S.local}
+          note={S.localNote}
           disabled={disabled}
-          onPress={() => onOnline(filters)}
-          accessibilityRole="button"
-          style={({ pressed }) => [
-            styles.button,
-            disabled && styles.disabled,
-            pressed && styles.pressed,
-          ]}
-        >
-          <Text style={styles.title}>{S.online}</Text>
-          <Text style={styles.note}>{S.onlineNote}</Text>
-        </Pressable>
-      ) : null}
-    </>
+          onPress={() => onStart(filters)}
+        />
+        <ModeTile
+          href={{ pathname: "/bot", params }}
+          title={S.bot}
+          note={S.botNote}
+          disabled={disabled}
+        />
+        {onOnline ? (
+          <ModeTile
+            title={S.online}
+            note={S.onlineNote}
+            disabled={disabled}
+            onPress={() => onOnline(filters)}
+          />
+        ) : null}
+        {Platform.OS === "ios" ? (
+          <ModeTile
+            href={{ pathname: "/endless", params }}
+            title={S.endless}
+            note={S.endlessNote}
+          />
+        ) : null}
+      </View>
+      <Text style={styles.footnote}>{S.modesNote}</Text>
+    </View>
   );
 }
 
-function ModeLink({
-  href,
+function ModeTile({
   title,
   note,
+  primary = false,
   disabled = false,
+  href,
+  onPress,
 }: {
-  href: Href;
   title: string;
   note: string;
+  primary?: boolean;
   disabled?: boolean;
+  href?: Href;
+  onPress?: () => void;
 }) {
+  const content = (
+    <>
+      <Text style={[styles.title, primary && styles.titlePrimary]}>
+        {title}
+      </Text>
+      <Text style={[styles.note, primary && styles.notePrimary]}>{note}</Text>
+    </>
+  );
+  const look = [
+    styles.tile,
+    primary && styles.tilePrimary,
+    disabled && styles.disabled,
+  ];
+  if (href) {
+    // Link's Slot drops function and array styles on the web, so one
+    // flattened style object.
+    return (
+      <Link href={href} asChild disabled={disabled}>
+        <Pressable
+          accessibilityRole="button"
+          disabled={disabled}
+          style={StyleSheet.flatten(look)}
+        >
+          {content}
+        </Pressable>
+      </Link>
+    );
+  }
   return (
-    <Link href={href} asChild disabled={disabled}>
-      {/* Link's Slot drops function styles on the web, so a plain array. */}
-      <Pressable
-        accessibilityRole="button"
-        disabled={disabled}
-        style={[styles.button, disabled && styles.disabled]}
-      >
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.note}>{note}</Text>
-      </Pressable>
-    </Link>
+    <Pressable
+      accessibilityRole="button"
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }) => [...look, pressed && styles.pressed]}
+    >
+      {content}
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    minHeight: 52,
-    alignItems: "center",
+  section: { gap: 8 },
+  heading: { color: colors.ink, fontSize: 15, fontWeight: "900" },
+  grid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  tile: {
+    flexGrow: 1,
+    flexBasis: "45%",
+    minHeight: 74,
     justifyContent: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
     borderWidth: 2,
     borderColor: colors.ink,
     backgroundColor: colors.white,
-    marginRight: 4,
-    paddingVertical: 6,
   },
+  tilePrimary: { backgroundColor: colors.primary },
   title: {
     color: colors.ink,
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "900",
-    letterSpacing: 1,
+    letterSpacing: 0.5,
   },
-  note: {
-    color: "#536875",
-    fontSize: 11,
-    marginTop: 2,
-  },
+  titlePrimary: { color: colors.white },
+  note: { color: "#536875", fontSize: 12, marginTop: 3 },
+  notePrimary: { color: "#e3f3fa" },
+  footnote: { color: "#536875", fontSize: 12 },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.7 },
 });
