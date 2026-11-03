@@ -23,6 +23,7 @@
     "daily:plan": "tsx scripts/daily/plan.ts",
     "daily:publish": "tsx scripts/daily/publish.ts",
     "daily:schedule": "tsx scripts/daily/schedule-edit.ts",
+    "daily:incoming": "tsx scripts/daily/incoming-cli.ts",
     "live": "tsx scripts/live/server.ts",
     "live:auth": "tsx scripts/live/auth.ts"
   },

@@ -18,3 +18,4 @@ supabase/functions/_shared/app/
 
 # Plain copy of the coming 今日の一問 days (scripts/daily/schedule-edit.ts)
 src/daily/schedule.upcoming.json
+src/daily/schedule.incoming.json

@@ -5,7 +5,9 @@ name: Daily Plan
 # runs out. Skipped while the schedule already reaches 10 days ahead.
 # The repository is public, so the coming days are encrypted with the
 # DAILY_SCHEDULE_KEY secret and this log shows dates only. The PR has no
-# trivia; add it with `npm run daily:schedule -- open` / `close` if wanted.
+# trivia: the weekly Claude Code session plans days with 豆知識 and sends
+# them in sealed (Daily Incoming), which keeps the schedule 10 days ahead,
+# so this only fills in when that has not happened.
 #
 # Needs "Allow GitHub Actions to create and approve pull requests" in the
 # repository's Settings → Actions → General.
