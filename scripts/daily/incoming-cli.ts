@@ -3,7 +3,8 @@
 // Without the key (a Claude Code session):
 //   npx tsx scripts/daily/incoming-cli.ts plan YYYY-MM-DD [days=7]
 //     picks the days into src/daily/schedule.incoming.json (git-ignored),
-//     where the 豆知識 are written by hand
+//     where the 豆知識 are written by hand. The dates are only an order:
+//     the merge puts the days after the last planned one.
 //   npx tsx scripts/daily/incoming-cli.ts seal
 //     seals that file into schedule.incoming.enc and deletes it
 // With DAILY_SCHEDULE_KEY (Actions):

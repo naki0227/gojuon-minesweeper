@@ -105,62 +105,48 @@ export type MergeResult = {
   log: string[];
 };
 
-// Puts the incoming days into the coming schedule. An incoming day
-// replaces a planned one on the same date (it carries trivia), but never a
-// day that is online already, never leaves a gap, and never reuses a
-// question.
+// Adds the incoming days, in their order, after the last planned day (or
+// from tomorrow when the schedule has run out). Their own dates are only
+// an order: a PR merged late must never change a day already online, so
+// nothing planned is replaced, and no question is used twice.
 export function mergeIncoming(
   upcoming: readonly DailyEntry[],
   incoming: readonly DailyEntry[],
   options: { released: readonly DailyEntry[]; today: string; leaked: string[] },
 ): MergeResult {
-  const byDate = new Map(upcoming.map((entry) => [entry.date, entry]));
-  const releasedIds = options.released.map((entry) => entry.questionId);
-  const releasedLast = options.released.at(-1)?.date ?? "";
+  const all = [...options.released, ...upcoming];
+  const used = new Set([
+    ...all.map((entry) => entry.questionId),
+    ...options.leaked,
+  ]);
+  const last = all.at(-1)?.date ?? options.today;
+  let date = addDays(last > options.today ? last : options.today, 1);
+  const added: DailyEntry[] = [];
   const log: string[] = [];
   const sorted = [...incoming].sort((a, b) => a.date.localeCompare(b.date));
-  for (const entry of sorted) {
-    const skip = (reason: string) =>
-      log.push(`${entry.date}: skipped (${reason})`);
-    const last = [...byDate.keys()].sort().at(-1) ?? releasedLast;
-    if (entry.date <= options.today || entry.date <= releasedLast) {
-      skip("already online");
-      continue;
-    }
-    if (entry.date > addDays(last, 1)) {
-      skip("would leave a gap");
-      continue;
-    }
+  for (const [index, entry] of sorted.entries()) {
     const question = QUESTIONS.find((item) => item.id === entry.questionId);
     if (!question || question.language !== "ja" || entry.opened.length === 0) {
-      skip("unknown question");
+      log.push(`incoming #${index + 1}: skipped (unknown question)`);
       continue;
     }
-    const usedElsewhere = new Set([
-      ...releasedIds,
-      ...options.leaked,
-      ...[...byDate.values()]
-        .filter((other) => other.date !== entry.date)
-        .map((other) => other.questionId),
-    ]);
-    if (usedElsewhere.has(entry.questionId)) {
-      skip("question already used");
+    if (used.has(entry.questionId)) {
+      log.push(`incoming #${index + 1}: skipped (question already used)`);
       continue;
     }
     const trivia = entry.trivia?.trim();
-    const triviaLength = trivia ? Array.from(trivia).length : 0;
-    byDate.set(entry.date, {
-      date: entry.date,
+    const length = trivia ? Array.from(trivia).length : 0;
+    added.push({
+      date,
       questionId: entry.questionId,
       opened: [...entry.opened],
-      ...(trivia && triviaLength >= 30 && triviaLength <= 100
-        ? { trivia }
-        : {}),
+      ...(trivia && length >= 30 && length <= 100 ? { trivia } : {}),
     });
-    log.push(`${entry.date}: merged`);
+    used.add(entry.questionId);
+    log.push(
+      `${date}: added${length >= 30 && length <= 100 ? " with trivia" : ""}`,
+    );
+    date = addDays(date, 1);
   }
-  return {
-    upcoming: [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date)),
-    log,
-  };
+  return { upcoming: [...upcoming, ...added], log };
 }

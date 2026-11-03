@@ -3,8 +3,9 @@ name: Daily Incoming
 # Days of 今日の一問 planned in a Claude Code session, with their 豆知識,
 # arrive in a PR as src/daily/schedule.incoming.enc, sealed with
 # src/daily/incoming.pub.pem (scripts/daily/incoming.ts). This opens them
-# with DAILY_SCHEDULE_KEY, merges them into schedule.upcoming.enc, checks
-# the result and pushes it to the PR. The log shows dates only.
+# with DAILY_SCHEDULE_KEY, adds them after the last planned day of
+# schedule.upcoming.enc (never replacing one), checks the result and pushes
+# it to the PR. The log shows dates only.
 #
 # Run by hand with "pubkey" to print the public key for incoming.pub.pem.
 on:
