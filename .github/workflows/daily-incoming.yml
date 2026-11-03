@@ -1,0 +1,86 @@
+name: Daily Incoming
+
+# Days of 今日の一問 planned in a Claude Code session, with their 豆知識,
+# arrive in a PR as src/daily/schedule.incoming.enc, sealed with
+# src/daily/incoming.pub.pem (scripts/daily/incoming.ts). This opens them
+# with DAILY_SCHEDULE_KEY, merges them into schedule.upcoming.enc, checks
+# the result and pushes it to the PR. The log shows dates only.
+#
+# Run by hand with "pubkey" to print the public key for incoming.pub.pem.
+on:
+  pull_request:
+    paths:
+      - src/daily/schedule.incoming.enc
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "pubkey: print the public key"
+        type: choice
+        options: [pubkey]
+
+permissions:
+  contents: write
+  # To start CI on the merged commit (see the last step).
+  actions: write
+
+concurrency:
+  group: daily-incoming-${{ github.head_ref || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  pubkey:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      DAILY_SCHEDULE_KEY: ${{ secrets.DAILY_SCHEDULE_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+      - run: npm ci
+      - name: Public key for src/daily/incoming.pub.pem
+        run: npm run -s daily:incoming -- pubkey
+
+  merge:
+    # Same-repository PRs only: a fork's PR gets no secrets.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      DAILY_SCHEDULE_KEY: ${{ secrets.DAILY_SCHEDULE_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+      - run: npm ci
+
+      - name: Merge the incoming days
+        run: |
+          if [ ! -f src/daily/schedule.incoming.enc ]; then
+            echo "Already merged."
+            exit 0
+          fi
+          npm run -s daily:incoming -- merge
+          npm test -- tests/daily.test.ts
+
+      - name: Push the merged schedule
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A src/daily/schedule.upcoming.enc src/daily/schedule.incoming.enc
+          git commit -m "Merge the incoming 今日の一問 days"
+          git push origin "HEAD:$BRANCH"
+          # A push from GITHUB_TOKEN starts no pull_request run, so the
+          # required "validate" check is started by hand on the new commit.
+          gh workflow run ci.yml --ref "$BRANCH"

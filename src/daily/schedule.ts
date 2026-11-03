@@ -44,7 +44,7 @@ export type DailyEntry = {
 // Scripts and tests run from the repository root (npm run ...).
 const UPCOMING_FILE = join(process.cwd(), "src/daily/schedule.upcoming.enc");
 
-function scheduleKey(): Buffer | undefined {
+export function scheduleKey(): Buffer | undefined {
   const value = process.env.DAILY_SCHEDULE_KEY;
   if (!value) return undefined;
   const key = Buffer.from(value, "base64");
