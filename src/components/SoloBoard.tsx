@@ -145,6 +145,8 @@ const styles = StyleSheet.create({
   answerRow: { flexDirection: "row", gap: 8 },
   input: {
     flex: 1,
+    // Without it, the web lets a long placeholder push the button off screen.
+    minWidth: 0,
     minHeight: 44,
     borderWidth: 1,
     borderColor: colors.line,

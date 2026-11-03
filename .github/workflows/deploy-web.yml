@@ -97,7 +97,7 @@ jobs:
           npx expo export -p web --output-dir dist-en
           node scripts/move-vendor-assets.mjs dist-en
           rm -rf dist-en/_headers dist-en/_redirects dist-en/.well-known \
-            dist-en/robots.txt dist-en/sitemap.xml
+            dist-en/robots.txt dist-en/sitemap.xml dist-en/press
           mkdir -p dist/en
           cp -R dist-en/. dist/en/
         env:
