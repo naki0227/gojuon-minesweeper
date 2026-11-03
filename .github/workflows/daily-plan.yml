@@ -4,8 +4,9 @@ name: Daily Plan
 # src/daily/schedule.upcoming.enc and opens a PR, so the schedule never
 # runs out. Skipped while the schedule already reaches 10 days ahead.
 # The repository is public, so the coming days are encrypted with the
-# DAILY_SCHEDULE_KEY secret and this log shows dates only. The PR has no
-# trivia; add it with `npm run daily:schedule -- open` / `close` if wanted.
+# DAILY_SCHEDULE_KEY secret and this log shows dates only. Claude writes
+# the 豆知識 for coming days that have none (scripts/daily/trivia.ts) when
+# the ANTHROPIC_API_KEY secret is set; without it the days have no trivia.
 #
 # Needs "Allow GitHub Actions to create and approve pull requests" in the
 # repository's Settings → Actions → General.
@@ -61,6 +62,12 @@ jobs:
           npm run -s daily:plan -- 7 | tee "$RUNNER_TEMP/planned.txt"
           npm test -- tests/daily.test.ts
 
+      - name: Write the trivia
+        if: steps.reach.outputs.needed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run -s daily:trivia
+
       - name: Open a PR
         if: steps.reach.outputs.needed == 'true'
         env:
@@ -77,7 +84,7 @@ jobs:
           git push -u origin "$branch"
           gh pr create --base main --head "$branch" \
             --title "Plan 今日の一問 for $first to $last" \
-            --body "Adds the next 7 days of 今日の一問 (encrypted), picked by \`scripts/daily/plan.ts\` and checked by \`tests/daily.test.ts\`. Trivia is empty; add it with \`npm run daily:schedule -- open\` and \`close\` (needs DAILY_SCHEDULE_KEY) before merging if wanted."
+            --body "Adds the next 7 days of 今日の一問 (encrypted), picked by \`scripts/daily/plan.ts\` and checked by \`tests/daily.test.ts\`. The trivia is written by Claude (\`scripts/daily/trivia.ts\`); the run log says which days got some. Read or edit it with \`npm run daily:schedule -- open\` and \`close\` (needs DAILY_SCHEDULE_KEY)."
           # The PR above comes from GITHUB_TOKEN, which starts no
           # pull_request run, so the required "validate" check would never
           # report. A dispatch is the one event it may start.
