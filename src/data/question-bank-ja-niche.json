@@ -1090,5 +1090,75 @@
     "category": "流行語",
     "display": "爆上げ",
     "value": "ばくあげ"
+  },
+  {
+    "id": "jan-00157",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "星野仙一",
+    "value": "ほしのせんいち"
+  },
+  {
+    "id": "jan-00158",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "稲葉篤紀",
+    "value": "いなばあつのり"
+  },
+  {
+    "id": "jan-00159",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "和田毅",
+    "value": "わだつよし"
+  },
+  {
+    "id": "jan-00160",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "牧秀悟",
+    "value": "まきしゅうご"
+  },
+  {
+    "id": "jan-00161",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "柴崎岳",
+    "value": "しばさきがく"
+  },
+  {
+    "id": "jan-00162",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "原口元気",
+    "value": "はらぐちげんき"
+  },
+  {
+    "id": "jan-00163",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "中村憲剛",
+    "value": "なかむらけんご"
+  },
+  {
+    "id": "jan-00164",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ととのう",
+    "value": "ととのう"
+  },
+  {
+    "id": "jan-00165",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ドヤ顔",
+    "value": "どやがお"
+  },
+  {
+    "id": "jan-00166",
+    "language": "ja",
+    "category": "流行語",
+    "display": "オワコン",
+    "value": "おわこん"
   }
 ]

@@ -5927,5 +5927,285 @@
     "category": "建物・施設",
     "display": "植物園",
     "value": "しょくぶつえん"
+  },
+  {
+    "id": "jat-00848",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "釣り堀",
+    "value": "つりぼり"
+  },
+  {
+    "id": "jat-00849",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "寝不足",
+    "value": "ねぶそく"
+  },
+  {
+    "id": "jat-00850",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "焚き火台",
+    "value": "たきびだい"
+  },
+  {
+    "id": "jat-00851",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "飯ごう",
+    "value": "はんごう"
+  },
+  {
+    "id": "jat-00852",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "立ち回り",
+    "value": "たちまわり"
+  },
+  {
+    "id": "jat-00853",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "奈落",
+    "value": "ならく"
+  },
+  {
+    "id": "jat-00854",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "網戸掃除",
+    "value": "あみどそうじ"
+  },
+  {
+    "id": "jat-00855",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "変電所",
+    "value": "へんでんしょ"
+  },
+  {
+    "id": "jat-00856",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "道の駅",
+    "value": "みちのえき"
+  },
+  {
+    "id": "jat-00857",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "名刺交換",
+    "value": "めいしこうかん"
+  },
+  {
+    "id": "jat-00858",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "議事録",
+    "value": "ぎじろく"
+  },
+  {
+    "id": "jat-00859",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "欄間",
+    "value": "らんま"
+  },
+  {
+    "id": "jat-00860",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "四十肩",
+    "value": "しじゅうかた"
+  },
+  {
+    "id": "jat-00861",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "時差ぼけ",
+    "value": "じさぼけ"
+  },
+  {
+    "id": "jat-00862",
+    "language": "ja",
+    "category": "調味料",
+    "display": "粒マスタード",
+    "value": "つぶますたーど"
+  },
+  {
+    "id": "jat-00863",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "沢登り",
+    "value": "さわのぼり"
+  },
+  {
+    "id": "jat-00864",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "出囃子",
+    "value": "でばやし"
+  },
+  {
+    "id": "jat-00865",
+    "language": "ja",
+    "category": "果物",
+    "display": "不知火",
+    "value": "しらぬい"
+  },
+  {
+    "id": "jat-00866",
+    "language": "ja",
+    "category": "果物",
+    "display": "せとか",
+    "value": "せとか"
+  },
+  {
+    "id": "jat-00867",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "糸くず",
+    "value": "いとくず"
+  },
+  {
+    "id": "jat-00868",
+    "language": "ja",
+    "category": "工具",
+    "display": "グルーガン",
+    "value": "ぐるーがん"
+  },
+  {
+    "id": "jat-00869",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "公衆電話",
+    "value": "こうしゅうでんわ"
+  },
+  {
+    "id": "jat-00870",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "貯水池",
+    "value": "ちょすいち"
+  },
+  {
+    "id": "jat-00871",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "地下街",
+    "value": "ちかがい"
+  },
+  {
+    "id": "jat-00872",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "社員証",
+    "value": "しゃいんしょう"
+  },
+  {
+    "id": "jat-00873",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "社内報",
+    "value": "しゃないほう"
+  },
+  {
+    "id": "jat-00874",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "始末書",
+    "value": "しまつしょ"
+  },
+  {
+    "id": "jat-00875",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "見積書",
+    "value": "みつもりしょ"
+  },
+  {
+    "id": "jat-00876",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "掘りごたつ",
+    "value": "ほりごたつ"
+  },
+  {
+    "id": "jat-00877",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "土蔵",
+    "value": "どぞう"
+  },
+  {
+    "id": "jat-00878",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "こむら返り",
+    "value": "こむらがえり"
+  },
+  {
+    "id": "jat-00879",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "あかぎれ",
+    "value": "あかぎれ"
+  },
+  {
+    "id": "jat-00880",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "立ちくらみ",
+    "value": "たちくらみ"
+  },
+  {
+    "id": "jat-00881",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "袋小路",
+    "value": "ふくろこうじ"
+  },
+  {
+    "id": "jat-00882",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "あぜ道",
+    "value": "あぜみち"
+  },
+  {
+    "id": "jat-00883",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "峠道",
+    "value": "とうげみち"
+  },
+  {
+    "id": "jat-00884",
+    "language": "ja",
+    "category": "音楽",
+    "display": "替え歌",
+    "value": "かえうた"
+  },
+  {
+    "id": "jat-00885",
+    "language": "ja",
+    "category": "音楽",
+    "display": "手拍子",
+    "value": "てびょうし"
+  },
+  {
+    "id": "jat-00886",
+    "language": "ja",
+    "category": "音楽",
+    "display": "音痴",
+    "value": "おんち"
+  },
+  {
+    "id": "jat-00887",
+    "language": "ja",
+    "category": "音楽",
+    "display": "絶対音感",
+    "value": "ぜったいおんかん"
   }
 ]
