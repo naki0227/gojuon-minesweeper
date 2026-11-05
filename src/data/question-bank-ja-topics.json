@@ -6207,5 +6207,285 @@
     "category": "音楽",
     "display": "絶対音感",
     "value": "ぜったいおんかん"
+  },
+  {
+    "id": "jat-00888",
+    "language": "ja",
+    "category": "果物",
+    "display": "夕張メロン",
+    "value": "ゆうばりめろん"
+  },
+  {
+    "id": "jat-00889",
+    "language": "ja",
+    "category": "工具",
+    "display": "ラチェット",
+    "value": "らちぇっと"
+  },
+  {
+    "id": "jat-00890",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "分別",
+    "value": "ぶんべつ"
+  },
+  {
+    "id": "jat-00891",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "粗大ごみ",
+    "value": "そだいごみ"
+  },
+  {
+    "id": "jat-00892",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "排水口",
+    "value": "はいすいこう"
+  },
+  {
+    "id": "jat-00893",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "カビ取り",
+    "value": "かびとり"
+  },
+  {
+    "id": "jat-00894",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "手洗い",
+    "value": "てあらい"
+  },
+  {
+    "id": "jat-00895",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "舞台袖",
+    "value": "ぶたいそで"
+  },
+  {
+    "id": "jat-00896",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "拍手",
+    "value": "はくしゅ"
+  },
+  {
+    "id": "jat-00897",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "演出家",
+    "value": "えんしゅつか"
+  },
+  {
+    "id": "jat-00898",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "バーベキュー",
+    "value": "ばーべきゅー"
+  },
+  {
+    "id": "jat-00899",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "御朱印",
+    "value": "ごしゅいん"
+  },
+  {
+    "id": "jat-00900",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "社長室",
+    "value": "しゃちょうしつ"
+  },
+  {
+    "id": "jat-00901",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "確定申告",
+    "value": "かくていしんこく"
+  },
+  {
+    "id": "jat-00902",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "門柱",
+    "value": "もんちゅう"
+  },
+  {
+    "id": "jat-00903",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "じんましん",
+    "value": "じんましん"
+  },
+  {
+    "id": "jat-00904",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "農道",
+    "value": "のうどう"
+  },
+  {
+    "id": "jat-00905",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "砂利道",
+    "value": "じゃりみち"
+  },
+  {
+    "id": "jat-00906",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "回り道",
+    "value": "まわりみち"
+  },
+  {
+    "id": "jat-00907",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "十字路",
+    "value": "じゅうじろ"
+  },
+  {
+    "id": "jat-00908",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "追い越し",
+    "value": "おいこし"
+  },
+  {
+    "id": "jat-00909",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "道路標識",
+    "value": "どうろひょうしき"
+  },
+  {
+    "id": "jat-00910",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "ラッシュアワー",
+    "value": "らっしゅあわー"
+  },
+  {
+    "id": "jat-00911",
+    "language": "ja",
+    "category": "音楽",
+    "display": "軽音楽",
+    "value": "けいおんがく"
+  },
+  {
+    "id": "jat-00912",
+    "language": "ja",
+    "category": "音楽",
+    "display": "ライブハウス",
+    "value": "らいぶはうす"
+  },
+  {
+    "id": "jat-00913",
+    "language": "ja",
+    "category": "調味料",
+    "display": "おろし生姜",
+    "value": "おろししょうが"
+  },
+  {
+    "id": "jat-00914",
+    "language": "ja",
+    "category": "調味料",
+    "display": "にんにく醤油",
+    "value": "にんにくじょうゆ"
+  },
+  {
+    "id": "jat-00915",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "はとこ",
+    "value": "はとこ"
+  },
+  {
+    "id": "jat-00916",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "甥っ子",
+    "value": "おいっこ"
+  },
+  {
+    "id": "jat-00917",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "姪っ子",
+    "value": "めいっこ"
+  },
+  {
+    "id": "jat-00918",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "ひ孫",
+    "value": "ひまご"
+  },
+  {
+    "id": "jat-00919",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "大家族",
+    "value": "だいかぞく"
+  },
+  {
+    "id": "jat-00920",
+    "language": "ja",
+    "category": "性格",
+    "display": "頑固者",
+    "value": "がんこもの"
+  },
+  {
+    "id": "jat-00921",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "閏年",
+    "value": "うるうどし"
+  },
+  {
+    "id": "jat-00922",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "大安",
+    "value": "たいあん"
+  },
+  {
+    "id": "jat-00923",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "うれし泣き",
+    "value": "うれしなき"
+  },
+  {
+    "id": "jat-00924",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "やるせない",
+    "value": "やるせない"
+  },
+  {
+    "id": "jat-00925",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "名残惜しい",
+    "value": "なごりおしい"
+  },
+  {
+    "id": "jat-00926",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "照れくさい",
+    "value": "てれくさい"
+  },
+  {
+    "id": "jat-00927",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "ほろ苦い",
+    "value": "ほろにがい"
   }
 ]
