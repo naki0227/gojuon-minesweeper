@@ -3,7 +3,6 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
-import { RewardHintButton } from "../ads/RewardHintButton";
 import { matchBanner } from "../ads/types";
 import {
   adjacentMineCount,
@@ -17,6 +16,7 @@ import {
   openSoloCell,
   type SoloPlay,
 } from "../game/solo";
+import { HintButtons } from "../hint/HintButtons";
 import { tr } from "../i18n";
 import { colors } from "../theme/colors";
 import { buttonStyles } from "./buttonStyles";
@@ -125,9 +125,11 @@ export function SoloBoard({
           caption={caption}
         />
         {canHint ? (
-          <RewardHintButton
+          <HintButtons
+            used={play.hints?.length ?? 0}
+            actionKey={`solo:${question.id}:${play.hints?.length ?? 0}`}
             note={hintNote}
-            onReward={() => onChange(hintSolo(play))}
+            onHint={() => onChange(hintSolo(play))}
           />
         ) : null}
         {playing ? (

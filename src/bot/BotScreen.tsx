@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useLocalSearchParams } from "expo-router";
 
 import { trackEvent } from "../analytics/events";
-import { RewardHintButton } from "../ads/RewardHintButton";
+import { HintButtons } from "../hint/HintButtons";
 import { buttonStyles } from "../components/buttonStyles";
 import { LocalMatch } from "../components/LocalMatch";
 import { menuStyles } from "../components/menuStyles";
@@ -163,8 +163,10 @@ export function BotScreen() {
               </Text>
             </View>
             {nextHint ? (
-              <RewardHintButton
-                onReward={() =>
+              <HintButtons
+                used={match.hints.length}
+                actionKey={`bot:${game.question.id}:${match.hints.length}`}
+                onHint={() =>
                   setMatch((current) =>
                     current && current.game === game
                       ? { ...current, hints: [...current.hints, nextHint] }
