@@ -1160,5 +1160,75 @@
     "category": "流行語",
     "display": "オワコン",
     "value": "おわこん"
+  },
+  {
+    "id": "jan-00167",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "源田壮亮",
+    "value": "げんだそうすけ"
+  },
+  {
+    "id": "jan-00168",
+    "language": "ja",
+    "category": "流行語",
+    "display": "リスキリング",
+    "value": "りすきりんぐ"
+  },
+  {
+    "id": "jan-00169",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ガチ勢",
+    "value": "がちぜい"
+  },
+  {
+    "id": "jan-00170",
+    "language": "ja",
+    "category": "流行語",
+    "display": "塩対応",
+    "value": "しおたいおう"
+  },
+  {
+    "id": "jan-00171",
+    "language": "ja",
+    "category": "流行語",
+    "display": "てへぺろ",
+    "value": "てへぺろ"
+  },
+  {
+    "id": "jan-00172",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "小久保裕紀",
+    "value": "こくぼひろき"
+  },
+  {
+    "id": "jan-00173",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "宮本慎也",
+    "value": "みやもとしんや"
+  },
+  {
+    "id": "jan-00174",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "田中碧",
+    "value": "たなかあお"
+  },
+  {
+    "id": "jan-00175",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ポチる",
+    "value": "ぽちる"
+  },
+  {
+    "id": "jan-00176",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ほぼほぼ",
+    "value": "ほぼほぼ"
   }
 ]
