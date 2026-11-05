@@ -33,6 +33,9 @@ export const HOME_SETUP_TEXT = tr({
     learnNote: "英語の意味から日本語を探す",
     puzzles: "詰め五十音",
     puzzlesNote: "最短の手数で答えを確定",
+    // Japanese app only: picture words for small children.
+    kids: "こどもモード",
+    kidsNote: "絵を見て文字をさがす・小さい子向け",
     endless: "エンドレス",
     endlessNote: "ライフ3つで何問解ける？",
     online: "オンライン",
@@ -78,6 +81,8 @@ export const HOME_SETUP_TEXT = tr({
     learnNote: "Find the Japanese for an English word",
     puzzles: "Word puzzles",
     puzzlesNote: "Settle the word in the fewest cells",
+    kids: "Kids mode",
+    kidsNote: "Find the letters of a picture",
     endless: "Endless",
     endlessNote: "How many can you solve with 3 lives?",
     online: "Online",

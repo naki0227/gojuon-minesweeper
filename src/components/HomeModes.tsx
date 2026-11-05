@@ -46,6 +46,9 @@ export function HomeModes({
         {LOCALE === "ja" ? (
           <ModeTile href="/puzzles" title={S.puzzles} note={S.puzzlesNote} />
         ) : null}
+        {LOCALE === "ja" ? (
+          <ModeTile href="/kids" title={S.kids} note={S.kidsNote} />
+        ) : null}
         {onOnline ? (
           <ModeTile
             title={S.online}
