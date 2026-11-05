@@ -5,12 +5,14 @@ import {
   AppState,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
   Text,
   TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
+import { matchBanner } from "../ads/types";
 import { Link } from "expo-router";
 
 import { CharacterBoard } from "../components/CharacterBoard";
@@ -117,9 +119,12 @@ export function DailyScreen() {
         style={styles.fill}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.page}
+        <PinnedBannerScreen
+          banner={matchBanner(
+            play && play.phase !== "playing" ? "finished" : "playing",
+          )}
+          layoutKey={play?.date ?? "loading"}
+          contentStyle={styles.page}
         >
           <View style={styles.top}>
             <Link href="/" style={styles.exitText}>
@@ -220,7 +225,7 @@ export function DailyScreen() {
               )}
             </>
           )}
-        </ScrollView>
+        </PinnedBannerScreen>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

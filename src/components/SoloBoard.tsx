@@ -1,7 +1,9 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
+import { matchBanner } from "../ads/types";
 import {
   adjacentMineCount,
   questionMineCharacters,
@@ -64,7 +66,11 @@ export function SoloBoard({
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.page}>
+      <PinnedBannerScreen
+        banner={matchBanner(playing ? "playing" : "finished")}
+        layoutKey={question.id}
+        contentStyle={styles.page}
+      >
         {header}
         {notes || play.wrong.length > 0 ? (
           <View style={styles.notes}>
@@ -119,7 +125,7 @@ export function SoloBoard({
             <Text style={styles.giveUpText}>{S.giveUp}</Text>
           </Pressable>
         ) : null}
-      </ScrollView>
+      </PinnedBannerScreen>
     </SafeAreaView>
   );
 }

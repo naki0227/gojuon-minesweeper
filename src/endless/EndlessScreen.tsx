@@ -3,11 +3,13 @@ import {
   KeyboardAvoidingView,
   Linking,
   Platform,
-  ScrollView,
   Text,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
+import { matchBanner } from "../ads/types";
 import Head from "expo-router/head";
 import { Link, useLocalSearchParams } from "expo-router";
 
@@ -184,9 +186,10 @@ export function EndlessScreen() {
         style={styles.fill}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.page}
+        <PinnedBannerScreen
+          banner={matchBanner(game?.phase)}
+          layoutKey={game?.question.id ?? "none"}
+          contentStyle={styles.page}
         >
           <EndlessHud game={game} wallet={wallet} />
 
@@ -269,7 +272,7 @@ export function EndlessScreen() {
               </Link>
             </View>
           )}
-        </ScrollView>
+        </PinnedBannerScreen>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
