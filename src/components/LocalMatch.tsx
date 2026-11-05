@@ -29,6 +29,7 @@ export function LocalMatch({
   playerLabel = (player) => `Player ${player + 1}`,
   locked = false,
   aside,
+  hintedChars,
   resultTitle,
   celebrate,
   onSubmit,
@@ -42,6 +43,8 @@ export function LocalMatch({
   // The other side (the bot) is playing: the person can't act.
   locked?: boolean;
   aside?: ReactNode;
+  // Safe cells lit up by hints (the match against the bot).
+  hintedChars?: ReadonlySet<string>;
   resultTitle: string;
   celebrate: boolean;
   // Returns whether the answer was right.
@@ -232,6 +235,7 @@ export function LocalMatch({
               }
               onOpen={onOpen}
               openedChars={game.openedChars}
+              hintedChars={hintedChars}
             />
           </>
         )}

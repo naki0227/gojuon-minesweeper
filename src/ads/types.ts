@@ -1,6 +1,6 @@
 // Screens that are allowed to show an ad; one banner per screen. A banner
 // shown while a match is in progress sits below the game with extra space,
-// never over or next to the controls. Endless mode has no banner.
+// never over or next to the controls. こどもモード has no banner.
 export type AdPlacement = "setup" | "result";
 
 export type BannerAdProps = {

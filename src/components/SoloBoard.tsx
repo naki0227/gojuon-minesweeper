@@ -1,7 +1,10 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
+import { RewardHintButton } from "../ads/RewardHintButton";
+import { matchBanner } from "../ads/types";
 import {
   adjacentMineCount,
   questionMineCharacters,
@@ -10,6 +13,7 @@ import {
 import {
   giveUpSolo,
   guessSolo,
+  hintSolo,
   openSoloCell,
   type SoloPlay,
 } from "../game/solo";
@@ -43,6 +47,7 @@ export function SoloBoard({
   notes,
   result,
   caption,
+  hintNote,
   onChange,
 }: {
   play: SoloPlay;
@@ -50,12 +55,16 @@ export function SoloBoard({
   notes?: ReactNode;
   result: ReactNode;
   caption?: (char: string) => string;
+  // Shown under the hint button, such as what a hint costs.
+  hintNote?: string;
   onChange: (play: SoloPlay) => void;
 }) {
   const [answer, setAnswer] = useState("");
   const { question } = play;
   const mineChars = useMemo(() => questionMineCharacters(question), [question]);
   const playing = play.status === "playing";
+  const hinted = useMemo(() => new Set(play.hints ?? []), [play.hints]);
+  const canHint = playing && hintSolo(play) !== play;
 
   function guess() {
     onChange(guessSolo(play, answer));
@@ -64,7 +73,11 @@ export function SoloBoard({
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.page}>
+      <PinnedBannerScreen
+        banner={matchBanner(playing ? "playing" : "finished")}
+        layoutKey={question.id}
+        contentStyle={styles.page}
+      >
         {header}
         {notes || play.wrong.length > 0 ? (
           <View style={styles.notes}>
@@ -108,8 +121,15 @@ export function SoloBoard({
           mineMultiplicity={(char) => questionMineMultiplicity(question, char)}
           onOpen={(char) => onChange(openSoloCell(play, char))}
           openedChars={play.opened}
+          hintedChars={hinted}
           caption={caption}
         />
+        {canHint ? (
+          <RewardHintButton
+            note={hintNote}
+            onReward={() => onChange(hintSolo(play))}
+          />
+        ) : null}
         {playing ? (
           <Pressable
             onPress={() => onChange(giveUpSolo(play))}
@@ -119,7 +139,7 @@ export function SoloBoard({
             <Text style={styles.giveUpText}>{S.giveUp}</Text>
           </Pressable>
         ) : null}
-      </ScrollView>
+      </PinnedBannerScreen>
     </SafeAreaView>
   );
 }
