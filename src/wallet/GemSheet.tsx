@@ -52,22 +52,37 @@ export function GemChip({ wallet }: { wallet: Wallet }) {
           <MaterialIcons name="add" size={14} color={colors.white} />
         </View>
       </Pressable>
-      <Popup visible={open} onDismiss={close}>
-        <View style={walletStyles.header}>
-          <Text style={walletStyles.title}>{S.title}</Text>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={S.close}
-            onPress={close}
-            hitSlop={12}
-          >
-            <MaterialIcons name="close" size={22} color="#546d7a" />
-          </Pressable>
-        </View>
-        <ScrollView contentContainerStyle={walletStyles.body}>
-          <GemWalletPanel wallet={wallet} />
-        </ScrollView>
-      </Popup>
+      <GemWalletPopup wallet={wallet} visible={open} onDismiss={close} />
     </>
+  );
+}
+
+// The wallet popup on its own, for a button that needs gems (the hint).
+export function GemWalletPopup({
+  wallet,
+  visible,
+  onDismiss,
+}: {
+  wallet: Wallet;
+  visible: boolean;
+  onDismiss: () => void;
+}) {
+  return (
+    <Popup visible={visible} onDismiss={onDismiss}>
+      <View style={walletStyles.header}>
+        <Text style={walletStyles.title}>{S.title}</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={S.close}
+          onPress={onDismiss}
+          hitSlop={12}
+        >
+          <MaterialIcons name="close" size={22} color="#546d7a" />
+        </Pressable>
+      </View>
+      <ScrollView contentContainerStyle={walletStyles.body}>
+        <GemWalletPanel wallet={wallet} />
+      </ScrollView>
+    </Popup>
   );
 }
