@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { GOJUON_SET } from "../src/game/gojuon";
+import { GOJUON_GRID, GOJUON_SET } from "../src/game/gojuon";
 import { normalizeKana } from "../src/game/normalize";
 import {
   HINT_AFTER_MISSES,
+  kidsGrid,
   kidsHint,
   kidsSlots,
   openKids,
@@ -66,5 +67,26 @@ describe("kids play", () => {
     play = openKids(play, "り");
     expect(play.misses).toBe(0);
     expect(kidsHint(play)).toBeNull();
+  });
+});
+
+describe("kids board order", () => {
+  it("keeps the table in order, or mixes every letter into the same shape", () => {
+    expect(kidsGrid(false, Math.random)).toBe(GOJUON_GRID);
+    let seed = 1;
+    const random = () => {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+    const mixed = kidsGrid(true, random);
+    expect(mixed.map((row) => row.map((char) => char === null))).toEqual(
+      GOJUON_GRID.map((row) => row.map((char) => char === null)),
+    );
+    const letters = (grid: typeof mixed) =>
+      grid.flat().filter((char): char is string => char !== null);
+    expect([...letters(mixed)].sort()).toEqual(
+      [...letters(GOJUON_GRID)].sort(),
+    );
+    expect(letters(mixed)).not.toEqual(letters(GOJUON_GRID));
   });
 });

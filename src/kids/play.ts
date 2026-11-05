@@ -1,3 +1,5 @@
+import { shuffled } from "../daily/puzzle";
+import { GOJUON_GRID } from "../game/gojuon";
 import { normalizeKana } from "../game/normalize";
 import type { KidsWord } from "./words";
 
@@ -53,4 +55,20 @@ export function kidsSlots(
     letter,
     shown: play.opened.includes(normalizeKana(letter)),
   }));
+}
+
+export type KidsGrid = ReadonlyArray<ReadonlyArray<string | null>>;
+
+// バラバラ: the same board shape with the letters in a random order, so
+// the child looks for the letter itself, not its place in the table.
+export function kidsGrid(mixed: boolean, random: () => number): KidsGrid {
+  if (!mixed) return GOJUON_GRID;
+  const letters = shuffled(
+    GOJUON_GRID.flat().filter((char): char is string => char !== null),
+    random,
+  );
+  let next = 0;
+  return GOJUON_GRID.map((row) =>
+    row.map((char) => (char === null ? null : letters[next++]!)),
+  );
 }
