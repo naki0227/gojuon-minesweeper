@@ -11,19 +11,33 @@ import { playSound } from "../sound/sounds";
 import { colors } from "../theme/colors";
 import { KidsBoard } from "./KidsBoard";
 import {
+  kidsGrid,
   kidsHint,
   kidsSlots,
   openKids,
   startKids,
+  type KidsGrid,
   type KidsPlay,
 } from "./play";
 import { KIDS_WORDS, type KidsWord } from "./words";
 
-type Session = { order: readonly KidsWord[]; index: number; play: KidsPlay };
+type Session = {
+  order: readonly KidsWord[];
+  index: number;
+  play: KidsPlay;
+  mixed: boolean;
+  grid: KidsGrid;
+};
 
 function newSession(): Session {
   const order = shuffled(KIDS_WORDS, Math.random);
-  return { order, index: 0, play: startKids(order[0]!) };
+  return {
+    order,
+    index: 0,
+    play: startKids(order[0]!),
+    mixed: false,
+    grid: kidsGrid(false, Math.random),
+  };
 }
 
 // こどもモード: a picture, and the child opens its letters on the 五十音
@@ -44,7 +58,23 @@ export function KidsScreen() {
   function nextWord() {
     const nextIndex = index + 1;
     const word = session.order[nextIndex % session.order.length]!;
-    setSession({ ...session, index: nextIndex, play: startKids(word) });
+    setSession({
+      ...session,
+      index: nextIndex,
+      play: startKids(word),
+      grid: kidsGrid(session.mixed, Math.random),
+    });
+  }
+
+  // Switching the order starts the picture again on the new board.
+  function setMixed(mixed: boolean) {
+    if (mixed === session.mixed) return;
+    setSession({
+      ...session,
+      mixed,
+      play: startKids(play.word),
+      grid: kidsGrid(mixed, Math.random),
+    });
   }
 
   return (
@@ -59,6 +89,31 @@ export function KidsScreen() {
             <Text style={styles.backText}>← もどる</Text>
           </Pressable>
           <Text style={styles.stars}>⭐ {index + (play.cleared ? 1 : 0)}</Text>
+        </View>
+        <View style={styles.orders} accessibilityRole="radiogroup">
+          {(
+            [
+              [false, "あいうえお じゅん"],
+              [true, "バラバラ"],
+            ] as const
+          ).map(([mixed, label]) => (
+            <Pressable
+              key={label}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: session.mixed === mixed }}
+              onPress={() => setMixed(mixed)}
+              style={[styles.order, session.mixed === mixed && styles.orderOn]}
+            >
+              <Text
+                style={[
+                  styles.orderText,
+                  session.mixed === mixed && styles.orderTextOn,
+                ]}
+              >
+                {label}
+              </Text>
+            </Pressable>
+          ))}
         </View>
         <Text style={styles.ask}>この え は なあに？</Text>
         <Text style={styles.picture} accessibilityLabel="おだいの え">
@@ -98,6 +153,7 @@ export function KidsScreen() {
           </Text>
         )}
         <KidsBoard
+          grid={session.grid}
           needed={play.needed}
           opened={play.opened}
           hint={hint}
@@ -133,6 +189,18 @@ const styles = StyleSheet.create({
   back: { paddingVertical: 8, paddingRight: 12 },
   backText: { color: colors.link, fontSize: 16, fontWeight: "800" },
   stars: { color: colors.ink, fontSize: 20, fontWeight: "900" },
+  orders: { flexDirection: "row", gap: 8 },
+  order: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    borderWidth: 2,
+    borderColor: colors.primaryBorder,
+    backgroundColor: colors.white,
+  },
+  orderOn: { backgroundColor: colors.primary, borderColor: colors.primary },
+  orderText: { color: colors.inkSoft, fontSize: 15, fontWeight: "800" },
+  orderTextOn: { color: colors.white },
   ask: { color: colors.ink, fontSize: 24, fontWeight: "900" },
   picture: { fontSize: 96, lineHeight: 120 },
   slots: { flexDirection: "row", gap: 8, flexWrap: "wrap" },

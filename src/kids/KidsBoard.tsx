@@ -2,10 +2,11 @@ import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import { Pressable } from "../components/TapPressable";
-import { GOJUON_GRID } from "../game/gojuon";
 import { colors } from "../theme/colors";
+import type { KidsGrid } from "./play";
 
 type Props = {
+  grid: KidsGrid;
   needed: readonly string[];
   opened: readonly string[];
   hint: string | null;
@@ -14,20 +15,27 @@ type Props = {
 };
 
 const GAP = 4;
-const COLUMNS = GOJUON_GRID[0]?.length ?? 10;
 
-// The 五十音 board for こどもモード: big letters and no numbers. A letter
+// The 五十音 board (in order or バラバラ) for こどもモード: big letters and no numbers. A letter
 // of the word opens orange, any other opens pale.
-export function KidsBoard({ needed, opened, hint, disabled, onOpen }: Props) {
+export function KidsBoard({
+  grid,
+  needed,
+  opened,
+  hint,
+  disabled,
+  onOpen,
+}: Props) {
   const [width, setWidth] = useState(0);
-  const size = width > 0 ? (width - GAP * (COLUMNS - 1)) / COLUMNS : 0;
+  const columns = grid[0]?.length ?? 10;
+  const size = width > 0 ? (width - GAP * (columns - 1)) / columns : 0;
   return (
     <View
       style={styles.board}
       onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
     >
       {size > 0
-        ? GOJUON_GRID.map((row, rowIndex) => (
+        ? grid.map((row, rowIndex) => (
             <View key={rowIndex} style={styles.row}>
               {row.map((char, column) => {
                 if (!char) {
