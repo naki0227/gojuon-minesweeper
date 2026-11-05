@@ -63,9 +63,10 @@ jobs:
         if: ${{ !inputs.dry_run }}
         run: npm run online:sync
 
+      # --yes: the CLI asks before deploying and Actions has no terminal.
       - name: Deploy Edge Functions
         if: ${{ !inputs.dry_run }}
         run: |
-          supabase functions deploy online-game --project-ref "$SUPABASE_PROJECT_ID"
-          supabase functions deploy gem-wallet --project-ref "$SUPABASE_PROJECT_ID"
-          supabase functions deploy daily-lottery --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy online-game --project-ref "$SUPABASE_PROJECT_ID" --yes
+          supabase functions deploy gem-wallet --project-ref "$SUPABASE_PROJECT_ID" --yes
+          supabase functions deploy daily-lottery --project-ref "$SUPABASE_PROJECT_ID" --yes
