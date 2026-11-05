@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useLocalSearchParams } from "expo-router";
 
 import { trackEvent } from "../analytics/events";
+import { RewardHintButton } from "../ads/RewardHintButton";
 import { buttonStyles } from "../components/buttonStyles";
 import { LocalMatch } from "../components/LocalMatch";
 import { menuStyles } from "../components/menuStyles";
@@ -17,6 +18,7 @@ import {
   submitAnswer,
   type GameState,
 } from "../game/engine";
+import { safeHint } from "../game/hint";
 import { noteWinForReview } from "../review/askForReview";
 import { localSnapshot } from "../sound/snapshots";
 import { playSound } from "../sound/sounds";
@@ -31,7 +33,13 @@ const BOT_PLAYER = 1;
 // Long enough to follow what the bot did, short enough not to drag.
 const BOT_DELAY_MS = 1100;
 
-type Match = { game: GameState; bot: Bot; thought: number | null };
+type Match = {
+  game: GameState;
+  bot: Bot;
+  thought: number | null;
+  // Safe cells the person lit up with a hint (rewarded ad).
+  hints: readonly string[];
+};
 
 export function BotScreen() {
   const params = useLocalSearchParams<{ filters?: string }>();
@@ -51,6 +59,7 @@ export function BotScreen() {
       game: createInitialState(question),
       bot: createBot(nextLevel, question, question.id),
       thought: null,
+      hints: [],
     });
     trackEvent("game_start", {
       question_id: question.id,
@@ -130,23 +139,41 @@ export function BotScreen() {
 
   const { game } = match;
   const labels = [S.you, S.bot(level)] as const;
+  const nextHint =
+    game.phase === "open" && !botTurn
+      ? safeHint(game.question, game.openedChars, match.hints)
+      : null;
 
   return (
     <LocalMatch
       game={game}
       playerLabel={(player) => labels[player]}
       locked={botTurn}
+      hintedChars={new Set(match.hints)}
       aside={
         game.phase === "finished" ? null : (
-          <View style={styles.thought}>
-            <Text style={styles.thoughtText}>
-              {botTurn
-                ? S.thinking
-                : match.thought === null
-                  ? S.lead
-                  : S.thought(match.thought)}
-            </Text>
-          </View>
+          <>
+            <View style={styles.thought}>
+              <Text style={styles.thoughtText}>
+                {botTurn
+                  ? S.thinking
+                  : match.thought === null
+                    ? S.lead
+                    : S.thought(match.thought)}
+              </Text>
+            </View>
+            {nextHint ? (
+              <RewardHintButton
+                onReward={() =>
+                  setMatch((current) =>
+                    current && current.game === game
+                      ? { ...current, hints: [...current.hints, nextHint] }
+                      : current,
+                  )
+                }
+              />
+            ) : null}
+          </>
         )
       }
       resultTitle={

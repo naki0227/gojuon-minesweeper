@@ -1,5 +1,6 @@
 import type { Question } from "../data/types";
 import { expandZeroArea, isAcceptedAnswer, isMineCharacter } from "./engine";
+import { safeHint } from "./hint";
 
 // One player working out one word alone: 詰め五十音 and the custom
 // question. Every cell the player taps and every wrong answer is a move;
@@ -10,6 +11,8 @@ export type SoloPlay = {
   moves: number;
   wrong: readonly string[];
   status: "playing" | "solved" | "gaveUp";
+  // Safe cells lit up by hints (rewarded ads).
+  hints?: readonly string[];
 };
 
 export function startSolo(
@@ -41,4 +44,11 @@ export function guessSolo(play: SoloPlay, text: string): SoloPlay {
 
 export function giveUpSolo(play: SoloPlay): SoloPlay {
   return play.status === "playing" ? { ...play, status: "gaveUp" } : play;
+}
+
+// Lights up one more safe cell; nothing changes when none is left.
+export function hintSolo(play: SoloPlay): SoloPlay {
+  if (play.status !== "playing") return play;
+  const char = safeHint(play.question, play.opened, play.hints);
+  return char ? { ...play, hints: [...(play.hints ?? []), char] } : play;
 }

@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
+import { RewardHintButton } from "../ads/RewardHintButton";
 import { matchBanner } from "../ads/types";
 import {
   adjacentMineCount,
@@ -12,6 +13,7 @@ import {
 import {
   giveUpSolo,
   guessSolo,
+  hintSolo,
   openSoloCell,
   type SoloPlay,
 } from "../game/solo";
@@ -45,6 +47,7 @@ export function SoloBoard({
   notes,
   result,
   caption,
+  hintNote,
   onChange,
 }: {
   play: SoloPlay;
@@ -52,12 +55,16 @@ export function SoloBoard({
   notes?: ReactNode;
   result: ReactNode;
   caption?: (char: string) => string;
+  // Shown under the hint button, such as what a hint costs.
+  hintNote?: string;
   onChange: (play: SoloPlay) => void;
 }) {
   const [answer, setAnswer] = useState("");
   const { question } = play;
   const mineChars = useMemo(() => questionMineCharacters(question), [question]);
   const playing = play.status === "playing";
+  const hinted = useMemo(() => new Set(play.hints ?? []), [play.hints]);
+  const canHint = playing && hintSolo(play) !== play;
 
   function guess() {
     onChange(guessSolo(play, answer));
@@ -114,8 +121,15 @@ export function SoloBoard({
           mineMultiplicity={(char) => questionMineMultiplicity(question, char)}
           onOpen={(char) => onChange(openSoloCell(play, char))}
           openedChars={play.opened}
+          hintedChars={hinted}
           caption={caption}
         />
+        {canHint ? (
+          <RewardHintButton
+            note={hintNote}
+            onReward={() => onChange(hintSolo(play))}
+          />
+        ) : null}
         {playing ? (
           <Pressable
             onPress={() => onChange(giveUpSolo(play))}

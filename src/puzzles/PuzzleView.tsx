@@ -36,6 +36,7 @@ export function PuzzleView({
     <SoloBoard
       play={play}
       onChange={onChange}
+      hintNote="使うと★は1つまで"
       header={
         <>
           <View style={styles.top}>
