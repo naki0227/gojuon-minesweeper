@@ -1230,5 +1230,75 @@
     "category": "流行語",
     "display": "ほぼほぼ",
     "value": "ほぼほぼ"
+  },
+  {
+    "id": "jan-00177",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "佐藤輝明",
+    "value": "さとうてるあき"
+  },
+  {
+    "id": "jan-00178",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "近本光司",
+    "value": "ちかもとこうじ"
+  },
+  {
+    "id": "jan-00179",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "戸郷翔征",
+    "value": "とごうしょうせい"
+  },
+  {
+    "id": "jan-00180",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "栗山英樹",
+    "value": "くりやまひでき"
+  },
+  {
+    "id": "jan-00181",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "酒井宏樹",
+    "value": "さかいひろき"
+  },
+  {
+    "id": "jan-00182",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "板倉滉",
+    "value": "いたくらこう"
+  },
+  {
+    "id": "jan-00183",
+    "language": "ja",
+    "category": "流行語",
+    "display": "あざとい",
+    "value": "あざとい"
+  },
+  {
+    "id": "jan-00184",
+    "language": "ja",
+    "category": "流行語",
+    "display": "チルい",
+    "value": "ちるい"
+  },
+  {
+    "id": "jan-00185",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ソロ活",
+    "value": "そろかつ"
+  },
+  {
+    "id": "jan-00186",
+    "language": "ja",
+    "category": "流行語",
+    "display": "タイパ",
+    "value": "たいぱ"
   }
 ]
