@@ -6767,5 +6767,285 @@
     "category": "交通・道路",
     "display": "徐行",
     "value": "じょこう"
+  },
+  {
+    "id": "jat-00968",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "アクアリウム",
+    "value": "あくありうむ"
+  },
+  {
+    "id": "jat-00969",
+    "language": "ja",
+    "category": "果物",
+    "display": "プラム",
+    "value": "ぷらむ"
+  },
+  {
+    "id": "jat-00970",
+    "language": "ja",
+    "category": "果物",
+    "display": "ゴールデンキウイ",
+    "value": "ごーるでんきうい"
+  },
+  {
+    "id": "jat-00971",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "舞台装置",
+    "value": "ぶたいそうち"
+  },
+  {
+    "id": "jat-00972",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "衣装合わせ",
+    "value": "いしょうあわせ"
+  },
+  {
+    "id": "jat-00973",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "開演",
+    "value": "かいえん"
+  },
+  {
+    "id": "jat-00974",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "終演",
+    "value": "しゅうえん"
+  },
+  {
+    "id": "jat-00975",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "立ち見",
+    "value": "たちみ"
+  },
+  {
+    "id": "jat-00976",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "お芝居",
+    "value": "おしばい"
+  },
+  {
+    "id": "jat-00977",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "掛け合い",
+    "value": "かけあい"
+  },
+  {
+    "id": "jat-00978",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "ボケとツッコミ",
+    "value": "ぼけとつっこみ"
+  },
+  {
+    "id": "jat-00979",
+    "language": "ja",
+    "category": "工具",
+    "display": "鉄のこ",
+    "value": "てつのこ"
+  },
+  {
+    "id": "jat-00980",
+    "language": "ja",
+    "category": "工具",
+    "display": "メガネレンチ",
+    "value": "めがねれんち"
+  },
+  {
+    "id": "jat-00981",
+    "language": "ja",
+    "category": "工具",
+    "display": "パイプレンチ",
+    "value": "ぱいぷれんち"
+  },
+  {
+    "id": "jat-00982",
+    "language": "ja",
+    "category": "工具",
+    "display": "タッカー",
+    "value": "たっかー"
+  },
+  {
+    "id": "jat-00983",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "駅ビル",
+    "value": "えきびる"
+  },
+  {
+    "id": "jat-00984",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "温泉旅館",
+    "value": "おんせんりょかん"
+  },
+  {
+    "id": "jat-00985",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "床暖房",
+    "value": "ゆかだんぼう"
+  },
+  {
+    "id": "jat-00986",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "縁の下",
+    "value": "えんのした"
+  },
+  {
+    "id": "jat-00987",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "原生林",
+    "value": "げんせいりん"
+  },
+  {
+    "id": "jat-00988",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "並木",
+    "value": "なみき"
+  },
+  {
+    "id": "jat-00989",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "社員旅行",
+    "value": "しゃいんりょこう"
+  },
+  {
+    "id": "jat-00990",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "残業時間",
+    "value": "ざんぎょうじかん"
+  },
+  {
+    "id": "jat-00991",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "取締役",
+    "value": "とりしまりやく"
+  },
+  {
+    "id": "jat-00992",
+    "language": "ja",
+    "category": "性格",
+    "display": "お節介",
+    "value": "おせっかい"
+  },
+  {
+    "id": "jat-00993",
+    "language": "ja",
+    "category": "性格",
+    "display": "お茶目",
+    "value": "おちゃめ"
+  },
+  {
+    "id": "jat-00994",
+    "language": "ja",
+    "category": "調味料",
+    "display": "練りわさび",
+    "value": "ねりわさび"
+  },
+  {
+    "id": "jat-00995",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "とびひ",
+    "value": "とびひ"
+  },
+  {
+    "id": "jat-00996",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "食あたり",
+    "value": "しょくあたり"
+  },
+  {
+    "id": "jat-00997",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "歯ぎしり",
+    "value": "はぎしり"
+  },
+  {
+    "id": "jat-00998",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "腱鞘炎",
+    "value": "けんしょうえん"
+  },
+  {
+    "id": "jat-00999",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "昼過ぎ",
+    "value": "ひるすぎ"
+  },
+  {
+    "id": "jat-01000",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "夜更け",
+    "value": "よふけ"
+  },
+  {
+    "id": "jat-01001",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "再来年",
+    "value": "さらいねん"
+  },
+  {
+    "id": "jat-01002",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "上旬",
+    "value": "じょうじゅん"
+  },
+  {
+    "id": "jat-01003",
+    "language": "ja",
+    "category": "音楽",
+    "display": "テーマソング",
+    "value": "てーまそんぐ"
+  },
+  {
+    "id": "jat-01004",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "三世代",
+    "value": "さんせだい"
+  },
+  {
+    "id": "jat-01005",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "兄弟げんか",
+    "value": "きょうだいげんか"
+  },
+  {
+    "id": "jat-01006",
+    "language": "ja",
+    "category": "台所用品",
+    "display": "お弁当箱",
+    "value": "おべんとうばこ"
+  },
+  {
+    "id": "jat-01007",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "車止め",
+    "value": "くるまどめ"
   }
 ]
