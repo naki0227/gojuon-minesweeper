@@ -1300,5 +1300,75 @@
     "category": "流行語",
     "display": "タイパ",
     "value": "たいぱ"
+  },
+  {
+    "id": "jan-00187",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "甲斐拓也",
+    "value": "かいたくや"
+  },
+  {
+    "id": "jan-00188",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "外崎修汰",
+    "value": "とのさきしゅうた"
+  },
+  {
+    "id": "jan-00189",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "浅村栄斗",
+    "value": "あさむらひでと"
+  },
+  {
+    "id": "jan-00190",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "町野修斗",
+    "value": "まちのしゅうと"
+  },
+  {
+    "id": "jan-00191",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "前田大然",
+    "value": "まえだだいぜん"
+  },
+  {
+    "id": "jan-00192",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "古橋亨梧",
+    "value": "ふるはしきょうご"
+  },
+  {
+    "id": "jan-00193",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ワンチャン",
+    "value": "わんちゃん"
+  },
+  {
+    "id": "jan-00194",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ポイ活",
+    "value": "ぽいかつ"
+  },
+  {
+    "id": "jan-00195",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ガクチカ",
+    "value": "がくちか"
+  },
+  {
+    "id": "jan-00196",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ギャップ萌え",
+    "value": "ぎゃっぷもえ"
   }
 ]
