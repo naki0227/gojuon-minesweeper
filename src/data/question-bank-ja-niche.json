@@ -1370,5 +1370,75 @@
     "category": "流行語",
     "display": "ギャップ萌え",
     "value": "ぎゃっぷもえ"
+  },
+  {
+    "id": "jan-00197",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "藤川球児",
+    "value": "ふじかわきゅうじ"
+  },
+  {
+    "id": "jan-00198",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "岩瀬仁紀",
+    "value": "いわせひとき"
+  },
+  {
+    "id": "jan-00199",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "秋山翔吾",
+    "value": "あきやましょうご"
+  },
+  {
+    "id": "jan-00200",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "則本昂大",
+    "value": "のりもとたかひろ"
+  },
+  {
+    "id": "jan-00201",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "柳沢敦",
+    "value": "やなぎさわあつし"
+  },
+  {
+    "id": "jan-00202",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "松井大輔",
+    "value": "まついだいすけ"
+  },
+  {
+    "id": "jan-00203",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "清武弘嗣",
+    "value": "きよたけひろし"
+  },
+  {
+    "id": "jan-00204",
+    "language": "ja",
+    "category": "流行語",
+    "display": "おうち時間",
+    "value": "おうちじかん"
+  },
+  {
+    "id": "jan-00205",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ステイホーム",
+    "value": "すていほーむ"
+  },
+  {
+    "id": "jan-00206",
+    "language": "ja",
+    "category": "流行語",
+    "display": "ちょい足し",
+    "value": "ちょいたし"
   }
 ]

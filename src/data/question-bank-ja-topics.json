@@ -7047,5 +7047,285 @@
     "category": "交通・道路",
     "display": "車止め",
     "value": "くるまどめ"
+  },
+  {
+    "id": "jat-01008",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "鉄道写真",
+    "value": "てつどうしゃしん"
+  },
+  {
+    "id": "jat-01009",
+    "language": "ja",
+    "category": "趣味・アウトドア",
+    "display": "御城印",
+    "value": "ごじょういん"
+  },
+  {
+    "id": "jat-01010",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "ものまね芸人",
+    "value": "ものまねげいにん"
+  },
+  {
+    "id": "jat-01011",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "お披露目",
+    "value": "おひろめ"
+  },
+  {
+    "id": "jat-01012",
+    "language": "ja",
+    "category": "舞台・芸能",
+    "display": "幕開け",
+    "value": "まくあけ"
+  },
+  {
+    "id": "jat-01013",
+    "language": "ja",
+    "category": "工具",
+    "display": "ハンマードリル",
+    "value": "はんまーどりる"
+  },
+  {
+    "id": "jat-01014",
+    "language": "ja",
+    "category": "工具",
+    "display": "ワイヤーブラシ",
+    "value": "わいやーぶらし"
+  },
+  {
+    "id": "jat-01015",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "洗濯日和",
+    "value": "せんたくびより"
+  },
+  {
+    "id": "jat-01016",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "シーツ交換",
+    "value": "しーつこうかん"
+  },
+  {
+    "id": "jat-01017",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "掃除ロボット",
+    "value": "そうじろぼっと"
+  },
+  {
+    "id": "jat-01018",
+    "language": "ja",
+    "category": "掃除・洗濯",
+    "display": "洗濯洗剤",
+    "value": "せんたくせんざい"
+  },
+  {
+    "id": "jat-01019",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "公衆トイレ",
+    "value": "こうしゅうといれ"
+  },
+  {
+    "id": "jat-01020",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "消防団",
+    "value": "しょうぼうだん"
+  },
+  {
+    "id": "jat-01021",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "児童館",
+    "value": "じどうかん"
+  },
+  {
+    "id": "jat-01022",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "老人ホーム",
+    "value": "ろうじんほーむ"
+  },
+  {
+    "id": "jat-01023",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "ゲームセンター",
+    "value": "げーむせんたー"
+  },
+  {
+    "id": "jat-01024",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "ボウリング場",
+    "value": "ぼうりんぐじょう"
+  },
+  {
+    "id": "jat-01025",
+    "language": "ja",
+    "category": "建物・施設",
+    "display": "スケート場",
+    "value": "すけーとじょう"
+  },
+  {
+    "id": "jat-01026",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "中二階",
+    "value": "ちゅうにかい"
+  },
+  {
+    "id": "jat-01027",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "玄関ホール",
+    "value": "げんかんほーる"
+  },
+  {
+    "id": "jat-01028",
+    "language": "ja",
+    "category": "家のつくり",
+    "display": "庭木",
+    "value": "にわき"
+  },
+  {
+    "id": "jat-01029",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "山並み",
+    "value": "やまなみ"
+  },
+  {
+    "id": "jat-01030",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "さざ波",
+    "value": "さざなみ"
+  },
+  {
+    "id": "jat-01031",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "せせらぎ",
+    "value": "せせらぎ"
+  },
+  {
+    "id": "jat-01032",
+    "language": "ja",
+    "category": "自然・風景",
+    "display": "満天の星",
+    "value": "まんてんのほし"
+  },
+  {
+    "id": "jat-01033",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "有休",
+    "value": "ゆうきゅう"
+  },
+  {
+    "id": "jat-01034",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "新卒",
+    "value": "しんそつ"
+  },
+  {
+    "id": "jat-01035",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "中途採用",
+    "value": "ちゅうとさいよう"
+  },
+  {
+    "id": "jat-01036",
+    "language": "ja",
+    "category": "仕事・会社",
+    "display": "決算期",
+    "value": "けっさんき"
+  },
+  {
+    "id": "jat-01037",
+    "language": "ja",
+    "category": "性格",
+    "display": "正直者",
+    "value": "しょうじきもの"
+  },
+  {
+    "id": "jat-01038",
+    "language": "ja",
+    "category": "野菜",
+    "display": "新じゃが",
+    "value": "しんじゃが"
+  },
+  {
+    "id": "jat-01039",
+    "language": "ja",
+    "category": "飲み物",
+    "display": "いちごミルク",
+    "value": "いちごみるく"
+  },
+  {
+    "id": "jat-01040",
+    "language": "ja",
+    "category": "健康・病気",
+    "display": "寝ぐせ",
+    "value": "ねぐせ"
+  },
+  {
+    "id": "jat-01041",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "下旬",
+    "value": "げじゅん"
+  },
+  {
+    "id": "jat-01042",
+    "language": "ja",
+    "category": "時間・こよみ",
+    "display": "中旬",
+    "value": "ちゅうじゅん"
+  },
+  {
+    "id": "jat-01043",
+    "language": "ja",
+    "category": "音楽",
+    "display": "バラード",
+    "value": "ばらーど"
+  },
+  {
+    "id": "jat-01044",
+    "language": "ja",
+    "category": "人・家族",
+    "display": "親孝行",
+    "value": "おやこうこう"
+  },
+  {
+    "id": "jat-01045",
+    "language": "ja",
+    "category": "気持ち",
+    "display": "ほのぼの",
+    "value": "ほのぼの"
+  },
+  {
+    "id": "jat-01046",
+    "language": "ja",
+    "category": "台所用品",
+    "display": "竹串",
+    "value": "たけぐし"
+  },
+  {
+    "id": "jat-01047",
+    "language": "ja",
+    "category": "交通・道路",
+    "display": "車間距離",
+    "value": "しゃかんきょり"
   }
 ]
