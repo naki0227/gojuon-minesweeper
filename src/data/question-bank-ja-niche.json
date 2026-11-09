@@ -1440,5 +1440,75 @@
     "category": "流行語",
     "display": "ちょい足し",
     "value": "ちょいたし"
+  },
+  {
+    "id": "jan-00207",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "内川聖一",
+    "value": "うちかわせいいち"
+  },
+  {
+    "id": "jan-00208",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "小笠原道大",
+    "value": "おがさわらみちひろ"
+  },
+  {
+    "id": "jan-00209",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "井端弘和",
+    "value": "いばたひろかず"
+  },
+  {
+    "id": "jan-00210",
+    "language": "ja",
+    "category": "野球選手",
+    "display": "鳥谷敬",
+    "value": "とりたにたかし"
+  },
+  {
+    "id": "jan-00211",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "玉田圭司",
+    "value": "たまだけいじ"
+  },
+  {
+    "id": "jan-00212",
+    "language": "ja",
+    "category": "サッカー選手",
+    "display": "阿部勇樹",
+    "value": "あべゆうき"
+  },
+  {
+    "id": "jan-00213",
+    "language": "ja",
+    "category": "流行語",
+    "display": "無理ゲー",
+    "value": "むりげー"
+  },
+  {
+    "id": "jan-00214",
+    "language": "ja",
+    "category": "流行語",
+    "display": "神回",
+    "value": "かみかい"
+  },
+  {
+    "id": "jan-00215",
+    "language": "ja",
+    "category": "流行語",
+    "display": "推しメン",
+    "value": "おしめん"
+  },
+  {
+    "id": "jan-00216",
+    "language": "ja",
+    "category": "流行語",
+    "display": "爆速",
+    "value": "ばくそく"
   }
 ]
