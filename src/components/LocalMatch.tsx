@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { PinnedBannerScreen } from "../ads/PinnedBannerScreen";
 import { matchBanner } from "../ads/types";
+import { nameSides } from "../i18n/sides";
 import { gameMessage, promptText } from "../i18n/text";
 import {
   adjacentMineCount,
@@ -65,9 +66,10 @@ export function LocalMatch({
   const canAnswer = game.phase === "answer" && !locked;
   const canOpen = game.phase === "open" && !locked;
   // Messages name "Player 1/2"; a match against the bot names the sides.
-  const message = gameMessage(game)
-    .replaceAll("Player 1", playerLabel(0))
-    .replaceAll("Player 2", playerLabel(1));
+  const message = nameSides(gameMessage(game), [
+    playerLabel(0),
+    playerLabel(1),
+  ]);
 
   function submit() {
     const correct = onSubmit(answer);
